@@ -4,7 +4,9 @@ Storymap is a jQuery-plugin to create a map that follows your text. Annotate eac
 
 ## Demo
 
-See demo at [Major Cities of Oregon](http://cdn.rawgit.com/jakobzhao/storymap/master/index.html)
+See demos at
+- [Major Cities of Oregon](http://cdn.rawgit.com/jakobzhao/storymap/master/index.html)
+- [Story Map Template](http://cdn.rawgit.com/jakobzhao/storymap/master/dist/template.html)
 
 ## Requirements
 
