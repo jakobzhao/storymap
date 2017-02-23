@@ -5,8 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <!--add required stylesheets-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+
+    <!--storymap stylesheet -->
     <link rel="stylesheet" type="text/css" href="storymap.css" />
 
     <!--add required libraries-->
@@ -17,7 +20,7 @@
     <!--add ajax based data transmission-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
 
-    <!--story map plugin-->
+    <!--storymap javascript library -->
     <script src="storymap.js"></script>
 
 </head>
@@ -67,49 +70,24 @@
 
     </div>
 
-    <!--the about page-->
-    <div class="modal fade" id="info-modal" role="dialog">
-        <div class="modal-dialog modal-md">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">About</h4>
-                </div>
-                <div class="modal-body">
-                    This is an about page.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 <script type="text/javascript">
 
-    // Create Legend Contents in html format
-    var legend1 ='<i style="background: black; opacity: 0.5"></i><p><b>legend 1</b></p>';
-    var legend2 = '<i style="background: orange; opacity: 0.5"></i><p><b>legend 2</b></p>';
-
-
     var layers = {
-        'layer 1': [ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
-                        id: 'mapbox.satellite'}), legend1],
-        'layer 2': [ L.geoJson.ajax('http://www.mapio.us/geoserver/ceoas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ceoas:admin&outputFormat=application%2Fjson', {
-                        color: 'orange',
-                        weight: 5}), legend2]
+        'layer 1': [ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {id: 'mapbox.satellite'}), '<i style="background: black; opacity: 0.5"></i><p><b>legend 1</b></p>'],
+        'layer 2': [ L.geoJson.ajax('http://www.mapio.us/geoserver/ceoas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ceoas:admin&outputFormat=application%2Fjson', {color: 'orange', weight: 5}), '<i style="background: orange; opacity: 0.5"></i><p><b>legend 2</b></p>']
     };
 
     var scenes = {
         scene1: {lat: 44, lng: -123.5, zoom: 7, layers: ['layer 1']},
         scene2: {lat: 44.5701158, lng: -123.2949388, zoom: 14, layers: ['layer 2']},
-        scene3: {lat: 45.5186089, lng: -122.7270297, zoom: 11, layers: ['layer 1', 'layer 2']}
+        scene3: {lat: 44.5701158, lng: -123.2949388, zoom: 12, layers: ['layer 1', 'layer 2']}
     };
 
     $('.main').storymap({
         scenes: scenes,
         layers: layers,
-        legend: false
+        legend: true
     });
 </script>
 </body>
