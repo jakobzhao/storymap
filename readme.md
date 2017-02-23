@@ -39,7 +39,7 @@ To use this storymap plugin, you need to include some prerequiste stylesheets an
 </head>
 ```
 
-To use this storymap plugin, you need to download all the three files in the `dist` folder, which includes a stylesheet - `storymap.css`, a javascript library - `storymap.js`, and a html page `template.html`. you can build up your storymap via the template.html page.
+To use this storymap plugin, you need to download all the three files in the `dist` folder, which includes a stylesheet - `storymap.css`, a javascript library - `storymap.js`, and a html page `template.html`. you can build up your Storymap via the template.html page.
 
 ```html
 <head>
