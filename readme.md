@@ -11,7 +11,7 @@ See demos at
 
 - [Story Map Template](http://cdn.rawgit.com/jakobzhao/storymap/master/dist/template.html)
 
-  ![](img/template.png)
+![](img/template.png)
 
 ## Requirements
 
