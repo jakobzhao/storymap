@@ -1,6 +1,6 @@
 # Storymap
 
-Storymap is a javascript library to help you tell a story based on web maps. Using this library, you can create a map that follows your text. Annotate each paragraph and place a map alongside it. Then you can zoom/pan/add thematic layers to the web map as the reader reads through the text. This Storymap plugin is modified after [Atlefren's stormap plugin](https://github.com/atlefren/storymap) , but has been largely enhanced by [Bo Zhao](http://ceoas.oregonstate.edu/profile/zhao/). This plugin is used for the course **GEOG 371 Geovisualization: Web Mapping** offered by Oregon State University. 
+Storymap.js is a javascript library to tell a story based on web maps. Using this library, you can create a map that follows your text. Annotate each paragraph and place a map alongside it. Then you can zoom/pan/add thematic layers to the web map as the reader reads through the text. This library is used for the course **GEOG 371 Geovisualization: Web Mapping** offered by Oregon State University.
 
 ## Demo
 
