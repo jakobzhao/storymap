@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaflet Map</title>
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+</head>
+<body>
+<!-- Our web map and content will go here -->
+<div id="map" style="width: 1600px; height: 1200px"></div>
+<!-- Add the Leaflet JavaScript library -->
+<script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+<script>
+    // Create variable to hold map element, give initial settings to map
+    var map = L.map('map',{ center: [44.56576, -123.27888], zoom: 16});
+
+    // Add OpenStreetMap tile layer to map element
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
+
+    // Create point feature for Wilkinson Hall
+    var myDataPoint = L.marker([44.56822, -123.28034]).addTo(map);
+
+    myDataPoint.bindPopup('<embed style="height:400px; width:600px;" src="https://cdnapisec.kaltura.com/html5/html5lib/v2.51/mwEmbedFrame.php/p/391241/uiconf_id/22119142/entry_id/0_7ww1nl95?wid=_391241&iframeembed=true&playerId=kaltura_player&entry_id=0_7ww1nl95&flashvars[localizationCode]=en&amp;&wid=0_3086pi2t"></embed>',{maxWidth: 600, closeOnClick: true});
+
+    var myDataPoint2 = L.marker([44.56922, -123.28234]).addTo(map);
+
+    myDataPoint2.bindPopup('<embed style="height:400px; width:600px;" src="https://cdnapisec.kaltura.com/p/391241/sp/39124100/embedIframeJs/uiconf_id/34564782/partner_id/391241?iframeembed=true&playerId=kaltura_player&entry_id=0_imz3xclv&flashvars[localizationCode]=en&amp;&wid=0_y6o3oh8o"></embed>',{maxWidth: 600, closeOnClick: true});
+
+
+</script>
+</body>
+</html>
