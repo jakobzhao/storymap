@@ -1,7 +1,7 @@
 # storymap.js changelog
 
 
-(all changes without author notice are by [@jakbzhao, BO Zhao](https://github.com/jakobzhao))
+(all changes without author notice are by [@jakbzhao, Bo Zhao](https://github.com/jakobzhao))
 
 ## master
 
