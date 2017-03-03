@@ -2,7 +2,7 @@
 
 Storymap.js is a javascript library to tell a story based on web maps. Using this library, you can create a map that follows your text. Annotate each paragraph and place a map alongside it. Then you can zoom/pan/add thematic layers to the web map as the reader reads through the text. This library is used for the course **GEOG 371 Geovisualization: Web Mapping** offered by Oregon State University.
 
-## *Demo*
+## Demo
 
 See demos at
 
@@ -24,7 +24,7 @@ Storymap depends on some common javascript libraries, including:
 
 ## Usage
 
-To use this storymap plugin, you need to include some prerequiste stylesheets and javascript libraries in the head tag. 
+To use this storymap plugin, you need to include some prerequisite stylesheets and javascript libraries in the head tag.
 
 ```html
 <!DOCTYPE html>
@@ -76,7 +76,7 @@ A story map consists of several scenes. Each scene has two basic components, in 
 scene1: {lat: 44, lng: -123.5, zoom: 7, layers: ['layer 1']},
 ```
 
-One of the major differences between the original story map plugin and this enhanced version is that the improvements in embodying the logics of story maps. As noted, a story map is organized as a sequence of scenes, and the scenes are associated with maps. Each map are mashed up by layers, and the layers can be any types of layers that [leaflet.js](http://leafletjs.com/) support.  Below shows the tree structure of this story map plugin.
+One of the major differences between the original story map plugin and this enhanced version is that the improvements in embodying the logics of storyline. As noted, a story map is organized as a sequence of scenes, and the scenes are associated with maps. Each map are mashed up by layers, and the layers can be any types of layers that [leaflet.js](http://leafletjs.com/) support.  Below shows the tree structure of this story map plugin.
 
 ```powershell
 A Story Map
