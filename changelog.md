@@ -12,3 +12,7 @@ An in-progress version being developed on the `master` branch.
 * fix the the map view issue when the width is less than 768px
 * update the class for button from social to btn
 * add the changelog.md
+
+## 2.1.6 (03/13/2017)
+
+* add .gitignore file to remove .idea folder.
