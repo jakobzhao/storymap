@@ -41,9 +41,9 @@
             return d;
         }
 
-        function highlightTopPara(paragraphs, top) {
+        function highlightTopPara(sections, top) {
 
-            var distances = $.map(paragraphs, function (element) {
+            var distances = $.map(sections, function (element) {
                 var dist = getDistanceToTop(element, top);
                 return {el: $(element), distance: dist};
             });
@@ -58,10 +58,10 @@
 
             var closest = distances.reduce(findMin);
 
-            $.each(paragraphs, function (key, element) {
-                var paragraph = $(element);
-                if (paragraph[0] !== closest.el[0]) {
-                    paragraph.trigger('notviewing');
+            $.each(sections, function (key, element) {
+                var section = $(element);
+                if (section[0] !== closest.el[0]) {
+                    section.trigger('notviewing');
                 }
             });
 
@@ -71,10 +71,10 @@
         }
 
         function watchHighlight(element, searchfor, top) {
-            var paragraphs = element.find(searchfor);
-            highlightTopPara(paragraphs, top);
+            var sections = element.find(searchfor);
+            highlightTopPara(sections, top);
             $(window).scroll(function () {
-                highlightTopPara(paragraphs, top);
+                highlightTopPara(sections, top);
             });
         }
 
@@ -88,14 +88,30 @@
 
             var searchfor = settings.selector;
 
-            var paragraphs = element.find(searchfor);
+            var sections = element.find(searchfor);
 
-            paragraphs.on('viewing', function () {
+            sections.on('viewing', function () {
                 $(this).addClass('viewing');
+
+                if (scenes[$(this)[0].attributes['data-scene'].value].position == "fullpage") {
+                        $(this).addClass('opac');
+                        $(".fullscreen-image").addClass('fullpage');
+                        $(".arrow-down").css("left", "50%");
+                } else {
+                    console.log("no position parameter.")
+                }
             });
 
-            paragraphs.on('notviewing', function () {
+            sections.on('notviewing', function () {
                 $(this).removeClass('viewing');
+                $(this).removeClass('opac');
+
+                if (scenes[$(this)[0].attributes['data-scene'].value].position == "fullpage") {
+                    $(".arrow-down").css("left", "2%");
+                } else {
+                    console.log("no position parameter.")
+                }
+
             });
 
             watchHighlight(element, searchfor, top);
@@ -103,18 +119,19 @@
             var downBtn = element.find('.arrow-down');
 
             downBtn.click(function () {
-                window.scrollBy(0, $(window).height() / 3);
+                window.scrollBy(0, $(window).height() / 4);
             });
 
             var map = settings.createMap();
             var currentLayerGroup = L.layerGroup().addTo(map);
-            var legendControl = L.control({position: 'topright'});
+            var legendControl = L.control({position: 'topright'}); // you can change the position of the legend Control.
 
-            $.each(paragraphs, function (key, element) {
-                var paragraph = $(element);
-                if (paragraph[0].className == 'viewing') {
-                    var scene = scenes[paragraph[0].attributes['data-scene'].value];
+            $.each(sections, function (key, element) {
+                var section = $(element);
+                if (section[0].className == 'viewing') {
+                    var scene = scenes[section[0].attributes['data-scene'].value];
                     map.setView([scene.lat, scene.lng], scene.zoom);
+
                     var layernames = scene.layers;
                     var legendContent = "";
                     if(typeof layernames !== 'undefined') {
@@ -143,7 +160,7 @@
 
                 }
 
-            });
+            } );
 
             function showMapView(key) {
 
@@ -188,7 +205,7 @@
                 map.setView([scene.lat, scene.lng], scene.zoom, 1);
             }
 
-            paragraphs.on('viewing', function () {
+            sections.on('viewing', function () {
                 showMapView($(this).data('scene'));
             });
         };
