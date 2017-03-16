@@ -16,3 +16,7 @@ An in-progress version being developed on the `master` branch.
 ## 2.1.6 (03/13/2017)
 
 * add .gitignore file to remove .idea folder.
+
+## 2.1.7 (03/17/2017)
+
+* add fullpage feature. only works for chrome.
