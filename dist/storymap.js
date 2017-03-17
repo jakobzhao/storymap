@@ -92,10 +92,13 @@
 
             sections.on('viewing', function () {
                 $(this).addClass('viewing');
+                $(".arrow-down").css("left", "2%");
+
 
                 if (scenes[$(this)[0].attributes['data-scene'].value].position == "fullpage") {
-                    $(this).addClass('opac');
-                    $(".fullscreen-image").addClass('fullpage');
+                    $(this).addClass('section-opacity');
+                    $(this).find(".background-img-setting").addClass('fullpage');
+                    $(this).find(".background-img-setting").css("display", "block");
                     $(".arrow-down").css("left", "50%");
                 } else {
                     console.log("no position parameter.")
@@ -104,10 +107,14 @@
 
             sections.on('notviewing', function () {
                 $(this).removeClass('viewing');
-                $(this).removeClass('opac');
 
                 if (scenes[$(this)[0].attributes['data-scene'].value].position == "fullpage") {
-                    $(".arrow-down").css("left", "2%");
+                    $(this).removeClass('section-opacity');
+                    $(this).find(".background-img-setting").removeClass('fullpage');
+                    $(this).find(".background-img-setting").css("display", "none");
+
+
+                    //$(".arrow-down").css("left", "2%");
                 } else {
                     console.log("no position parameter.")
                 }
@@ -119,8 +126,10 @@
             var downBtn = element.find('.arrow-down');
 
             downBtn.click(function () {
-                window.scrollBy(0, $(window).height() / 4);
+                window.scrollBy(0, $(".viewing").offset().top -$(window).scrollTop() + $('.viewing').height());
             });
+
+
 
             var map = settings.createMap();
             var currentLayerGroup = L.layerGroup().addTo(map);
