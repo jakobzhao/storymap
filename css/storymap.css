@@ -139,14 +139,15 @@ section {
     left:2%;
     cursor: pointer;
     z-index:1002;
-    font-size: 50px;
-    color: rgba(0, 255, 155, 0.6);
+    font-size: 60px;
+    color: rgba(165, 165, 165, 0.6);
 }
 
 
 .arrow-down:hover {
-    color: #006027;
+    color: #0e0e0e;
 }
+
 
 .btn {
     position:fixed;
