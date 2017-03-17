@@ -20,3 +20,9 @@ An in-progress version being developed on the `master` branch.
 ## 2.1.7 (03/17/2017)
 
 * add fullpage feature. only works for chrome.
+
+## 2.1.9 (03/17/2017)
+
+* add animated.css included, then the arrow down icon is animated.
+* fullpage feature works on IE.
+* update several bugs
