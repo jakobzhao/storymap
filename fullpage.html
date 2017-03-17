@@ -51,7 +51,6 @@
         <div class="col-sm-6 col-md-4 main">
             <section data-scene="overview">
                 <div class= "overview-background-img background-img-setting text-responsive" ><h3 class="text-center">The Cities of Oregon</h3>
-
                     <h3 class="text-center"><small style="color: rgba(0,255,155,0.82)">This Web Map introduces the major cities of Oregon using a storytelling map template.</small></h3>
                 </div>
                 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -84,7 +83,6 @@
                 <p>Salem had a population of 154,637 at the 2010 census, making it the third largest city in the state after Portland and Eugene. Salem is less than an hour driving distance away from Portland. Salem is the principal city of the Salem Metropolitan Statistical Area, a metropolitan area that covers Marion and Polk counties and had a combined population of 390,738 at the 2010 census. A 2013 estimate placed the metropolitan population at 400,408, the state's second largest.</p>
                 <p>The city is home to Willamette University, Corban University, and Chemeketa Community College. The State of Oregon is the largest public employer in the city, and Salem Health is the largest private employer. Transportation includes public transit from Salem-Keizer Transit, Amtrak service, and non-commercial air travel at McNary Field. Major roads include Interstate 5, Oregon Route 99E, and Oregon Route 22, which connects West Salem across the Willamette River via the Marion Street and Center Street bridges.</p>
             </section>
-
             <section data-scene="bend">
                 <h2>Bend</h2>
                 <p>Bend is a city in, and the county seat of Deschutes County, Oregon, United States. It is the principal city of the Bend, Oregon Metropolitan Statistical Area. Bend is Central Oregon's largest city, and despite its modest size, is the de facto metropolis of the region, owing to the low population density of that area. Bend recorded a population of 76,693 at the time of the 2010 U.S. Census, up from 52,029 at the 2000 census. The estimated population of the city as of 2013 is 81,236. Bend's metro population was estimated at 165,954 as of July 1, 2013. The Bend MSA is the fifth largest metropolitan area in Oregon.</p>
@@ -105,12 +103,11 @@
                 </div>
                 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
             </section>
-            <!--add a arrow for scrolling down the texts-->
-            <div class="animated rubberBand infinite glyphicon glyphicon-menu-down arrow-down"></div>
+            <!--add an arrow for scrolling down the texts-->
+            <div class="animated bounce infinite glyphicon glyphicon-menu-down arrow-down"></div>
         </div>
         <!--map div-->
         <div id="map" class="col-sm-6 col-md-8 sidebar"></div>
-
     </div>
 
     <dl class="btn">
@@ -209,8 +206,7 @@
                 position: 'bottomright'
             }).addTo(map);
 
-            // hidden the credit, but show in the about page.
-
+            // hidden the credits, but show in the about page.
             $(".leaflet-control-attribution").css("display", "none");
 
             return map;

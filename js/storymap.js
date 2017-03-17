@@ -108,12 +108,12 @@
 
 
                 if ($(this)[0].attributes["data-scene"].value == $("section").last()[0].attributes["data-scene"].value) {
-                    $(".arrow-down").removeClass("glyphicon-menu-down");
-                    $(".arrow-down").addClass("glyphicon-home");
+                    $(".arrow-down").removeClass("glyphicon-menu-down")
+                                    .addClass("glyphicon-home");
 
                 } else {
-                    $(".arrow-down").removeClass("glyphicon-home");
-                    $(".arrow-down").addClass("glyphicon-menu-down");
+                    $(".arrow-down").removeClass("glyphicon-home")
+                                    .addClass("glyphicon-menu-down");
                 }
 
             });
@@ -224,10 +224,6 @@
                 {
                     legendControl.addTo(map);
                 }
-
-
-                // if you don't want to show a marker at the center of the map, you can simply comment the following line.
-                // currentLayerGroup.addLayer(L.marker([scene.lat, scene.lon]));
 
                 map.setView([scene.lat, scene.lng], scene.zoom, 1);
             }

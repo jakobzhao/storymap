@@ -90,19 +90,32 @@
 
             var sections = element.find(searchfor);
 
+
+
             sections.on('viewing', function () {
                 $(this).addClass('viewing');
                 $(".arrow-down").css("left", "2%");
 
 
                 if (scenes[$(this)[0].attributes['data-scene'].value].position == "fullpage") {
-                    $(this).addClass('section-opacity');
-                    $(this).find(".background-img-setting").addClass('fullpage');
-                    $(this).find(".background-img-setting").css("display", "block");
-                    $(".arrow-down").css("left", "50%");
+                        $(this).addClass('section-opacity');
+                        $(this).find(".background-img-setting").addClass('fullpage');
+                        $(this).find(".background-img-setting").css("display", "block");
+                        $(".arrow-down").css("left", "50%");
                 } else {
                     console.log("no position parameter.")
                 }
+
+
+                if ($(this)[0].attributes["data-scene"].value == $("section").last()[0].attributes["data-scene"].value) {
+                    $(".arrow-down").removeClass("glyphicon-menu-down");
+                    $(".arrow-down").addClass("glyphicon-home");
+
+                } else {
+                    $(".arrow-down").removeClass("glyphicon-home");
+                    $(".arrow-down").addClass("glyphicon-menu-down");
+                }
+
             });
 
             sections.on('notviewing', function () {
@@ -126,7 +139,12 @@
             var downBtn = element.find('.arrow-down');
 
             downBtn.click(function () {
-                window.scrollBy(0, $(".viewing").offset().top -$(window).scrollTop() + $('.viewing').height());
+                if ($(".arrow-down")[0].className.includes("menu")) {
+                    window.scrollBy(0, $(".viewing").offset().top -$(window).scrollTop() + $('.viewing').height());
+                } else if ($(".arrow-down")[0].className.includes("home")) {
+                    window.scrollTo(0, 0);
+                }
+
             });
 
 
@@ -206,10 +224,6 @@
                 {
                     legendControl.addTo(map);
                 }
-
-
-                // if you don't want to show a marker at the center of the map, you can simply comment the following line.
-                // currentLayerGroup.addLayer(L.marker([scene.lat, scene.lon]));
 
                 map.setView([scene.lat, scene.lng], scene.zoom, 1);
             }
