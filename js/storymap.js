@@ -3,6 +3,9 @@
 // Updated on 2/22/2017 | version 2.1 | MIT License
 (function ($) {
 
+
+
+
     $.fn.storymap = function(options) {
 
         var defaults = {
@@ -125,9 +128,6 @@
                     $(this).removeClass('section-opacity');
                     $(this).find(".background-img-setting").removeClass('fullpage');
                     $(this).find(".background-img-setting").css("display", "none");
-
-
-                    //$(".arrow-down").css("left", "2%");
                 } else {
                     console.log("no position parameter.")
                 }
