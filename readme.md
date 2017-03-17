@@ -8,6 +8,8 @@ See demos at
 
 - [Cities of Oregon v.2](http://rawgit.com/jakobzhao/storymap/master/fullpage.html)
 
+![](img/fullpage.png)
+
 - [Cities of Oregon](http://rawgit.com/jakobzhao/storymap/master/index.html)
 
 ![](img/oregon_cities.png)
