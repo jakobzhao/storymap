@@ -90,6 +90,8 @@
 
             var sections = element.find(searchfor);
 
+
+
             sections.on('viewing', function () {
                 $(this).addClass('viewing');
                 $(".arrow-down").css("left", "2%");
@@ -103,6 +105,17 @@
                 } else {
                     console.log("no position parameter.")
                 }
+
+
+                if ($(this)[0].attributes["data-scene"].value == $("section").last()[0].attributes["data-scene"].value) {
+                    $(".arrow-down").removeClass("glyphicon-menu-down");
+                    $(".arrow-down").addClass("glyphicon-home");
+
+                } else {
+                    $(".arrow-down").removeClass("glyphicon-home");
+                    $(".arrow-down").addClass("glyphicon-menu-down");
+                }
+
             });
 
             sections.on('notviewing', function () {
@@ -126,7 +139,12 @@
             var downBtn = element.find('.arrow-down');
 
             downBtn.click(function () {
-                window.scrollBy(0, $(".viewing").offset().top -$(window).scrollTop() + $('.viewing').height());
+                if ($(".arrow-down")[0].className.includes("menu")) {
+                    window.scrollBy(0, $(".viewing").offset().top -$(window).scrollTop() + $('.viewing').height());
+                } else if ($(".arrow-down")[0].className.includes("home")) {
+                    window.scrollTo(0, 0);
+                }
+
             });
 
 

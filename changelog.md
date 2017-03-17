@@ -26,3 +26,4 @@ An in-progress version being developed on the `master` branch.
 * add animated.css included, then the arrow down icon is animated.
 * fullpage feature works on IE.
 * update several bugs
+* add the home icon for the last scene.

@@ -50,8 +50,8 @@
     <div class="row">
         <div class="col-sm-6 col-md-4 main">
             <section data-scene="overview">
-                <div class= "overview-background-img background-img-setting" ><h3 class="text-center">The Cities of Oregon</h3>
-                <br/>
+                <div class= "overview-background-img background-img-setting text-responsive" ><h3 class="text-center">The Cities of Oregon</h3>
+
                     <h3 class="text-center"><small style="color: rgba(0,255,155,0.82)">This Web Map introduces the major cities of Oregon using a storytelling map template.</small></h3>
                 </div>
                 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -112,11 +112,15 @@
         <div id="map" class="col-sm-6 col-md-8 sidebar"></div>
 
     </div>
-    <!--facebook icon-->
-    <a class="fa fa-facebook-square btn" href="https://facebook.com/sharer.php?u=http://cdn.rawgit.com/jakobzhao/storymap/master/fullpage.html" target="_blank"></a>
-    <!--info icon-->
-    <i class="fa fa-info-circle btn" style="top:50px" data-toggle="modal" data-target="#info-modal"></i>
 
+    <dl class="btn">
+        <dt>
+            <!--facebook icon-->
+            <a class="fa fa-facebook-square " href="https://facebook.com/sharer.php?u=http://cdn.rawgit.com/jakobzhao/storymap/master/fullpage.html" target="_blank"></a></dt>
+        <dt>
+            <!--info icon-->
+            <i class="fa fa-info-circle btn" style="top:50px" data-toggle="modal" data-target="#info-modal"></i></dt>
+    </dl>
     <!--the info page-->
     <div class="modal fade" id="info-modal" role="dialog">
         <div class="modal-dialog modal-md">
@@ -204,6 +208,10 @@
                 marker:'red',
                 position: 'bottomright'
             }).addTo(map);
+
+            // hidden the credit, but show in the about page.
+
+            $(".leaflet-control-attribution").css("display", "none");
 
             return map;
         }
