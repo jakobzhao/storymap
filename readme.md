@@ -6,7 +6,9 @@ Storymap.js is a javascript library to tell a story based on web maps. Using thi
 
 See demos at
 
-- [Major Cities of Oregon](http://rawgit.com/jakobzhao/storymap/master/index.html)
+- [Cities of Oregon v.2](http://rawgit.com/jakobzhao/storymap/master/fullpage.html)
+
+- [Cities of Oregon](http://rawgit.com/jakobzhao/storymap/master/index.html)
 
 ![](img/oregon_cities.png)
 
