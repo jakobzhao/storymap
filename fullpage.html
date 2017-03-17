@@ -6,12 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--meta data for sharing links on Facebook-->
     <meta property="og:title" content="The major cities in Oregon" />
-    <meta property="og:url" content="http://cdn.rawgit.com/jakobzhao/storymap/master/index.html" />
+    <meta property="og:url" content="http://cdn.rawgit.com/jakobzhao/storymap/master/fullpage.html" />
     <meta property="og:description" content="This is an example of map story." />
     <meta property="og:image" content="img/social.png" />
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
     <!--facebook and info icons-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -48,7 +50,10 @@
     <div class="row">
         <div class="col-sm-6 col-md-4 main">
             <section data-scene="overview">
-                <div class= "overview fullscreen-image" ><h3 class="text-center">The Cities of Oregon</h3></div>
+                <div class= "overview-background-img background-img-setting" ><h3 class="text-center">The Cities of Oregon</h3>
+                <br/>
+                    <h3 class="text-center"><small style="color: rgba(0,255,155,0.82)">This Web Map introduces the major cities of Oregon using a storytelling map template.</small></h3>
+                </div>
                 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
             </section>
 
@@ -92,15 +97,23 @@
                 <img src="img/oregon_flag.png" class="img-responsive" alt="responsive image" alt-text="the flag of oregon">
                 <p>Oregon's landscape is diverse, with a windswept Pacific coastline; a volcano-studded Cascade Range; abundant bodies of water in and west of the Cascades; dense evergreen, mixed, and deciduous forests at lower elevations; and a high desert sprawling across much of its east all the way to the Great Basin. The tall conifers, mainly Douglas fir, along Oregon's rainy west coast contrast with the lighter-timbered and fire-prone pine and juniper forests covering portions to the east. Abundant alders in the west fix nitrogen for the conifers. Stretching east from central Oregon are semi-arid shrublands, prairies, deserts, steppes, and meadows. At 11,249 feet (3,429 m), Mount Hood is the state's highest point. Oregon's only national park, Crater Lake National Park, comprises the caldera surrounding Crater Lake, the deepest lake in the United States. The state is also home to the single largest organism in the world, Armillaria ostoyae, a fungus that runs beneath 8.9 km2 (2,200 acres) of the Malheur National Forest.</p>
             </section>
+
+            <section data-scene="end">
+                <div class= "end-background-img background-img-setting" ><h3 class="text-center">Thanks for watching!!!</h3>
+                    <br/>
+                    <h3 class="text-center"><small style="color: rgba(0,255,155,0.82)">Download Storymap.js from http://github.com/jakobzhao</small></h3>
+                </div>
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            </section>
             <!--add a arrow for scrolling down the texts-->
-            <div class="glyphicon glyphicon-menu-down arrow-down"></div>
+            <div class="animated rubberBand infinite glyphicon glyphicon-menu-down arrow-down"></div>
         </div>
         <!--map div-->
         <div id="map" class="col-sm-6 col-md-8 sidebar"></div>
 
     </div>
     <!--facebook icon-->
-    <a class="fa fa-facebook-square btn" href="https://facebook.com/sharer.php?u=http://cdn.rawgit.com/jakobzhao/storymap/master/index.html" target="_blank"></a>
+    <a class="fa fa-facebook-square btn" href="https://facebook.com/sharer.php?u=http://cdn.rawgit.com/jakobzhao/storymap/master/fullpage.html" target="_blank"></a>
     <!--info icon-->
     <i class="fa fa-info-circle btn" style="top:50px" data-toggle="modal" data-target="#info-modal"></i>
 
@@ -158,13 +171,14 @@
     };
 
     var scenes = {
-        overview: {lat: 44, lng: -123.5, zoom: 7, position: "fullpage"},
+        overview: {lat: 44, lng: -123.5, zoom: 7, position: 'fullpage'},
         portland: {lat: 45.5186089, lng: -122.7270297, zoom: 11},
         corvallis: {lat: 44.5701158, lng: -123.2949388, zoom: 14, layers: ['bing','corvallis admin']},
         eugene: {lat: 44.0549563, lng: -123.0958048, zoom: 13 },
         salem: {lat: 44.9419055, lng: -123.0356407, zoom: 13},
         bend: {lat: 44.0519385, lng: -121.3042125, zoom: 14, layers: ['satellite']},
-        oregon: {lat: 44, lng: -123.5, zoom: 7, layers: ['counties', 'forest cover 2010']}
+        oregon: {lat: 44, lng: -123.5, zoom: 7, layers: ['counties', 'forest cover 2010']},
+        end: {lat: 44, lng: -123.5, zoom: 7, position: 'fullpage'}
     };
 
     $('.main').storymap({
