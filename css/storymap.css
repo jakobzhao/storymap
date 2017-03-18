@@ -23,6 +23,45 @@ h3 {
     margin-top: 0;
 }
 
+
+
+.navbar {
+    position: fixed;
+    top: 40%;
+    left: 0;
+    display : block;
+    z-index: 1002;
+    border-radius: 3px;
+    background: rgba(115, 115, 115, 0.2);
+    color: rgba(63, 63, 63, 0.3);
+    padding:0;
+    margin:0;
+    font-size: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    opacity: 0;
+    filter:alpha(opacity=0);
+    -moz-opacity:0;
+}
+
+.navbar > li {
+    position: relative;
+    display: block !important;
+    cursor: pointer;
+}
+
+.navbar li a {
+    outline: 1px;
+    border: 0;
+    padding: 8px;
+    background-color: transparent;
+}
+
+.navbar li a:visited,.navbar li a:active, .navbar li a:link  {color: rgba(160, 160, 160, 0.6); text-decoration:none}
+.navbar li a:hover   {color: rgba(102, 102, 102, 0.68); text-decoration:none; font-size:12px}
+
+
+
+
 .viewing {
     background: #eee;
     opacity: 0.8;

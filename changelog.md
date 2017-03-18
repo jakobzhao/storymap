@@ -27,3 +27,7 @@ An in-progress version being developed on the `master` branch.
 * fullpage feature works on IE.
 * update several bugs
 * add the home icon for the last scene.
+
+## 2.1.10 (03/18/2017)
+
+* add a navigation bar.

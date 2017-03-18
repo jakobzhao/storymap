@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
 
+    <!--animation-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
     <!--facebook and info icons-->
@@ -113,11 +114,16 @@
     <dl class="btn">
         <dt>
             <!--facebook icon-->
-            <a class="fa fa-facebook-square " href="https://facebook.com/sharer.php?u=http://cdn.rawgit.com/jakobzhao/storymap/master/fullpage.html" target="_blank"></a></dt>
+            <a class="fa fa-facebook-square btn" href="https://facebook.com/sharer.php?u=http://cdn.rawgit.com/jakobzhao/storymap/master/fullpage.html" target="_blank"></a></dt>
         <dt>
             <!--info icon-->
             <i class="fa fa-info-circle btn" style="top:50px" data-toggle="modal" data-target="#info-modal"></i></dt>
     </dl>
+
+
+    <ul class="navbar text-center">
+    </ul>
+
     <!--the info page-->
     <div class="modal fade" id="info-modal" role="dialog">
         <div class="modal-dialog modal-md">
@@ -144,7 +150,7 @@
      * Created by jakob on 2/22/2017.
      */
 
-// Create Legend Contents in html format
+    // Create Legend Contents in html format
     var county_legend ='<i style="background: black; opacity: 0.5"></i><p><b>Counties</b></p>';
     var corvallis_admin_legend = '<i style="background: orange; opacity: 0.5"></i><p><b>Corvallis</b></p>';
     var forest_legend = '<i style="background: green; opacity: 0.5"></i><p><b>Forest</b></p>';
@@ -186,6 +192,9 @@
         scenes: scenes,
         layers: layers,
         legend: true, // if you do not want a legend feature, you can simply not define the createLegend function.
+        scale: false,
+        navbar: true,
+
         createMap: function () {
             // create a map in the "map" div, set the view to a given place and zoom
             var map = L.map('map', {zoomControl: false, scrollWheelZoom: false});
@@ -198,7 +207,6 @@
                 detectRetina: true
             }).addTo(map);
 
-            L.control.scale({position: 'bottomright', metric: false}).addTo(map);
 
             // create a mini globe as the overview map control.
             var miniMap = new L.Control.GlobeMiniMap({

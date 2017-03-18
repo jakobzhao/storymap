@@ -9,13 +9,15 @@
             selector: '[data-scene]',
             breakpointPos: '33.333%',
             legend: false,
+            scale: false,
+            navbar: false,
             createMap: function () {
                 var map = L.map('map', {zoomControl: false}).setView([44, -120], 7);
-                L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
-                    maxZoom: 18,
-                    attribution: '',
-                    id: 'mapbox.light'
-                }).addTo(map);
+                // L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
+                //     maxZoom: 18,
+                //     attribution: '',
+                //     id: 'mapbox.light'
+                // }).addTo(map);
                 return map;
             }
         };
@@ -98,22 +100,29 @@
 
 
                 if (scenes[$(this)[0].attributes['data-scene'].value].position == "fullpage") {
-                        $(this).addClass('section-opacity');
-                        $(this).find(".background-img-setting").addClass('fullpage');
-                        $(this).find(".background-img-setting").css("display", "block");
-                        $(".arrow-down").css("left", "50%");
+                    $(this).addClass('section-opacity');
+                    $(this).find(".background-img-setting").addClass('fullpage')
+                        .css("display", "block");
+                    $(".arrow-down").css("left", "50%");
                 } else {
                     console.log("no position parameter.")
                 }
 
-
+                // Change the arrow-down icon to the home icon when reaching the last scene.
                 if ($(this)[0].attributes["data-scene"].value == $("section").last()[0].attributes["data-scene"].value) {
-                    $(".arrow-down").removeClass("glyphicon-menu-down");
-                    $(".arrow-down").addClass("glyphicon-home");
+                    $(".arrow-down").removeClass("glyphicon-menu-down")
+                        .addClass("glyphicon-home");
 
                 } else {
-                    $(".arrow-down").removeClass("glyphicon-home");
-                    $(".arrow-down").addClass("glyphicon-menu-down");
+                    $(".arrow-down").removeClass("glyphicon-home")
+                        .addClass("glyphicon-menu-down");
+                }
+
+                // Bounce the arrow-down icon when the icon is on the front page.
+                if ($(this)[0].attributes["data-scene"].value == $("section").first()[0].attributes["data-scene"].value) {
+                    $(".arrow-down").addClass("animated");
+                } else {
+                    $(".arrow-down").removeClass("animated");
                 }
 
             });
@@ -123,22 +132,25 @@
 
                 if (scenes[$(this)[0].attributes['data-scene'].value].position == "fullpage") {
                     $(this).removeClass('section-opacity');
-                    $(this).find(".background-img-setting").removeClass('fullpage');
-                    $(this).find(".background-img-setting").css("display", "none");
-
-
-                    //$(".arrow-down").css("left", "2%");
-                } else {
-                    console.log("no position parameter.")
+                    $(this).find(".background-img-setting").removeClass('fullpage')
+                        .css("display", "none");
                 }
 
             });
 
             watchHighlight(element, searchfor, top);
 
-            var downBtn = element.find('.arrow-down');
+            if (!String.prototype.includes) {
+                String.prototype.includes = function() {
+                    'use strict';
+                    return String.prototype.indexOf.apply(this, arguments) !== -1;
+                };
+            }
 
-            downBtn.click(function () {
+
+            // var downBtn = element.find('.arrow-down');
+
+            $('.arrow-down').click(function () {
                 if ($(".arrow-down")[0].className.includes("menu")) {
                     window.scrollBy(0, $(".viewing").offset().top -$(window).scrollTop() + $('.viewing').height());
                 } else if ($(".arrow-down")[0].className.includes("home")) {
@@ -148,10 +160,36 @@
             });
 
 
+            // create the navigation bar.
+            if (settings.navbar) {
+                //$("#navbar").append('<li><a class="fa fa-compass" style="font-size:32px"></a></li>');
+                $.each(sections, function (key, element) {
+                    var section = $(element);
+                    sceneName = section.data('scene');
+                    scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" + sceneName + "\\']').offset().top - $(window).scrollTop());";
+                    if (key == 0) {
+                        $(".navbar").append('<li><a class="fa fa-home" style="font-size:16px" href="' + scrollScript + '" ></a></li>');
+                    } else {
+                        $(".navbar").append('<li><a class="fa fa-circle" href="' + scrollScript + '" ></a></li>');
+                    }
+                });
+
+
+                $( ".navbar" ).hover(function() {
+                    $(this).fadeTo( 100, 0.8 );
+                }, function() {
+                    $(this).fadeTo( 500, 0);
+                });
+            }
+
 
             var map = settings.createMap();
             var currentLayerGroup = L.layerGroup().addTo(map);
             var legendControl = L.control({position: 'topright'}); // you can change the position of the legend Control.
+
+            if (settings.scale) {
+                L.control.scale({position: 'bottomright', metric: false}).addTo(map);
+            }
 
             $.each(sections, function (key, element) {
                 var section = $(element);
