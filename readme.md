@@ -1,10 +1,21 @@
 # Storymap
 
-Storymap.js is a javascript library to tell a story based on web maps. Using this library, you can create a map that follows your text. Annotate each paragraph and place a map alongside it. Then you can zoom/pan/add thematic layers to the web map as the reader reads through the text. This library is developed for the use of the course **GEOG 371 Geovisualization: Web Mapping** from Oregon State University.
+
+Storymap.js is a javascript map library to tell a story using web maps. Using this library, you can create a map that follows your text. Annotate each paragraph and place a map alongside it. Then you can zoom/pan/add thematic layers to the web map as the reader reads through the text. This library is developed for the use of the course **GEOG 371 Geovisualization: Web Mapping** from Oregon State University.
+
+New version will release by the end of March, 2017. The updated version supports:
+
+* add video as background;
+* change the animation of arrow down icon; and
+* add a navigation bar on the left of the browser view.
 
 ## Demo
 
 See demos at
+
+- [Cities of Oregon v.2.0.11](http://mapio.us/storymap/fullpage.html)
+
+![](img/fullpage-2.png)
 
 - [Cities of Oregon v.2](http://rawgit.com/jakobzhao/storymap/master/fullpage.html)
 
