@@ -6,7 +6,7 @@ Storymap.js is a javascript map library to tell a story using web maps. Using th
 New version will release by the end of March, 2017. The updated version supports:
 
 * add video as background;
-* change the animation of arrow down icon; and
+* animated arrow-down icon; and
 * add a navigation bar on the left of the browser view.
 
 ## Demo
