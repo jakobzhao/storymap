@@ -12,7 +12,7 @@ The new version supports:
 
 See demos at
 
-- [Cities of Oregon v.2.1.11](http://mapio.us/storymap/fullpage.html)
+- [Cities of Oregon v.2.1.11](http://cdn.rawgit.com/jakobzhao/storymap/master/dist/index.html)
 
 ![](img/fullpage.png)
 
