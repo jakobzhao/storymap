@@ -6,11 +6,9 @@ Storymap.js is a javascript library to tell a story based on web maps. Using thi
 
 See demos at
 
-- [Cities of Oregon v.2](http://rawgit.com/jakobzhao/storymap/master/fullpage.html)
+- [Cities of Oregon v.2.11.1](http://rawgit.com/jakobzhao/storymap/master/index.html)
 
 ![](img/fullpage.png)
-
-- [Cities of Oregon](http://rawgit.com/jakobzhao/storymap/master/index.html)
 
 ![](img/oregon_cities.png)
 
@@ -214,4 +212,4 @@ In order to see how the code works, you can see the application (as well as the 
 
 ## License
 
-This storymap plugin is originally obtained from [Atlefren's stormap](https://github.com/atlefren/storymap), and updated by [Bo Zhao](http://ceoas.oregonstate.edu/profile/zhao/). It is currently under the MIT license.
+This storymap map library is currently under the MIT license and maintained by [Bo Zhao](http://ceoas.oregonstate.edu/profile/zhao/), and .

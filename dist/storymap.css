@@ -4,32 +4,53 @@ body {
 
 }
 
-
 h3 {
     margin: 0;
     padding-top: 100px;
     font-family:  Lobster, 'Open Sans', sans-serif;
-    color: rgba(0,255,155,0.82);
+    color: rgba(169, 169, 169, 0.8);
     font-size: 50px;
 }
 
 .main {
     padding: 20px;
-    padding-bottom: 1000px;
+    padding-bottom: 1600px;
     z-index: 1001;
+    display: none;
 }
 
+/*.container-fluid {*/
+
+    /*display: none;*/
+/*}*/
 .main .page-header {
     margin-top: 0;
 }
 
+#loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(236, 236, 236);
+    display: block;
+    z-index: 1004;
+    color: rgb(63, 63, 63);
+}
 
+#loading i {
+    color: rgba(63, 63, 63, 0.4);
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    font-size: 40px;
+}
 
 .navbar {
     position: fixed;
     top: 40%;
     left: 0;
-    display : block;
     z-index: 1002;
     border-radius: 3px;
     background: rgba(115, 115, 115, 0.2);
@@ -59,8 +80,8 @@ h3 {
 .navbar li a:visited,.navbar li a:active, .navbar li a:link  {color: rgba(160, 160, 160, 0.6); text-decoration:none}
 .navbar li a:hover   {color: rgba(102, 102, 102, 0.68); text-decoration:none; font-size:12px}
 
-
-
+/*support video in IE 8 and 9*/
+video {display: block;}
 
 .viewing {
     background: #eee;
@@ -76,10 +97,10 @@ h3 {
     bottom: 0;
     right: 0;
     display : none;
-    padding: 20px;
     border-radius: 0;
-    height: 100%;
-    width: 100%;
+    min-height: 100%;
+    min-width: 100%;
+    pointer-events: none;
 }
 
 .section-opacity {
@@ -93,10 +114,10 @@ h3 {
 }
 
 .end-background-img {
-    background: url(../assets/end.jpg) no-repeat center center fixed;
+    background: url(../assets/frontpage.jpg) no-repeat center center fixed;
 }
 
-.background-img-setting {
+.background-fullscreen-setting {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -186,7 +207,7 @@ section {
 
 
 .arrow-down:hover {
-    color: #0e0e0e;
+    color: rgba(14, 14, 14, 0.8);
 }
 
 
@@ -194,13 +215,14 @@ section {
     position:fixed;
     cursor: pointer;
     font-size:24px;
-    color:darkgray;
+    color: rgba(169, 169, 169, 0.8);
     z-index:1003;
     top: 20px;
     left:5px;
 }
+
 .btn:hover {
-    color: darkblue;
+    color: rgba(0, 0, 139, 0.8);
     text-decoration: none;
 }
 
@@ -210,7 +232,6 @@ section {
     color: #333333;
     font-family: 'Open Sans', Helvetica, sans-serif;
     padding: 6px 8px;
-    background: white;
     background: rgba(255,255,255,0.5);
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     border-radius: 5px;

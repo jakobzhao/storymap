@@ -25,7 +25,7 @@
         var settings = $.extend(defaults, options);
 
         if (typeof(L) === 'undefined') {
-            throw new Error('Storymap requires Laeaflet');
+            throw new Error('Storymap requires Laeaflet.');
         }
 
         function getDistanceToTop(elem, top) {
@@ -80,6 +80,11 @@
             });
         }
 
+
+
+        //support video for IE 8 and 9.
+        document.createElement('video');
+
         var makeStoryMap = function (element, scenes, layers) {
 
             var topElem = $('<div class="breakpoint-current"></div>')
@@ -87,29 +92,53 @@
             $('body').append(topElem);
 
             var top = topElem.offset().top - $(window).scrollTop();
-
             var searchfor = settings.selector;
+            var sections = $(element).find(searchfor);
 
-            var sections = element.find(searchfor);
-
-
+            // add placeholder for fullpage sections.
+            $.each(sections, function (key, element) {
+                var section = $(element);
+                var placeholder = "<div class='placeholder'><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>";
+                if (scenes[section.data('scene')].position == "fullpage" && section.find(".placeholder").length == 0) {
+                    section.append(placeholder);
+                }
+            });
 
             sections.on('viewing', function () {
                 $(this).addClass('viewing');
+
+
+
+
                 $(".arrow-down").css("left", "2%");
 
-
-                if (scenes[$(this)[0].attributes['data-scene'].value].position == "fullpage") {
+                if (scenes[$(this).data('scene')].position == "fullpage") {
                     $(this).addClass('section-opacity');
-                    $(this).find(".background-img-setting").addClass('fullpage')
+                    $(this).find(".background-fullscreen-setting")
+                        .addClass('fullpage')
                         .css("display", "block");
+
+
                     $(".arrow-down").css("left", "50%");
+
+
+                    //smooth transation.
+                    $(".main").fadeTo(100, 0.1);
+                    $("#loading").show();
+                    $('.viewing').ready(function(){
+                        $(".main").fadeTo(3000, 1);
+                        $("#loading").hide();
+                    });
+
+
+
+
                 } else {
                     console.log("no position parameter.")
                 }
 
                 // Change the arrow-down icon to the home icon when reaching the last scene.
-                if ($(this)[0].attributes["data-scene"].value == $("section").last()[0].attributes["data-scene"].value) {
+                if ($(this).data('scene') == sections.last().data('scene')) {
                     $(".arrow-down").removeClass("glyphicon-menu-down")
                         .addClass("glyphicon-home");
 
@@ -119,23 +148,22 @@
                 }
 
                 // Bounce the arrow-down icon when the icon is on the front page.
-                if ($(this)[0].attributes["data-scene"].value == $("section").first()[0].attributes["data-scene"].value) {
+                if ($(this).data('scene') == sections.first().data('scene') || $(this).data('scene') == sections.last().data('scene')) {
                     $(".arrow-down").addClass("animated");
                 } else {
                     $(".arrow-down").removeClass("animated");
                 }
-
             });
 
             sections.on('notviewing', function () {
                 $(this).removeClass('viewing');
 
-                if (scenes[$(this)[0].attributes['data-scene'].value].position == "fullpage") {
+                if (scenes[$(this).data('scene')].position == "fullpage") {
                     $(this).removeClass('section-opacity');
-                    $(this).find(".background-img-setting").removeClass('fullpage')
+                    $(this).find(".background-fullscreen-setting")
+                        .removeClass('fullpage')
                         .css("display", "none");
                 }
-
             });
 
             watchHighlight(element, searchfor, top);
@@ -147,8 +175,6 @@
                 };
             }
 
-
-            // var downBtn = element.find('.arrow-down');
 
             $('.arrow-down').click(function () {
                 if ($(".arrow-down")[0].className.includes("menu")) {
@@ -162,17 +188,18 @@
 
             // create the navigation bar.
             if (settings.navbar) {
-                //$("#navbar").append('<li><a class="fa fa-compass" style="font-size:32px"></a></li>');
                 $.each(sections, function (key, element) {
                     var section = $(element);
                     sceneName = section.data('scene');
                     scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" + sceneName + "\\']').offset().top - $(window).scrollTop());";
                     if (key == 0) {
-                        $(".navbar").append('<li><a class="fa fa-home" style="font-size:16px" href="' + scrollScript + '" ></a></li>');
+                        $(".navbar").append('<li><a class="fa fa-home" data-toggle="tooltip" style="font-size:16px" title="' + sceneName + '" href="' + scrollScript + '" ></a></li>');
                     } else {
-                        $(".navbar").append('<li><a class="fa fa-circle" href="' + scrollScript + '" ></a></li>');
+                        $(".navbar").append('<li><a class="fa fa-circle" data-toggle="tooltip" title="' + sceneName + '" href="' + scrollScript + '" ></a></li>');
                     }
                 });
+
+                $('[data-toggle="tooltip"]').tooltip({placement: 'right'});
 
 
                 $( ".navbar" ).hover(function() {
@@ -193,8 +220,8 @@
 
             $.each(sections, function (key, element) {
                 var section = $(element);
-                if (section[0].className == 'viewing') {
-                    var scene = scenes[section[0].attributes['data-scene'].value];
+                if (section[0].className == 'viewing' && scenes[section.data('scene')].position != "fullpage") {
+                    var scene = scenes[$(section).data('scene')];
                     map.setView([scene.lat, scene.lng], scene.zoom);
 
                     var layernames = scene.layers;
@@ -209,7 +236,6 @@
                                 legendContent += layers[layernames[i]][1];
                             }
                         }
-
                     }
 
                     legendControl.onAdd = function () {
@@ -222,9 +248,7 @@
                     {
                         legendControl.addTo(map);
                     }
-
                 }
-
             } );
 
             function showMapView(key) {
@@ -240,7 +264,7 @@
 
                 var layernames = scene.layers;
                 var legendContent = "";
-                if(typeof layernames !== 'undefined'){
+                if(typeof layernames !== 'undefined' && scene.position != "fullpage") {
                     for (var i=0; i < layernames.length; i++)
                     {
                         currentLayerGroup.addLayer(layers[layernames[i]][0]);
