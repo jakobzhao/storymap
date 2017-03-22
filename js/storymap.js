@@ -121,7 +121,6 @@
 
                     $(".arrow-down").css("left", "50%");
 
-
                     //smooth transation.
                     $(".main").fadeTo(100, 0.1);
                     $("#loading").show();
@@ -129,13 +128,10 @@
                         $(".main").fadeTo(3000, 1);
                         $("#loading").hide();
                     });
-
-
-
-
                 } else {
                     console.log("no position parameter.")
                 }
+                $(".main").show();
 
                 // Change the arrow-down icon to the home icon when reaching the last scene.
                 if ($(this).data('scene') == sections.last().data('scene')) {
