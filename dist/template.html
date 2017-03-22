@@ -5,25 +5,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!--add required stylesheets-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
 
+    <!--animation-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
+    <!--facebook and info icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!--storymap stylesheet -->
-    <link rel="stylesheet" type="text/css" href="storymap.css" />
+
+    <link rel="stylesheet" type="text/css" href="storymap.css">
 
     <!--add required libraries-->
     <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <!--add ajax based data transmission-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
 
-    <!--storymap javascript library -->
+    <!--story map plugin-->
     <script src="storymap.js"></script>
 
 </head>
@@ -31,9 +31,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-12 col-md-12 main">
-            <h2 class="page-header">Title<br/>
-                <small>Subtitle</small></h2>
+        <div class="col-sm-6 col-md-4 main">
             <section data-scene="scene1">
                 <h2>scene 1</h2>
                 <p>text</p>
@@ -84,10 +82,9 @@
                 <p>text</p>
             </section>
 
-            <div class="animated rubberBand infinite glyphicon glyphicon-menu-down arrow-down"></div>
         </div>
-
-        <div id="map" class="col-sm-0 col-md-0 sidebar"></div>
+        <div class="animated rubberBand infinite glyphicon glyphicon-menu-down arrow-down"></div>
+        <div id="map" class="col-sm-6 col-md-8 sidebar"></div>
 
     </div>
 

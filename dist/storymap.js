@@ -81,7 +81,6 @@
         }
 
 
-
         //support video for IE 8 and 9.
         document.createElement('video');
 
