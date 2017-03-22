@@ -1,12 +1,19 @@
 # Storymap
 
-Storymap.js is a javascript library to tell a story based on web maps. Using this library, you can create a map that follows your text. Annotate each paragraph and place a map alongside it. Then you can zoom/pan/add thematic layers to the web map as the reader reads through the text. This library is developed for the use of the course **GEOG 371 Geovisualization: Web Mapping** from Oregon State University.
+
+Storymap.js is a javascript map library to tell a story using web maps. Using this library, you can create a map that follows your text. Annotate each paragraph and place a map alongside it. Then you can zoom/pan/add thematic layers to the web map as the reader reads through the text. This library is developed for the use of the course **GEOG 371 Geovisualization: Web Mapping** from Oregon State University.
+
+New version will release by the end of March, 2017. The updated version supports:
+
+* add video as background;
+* animated arrow-down icon; and
+* add a navigation bar on the left of the browser view.
 
 ## Demo
 
 See demos at
 
-- [Cities of Oregon v.2.11.1](http://rawgit.com/jakobzhao/storymap/master/index.html)
+- [Cities of Oregon v.2.1.11](http://mapio.us/storymap/fullpage.html)
 
 ![](img/fullpage.png)
 
@@ -129,7 +136,6 @@ element.storymap({
     selector: '[data-scene]',
     breakpointPos: '33.333%',
     legend: false, // the legend is invisible, if the legend parameter is false.
-    scale: false: // the scale bar is invisivle, if the scale parameter is false.
     createMap: function () {
       var map = L.map('map', {zoomControl: false}).setView([44, -120], 7);
       L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
@@ -148,7 +154,7 @@ The `element` object is the `div` you wish to add a storymap to. If you create t
 $('.main').storymap({...});
 ```
 
-By default, the plugin looks for elements that has a `data-scene` attribute, sets the `breakpoint` **`33%`** from the top of the page, the `legend` of the map is invisible.  You can always override this options and also modify the default `createMap` function. 
+By default, the plugin looks for elements that has a `data-scene` attribute, sets the `breakpoint` **`33%`** from the top of the page, the `legend` of the map is invisible.  You can always override this options and also modify the default `createMap` function.
 
 All the scenes are declared in a single object named as `scenes`. For example:
 
@@ -166,14 +172,14 @@ For the layers, they are also defined in an single object.  Each layer is an arr
 
 ```javascript
 var layers = {
-  'layer 1': [ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {id: 'mapbox.satellite'}), 
+  'layer 1': [ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {id: 'mapbox.satellite'}),
                '<i style="background: black; opacity: 0.5"></i><p><b>legend 1</b></p>'],
   'layer 2': [ L.geoJson.ajax('http://www.mapio.us/geoserver/ceoas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ceoas:admin&outputFormat=application%2Fjson', {color: 'orange', weight: 5}),
                '<i style="background: orange; opacity: 0.5"></i><p><b>legend 2</b></p>']
 };
 ```
 
-Here, `layer 1` is a mapbox tileLayer and `layer 2` is a geojson layer. 
+Here, `layer 1` is a mapbox tileLayer and `layer 2` is a geojson layer.
 
 > **Note**: To use the geoJson.ajax plugin, you need to include the `leaflet.ajax.min.js` plugin in the head tag. As shown below.
 
@@ -201,8 +207,7 @@ var scenes = {
 $('.main').storymap({
   scenes: scenes,
   layers: layers,
-  legend: true,
-  scale:  true
+  legend: true
 });
 ```
 
@@ -212,4 +217,4 @@ In order to see how the code works, you can see the application (as well as the 
 
 ## License
 
-This storymap map library is currently under the MIT license and maintained by [Bo Zhao](http://ceoas.oregonstate.edu/profile/zhao/), and .
+This storymap map library is maintained by [Bo Zhao](http://ceoas.oregonstate.edu/profile/zhao/) and currently under the MIT license.
