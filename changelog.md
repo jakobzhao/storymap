@@ -31,3 +31,8 @@ An in-progress version being developed on the `master` branch.
 ## 2.1.10 (03/18/2017)
 
 * add a navigation bar.
+
+## 2.1.11 (03/19/2017)
+
+* make this lib more depends on jquery.
+* define the placeholder class.

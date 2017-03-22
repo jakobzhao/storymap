@@ -6,21 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--meta data for sharing links on Facebook-->
     <meta property="og:title" content="The major cities in Oregon" />
-    <meta property="og:url" content="http://cdn.rawgit.com/jakobzhao/storymap/master/index.html" />
+    <meta property="og:url" content="http://cdn.rawgit.com/jakobzhao/storymap/master/fullpage.html" />
     <meta property="og:description" content="This is an example of map story." />
     <meta property="og:image" content="img/social.png" />
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
 
+    <!--animation-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-
 
     <!--facebook and info icons-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!--use a better font for this web map-->
-    <link href='http://fonts.googleapis.com/css?family=Helvetica' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 
 
     <link rel="stylesheet" type="text/css" href="css/storymap.css">
@@ -46,15 +46,19 @@
     <script src="js/globeminimap.js"></script>
 </head>
 <body>
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-6 col-md-4 main">
-            <h2 class="page-header">Major Cities of Oregon <br/>
-                <small style="font-size:12pt">Bo Zhao, zhao2@oregonstate.edu, Oregon State University</small></h2>
             <section data-scene="overview">
-                <p>Oregon is a state in the Pacific Northwest region of the United States. Oregon is bordered on the west by the Pacific Ocean, on the north by Washington, on the south by California, on the east by Idaho, and on the southeast by Nevada. The Columbia River delineates much of Oregon's northern boundary, and the Snake River delineates much of the eastern boundary. The parallel 42° north delineates the southern boundary with California and Nevada. It is one of only three states of the contiguous United States to have a coastline on the Pacific Ocean, and its proximity to the ocean heavily influences the state's mild winter climate despite its northern latitude.</p>
-                <img src="img/oregon_flag.png" class="img-responsive" alt="responsive image" alt-text="the flag of oregon">
+                <video autoplay loop muted class="background-fullscreen-setting" playsinline autoplay muted loop>
+                    <source src="assets/portland.mp4" type="video/mp4">
+
+                </video>
+                <!--<iframe class="background-img-setting text-responsive" src="https://www.youtube.com/embed/W0LHTWG-UmQ?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen></iframe>-->
+                <div class= "background-fullscreen-setting text-responsive text-center" >
+                    <h3>The Cities of Oregon</h3>
+                    <h3><small style="color: rgba(169, 169, 169, 0.8)">This Web Map introduces the major cities of Oregon using a storytelling map library.</small></h3>
+                </div>
             </section>
 
             <section data-scene="portland">
@@ -84,7 +88,6 @@
                 <p>Salem had a population of 154,637 at the 2010 census, making it the third largest city in the state after Portland and Eugene. Salem is less than an hour driving distance away from Portland. Salem is the principal city of the Salem Metropolitan Statistical Area, a metropolitan area that covers Marion and Polk counties and had a combined population of 390,738 at the 2010 census. A 2013 estimate placed the metropolitan population at 400,408, the state's second largest.</p>
                 <p>The city is home to Willamette University, Corban University, and Chemeketa Community College. The State of Oregon is the largest public employer in the city, and Salem Health is the largest private employer. Transportation includes public transit from Salem-Keizer Transit, Amtrak service, and non-commercial air travel at McNary Field. Major roads include Interstate 5, Oregon Route 99E, and Oregon Route 22, which connects West Salem across the Willamette River via the Marion Street and Center Street bridges.</p>
             </section>
-
             <section data-scene="bend">
                 <h2>Bend</h2>
                 <p>Bend is a city in, and the county seat of Deschutes County, Oregon, United States. It is the principal city of the Bend, Oregon Metropolitan Statistical Area. Bend is Central Oregon's largest city, and despite its modest size, is the de facto metropolis of the region, owing to the low population density of that area. Bend recorded a population of 76,693 at the time of the 2010 U.S. Census, up from 52,029 at the 2000 census. The estimated population of the city as of 2013 is 81,236. Bend's metro population was estimated at 165,954 as of July 1, 2013. The Bend MSA is the fifth largest metropolitan area in Oregon.</p>
@@ -94,19 +97,37 @@
             <section data-scene="oregon">
                 <h2>Oregon</h2>
                 <p>Oregon was inhabited by many indigenous tribes before Western traders, explorers, and settlers arrived. An autonomous government was formed in the Oregon Country in 1843 before the Oregon Territory was created in 1848. Oregon became the 33rd state on February 14, 1859. Today, at 98,000 square miles (255,000 km²), Oregon is the ninth largest and, with a population of 4 million, 27th most populous U.S. state. The capital of Oregon is Salem, the second most populous of its cities, with 164,549 residents. Portland is Oregon's most populous city, with 632,309 residents, and ranks as the 26th most populous city in the United States. Portland's metro population of 2,389,228 ranks the 23rd largest metro in the nation. The Willamette Valley in western Oregon is the state's most densely populated area, home to eight of the ten most populous cities.</p>
-                <p>Oregon's landscape is diverse, with a windswept Pacific coastline; a volcano-studded Cascade Range; abundant bodies of water in and west of the Cascades; dense evergreen, mixed, and deciduous forests at lower elevations; and a high desert sprawling across much of its east all the way to the Great Basin. The tall conifers, mainly Douglas fir, along Oregon's rainy west coast contrast with the lighter-timbered and fire-prone pine and juniper forests covering portions to the east. Abundant alders in the west fix nitrogen for the conifers. Stretching east from central Oregon are semi-arid shrublands, prairies, deserts, steppes, and meadows. At 11,249 feet (3,429 m), Mount Hood is the state's highest point. Oregon's only national park, Crater Lake National Park, comprises the caldera surrounding Crater Lake, the deepest lake in the United States. The state is also home to the single largest organism in the world, Armillaria ostoyae, a fungus that runs beneath 8.9 km2 (2,200 acres) of the Malheur National Forest.</p>
+                <img src="img/oregon_flag.png" class="img-responsive" alt="responsive image" alt-text="the flag of oregon">
+                <p>Oregon's landscape is diverse, with a windswept Pacific coastline; a volcano-studded Cascade Range; abundant bodies of water in and west of the Cascades; dense evergreen, mixed, and deciduous forests at lower elevations; and a high desert sprawling across much of its east all the way to the Great Basin.</p>
             </section>
-            <!--add a arrow for scrolling down the texts-->
-            <div class="animated bounce infinite glyphicon glyphicon-menu-down arrow-down"></div>
+
+            <section data-scene="end">
+                <div class= "end-background-img background-fullscreen-setting text-center" >
+                    <br/>
+                    <h3 class="">Thanks for watching!!!</h3>
+                    <h3><small style="color: rgba(169, 169, 169, 0.8)">Download Storymap.js from http://github.com/jakobzhao/storymap</small></h3>
+                </div>
+            </section>
+            <!--add an arrow for scrolling down the texts-->
+            <i class="animated zoomIn infinite glyphicon glyphicon-menu-down arrow-down"></i>
         </div>
+
         <!--map div-->
         <div id="map" class="col-sm-6 col-md-8 sidebar"></div>
-
     </div>
-    <!--facebook icon-->
-    <a class="fa fa-facebook-square btn" href="https://facebook.com/sharer.php?u=http://cdn.rawgit.com/jakobzhao/storymap/master/index.html" target="_blank"></a>
-    <!--info icon-->
-    <i class="fa fa-info-circle btn" style="top:50px" data-toggle="modal" data-target="#info-modal"></i>
+
+    <dl>
+        <dt>
+            <!--facebook icon-->
+            <a class="fa fa-facebook-square btn" href="https://facebook.com/sharer.php?u=http://cdn.rawgit.com/jakobzhao/storymap/master/fullpage.html" target="_blank"></a></dt>
+        <dt>
+            <!--info icon-->
+            <i class="fa fa-info-circle btn" style="top:50px" data-toggle="modal" data-target="#info-modal"></i></dt>
+    </dl>
+    <ul class="navbar text-center"></ul>
+    <div id="loading">
+        <i class="animated zoomIn infinite glyphicon glyphicon-globe"></i>
+    </div>
 
     <!--the info page-->
     <div class="modal fade" id="info-modal" role="dialog">
@@ -121,20 +142,22 @@
                     <p><b>storymap.js</b> | Released Date: 02/20/2017 | Version: 2.1 | MIT License </p>
                     <p><b>Author: Bo Zhao</b> | College of Earth, Ocean, Atmospheric Science | Oregon State University </p>
                     <p>The context about Oregon cities was collected from Wikipedia.</p>
+                    <p>The <a src="https://www.youtube.com/watch?v=UJ_vQC9PNY4">background video</a> on the front page was clipped from Youtube. </p>
                     <p>The favicon image was acquired from <a>http://www.udlcenter.org/advocacy/state/oregon.</a></p>
                     <p>This story map uses geospatial data from mapbox, Google Earth Engine, Microsoft Bing map, Open Street Maps and Oregon Explorer.</p>
                 </div>
             </div>
         </div>
     </div>
+
 </div>
 <!-- main javascript -->
 <script type="text/javascript">
+
     /**
      * Created by jakob on 2/22/2017.
      */
-
-// Create Legend Contents in html format
+        // Create Legend Contents in html format
     var county_legend ='<i style="background: black; opacity: 0.5"></i><p><b>Counties</b></p>';
     var corvallis_admin_legend = '<i style="background: orange; opacity: 0.5"></i><p><b>Corvallis</b></p>';
     var forest_legend = '<i style="background: green; opacity: 0.5"></i><p><b>Forest</b></p>';
@@ -162,19 +185,23 @@
     };
 
     var scenes = {
-        overview: {lat: 44, lng: -123.5, zoom: 7, layers: ['forest cover 2010', 'counties']},
+        overview: {lat: 44, lng: -123.5, zoom: 7, position: 'fullpage'},
         portland: {lat: 45.5186089, lng: -122.7270297, zoom: 11},
         corvallis: {lat: 44.5701158, lng: -123.2949388, zoom: 14, layers: ['bing','corvallis admin']},
         eugene: {lat: 44.0549563, lng: -123.0958048, zoom: 13 },
         salem: {lat: 44.9419055, lng: -123.0356407, zoom: 13},
         bend: {lat: 44.0519385, lng: -121.3042125, zoom: 14, layers: ['satellite']},
-        oregon: {lat: 44, lng: -123.5, zoom: 7, layers: ['counties', 'forest cover 2010']}
+        oregon: {lat: 44, lng: -123.5, zoom: 7, layers: ['counties', 'forest cover 2010']},
+        end: {lat: 44, lng: -123.5, zoom: 7, position: 'fullpage'}
     };
 
     $('.main').storymap({
         scenes: scenes,
         layers: layers,
         legend: true, // if you do not want a legend feature, you can simply not define the createLegend function.
+        scale: false,
+        navbar: true,
+
         createMap: function () {
             // create a map in the "map" div, set the view to a given place and zoom
             var map = L.map('map', {zoomControl: false, scrollWheelZoom: false});
@@ -183,11 +210,9 @@
             L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
                 maxZoom: 18,
                 attribution: '<a href="http://ceoas.oregonstate.edu/profile/zhao/" target="_blank">Bo Zhao</a>',
-                id: 'mapbox.light',
-                detectRetina: true
+                id: 'mapbox.light' // ,detectRetina: true
             }).addTo(map);
 
-            L.control.scale({position: 'bottomright', metric: false}).addTo(map);
 
             // create a mini globe as the overview map control.
             var miniMap = new L.Control.GlobeMiniMap({
@@ -195,9 +220,15 @@
                 position: 'bottomright'
             }).addTo(map);
 
+            // hidden the credits, but show in the about page.
+            $(".leaflet-control-attribution").css("display", "none");
+
             return map;
         }
     });
+
+
+
 </script>
 </body>
 </html>

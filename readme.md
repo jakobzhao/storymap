@@ -131,6 +131,7 @@ element.storymap({
     selector: '[data-scene]',
     breakpointPos: '33.333%',
     legend: false, // the legend is invisible, if the legend parameter is false.
+    scale: false: // the scale bar is invisivle, if the scale parameter is false.
     createMap: function () {
       var map = L.map('map', {zoomControl: false}).setView([44, -120], 7);
       L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
@@ -202,7 +203,8 @@ var scenes = {
 $('.main').storymap({
   scenes: scenes,
   layers: layers,
-  legend: true
+  legend: true,
+  scale:  true
 });
 ```
 

@@ -46,15 +46,19 @@
     <script src="js/globeminimap.js"></script>
 </head>
 <body>
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-6 col-md-4 main">
             <section data-scene="overview">
-                <div class= "overview-background-img background-img-setting text-responsive" ><h3 class="text-center">The Cities of Oregon</h3>
-                    <h3 class="text-center"><small style="color: rgba(0,255,155,0.82)">This Web Map introduces the major cities of Oregon using a storytelling map library.</small></h3>
+                <video autoplay loop muted class="background-fullscreen-setting" playsinline autoplay muted loop>
+                    <source src="assets/portland.mp4" type="video/mp4">
+
+                </video>
+                <!--<iframe class="background-img-setting text-responsive" src="https://www.youtube.com/embed/W0LHTWG-UmQ?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen></iframe>-->
+                <div class= "background-fullscreen-setting text-responsive text-center" >
+                    <h3>The Cities of Oregon</h3>
+                    <h3><small style="color: rgba(169, 169, 169, 0.8)">This Web Map introduces the major cities of Oregon using a storytelling map library.</small></h3>
                 </div>
-                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
             </section>
 
             <section data-scene="portland">
@@ -98,20 +102,21 @@
             </section>
 
             <section data-scene="end">
-                <div class= "end-background-img background-img-setting" ><h3 class="text-center">Thanks for watching!!!</h3>
+                <div class= "end-background-img background-fullscreen-setting text-center" >
                     <br/>
-                    <h3 class="text-center"><small style="color: rgba(0,255,155,0.82)">Download Storymap.js from http://github.com/jakobzhao</small></h3>
+                    <h3 class="">Thanks for watching!!!</h3>
+                    <h3><small style="color: rgba(169, 169, 169, 0.8)">Download Storymap.js from http://github.com/jakobzhao/storymap</small></h3>
                 </div>
-                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
             </section>
             <!--add an arrow for scrolling down the texts-->
-            <div class="animated bounce infinite glyphicon glyphicon-menu-down arrow-down"></div>
+            <i class="animated zoomIn infinite glyphicon glyphicon-menu-down arrow-down"></i>
         </div>
+
         <!--map div-->
         <div id="map" class="col-sm-6 col-md-8 sidebar"></div>
     </div>
 
-    <dl class="btn">
+    <dl>
         <dt>
             <!--facebook icon-->
             <a class="fa fa-facebook-square btn" href="https://facebook.com/sharer.php?u=http://cdn.rawgit.com/jakobzhao/storymap/master/fullpage.html" target="_blank"></a></dt>
@@ -119,10 +124,10 @@
             <!--info icon-->
             <i class="fa fa-info-circle btn" style="top:50px" data-toggle="modal" data-target="#info-modal"></i></dt>
     </dl>
-
-
-    <ul class="navbar text-center">
-    </ul>
+    <ul class="navbar text-center"></ul>
+    <div id="loading">
+        <i class="animated zoomIn infinite glyphicon glyphicon-globe"></i>
+    </div>
 
     <!--the info page-->
     <div class="modal fade" id="info-modal" role="dialog">
@@ -137,19 +142,21 @@
                     <p><b>storymap.js</b> | Released Date: 02/20/2017 | Version: 2.1 | MIT License </p>
                     <p><b>Author: Bo Zhao</b> | College of Earth, Ocean, Atmospheric Science | Oregon State University </p>
                     <p>The context about Oregon cities was collected from Wikipedia.</p>
+                    <p>The <a src="https://www.youtube.com/watch?v=UJ_vQC9PNY4">background video</a> on the front page was clipped from Youtube. </p>
                     <p>The favicon image was acquired from <a>http://www.udlcenter.org/advocacy/state/oregon.</a></p>
                     <p>This story map uses geospatial data from mapbox, Google Earth Engine, Microsoft Bing map, Open Street Maps and Oregon Explorer.</p>
                 </div>
             </div>
         </div>
     </div>
+
 </div>
 <!-- main javascript -->
 <script type="text/javascript">
+
     /**
      * Created by jakob on 2/22/2017.
      */
-
     // Create Legend Contents in html format
     var county_legend ='<i style="background: black; opacity: 0.5"></i><p><b>Counties</b></p>';
     var corvallis_admin_legend = '<i style="background: orange; opacity: 0.5"></i><p><b>Corvallis</b></p>';
@@ -203,8 +210,7 @@
             L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
                 maxZoom: 18,
                 attribution: '<a href="http://ceoas.oregonstate.edu/profile/zhao/" target="_blank">Bo Zhao</a>',
-                id: 'mapbox.light',
-                detectRetina: true
+                id: 'mapbox.light' // ,detectRetina: true
             }).addTo(map);
 
 
@@ -220,6 +226,7 @@
             return map;
         }
     });
+
 
 
 </script>
