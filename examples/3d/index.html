@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="https://cesiumjs.org/releases/1.31/Build/Cesium/Widgets/CesiumWidget/CesiumWidget.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--animation-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <!--facebook and info icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="../../dist/storymap.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cesiumjs.org/releases/1.31/Build/Cesium/Cesium.js"></script>
+    <script src="../../dist/storymap3d.js"></script>
+    <!--story map plugin-->
+    <title> Storytelling Using Virtual Globe</title>
+</head>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 main">
+            <section data-scene="overview">
+                <video autoplay loop muted class="background-fullscreen-setting" playsinline autoplay muted loop>
+                    <source src="../../assets/portland.mp4" type="video/mp4">
+
+                </video>
+                <!--<iframe class="background-img-setting text-responsive" src="https://www.youtube.com/embed/W0LHTWG-UmQ?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen></iframe>-->
+                <div class= "background-fullscreen-setting text-responsive text-center" >
+                    <h3>The Cities of Oregon</h3>
+                    <h3><small style="color: rgba(169, 169, 169, 0.8)">This Web Map introduces the major cities of Oregon using a storytelling map library.</small></h3>
+                </div>
+            </section>
+            <section data-scene="scene1">
+                <h2>New York City</h2>
+                <p>After the city's economy experienced an industrial boom during World War II, its hard-edged reputation began to dissipate. Beginning in the 1960s, Portland became noted for its growing liberal political values, and the city has earned a reputation as a bastion of counterculture, which proceeded into the 21st century. According to a 2009 Pew Research Center study, Portland ranks as the eighth most popular American city, based on where people want to live. </p>
+                <p>After the city's economy experienced an industrial boom during World War II, its hard-edged reputation began to dissipate. Beginning in the 1960s, Portland became noted for its growing liberal political values, and the city has earned a reputation as a bastion of counterculture, which proceeded into the 21st century. According to a 2009 Pew Research Center study, Portland ranks as the eighth most popular American city, based on where people want to live. </p>
+            </section>
+            <section data-scene="scene2">
+                <h2>Oregon</h2>
+                <p>After the city's economy experienced an industrial boom during World War II, its hard-edged reputation began to dissipate. Beginning in the 1960s, Portland became noted for its growing liberal political values, and the city has earned a reputation as a bastion of counterculture, which proceeded into the 21st century. According to a 2009 Pew Research Center study, Portland ranks as the eighth most popular American city, based on where people want to live. </p>
+            </section>
+
+            <section data-scene="end">
+                <div class= "end-background-img background-fullscreen-setting text-center" >
+                    <br/>
+                    <h3 class="">Thanks for watching!!!</h3>
+                    <h3><small style="color: rgba(169, 169, 169, 0.8)">Download Storymap.js from http://github.com/jakobzhao/storymap</small></h3>
+                </div>
+            </section>
+        </div>
+        <div id="map" class="col-sm-6 col-md-8 sidebar"></div>
+        <ul class="navbar text-center"></ul>
+        <div class="animated zoomIn infinite glyphicon glyphicon-menu-down arrow-down"></div>
+    </div>
+</div>
+<script>
+
+
+    var layer1 = new Cesium.GeoJsonDataSource();
+
+    layer1.load('../../assets/nyc_noise.geojson').then(
+        function(dataSource) {
+
+            var p = dataSource.entities.values;
+
+            for (var i = 0; i < p.length; i++) {
+
+                p[i].polygon.material = Cesium.Color.fromCssColorString(setColor(p[i].properties.cnt));
+                p[i].polygon.extrudedHeight = p[i].properties.cnt * p[i].properties.cnt * 0.004 ;
+                p[i].polygon.outline = false;
+            }
+
+            viewer.dataSources.add(dataSource);
+            viewer.zoomTo(dataSource);
+        }
+    );
+
+    var layer2 = new Cesium.GeoJsonDataSource();
+    layer2.load('../../assets/counties.geojson', {
+        fill: new Cesium.Color(0, 1, 0, 0)
+    });
+
+    var layer3 = new Cesium.MapboxImageryProvider({
+        mapId : 'mapbox.dark',
+        accessToken : 'pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpenh0dG41ZjAyY3gzMXFsdTJqbm5oNmwifQ.ucAGT19EfvxX2EUaHUwAxA'
+    });
+
+
+    var layers = {
+        'layer1': [layer1],
+        'layer2': [layer2],
+        'layer3': [layer3]
+    };
+
+    var scenes = {
+        overview: {lat: 44, lng: -123.5, zoom: 7, mode: 3, layers: [], position: "fullpage"},
+        scene1: {lat: 44, lng: -123.5, zoom: 7, mode: 3, layers: ['layer1', 'layer3']},
+        scene2: {lat: 45.5186089, lng: -122.7270297, mode: 3, zoom: 11, layers: ['layer2']},
+        end: {lat: 44, lng: -123.5, zoom: 7, mode: 3, layers: [], position: "fullpage"}
+    };
+
+
+    $('.main').storymap({
+        scenes: scenes,
+        layers: layers,
+        navbar: true,
+
+        createMap: function () {
+            var map = new Cesium.Viewer('map', {
+                terrainProvider : new Cesium.CesiumTerrainProvider({
+                        url : 'https://assets.agi.com/stk-terrain/world',
+                        requestWaterMask: true,
+                        requestVertexNormals: true
+                    }),
+                vrButton: false,  // virtual reality support
+                infoBox: false, // pick a feature and show its attributes
+                sceneModePicker: false, // 2d, 2.5d and 3d
+                navigationHelpButton: false,
+                baseLayerPicker : false,
+                fullscreenButton: false,
+                geocoder: false,
+                selectionIndicator: false,
+                homeButton: false,
+                animation: false,
+                timeline: false,
+                skyBox:  new Cesium.SkyBox({
+                    sources : {
+                        positiveX : 'assets/stars/TychoSkymapII.t3_08192x04096_80_px.jpg',
+                        negativeX : 'assets/stars/TychoSkymapII.t3_08192x04096_80_mx.jpg',
+                        positiveY : 'assets/stars/TychoSkymapII.t3_08192x04096_80_py.jpg',
+                        negativeY : 'assets/stars/TychoSkymapII.t3_08192x04096_80_my.jpg',
+                        positiveZ : 'assets/stars/TychoSkymapII.t3_08192x04096_80_pz.jpg',
+                        negativeZ : 'assets/stars/TychoSkymapII.t3_08192x04096_80_mz.jpg'
+                    }
+                })
+            });
+            map.scene.skyAtmosphere.show = true;
+
+            // hide the credit banner, however credit the map libraries or data somewhere else.
+            document.getElementsByClassName("cesium-widget-credits")[0].style.visibility = "hidden";
+
+            return map;
+        }
+    });
+
+    // Set function for color ramp
+    function setColor(density){
+        return density > 1200 ? '#bd0026' :
+            density > 650 ?  '#f03b20' :
+                density > 400 ?  '#fd8d3c' :
+                    density > 260 ?  '#fecc5c' :
+                        '#ffffb2' ;
+    }
+</script>
+</body>
+</html>
