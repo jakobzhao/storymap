@@ -98,7 +98,7 @@
             $.each(sections, function (key, element) {
                 var section = $(element);
                 var placeholder = "<div class='placeholder'><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>";
-                if (scenes[section.data('scene')].position == "fullpage" && section.find(".placeholder").length == 0) {
+                if (scenes[section.data('scene')].position === "fullpage" && section.find(".placeholder").length === 0) {
                     section.append(placeholder);
                 }
             });
@@ -108,8 +108,10 @@
 
                 $(".arrow-down").css("left", "2%");
 
-                if (scenes[$(this).data('scene')].position == "fullpage") {
-                    $(this).addClass('section-opacity');
+                if (scenes[$(this).data('scene')].position === "fullpage") {
+                    $(this).addClass('section-opacity')
+                        .css('width', "0px")
+                        .css('padding', "0 0 0 0");
                     $(this).find(".background-fullscreen-setting")
                         .addClass('fullpage')
                         .css("display", "block");
@@ -135,7 +137,7 @@
                 $(".main").show();
 
                 // Change the arrow-down icon to the home icon when reaching the last scene.
-                if ($(this).data('scene') == sections.last().data('scene')) {
+                if ($(this).data('scene') === sections.last().data('scene')) {
                     $(".arrow-down").removeClass("glyphicon-menu-down")
                         .addClass("glyphicon-home");
 
@@ -145,7 +147,7 @@
                 }
 
                 // Bounce the arrow-down icon when the icon is on the front page.
-                if ($(this).data('scene') == sections.first().data('scene') || $(this).data('scene') == sections.last().data('scene')) {
+                if ($(this).data('scene') === sections.first().data('scene') || $(this).data('scene') === sections.last().data('scene')) {
                     $(".arrow-down").addClass("animated");
                 } else {
                     $(".arrow-down").removeClass("animated");
@@ -155,7 +157,7 @@
             sections.on('notviewing', function () {
                 $(this).removeClass('viewing');
 
-                if (scenes[$(this).data('scene')].position == "fullpage") {
+                if (scenes[$(this).data('scene')].position === "fullpage") {
                     $(this).removeClass('section-opacity');
                     $(this).find(".background-fullscreen-setting")
                         .removeClass('fullpage')
@@ -190,9 +192,9 @@
                     sceneName = section.data('scene');
                     scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" + sceneName + "\\']').offset().top - $(window).scrollTop());";
                     if (key == 0) {
-                        $(".navbar").append('<li><a class="fa fa-home" data-toggle="tooltip" style="font-size:16px" title="' + sceneName + '" href="' + scrollScript + '" ></a></li>');
+                        $(".navbar").append('<li><a class="glyphicon glyphicon-home" data-toggle="tooltip" style="font-size:16px" title="' + sceneName + '" href="' + scrollScript + '" ></a></li>');
                     } else {
-                        $(".navbar").append('<li><a class="fa fa-circle" data-toggle="tooltip" title="' + sceneName + '" href="' + scrollScript + '" ></a></li>');
+                        $(".navbar").append('<li><a class="glyphicon glyphicon-one-fine-full-dot" data-toggle="tooltip" title="' + sceneName + '" href="' + scrollScript + '" ></a></li>');
                     }
                 });
 
@@ -202,7 +204,7 @@
                 $( ".navbar" ).hover(function() {
                     $(this).fadeTo( 100, 0.8 );
                 }, function() {
-                    $(this).fadeTo( 500, 0);
+                    $(this).fadeTo( 300, 0);
                 });
             }
 
@@ -217,7 +219,7 @@
 
             $.each(sections, function (key, element) {
                 var section = $(element);
-                if (section[0].className == 'viewing' && scenes[section.data('scene')].position != "fullpage") {
+                if (section[0].className === 'viewing' && scenes[section.data('scene')].position !== "fullpage") {
                     var scene = scenes[$(section).data('scene')];
                     map.setView([scene.lat, scene.lng], scene.zoom);
 
@@ -229,7 +231,7 @@
                             currentLayerGroup.addLayer(layers[layernames[i]][0]);
 
                             //add new legends
-                            if (layers[layernames[i]].length == 2) {
+                            if (layers[layernames[i]].length === 2) {
                                 legendContent += layers[layernames[i]][1];
                             }
                         }
@@ -241,7 +243,7 @@
                         return div;
                     };
 
-                    if (settings.legend == true && legendContent != "")
+                    if (settings.legend === true && legendContent !== "")
                     {
                         legendControl.addTo(map);
                     }
@@ -252,7 +254,7 @@
 
                 currentLayerGroup.clearLayers();
 
-                if (settings.legend == true)
+                if (settings.legend === true)
                 {
                     legendControl.remove();
                 }
@@ -261,12 +263,12 @@
 
                 var layernames = scene.layers;
                 var legendContent = "";
-                if(typeof layernames !== 'undefined' && scene.position != "fullpage") {
+                if(typeof layernames !== 'undefined' && scene.position !== "fullpage") {
                     for (var i=0; i < layernames.length; i++)
                     {
                         currentLayerGroup.addLayer(layers[layernames[i]][0]);
 
-                        if (layers[layernames[i]].length == 2)  {
+                        if (layers[layernames[i]].length === 2)  {
                             legendContent += layers[layernames[i]][1];
                         }
                     }
@@ -279,7 +281,7 @@
                 };
 
                 // the condition legendContent != "" will make sure the legend will only be added on when there is content in the legend.
-                if (settings.legend == true && legendContent != "")
+                if (settings.legend === true && legendContent !== "")
                 {
                     legendControl.addTo(map);
                 }

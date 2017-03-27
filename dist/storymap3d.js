@@ -106,12 +106,15 @@
             });
 
             sections.on('viewing', function () {
+                $("#loading").show();
                 $(this).addClass('viewing');
 
                 $(".arrow-down").css("left", "2%");
 
                 if (scenes[$(this).data('scene')].position === "fullpage") {
-                    $(this).addClass('section-opacity');
+                    $(this).addClass('section-opacity')
+                           .css('width', "0px")
+                           .css('padding', "0 0 0 0");
                     $(this).find(".background-fullscreen-setting")
                         .addClass('fullpage')
                         .css("display", "block");
@@ -148,6 +151,7 @@
                 } else {
                     $(".arrow-down").removeClass("animated");
                 }
+                $("#loading").hide();
             });
 
             sections.on('notviewing', function () {
