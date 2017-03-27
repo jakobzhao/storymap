@@ -238,9 +238,9 @@ section {
 }
 
 .legend i {
+    float: left;
     width: 16px;
     height: 16px;
-    float: left;
     margin-right: 8px;
     opacity: 0.9;
 }
