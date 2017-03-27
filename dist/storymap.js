@@ -7,7 +7,7 @@
 
         var defaults = {
             selector: '[data-scene]',
-            breakpointPos: '33.333%',
+            breakpointPos: '10%',
             legend: false,
             scale: false,
             navbar: false,
