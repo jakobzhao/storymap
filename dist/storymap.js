@@ -97,10 +97,13 @@
             // add placeholder for fullpage sections.
             $.each(sections, function (key, element) {
                 var section = $(element);
-                var placeholder = "<div class='placeholder'><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>";
-                if (scenes[section.data('scene')].position === "fullpage" && section.find(".placeholder").length === 0) {
-                    section.append(placeholder);
+                if (section.height() <= $(document).height() * 0.33) {
+                    section.css("height", $(document).height() * 0.33)
                 }
+                // var placeholder = "<div class='placeholder'><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>";
+                // if (scenes[section.data('scene')].position === "fullpage" && section.find(".placeholder").length === 0) {
+                //     section.append(placeholder);
+                // }
             });
 
             sections.on('viewing', function () {
@@ -125,11 +128,7 @@
                     $('.viewing').ready(function(){
                         $(".main").fadeTo(3000, 1);
                         $("#loading").hide();
-                    });
-
-
-
-
+                    })
                 } else {
                     console.log("no position parameter.")
                 }

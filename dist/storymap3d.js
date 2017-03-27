@@ -99,16 +99,18 @@
             // add placeholder for fullpage sections.
             $.each(sections, function (key, element) {
                 var section = $(element);
-                var placeholder = "<div class='placeholder'><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>";
-                if (scenes[section.data('scene')].position === "fullpage" && section.find(".placeholder").length === 0) {
-                    section.append(placeholder);
+                if (section.height() <= $(document).height() * 0.34) {
+                    section.css("height", $(document).height() * 0.34)
                 }
+                // var placeholder = "<div class='placeholder'><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>";
+                // if (scenes[section.data('scene')].position === "fullpage" && section.find(".placeholder").length === 0) {
+                //     section.append(placeholder);
+                // }
             });
 
             sections.on('viewing', function () {
                 $("#loading").show();
                 $(this).addClass('viewing');
-
                 $(".arrow-down").css("left", "2%");
 
                 if (scenes[$(this).data('scene')].position === "fullpage") {
