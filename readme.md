@@ -4,6 +4,7 @@ Storymap.js is a javascript map library to tell a story using web maps. Using th
 
 The new version supports:
 
+* **3D thematic map**;
 * add video as background;
 * animated arrow-down icon; and
 * add a navigation bar on the left of the browser view.
@@ -12,13 +13,13 @@ The new version supports:
 
 See demos at
 
-- [Cities of Oregon v.2.1.11](http://cdn.rawgit.com/jakobzhao/storymap/master/index.html)
+- [Cities of Oregon v.2.1.11](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/video/index.html)
 
 ![](img/fullpage.png)
 
 ![](img/oregon_cities.png)
 
-- [Story Map Template](http://cdn.rawgit.com/jakobzhao/storymap/master/dist/template.html)
+- [Story Map Template](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/helloWorld/index.html)
 
 ![](img/template.png)
 
@@ -210,7 +211,7 @@ $('.main').storymap({
 });
 ```
 
-In order to see how the code works, you can see the application (as well as the code) of the story map at [Story Map Template](http://cdn.rawgit.com/jakobzhao/storymap/master/dist/template.html).
+In order to see how the code works, you can see the application (as well as the code) of the story map at [Story Map Template](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/helloWorld/index.html).
 
 ![the story map template](img/template.png)
 

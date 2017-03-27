@@ -36,3 +36,8 @@ An in-progress version being developed on the `master` branch.
 
 * make this lib more depends on jquery.
 * define the placeholder class.
+
+## 2.17.2 (03/27/2017)
+
+* change the place holder.
+* enrich the 3d storymap.
