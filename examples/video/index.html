@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>The Major Cities of Oregon</title>
+    <title>Cities of Oregon</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--meta data for sharing links on Facebook-->
     <meta property="og:title" content="The major cities in Oregon" />
-    <meta property="og:url" content="http://cdn.rawgit.com/jakobzhao/storymap/master/fullpage.html" />
+    <meta property="og:url" content="http://cdn.rawgit.com/jakobzhao/storymap/master/example/video/index.html" />
     <meta property="og:description" content="This is an example of map story." />
-    <meta property="og:image" content="img/social.png" />
+    <meta property="og:image" content="../../img/social.png" />
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
@@ -23,9 +23,10 @@
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 
 
-    <link rel="stylesheet" type="text/css" href="css/storymap.css">
+    <link rel="stylesheet" type="text/css" href="../../dist/storymap.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <!--add favicon for the web page-->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
 
     <!--add required libraries-->
     <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
@@ -34,7 +35,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
 
     <!--story map plugin-->
-    <script src="js/storymap.js"></script>
+    <script src="../../dist/storymap.js"></script>
 
     <!-- bing map -->
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise"></script>
@@ -43,7 +44,7 @@
     <!-- mini globle map -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
-    <script src="js/globeminimap.js"></script>
+    <script src="../../js/globeminimap.js"></script>
 </head>
 <body>
 <div class="container-fluid">
@@ -51,7 +52,7 @@
         <div class="col-sm-6 col-md-4 main">
             <section data-scene="overview">
                 <video autoplay loop muted class="background-fullscreen-setting" playsinline autoplay muted loop>
-                    <source src="assets/portland.mp4" type="video/mp4">
+                    <source src="../../assets/portland.mp4" type="video/mp4">
 
                 </video>
                 <!--<iframe class="background-img-setting text-responsive" src="https://www.youtube.com/embed/W0LHTWG-UmQ?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&playlist=W0LHTWG-UmQ" frameborder="0" allowfullscreen></iframe>-->
@@ -97,7 +98,7 @@
             <section data-scene="oregon">
                 <h2>Oregon</h2>
                 <p>Oregon was inhabited by many indigenous tribes before Western traders, explorers, and settlers arrived. An autonomous government was formed in the Oregon Country in 1843 before the Oregon Territory was created in 1848. Oregon became the 33rd state on February 14, 1859. Today, at 98,000 square miles (255,000 km²), Oregon is the ninth largest and, with a population of 4 million, 27th most populous U.S. state. The capital of Oregon is Salem, the second most populous of its cities, with 164,549 residents. Portland is Oregon's most populous city, with 632,309 residents, and ranks as the 26th most populous city in the United States. Portland's metro population of 2,389,228 ranks the 23rd largest metro in the nation. The Willamette Valley in western Oregon is the state's most densely populated area, home to eight of the ten most populous cities.</p>
-                <img src="img/oregon_flag.png" class="img-responsive" alt="responsive image" alt-text="the flag of oregon">
+                <img src="../../img/oregon_flag.png" class="img-responsive" alt="responsive image" alt-text="the flag of oregon">
                 <p>Oregon's landscape is diverse, with a windswept Pacific coastline; a volcano-studded Cascade Range; abundant bodies of water in and west of the Cascades; dense evergreen, mixed, and deciduous forests at lower elevations; and a high desert sprawling across much of its east all the way to the Great Basin.</p>
             </section>
 
@@ -171,7 +172,7 @@
 
     var layers = {
         'bing' : [L.tileLayer.bing('AuhiCJHlGzhg93IqUH_oCpl_-ZUrIE6SPftlyGYUvr9Amx5nzA-WqGcPquyFZl4L')],
-        'counties': [ L.geoJson.ajax('assets/counties.geojson',  {
+        'counties': [ L.geoJson.ajax('../../assets/counties.geojson',  {
             color: 'black',
             weight: 2,
             opacity: 0.3}), county_legend],
