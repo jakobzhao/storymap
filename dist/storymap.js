@@ -94,17 +94,15 @@
             var searchfor = settings.selector;
             var sections = $(element).find(searchfor);
 
-            // add placeholder for fullpage sections.
-            $.each(sections, function (key, element) {
-                var section = $(element);
-                if (section.height() <= $(document).height() * 0.33) {
-                    section.css("height", $(document).height() * 0.33)
-                }
-                // var placeholder = "<div class='placeholder'><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>";
-                // if (scenes[section.data('scene')].position === "fullpage" && section.find(".placeholder").length === 0) {
-                //     section.append(placeholder);
-                // }
-            });
+            // // add placeholder for fullpage sections.
+            // $.each(sections, function (key, element) {
+            //     var section = $(element);
+            //
+            //     // var placeholder = "<div class='placeholder'><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>";
+            //     // if (scenes[section.data('scene')].position === "fullpage" && section.find(".placeholder").length === 0) {
+            //     //     section.append(placeholder);
+            //     // }
+            // });
 
             sections.on('viewing', function () {
                 $(this).addClass('viewing');
@@ -135,6 +133,10 @@
 
                 $(".main").show();
 
+                if ($(".viewing").height() <= $(window).height() * 0.34) {
+                    $(".viewing").height($(window).height() * 0.34)
+                }
+
                 // Change the arrow-down icon to the home icon when reaching the last scene.
                 if ($(this).data('scene') === sections.last().data('scene')) {
                     $(".arrow-down").removeClass("glyphicon-menu-down")
@@ -151,6 +153,9 @@
                 } else {
                     $(".arrow-down").removeClass("animated");
                 }
+
+
+
             });
 
             sections.on('notviewing', function () {
