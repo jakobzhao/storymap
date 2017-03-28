@@ -107,7 +107,6 @@
                         .addClass('fullpage')
                         .css("display", "block");
 
-
                     $(".arrow-down").css("left", "50%");
 
                     //smooth transation.
