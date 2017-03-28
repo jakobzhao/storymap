@@ -4,7 +4,7 @@ Storymap.js is a javascript map library to tell a story using web maps. Using th
 
 The new version supports:
 
-* **3D thematic map**;
+* **3D thematic map** [a preview](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/3d/index.html);
 * add video as background;
 * animated arrow-down icon; and
 * add a navigation bar on the left of the browser view.
