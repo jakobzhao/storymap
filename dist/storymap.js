@@ -94,16 +94,6 @@
             var searchfor = settings.selector;
             var sections = $(element).find(searchfor);
 
-            // // add placeholder for fullpage sections.
-            // $.each(sections, function (key, element) {
-            //     var section = $(element);
-            //
-            //     // var placeholder = "<div class='placeholder'><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>";
-            //     // if (scenes[section.data('scene')].position === "fullpage" && section.find(".placeholder").length === 0) {
-            //     //     section.append(placeholder);
-            //     // }
-            // });
-
             sections.on('viewing', function () {
                 $(this).addClass('viewing');
 
