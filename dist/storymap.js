@@ -110,7 +110,7 @@
                     $(".arrow-down").css("left", "50%");
 
                     //smooth transation.
-                    $(".main").fadeTo(100, 0.1);
+                    $(".main").fadeTo(0, 0);
                     $("#loading").show();
                     $('.viewing').ready(function(){
                         $(".main").fadeTo(3000, 1);
@@ -120,10 +120,10 @@
                     console.log("no position parameter.")
                 }
 
-                $(".main").show();
+                // $(".main").show();
 
-                if ($(".viewing").height() <= $(window).height() * 0.34) {
-                    $(".viewing").height($(window).height() * 0.34)
+                if ($(".viewing").height() <= $(window).height() * 0.67) {
+                    $(".viewing").height($(window).height() * 0.67)
                 }
 
                 // Change the arrow-down icon to the home icon when reaching the last scene.
