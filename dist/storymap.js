@@ -121,7 +121,6 @@
                 }
 
                 // $(".main").show();
-
                 if ($(".viewing").height() <= $(window).height() * 0.67) {
                     $(".viewing").height($(window).height() * 0.67)
                 }
