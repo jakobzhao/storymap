@@ -182,14 +182,14 @@
     };
 
     var scenes = {
-        overview: {lat: 44, lng: -123.5, zoom: 7, position: 'fullpage'},
-        portland: {lat: 45.5186089, lng: -122.7270297, zoom: 11},
-        corvallis: {lat: 44.5701158, lng: -123.2949388, zoom: 14, layers: ['bing','corvallis admin']},
-        eugene: {lat: 44.0549563, lng: -123.0958048, zoom: 13 },
-        salem: {lat: 44.9419055, lng: -123.0356407, zoom: 13},
-        bend: {lat: 44.0519385, lng: -121.3042125, zoom: 14, layers: ['satellite']},
-        oregon: {lat: 44, lng: -123.5, zoom: 7, layers: ['counties', 'forest cover 2010']},
-        end: {lat: 44, lng: -123.5, zoom: 7, position: 'fullpage'}
+        overview: {lat: 44, lng: -123.5, zoom: 7, position: 'fullpage', name: 'Cover Page'},
+        portland: {lat: 45.5186089, lng: -122.7270297, zoom: 11, name: 'Portland'},
+        corvallis: {lat: 44.5701158, lng: -123.2949388, zoom: 14, name: 'Corvallis', layers: ['bing','corvallis admin']},
+        eugene: {lat: 44.0549563, lng: -123.0958048, zoom: 13, name: 'Eugene' },
+        salem: {lat: 44.9419055, lng: -123.0356407, zoom: 13, name: 'Salem'},
+        bend: {lat: 44.0519385, lng: -121.3042125, zoom: 14, name: 'Bend', layers: ['satellite']},
+        oregon: {lat: 44, lng: -123.5, zoom: 7, name: 'Oregon State', layers: ['counties', 'forest cover 2010']},
+        end: {lat: 44, lng: -123.5, zoom: 7, name: 'The End', position: 'fullpage'}
     };
 
     $('.main').storymap({
