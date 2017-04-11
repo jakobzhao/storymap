@@ -21,11 +21,12 @@ See demos at
 
 ![](img/oregon_cities.png)
 
-> made by [cartobaldrica](https://github.com/cartobaldrica)
-
 - [Oregon Drink Water](http://rawgit.com/cartobaldrica/water_atlas/master/drinking_index.html)
 
+> made by [cartobaldrica](https://github.com/cartobaldrica)
+
 ![](img/oregon_drink_water.png)
+
 
 - [Story Map Template](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/helloWorld/index.html)
 
