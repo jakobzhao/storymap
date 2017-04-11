@@ -181,7 +181,12 @@
             if (settings.navbar) {
                 $.each(sections, function (key, element) {
                     var section = $(element);
-                    sceneName = section.data('scene');
+                    // if no name attribute for a specific scene, the name on the navigation bar will be the object name.
+                    if (typeof(scenes[section.data('scene')].name) === "undefined") {
+                        sceneName = section.data('scene');
+                    } else {
+                        sceneName = scenes[section.data('scene')].name.replace(" ","&nbsp;");
+                    }
                     scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" + sceneName + "\\']').offset().top - $(window).scrollTop());";
                     if (key == 0) {
                         $(".navbar").append('<li><a class="glyphicon glyphicon-home" data-toggle="tooltip" style="font-size:16px" title="' + sceneName + '" href="' + scrollScript + '" ></a></li>');
@@ -190,7 +195,7 @@
                     }
                 });
 
-                $('[data-toggle="tooltip"]').tooltip({placement: 'right'});
+                $('[data-toggle="tooltip"]').tooltip({placement: 'right', html: true});
 
 
                 $( ".navbar" ).hover(function() {

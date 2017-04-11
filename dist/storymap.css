@@ -63,7 +63,7 @@ h3 {
     top: 40%;
     left: 0;
     z-index: 1002;
-    border-radius: 3px;
+    border-radius: 5px;
     background: rgba(115, 115, 115, 0.2);
     color: rgba(63, 63, 63, 0.3);
     padding:0;
