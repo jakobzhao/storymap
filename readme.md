@@ -21,6 +21,8 @@ See demos at
 
 ![](img/oregon_cities.png)
 
+> made by [cartobaldrica](https://github.com/cartobaldrica)
+
 - [Oregon Drink Water](http://rawgit.com/cartobaldrica/water_atlas/master/drinking_index.html)
 
 ![](img/oregon_drink_water.png)
