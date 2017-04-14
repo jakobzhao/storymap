@@ -187,7 +187,7 @@
                     } else {
                         sceneName = scenes[section.data('scene')].name.replace(" ","&nbsp;");
                     }
-                    scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" + sceneName + "\\']').offset().top - $(window).scrollTop());";
+                    scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" + section.data('scene') + "\\']').offset().top - $(window).scrollTop());";
                     if (key == 0) {
                         $(".navbar").append('<li><a class="glyphicon glyphicon-home" data-toggle="tooltip" style="font-size:16px" title="' + sceneName + '" href="' + scrollScript + '" ></a></li>');
                     } else {

@@ -180,7 +180,7 @@
             color: 'black',
             weight: 2,
             opacity: 0.3}), county_legend],
-        'corvallis admin': [L.geoJson.ajax('http://www.mapio.us/geoserver/ceoas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ceoas:admin&outputFormat=application%2Fjson',          {
+        'corvallis admin': [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/ceoas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ceoas:admin&outputFormat=application%2Fjson',          {
             color: 'orange',
             weight: 5}), corvallis_admin_legend],
         'forest cover 2010': [ L.tileLayer('http://earthengine.google.org/static/hansen_2013/tree_alpha/{z}/{x}/{y}.png'), forest_legend],
