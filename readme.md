@@ -223,4 +223,4 @@ In order to see how the code works, you can see the application (as well as the 
 
 ## License
 
-This storymap map library is maintained by [Bo Zhao](http://ceoas.oregonstate.edu/profile/zhao/) and currently under the MIT license.
+This storymap map library is under the MIT license, and currently maintained by [Bo Zhao](http://ceoas.oregonstate.edu/profile/zhao/) from ![](assets/logo-bg-48.png) the cartography and geovisualization group at Oregon State University.
