@@ -1,14 +1,16 @@
 # Storymap
 
-Storymap.js is a javascript map library using web maps to tell storys. This library enables its user to create a map that follows a storyline. For each scene/paragraph, you can place a map alongside it, and manipulate the map by zooming, panning, and even adding more thematic layers. This map library follows the concept **responsive design**, meaning the stories can be shown on any Desktop or mobile devices.
+Storymap.js is a javascript map library using web maps to tell storys. This library enables its user to create a map that follows a storyline. For each scene/paragraph, you can place a map alongside it, and manipulate the map by zooming, panning, and even adding more thematic layers. This map library follows the concept **Responsive (Web) Design**, meaning the stories can be shown on any Desktop or mobile devices.
 
 This storymap map library is under the MIT license, and currently maintained by Bo Zhao from [the Cartography and Geovisualization Group ![](assets/logo-bg-16.png)](http://ceoas.oregonstate.edu/profile/zhao/) at Oregon State University. This library is initially developed for the use of the course **GEOG 371: Web Mapping** at Oregon State University, now it is also utilized by **GEOG 4/572: Geovisual Analytics**.
 
 ![](img/logo.png)
 
-The new version supports:
+> Responsive web design (RWD) is an approach to web design aimed at allowing desktop webpages to be viewed in response to the size of the screen or web browser one is viewing with. In addition it's important to understand that Responsive Web Design tasks include offering the same support to a variety of devices for a single website.
 
-* **3D thematic map** [a preview](http://rawgit.com/jakobzhao/storymap/master/examples/3d/index.html);
+The new version will supports:
+
+* create **3D thematic map** [a preview](http://rawgit.com/jakobzhao/storymap/master/examples/3d/index.html);
 * add video as background;
 * animated arrow-down icon; and
 * add a navigation bar on the left of the browser view.
