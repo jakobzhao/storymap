@@ -2,6 +2,8 @@
 
 Storymap.js is a javascript map library to tell a story using web maps. Using this library, you can create a map that follows a storyline. For each paragraph, you can place a map alongside it, and manipulate the map by zooming, panning, and even adding more thematic layers. This map library follows the concept **responsive design**, meaning the stories can be shown on any Desktop or mobile devices. This library is initially developed for the use of the course **GEOG 371 Geovisualization: Web Mapping** at Oregon State University.
 
+This storymap map library is under the MIT license, and currently maintained by [Bo Zhao](http://ceoas.oregonstate.edu/profile/zhao/) from ![](assets/logo-bg-48.png) the cartography and geovisualization group at Oregon State University.
+
 ![](img/logo.png)
 
 The new version supports:
@@ -220,7 +222,3 @@ $('.main').storymap({
 In order to see how the code works, you can see the application (as well as the code) of the story map at [Story Map Template](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/helloWorld/index.html).
 
 ![the story map template](img/template.png)
-
-## License
-
-This storymap map library is under the MIT license, and currently maintained by [Bo Zhao](http://ceoas.oregonstate.edu/profile/zhao/) from ![](assets/logo-bg-48.png) the cartography and geovisualization group at Oregon State University.
