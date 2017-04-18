@@ -110,14 +110,15 @@
                     <h3><small style="color: rgba(169, 169, 169, 0.8)">Download Storymap.js from http://github.com/jakobzhao/storymap</small></h3>
                 </div>
             </section>
-            <!--add an arrow for scrolling down the texts-->
-            <i class="animated zoomIn infinite glyphicon glyphicon-menu-down arrow-down"></i>
-        </div>
 
+        </div>
         <!--map div-->
         <div id="map" class="col-sm-6 col-md-8 sidebar"></div>
     </div>
-
+    <!--add a scrolling down arrow-->
+    <div class="animated zoomIn infinite glyphicon glyphicon-menu-down arrow-down"></div>
+    <!--add a navigation bar-->
+    <div class="navbar text-center"></div>
     <dl>
         <dt>
             <!--facebook icon-->
@@ -126,7 +127,7 @@
             <!--info icon-->
             <i class="fa fa-info-circle btn" style="top:50px" data-toggle="modal" data-target="#info-modal"></i></dt>
     </dl>
-    <div class="navbar text-center"></div>
+
     <div id="loading">
         <i class="animated zoomIn infinite glyphicon glyphicon-globe"></i>
     </div>
@@ -157,7 +158,7 @@
 <script type="text/javascript">
 
     /**
-     * Created by jakob on 2/22/2017.
+     * Created by jakob on 4/20/2017.
      */
     // Create Legend Contents in html format
     var county_legend ='<i style="background: black; opacity: 0.5"></i><p><b>Counties</b></p>';
@@ -228,9 +229,6 @@
             return map;
         }
     });
-
-
-
 </script>
 </body>
 </html>

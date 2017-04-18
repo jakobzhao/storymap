@@ -99,17 +99,17 @@ If you want to activate the navigation bar and the scrolling down arrow, you wil
         </div>
         <div id="map" class="... sidebar"></div>
     </div>
+    <!--add a scrolling down arrow-->
     <div class="animated zoomIn infinite glyphicon glyphicon-menu-down arrow-down"></div>
+    <!--add a navigation bar-->
     <div class="navbar text-center"></div>
 </div>
 ```
 
-
-
 A story map consists of several scenes. Each scene has two basic components, in terms of the content object and the map object. The content object is usually made up by texts, graphics, and audios and videos. You can take advantage of the `html5` to put various types of multi-media data within a `section` tag. A content object is associated with a map object. To link the content and the map, you simply use the `data-scene` parameter of the `section` tag to name the map.  For example, if the `data-scene` parameter is ***scene1***, the name of the corresponding map object should be ***scene1*** as well. the ***scene1*** map can be defined in the script as:
 
 ```javascript
-scene1: {lat: 44, lng: -123.5, zoom: 7, layers: ['layer 1']},
+scene1: {lat: 44, lng: -123.5, zoom: 7, layers: ['layer 1'], name: "scene 1"},
 ```
 
 One of the major differences between the original story map plugin and this enhanced version is that the improvements in embodying the logics of storyline. As noted, a story map is organized as a sequence of scenes, and the scenes are associated with maps. Each map are mashed up by layers, and the layers can be any types of layers that [leaflet.js](http://leafletjs.com/) support.  Below shows the tree structure of this story map plugin.
