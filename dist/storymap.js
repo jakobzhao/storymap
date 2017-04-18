@@ -94,6 +94,15 @@
             var searchfor = settings.selector;
             var sections = $(element).find(searchfor);
 
+
+
+            $.each(sections, function (key, element) {
+                var section = $(element);
+                if (section.height() <= $(window).height() * 0.67) {
+                    section.height($(window).height() * 0.67)
+                }
+            });
+
             sections.on('viewing', function () {
                 $(this).addClass('viewing');
 
@@ -120,10 +129,7 @@
                     console.log("no position parameter.")
                 }
 
-                // $(".main").show();
-                if ($(".viewing").height() <= $(window).height() * 0.67) {
-                    $(".viewing").height($(window).height() * 0.67)
-                }
+
 
                 // Change the arrow-down icon to the home icon when reaching the last scene.
                 if ($(this).data('scene') === sections.last().data('scene')) {

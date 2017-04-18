@@ -27,7 +27,7 @@ h3 {
     padding: 20px;
     padding-bottom: 1600px;
     z-index: 1001;
-    display: none;
+    display: block;
 }
 
 /*.container-fluid {*/
