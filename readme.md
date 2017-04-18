@@ -261,4 +261,4 @@ In order to see how the code works, you can see the application (as well as the 
 ![the story map template](img/template.png)
 
 ##License
-This storymap map library is under the MIT license, and currently maintained by [Bo Zhao](http://ceoas.oregonstate.edu/profile/zhao/) from ![](assets/logo-bg-16.png) the cartography and geovisualization group at Oregon State University.
+This storymap map library is under the MIT license, and currently maintained by [Bo Zhao](http://ceoas.oregonstate.edu/profile/zhao/) from ![](assets/logo-bg-16.png) the cartography group at Oregon State University.
