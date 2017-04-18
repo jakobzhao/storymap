@@ -61,7 +61,7 @@ In this section, we will walk through the process of making a basic storymap. Yo
 </head>
 ```
 
-To use this storymap library, you need to download all the three files in the `dist` folder, which includes a stylesheet - `storymap.css`, a javascript library - `storymap.js`. you can build up your Storymap via the hello world example under the example folder.
+To use this storymap library, you need to download all the three files in the `dist` folder, which includes a stylesheet - `storymap.css`, a javascript library - `storymap.js`. you can build up your Storymap via the **hello world** example under the example folder.
 
 ```html
 <head>
