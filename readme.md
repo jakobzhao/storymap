@@ -256,20 +256,9 @@ $('.main').storymap({
 });
 ```
 
-
-
-```matlab
-% Sample code
-y=3;
-x=4;
-c=x+y;
-```
-
 In order to see how the code works, you can see the application (as well as the code) of the story map at [Hello World Example](http://rawgit.com/jakobzhao/storymap/master/examples/helloWorld/index.html).
 
 ![the story map template](img/template.png)
-
-
 
 ## License
 This storymap map library is under the MIT license, and currently maintained by [Bo Zhao](http://ceoas.oregonstate.edu/profile/zhao/) from ![](assets/logo-bg-16.png) the cartography group at Oregon State University.
