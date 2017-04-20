@@ -185,7 +185,6 @@ video {display: block;}
     }
 }
 
-
 .breakpoint-current {
     left: 0;
     margin-top: -10px;
@@ -211,7 +210,6 @@ section {
     font-size: 40px;
     color: rgba(165, 165, 165, 0.6);
 }
-
 
 .arrow-down:hover {
     color: rgba(14, 14, 14, 0.8);
