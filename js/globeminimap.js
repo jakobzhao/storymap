@@ -92,7 +92,7 @@ var worlddata = {"type":"Topology","objects":{"land":{"type":"MultiPolygon","arc
 		    .context(this.c);
 
 		  var that = this;
-		  d3.json(worlddata, function (world) {
+		  d3.json('', function (world) {
 			  that.globe = {type: "Sphere"},
 	      that.land = topojson.feature(worlddata, worlddata.objects.land);
 			});
