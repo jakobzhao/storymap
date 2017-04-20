@@ -55,17 +55,49 @@
 <!-- main javascript -->
 <script type="text/javascript">
 
+    <!--Plain -->
     var county_legend ='<i style="background: black; opacity: 0.5"></i><p><b>Counties</b></p>';
-    var layers = {
-        'counties': [ L.geoJson.ajax('../../assets/counties.geojson',  {
-            color: 'black',
+    var counties = L.geoJson.ajax('../../assets/counties.geojson',  {
+        color: 'black',
+        weight: 2,
+        opacity: 0.3});
+
+    <!--Choropleth -->
+
+    // Set function for color ramp
+    function setColor(density){
+        return  density > 18 ? '#b30000' :
+                density > 13 ? '#e34a33' :
+                density > 10 ? '#fc8d59' :
+                density >  5 ? '#fdcc8a' :
+                '#fef0d9';
+    }
+
+    // Set style function that sets fill color property equal to cell tower density
+    function style(feature) {
+        return {
+            fillColor: setColor(feature.properties.CT_CNT),
+            fillOpacity: 0.2,
             weight: 2,
-            opacity: 0.3}), county_legend]
+            opacity: 1,
+            color: '#ffffff',
+            dashArray: '4'
+        };
+    }
+
+    var counties_choropleth = L.geoJson.ajax('../../assets/counties.geojson',  {style:style});
+
+
+    var layers = {
+        'counties': [ counties, county_legend]
     };
 
+
+
+
     var scenes = {
-        scene1: {lat: 44, lng: -123.5, zoom: 7, name: 'Oregon State', layers: ['counties']},
-        scene2: {lat: 44, lng: -123.5, zoom: 7, name: 'Oregon State', layers: ['counties']}
+        scene1: {lat: 44, lng: -123.5, zoom: 7, name: 'Plain', layers: ['counties']},
+        scene2: {lat: 44, lng: -123.5, zoom: 7, name: 'Choropleth', layers: ['counties_choropleth']}
     };
 
     $('.main').storymap({

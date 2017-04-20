@@ -256,6 +256,15 @@ $('.main').storymap({
 });
 ```
 
+
+
+```matlab
+% Sample code
+y=3;
+x=4;
+c=x+y;
+```
+
 In order to see how the code works, you can see the application (as well as the code) of the story map at [Hello World Example](http://rawgit.com/jakobzhao/storymap/master/examples/helloWorld/index.html).
 
 ![the story map template](img/template.png)
