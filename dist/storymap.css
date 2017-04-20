@@ -219,7 +219,7 @@ section {
 .btn {
     position:fixed;
     cursor: pointer;
-    font-size:24px;
+    font-size:16px;
     color: rgba(169, 169, 169, 0.8);
     z-index:1003;
     top: 20px;

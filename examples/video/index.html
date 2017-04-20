@@ -31,9 +31,7 @@
             background: url(../../assets/end.jpg) no-repeat center center fixed;
         }
     </style>
-    <!-- mini globle map -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
+
     <!--add required libraries-->
     <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -47,7 +45,9 @@
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise"></script>
     <script src="http://gmaclennan.github.io/leaflet-bing-layer/leaflet-bing-layer.js"></script>
 
-
+    <!-- mini globle map -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
     <script src="../../js/globeminimap.js"></script>
 </head>
 <body>
@@ -125,17 +125,20 @@
         <i class="animated zoomIn infinite glyphicon glyphicon-globe"></i>
     </div>
 
-
     <dl>
         <dt>
             <!--facebook icon-->
-            <a class="fa fa-facebook-square btn" href="https://facebook.com/sharer.php?u=http://cdn.rawgit.com/jakobzhao/storymap/master/fullpage.html" target="_blank"></a></dt>
+            <a class="fa fa-facebook-square btn" href="https://facebook.com/sharer.php?u=http://cdn.rawgit.com/jakobzhao/storymap/master/fullpage.html" target="_blank"></a>
+        </dt>
+        <dt>
+            <!--facebook icon-->
+            <a class="fa fa-git-square btn" href="https://github.com/jakobzhao/storymap" style="top:40px" target="_blank"></a>
+        </dt>
         <dt>
             <!--info icon-->
-            <i class="fa fa-info-circle btn" style="top:50px" data-toggle="modal" data-target="#info-modal"></i></dt>
+            <i class="fa fa-file-text-o btn" style="top:60px" data-toggle="modal" data-target="#info-modal"></i>
+        </dt>
     </dl>
-
-
 
     <!--the info page-->
     <div class="modal fade" id="info-modal" role="dialog">
@@ -159,6 +162,7 @@
     </div>
 
 </div>
+
 <!-- main javascript -->
 <script type="text/javascript">
 
@@ -191,6 +195,7 @@
             id: 'mapbox.satellite'
         })]
     };
+
 
     var scenes = {
         overview: {lat: 44, lng: -123.5, zoom: 7, position: 'fullpage', name: 'Cover Page'},
