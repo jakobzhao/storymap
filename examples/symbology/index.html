@@ -101,7 +101,8 @@
 
     var towers = L.geoJson.ajax('../../assets/cell_towers.geojson', {
         pointToLayer: function (feature, latlng) {
-            return new L.marker(latlng, {icon: myIcon});
+            var marker = new L.marker(latlng, {icon: myIcon});
+            return marker;
         },
         onEachFeature: function (feature, layer) {
             layer.bindTooltip(feature.properties.Name, {sticky: true, className: "feature-tooltip"});
