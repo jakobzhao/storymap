@@ -1,0 +1,24 @@
+.feature-label {
+    font-family:  'Open Sans', sans-serif;
+    color: black;
+    font-size: 12px;
+    font-weight: bold;
+    text-shadow: 0 0 3px #FFFFFF;
+    background-color: rgba(0,0,0,0);
+    border: none;
+    box-shadow: none;
+}
+
+.marker-icon {
+    color: rgba(227, 0, 12, 0.7);
+    font-size: 12px;
+    text-shadow: 0 0 3px #feffe1;
+}
+
+.feature-tooltip {
+
+    font-family:  'Open Sans', sans-serif;
+    color: black;
+    font-size:14px;
+    font-weight: lighter;
+}

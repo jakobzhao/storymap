@@ -20,6 +20,7 @@
 
 
     <link rel="stylesheet" type="text/css" href="../../dist/storymap.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <!--add favicon for the web page-->
     <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
     <!--add required libraries-->
@@ -92,13 +93,22 @@
         {
             style: style,
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(feature.properties.NAME);
+                layer.bindTooltip(feature.properties.NAME, {className: 'feature-label', permanent: true, direction: 'center'});
             }
         });
 
-    var towers = L.geoJson.ajax('../../assets/cell_towers.geojson')
+    var myIcon = L.divIcon({className: 'fa fa-flag text-info marker-icon'});
 
-    $("img[src='https://unpkg.com/leaflet@1.0.2/dist/images/marker-icon.png']").addClass("animated bounceInDown infinite ")
+    var towers = L.geoJson.ajax('../../assets/cell_towers.geojson', {
+        pointToLayer: function (feature, latlng) {
+            return new L.marker(latlng, {icon: myIcon});
+        },
+        onEachFeature: function (feature, layer) {
+            layer.bindTooltip(feature.properties.Name, {sticky: true, className: "feature-tooltip"});
+        }
+    });
+
+//    $("img[src='https://unpkg.com/leaflet@1.0.2/dist/images/marker-icon.png']").addClass("animated bounceInDown infinite")
 
     var layers = {
         'counties': [ counties, county_legend],
