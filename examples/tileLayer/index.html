@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>TileLayers</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+
+    <!--animation-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="../../dist/storymap.css">
+
+    <!--add favicon for the web page-->
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+
+
+    <!--add required libraries-->
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+
+    <!--story map plugin-->
+    <script src="../../dist/storymap.js"></script>
+
+    <!-- use bing map layers -->
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise"></script>
+    <script src="http://gmaclennan.github.io/leaflet-bing-layer/leaflet-bing-layer.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 main">
+            <section data-scene="scene1"></section>
+            <section data-scene="scene2"></section>
+            <section data-scene="scene3"></section>
+            <section data-scene="scene4"></section>
+            <section data-scene="scene5"></section>
+            <section data-scene="scene6"></section>
+            <section data-scene="scene7"></section>
+        </div>
+        <!--map div-->
+        <div id="map" class="col-sm-6 col-md-8 sidebar"></div>
+    </div>
+    <!--add a scrolling down arrow-->
+    <div class="animated zoomIn infinite glyphicon glyphicon-menu-down arrow-down"></div>
+    <!--add a navigation bar-->
+    <div class="navbar text-center"></div>
+
+
+
+</div>
+<script type="text/javascript">
+
+
+    var layers = {
+        'Microsoft Bing': [L.tileLayer.bing('AuhiCJHlGzhg93IqUH_oCpl_-ZUrIE6SPftlyGYUvr9Amx5nzA-WqGcPquyFZl4L')], // please apply for your own BING API KEY.
+        'GEE Forest 2010': [ L.tileLayer('http://earthengine.google.org/static/hansen_2013/tree_alpha/{z}/{x}/{y}.png')],
+        'Mapbox Satellite': [ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
+            id: 'mapbox.satellite'
+        })],
+        'Mapbox Light': [L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
+            id: 'mapbox.light' // ,detectRetina: true
+        })],
+        'Mapbox Dark': [L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
+            id: 'mapbox.dark' // ,detectRetina: true
+        })],
+        'Mapbox Outdoors': [L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
+            id: 'mapbox.outdoors' // ,detectRetina: true
+        })],
+        'Mapbox Streets': [L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
+            id: 'mapbox.streets' // ,detectRetina: true
+        })]
+    };
+
+    var scenes = {
+        scene1: {lat: 44, lng: -123.5, zoom: 7, layers: ['Microsoft Bing']},
+        scene2: {lat: 44, lng: -123.5, zoom: 7, layers: ['GEE Forest 2010']},
+        scene3: {lat: 44, lng: -123.5, zoom: 7, layers: ['Mapbox Satellite']},
+        scene4: {lat: 44, lng: -123.5, zoom: 7, layers: ['Mapbox Light']},
+        scene5: {lat: 44, lng: -123.5, zoom: 7, layers: ['Mapbox Dark']},
+        scene6: {lat: 44, lng: -123.5, zoom: 7, layers: ['Mapbox Outdoors']},
+        scene7: {lat: 44, lng: -123.5, zoom: 7, layers: ['Mapbox Streets']}
+    };
+
+    $('.main').storymap({
+        scenes: scenes,
+        layers: layers,
+        legend: true, // if you do not want a legend feature, you can simply not define the createLegend function.
+        scale: false,
+        navbar: true,
+
+        createMap: function () {
+            // create a map in the "map" div, set the view to a given place and zoom
+            var map = L.map('map', {zoomControl: false, scrollWheelZoom: false});
+
+
+            // hidden the credits, but show in the about page.
+            $(".leaflet-control-attribution").css("display", "none");
+
+            return map;
+        }
+    });
+</script>
+</body>
+</html>
