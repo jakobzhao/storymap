@@ -28,6 +28,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+    <script src="../../js/chroma.min.js"></script>
+
 
     <!--story map plugin-->
     <script src="../../dist/storymap.js"></script>
@@ -45,6 +47,13 @@
             </section>
             <section data-scene="scene3">
                 <h2>Scene 3</h2>
+            </section>
+            <section data-scene="scene4">
+                <h2>Scene 4</h2>
+                <p><a href="https://github.com/gka/chroma.js/wiki/Predefined-Colors" target="_blank">Predefined Colors</a></p>
+            </section>
+            <section data-scene="scene5">
+                <h2>Scene 5</h2>
             </section>
         </div>
         <div id="map" class="col-sm-6 col-md-8 sidebar"></div>
@@ -67,7 +76,6 @@
         opacity: 0.3});
 
     <!--Choropleth -->
-
     // Set function for color ramp
     function setColor(density){
         return  density > 18 ? '#b30000' :
@@ -89,6 +97,7 @@
         };
     }
 
+
     var counties_choropleth = L.geoJson.ajax('../../assets/counties.geojson',
         {
             style: style,
@@ -97,31 +106,85 @@
             }
         });
 
-    var myIcon = L.divIcon({className: 'fa fa-flag text-info marker-icon'});
+
+    $('html > head').append($("<style> .marker-icon { color: rgba(227, 0, 12, 0.7); font-size: 15px; text-shadow: 0 0 3px #ffffff;} </style>"));
 
     var towers = L.geoJson.ajax('../../assets/cell_towers.geojson', {
         pointToLayer: function (feature, latlng) {
-            var marker = new L.marker(latlng, {icon: myIcon});
-            return marker;
+
+            return L.marker(latlng, {icon: L.divIcon({className: 'glyphicon glyphicon-signal marker-icon'})});
         },
         onEachFeature: function (feature, layer) {
             layer.bindTooltip(feature.properties.Name, {sticky: true, className: "feature-tooltip"});
         }
     });
 
-//    $("img[src='https://unpkg.com/leaflet@1.0.2/dist/images/marker-icon.png']").addClass("animated bounceInDown infinite")
+    var tower_legend ='<i class="glyphicon glyphicon-signal marker-icon"></i><p><b>Tower</b></p>';
+
+
+
+    var colors = chroma.scale('Set1').mode('lch').colors(10);
+    for (i =1; i < 11; i++) {
+        $('html > head').append($("<style> .marker-icon-" + i.toString() + " { color: " + colors[i] + "; font-size: 15px; text-shadow: 0 0 3px #ffffff;} </style>"));
+    }
+
+
+    var towers_color = L.geoJson.ajax('../../assets/cell_towers.geojson', {
+        pointToLayer: function (feature, latlng) {
+            if (feature.properties.company == "New Cingular") {
+                return L.marker(latlng, {icon: L.divIcon({className: 'glyphicon glyphicon-signal marker-icon-1'})});
+            } else if (feature.properties.company == "Cellco") {
+                return L.marker(latlng, {icon: L.divIcon({className: 'glyphicon glyphicon-signal marker-icon-2'})});
+            } else if (feature.properties.company == "RCC Minnesota") {
+                return L.marker(latlng, {icon: L.divIcon({className: 'glyphicon glyphicon-signal marker-icon-3'})});
+            } else if (feature.properties.company == "Oregon RSA") {
+                return L.marker(latlng, {icon: L.divIcon({className: 'glyphicon glyphicon-signal marker-icon-4'})});
+            } else if (feature.properties.company == "Verizon") {
+                return L.marker(latlng, {icon: L.divIcon({className: 'glyphicon glyphicon-signal marker-icon-5'})});
+            } else if (feature.properties.company == "US Cellular") {
+                return L.marker(latlng, {icon: L.divIcon({className: 'glyphicon glyphicon-signal marker-icon-6'})});
+            } else if (feature.properties.company == "Hood River Cellular") {
+                return L.marker(latlng, {icon: L.divIcon({className: 'glyphicon glyphicon-signal marker-icon-7'})});
+            } else if (feature.properties.company == "Medford Cellular") {
+                return L.marker(latlng, {icon: L.divIcon({className: 'glyphicon glyphicon-signal marker-icon-8'})});
+            } else if (feature.properties.company == "Salem Cullular") {
+                return L.marker(latlng, {icon: L.divIcon({className: 'glyphicon glyphicon-signal marker-icon-9'})});
+            } else {
+                return L.marker(latlng, {icon: L.divIcon({className: 'glyphicon glyphicon-signal marker-icon-10'})});
+            }
+        },
+        onEachFeature: function (feature, layer) {
+            layer.bindTooltip(feature.properties.Name, {sticky: true, className: "feature-tooltip"});
+        }
+    });
+
+    var tower_color_legend = '<p><b>Tower Companies</b></p>'+
+        '<i class="glyphicon glyphicon-signal marker-icon-1"></i><p>New Cingular</p>' +
+        '<i class="glyphicon glyphicon-signal marker-icon-2"></i><p>Cellco</p>' +
+        '<i class="glyphicon glyphicon-signal marker-icon-3"></i><p>RCC Minnesota</p>' +
+        '<i class="glyphicon glyphicon-signal marker-icon-4"></i><p>Oregon RSA</p>' +
+        '<i class="glyphicon glyphicon-signal marker-icon-5"></i><p>Verizon</p>' +
+        '<i class="glyphicon glyphicon-signal marker-icon-6"></i><p>US Cellular</p>' +
+        '<i class="glyphicon glyphicon-signal marker-icon-7"></i><p>Hood River Cell.</p>' +
+        '<i class="glyphicon glyphicon-signal marker-icon-8"></i><p>Medford Cellular</p>' +
+        '<i class="glyphicon glyphicon-signal marker-icon-9"></i><p>Salem Cullular</p>' +
+        '<i class="glyphicon glyphicon-signal marker-icon-10"></i><p>Others</p>';
+
 
     var layers = {
         'counties': [ counties, county_legend],
         'counties_choropleth': [ counties_choropleth, county_legend],
-        'towers': [towers]
+        'towers': [towers, tower_legend],
+        'towers_color': [towers_color, tower_color_legend]
     };
 
 
     var scenes = {
         scene1: {lat: 44, lng: -123.5, zoom: 7, name: 'Plain', layers: ['counties']},
         scene2: {lat: 44, lng: -123.5, zoom: 7, name: 'Choropleth', layers: ['counties_choropleth']},
-        scene3: {lat: 44, lng: -123.5, zoom: 7, name: 'Markers', layers: ['towers']}
+        scene3: {lat: 44, lng: -123.5, zoom: 7, name: 'towers', layers: ['towers']},
+        scene4: {lat: 44, lng: -123.5, zoom: 7, name: 'towers categorized by companies', layers: ['towers_color']},
+        scene5: {lat: 44.05, lng: -123.0, zoom: 10, name: 'Markers', layers: ['towers_color']}
     };
 
     $('.main').storymap({
@@ -130,7 +193,6 @@
         legend: true, // if you do not want a legend feature, you can simply not define the createLegend function.
         scale: false,
         navbar: true,
-
         createMap: function () {
             // create a map in the "map" div, set the view to a given place and zoom
             var map = L.map('map', {zoomControl: false, scrollWheelZoom: false});
@@ -139,13 +201,13 @@
             L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
                 maxZoom: 18,
                 attribution: '<a href="http://ceoas.oregonstate.edu/profile/zhao/" target="_blank">Bo Zhao</a>',
-                id: 'mapbox.light' // ,detectRetina: true
+                id: 'mapbox.light',
+                detectRetina: true
             }).addTo(map);
 
 
             // hidden the credits, but show in the about page.
             $(".leaflet-control-attribution").css("display", "none");
-
             return map;
         }
     });
