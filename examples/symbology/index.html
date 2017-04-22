@@ -7,7 +7,7 @@
 
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
 
     <!--animation-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
@@ -24,11 +24,11 @@
     <!--add favicon for the web page-->
     <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
     <!--add required libraries-->
-    <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
-    <script src="../../js/chroma.min.js"></script>
+    <script src="https://cdn.bootcss.com/chroma-js/1.3.3/chroma.min.js"></script>
 
 
     <!--story map plugin-->
@@ -64,20 +64,21 @@
     <div class="navbar text-center"></div>
 
 </div>
-
-<!-- main javascript -->
 <script type="text/javascript">
 
-    <!--Plain -->
-    var county_legend ='<i style="background: black; opacity: 0.5"></i><p><b>Counties</b></p>';
+    //////////////////////////////////////////////////////////////////////////
+    // Scene 1: Plain
+    var counties_legend ='<i style="background: black; opacity: 0.5"></i><p><b>Counties</b></p>';
     var counties = L.geoJson.ajax('../../assets/counties.geojson',  {
         color: 'black',
         weight: 2,
         opacity: 0.3});
 
-    <!--Choropleth -->
+    //////////////////////////////////////////////////////////////////////////
+    // Scene 2: Choropleth
     // Set function for color ramp
     function setColor(density){
+        //condition ? valueIfTrue : valueIfFalse
         return  density > 18 ? '#b30000' :
                 density > 13 ? '#e34a33' :
                 density > 10 ? '#fc8d59' :
@@ -97,7 +98,6 @@
         };
     }
 
-
     var counties_choropleth = L.geoJson.ajax('../../assets/counties.geojson',
         {
             style: style,
@@ -107,7 +107,17 @@
         });
 
 
-    $('html > head').append($("<style> .marker-icon { color: rgba(227, 0, 12, 0.7); font-size: 15px; text-shadow: 0 0 3px #ffffff;} </style>"));
+    var counties_choropleth_legend = '<p><b># of Towers</b></p>' +
+        '<i style="background: #fef0d9; opacity: 0.5"></i><p><b>1 - 4</b></p>' +
+        '<i style="background: #fdcc8a; opacity: 0.5"></i><p><b>5 - 9</b></p>' +
+        '<i style="background: #fc8d59; opacity: 0.5"></i><p><b>10 - 12</b></p>' +
+        '<i style="background: #e34a33; opacity: 0.5"></i><p><b>13 - 17</b></p>' +
+        '<i style="background: #b30000; opacity: 0.5"></i><p><b>18+</b></p>';
+
+    //////////////////////////////////////////////////////////////////////////
+    // Scene 3: Marker
+
+    $('html > head').append($("<style> .marker-icon { color: red; font-size: 15px; text-shadow: 0 0 3px #ffffff;} </style>"));
 
     var towers = L.geoJson.ajax('../../assets/cell_towers.geojson', {
         pointToLayer: function (feature, latlng) {
@@ -121,7 +131,8 @@
 
     var tower_legend ='<i class="glyphicon glyphicon-signal marker-icon"></i><p><b>Tower</b></p>';
 
-
+    //////////////////////////////////////////////////////////////////////////
+    // Scene 4: Marker categorized by an attribute
 
     var colors = chroma.scale('Set1').mode('lch').colors(10);
     for (i =1; i < 11; i++) {
@@ -131,23 +142,23 @@
 
     var towers_color = L.geoJson.ajax('../../assets/cell_towers.geojson', {
         pointToLayer: function (feature, latlng) {
-            if (feature.properties.company == "New Cingular") {
+            if (feature.properties.company === "New Cingular") {
                 return L.marker(latlng, {icon: L.divIcon({className: 'glyphicon glyphicon-signal marker-icon-1'})});
-            } else if (feature.properties.company == "Cellco") {
+            } else if (feature.properties.company === "Cellco") {
                 return L.marker(latlng, {icon: L.divIcon({className: 'glyphicon glyphicon-signal marker-icon-2'})});
-            } else if (feature.properties.company == "RCC Minnesota") {
+            } else if (feature.properties.company === "RCC Minnesota") {
                 return L.marker(latlng, {icon: L.divIcon({className: 'glyphicon glyphicon-signal marker-icon-3'})});
-            } else if (feature.properties.company == "Oregon RSA") {
+            } else if (feature.properties.company === "Oregon RSA") {
                 return L.marker(latlng, {icon: L.divIcon({className: 'glyphicon glyphicon-signal marker-icon-4'})});
-            } else if (feature.properties.company == "Verizon") {
+            } else if (feature.properties.company === "Verizon") {
                 return L.marker(latlng, {icon: L.divIcon({className: 'glyphicon glyphicon-signal marker-icon-5'})});
-            } else if (feature.properties.company == "US Cellular") {
+            } else if (feature.properties.company === "US Cellular") {
                 return L.marker(latlng, {icon: L.divIcon({className: 'glyphicon glyphicon-signal marker-icon-6'})});
-            } else if (feature.properties.company == "Hood River Cellular") {
+            } else if (feature.properties.company === "Hood River Cellular") {
                 return L.marker(latlng, {icon: L.divIcon({className: 'glyphicon glyphicon-signal marker-icon-7'})});
-            } else if (feature.properties.company == "Medford Cellular") {
+            } else if (feature.properties.company === "Medford Cellular") {
                 return L.marker(latlng, {icon: L.divIcon({className: 'glyphicon glyphicon-signal marker-icon-8'})});
-            } else if (feature.properties.company == "Salem Cullular") {
+            } else if (feature.properties.company === "Salem Cullular") {
                 return L.marker(latlng, {icon: L.divIcon({className: 'glyphicon glyphicon-signal marker-icon-9'})});
             } else {
                 return L.marker(latlng, {icon: L.divIcon({className: 'glyphicon glyphicon-signal marker-icon-10'})});
@@ -158,7 +169,7 @@
         }
     });
 
-    var tower_color_legend = '<p><b>Tower Companies</b></p>'+
+    var towers_color_legend = '<p><b>Tower Companies</b></p>'+
         '<i class="glyphicon glyphicon-signal marker-icon-1"></i><p>New Cingular</p>' +
         '<i class="glyphicon glyphicon-signal marker-icon-2"></i><p>Cellco</p>' +
         '<i class="glyphicon glyphicon-signal marker-icon-3"></i><p>RCC Minnesota</p>' +
@@ -166,16 +177,43 @@
         '<i class="glyphicon glyphicon-signal marker-icon-5"></i><p>Verizon</p>' +
         '<i class="glyphicon glyphicon-signal marker-icon-6"></i><p>US Cellular</p>' +
         '<i class="glyphicon glyphicon-signal marker-icon-7"></i><p>Hood River Cell.</p>' +
-        '<i class="glyphicon glyphicon-signal marker-icon-8"></i><p>Medford Cellular</p>' +
+        '<i class="glyphicon glyphicon-signal marker-icon-8"></i><p>Medford Cell.</p>' +
         '<i class="glyphicon glyphicon-signal marker-icon-9"></i><p>Salem Cullular</p>' +
         '<i class="glyphicon glyphicon-signal marker-icon-10"></i><p>Others</p>';
 
+    //////////////////////////////////////////////////////////////////////////
+    // Scene 5: circleMarker
+
+    var towers_circle = L.geoJson.ajax('../../assets/cell_towers.geojson', {
+        style: function (feature) {
+            return {
+                fillColor: chroma.random(),
+                fillOpacity: 0.4,
+                stroke: true,
+                weight: 1,
+                opacity: 0.8,
+                color: '#ffffff'
+            };
+        },
+        pointToLayer: function (feature, latlng) {
+            //return L.circleMarker(latlng);
+            return L.circle(latlng, 1000 * Math.pow(Math.floor((Math.random() * 3) + 1), 2));
+        },
+        onEachFeature: function (feature, layer) {
+            layer.bindTooltip(feature.properties.Name, {sticky: true, className: "feature-tooltip"});
+        }
+    });
+
+    var towers_circle_legend ='<i class=""><svg height="16" width="16"> <circle cx="8" cy="8" r="6" stroke="white" stroke-width="1" fill="red" fillOpacity="0.4" /> </svg></i><p><b>Tower</b></p>';
+
+    //////////////////////////////////////////////////////////////////////////
 
     var layers = {
-        'counties': [ counties, county_legend],
-        'counties_choropleth': [ counties_choropleth, county_legend],
+        'counties': [counties, counties_legend],
+        'counties_choropleth': [ counties_choropleth, counties_choropleth_legend],
         'towers': [towers, tower_legend],
-        'towers_color': [towers_color, tower_color_legend]
+        'towers_color': [towers_color, towers_color_legend],
+        'towers_circle': [towers_circle, towers_circle_legend]
     };
 
 
@@ -184,7 +222,7 @@
         scene2: {lat: 44, lng: -123.5, zoom: 7, name: 'Choropleth', layers: ['counties_choropleth']},
         scene3: {lat: 44, lng: -123.5, zoom: 7, name: 'towers', layers: ['towers']},
         scene4: {lat: 44, lng: -123.5, zoom: 7, name: 'towers categorized by companies', layers: ['towers_color']},
-        scene5: {lat: 44.05, lng: -123.0, zoom: 10, name: 'Markers', layers: ['towers_color']}
+        scene5: {lat: 44, lng: -123.5, zoom: 7, name: 'tower circles', layers: ['towers_circle']}
     };
 
     $('.main').storymap({
@@ -204,7 +242,6 @@
                 id: 'mapbox.light',
                 detectRetina: true
             }).addTo(map);
-
 
             // hidden the credits, but show in the about page.
             $(".leaflet-control-attribution").css("display", "none");
