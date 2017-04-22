@@ -21,7 +21,7 @@ See demos at
 
 ![](img/oregon_cities.png)
 
-Symbolization
+- [Symbolization](http://jakobzhao.github.io/storymap/examples/symbolization/index.html)
 
 ![](img/symbolization.png)
 
