@@ -14,7 +14,6 @@
     <!--add favicon for the web page-->
     <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
 
-
     <!--add required libraries-->
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -32,13 +31,15 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-6 col-md-4 main">
-            <section data-scene="scene1"></section>
-            <section data-scene="scene2"></section>
-            <section data-scene="scene3"></section>
-            <section data-scene="scene4"></section>
-            <section data-scene="scene5"></section>
-            <section data-scene="scene6"></section>
-            <section data-scene="scene7"></section>
+            <section data-scene="scene1"><h2>Microsoft Bing</h2><p><a href="https://leaflet-extras.github.io/leaflet-providers/preview/" target="_blank">leaflet tilelayer providers</a></p></section>
+            <section data-scene="scene2"><h2>GEE Forest 2010</h2></section>
+            <section data-scene="scene3"><h2>Mapbox Satellite</h2></section>
+            <section data-scene="scene4"><h2>Mapbox Light</h2></section>
+            <section data-scene="scene5"><h2>Mapbox Dark</h2></section>
+            <section data-scene="scene6"><h2>Mapbox Outdoors</h2></section>
+            <section data-scene="scene7"><h2>Mapbox Streets</h2></section>
+            <section data-scene="scene8"><h2>NightView</h2></section>
+            <section data-scene="scene9"><h2>OpenStreetMap</h2></section>
         </div>
         <!--map div-->
         <div id="map" class="col-sm-6 col-md-8 sidebar"></div>
@@ -47,8 +48,6 @@
     <div class="animated zoomIn infinite glyphicon glyphicon-menu-down arrow-down"></div>
     <!--add a navigation bar-->
     <div class="navbar text-center"></div>
-
-
 
 </div>
 <script type="text/javascript">
@@ -71,17 +70,26 @@
         })],
         'Mapbox Streets': [L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
             id: 'mapbox.streets' // ,detectRetina: true
-        })]
+        })],
+        'NightView': [L.tileLayer('http://map1.vis.earthdata.nasa.gov/wmts-webmerc/VIIRS_CityLights_2012/default/{time}/{tilematrixset}{maxZoom}/{z}/{y}/{x}.{format}', {
+            minZoom: 1,
+            maxZoom: 8,
+            format: 'jpg',
+            time: '',
+            tilematrixset: 'GoogleMapsCompatible_Level'})],
+        'OpenStreetMap': [L.tileLayer('http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png')]
     };
 
     var scenes = {
-        scene1: {lat: 44, lng: -123.5, zoom: 7, layers: ['Microsoft Bing']},
-        scene2: {lat: 44, lng: -123.5, zoom: 7, layers: ['GEE Forest 2010']},
-        scene3: {lat: 44, lng: -123.5, zoom: 7, layers: ['Mapbox Satellite']},
-        scene4: {lat: 44, lng: -123.5, zoom: 7, layers: ['Mapbox Light']},
-        scene5: {lat: 44, lng: -123.5, zoom: 7, layers: ['Mapbox Dark']},
-        scene6: {lat: 44, lng: -123.5, zoom: 7, layers: ['Mapbox Outdoors']},
-        scene7: {lat: 44, lng: -123.5, zoom: 7, layers: ['Mapbox Streets']}
+        scene1: {lat: 44, lng: -123.5, zoom: 7, layers: ['Microsoft Bing'], name: "Microsoft Bing"},
+        scene2: {lat: 44, lng: -123.5, zoom: 7, layers: ['GEE Forest 2010'], name: "GEE Forest"},
+        scene3: {lat: 44, lng: -123.5, zoom: 7, layers: ['Mapbox Satellite'], name: "Mapbox Satellite"},
+        scene4: {lat: 44, lng: -123.5, zoom: 7, layers: ['Mapbox Light'], name: "Mapbox Light"},
+        scene5: {lat: 44, lng: -123.5, zoom: 7, layers: ['Mapbox Dark'], name: "Mapbox Dark"},
+        scene6: {lat: 44, lng: -123.5, zoom: 7, layers: ['Mapbox Outdoors'], name: "Mapbox Outdoors"},
+        scene7: {lat: 44, lng: -123.5, zoom: 7, layers: ['Mapbox Streets'], name: "Mapbox Streets"},
+        scene8: {lat: 44, lng: -123.5, zoom: 7, layers: ['NightView'], name: "NightView"},
+        scene9: {lat: 44, lng: -123.5, zoom: 7, layers: ['OpenStreetMap'], name: "OpenStreetMap"}
     };
 
     $('.main').storymap({
@@ -94,8 +102,6 @@
         createMap: function () {
             // create a map in the "map" div, set the view to a given place and zoom
             var map = L.map('map', {zoomControl: false, scrollWheelZoom: false});
-
-
             // hidden the credits, but show in the about page.
             $(".leaflet-control-attribution").css("display", "none");
 
