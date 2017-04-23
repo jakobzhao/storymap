@@ -29,6 +29,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
     <script src="https://cdn.bootcss.com/chroma-js/1.3.3/chroma.min.js"></script>
+    <script src="js/bouncemarker.js"></script>
 
 
     <!--story map plugin-->
@@ -116,17 +117,25 @@
     //////////////////////////////////////////////////////////////////////////
     // Scene 3: Marker
 
+
     $('html > head').append($("<style> .marker-icon { color: red; font-size: 15px; text-shadow: 0 0 3px #ffffff;} </style>"));
+
 
     var towers = L.geoJson.ajax('../../assets/cell_towers.geojson', {
         pointToLayer: function (feature, latlng) {
 
-            return L.marker(latlng, {icon: L.divIcon({className: 'glyphicon glyphicon-signal marker-icon'})});
+            delay = Math.floor((126 + latlng.lng) / 10 * 1000);
+           // delay =Math.floor(Math.random() * 3000);
+
+            return L.marker(latlng, {bounceOnAdd: true,  bounceOnAddOptions: {duration: 500, delay:delay}, icon: L.divIcon({className: 'glyphicon glyphicon-signal marker-icon'})});
         },
         onEachFeature: function (feature, layer) {
             layer.bindTooltip(feature.properties.Name, {sticky: true, className: "feature-tooltip"});
         }
     });
+
+
+
 
     var tower_legend ='<i class="glyphicon glyphicon-signal marker-icon"></i><p><b>Tower</b></p>';
 
