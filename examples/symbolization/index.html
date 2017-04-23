@@ -117,24 +117,21 @@
     //////////////////////////////////////////////////////////////////////////
     // Scene 3: Marker
 
-
     $('html > head').append($("<style> .marker-icon { color: red; font-size: 15px; text-shadow: 0 0 3px #ffffff;} </style>"));
 
 
     var towers = L.geoJson.ajax('../../assets/cell_towers.geojson', {
         pointToLayer: function (feature, latlng) {
 
-            delay = Math.floor((126 + latlng.lng) / 10 * 1000);
-           // delay =Math.floor(Math.random() * 3000);
+            delay = Math.floor((126 + latlng.lng) / 10 * 2000);
+            //delay =Math.floor(Math.random() * 400);
 
-            return L.marker(latlng, {bounceOnAdd: true,  bounceOnAddOptions: {duration: 500, delay:delay}, icon: L.divIcon({className: 'glyphicon glyphicon-signal marker-icon'})});
+            return L.marker(latlng, {bounceOnAdd: true,  bounceOnAddOptions: {duration: 200, height: window.innerHeight, delay:delay}, icon: L.divIcon({className: 'glyphicon glyphicon-signal marker-icon'})});
         },
         onEachFeature: function (feature, layer) {
             layer.bindTooltip(feature.properties.Name, {sticky: true, className: "feature-tooltip"});
         }
     });
-
-
 
 
     var tower_legend ='<i class="glyphicon glyphicon-signal marker-icon"></i><p><b>Tower</b></p>';

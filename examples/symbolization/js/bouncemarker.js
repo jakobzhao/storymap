@@ -25,6 +25,8 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
+// Modification was made by Bo Zhao. And delay parameter to controlt the flow if a lot of markers are falling down.
+
 (function () {
 
   // Retain the value of the original onAdd and onRemove functions
@@ -110,7 +112,7 @@
       // } else {
       //   return (7.5625 * (pos -= (2.625 / 2.75)) * pos + 0.984375);
       // }
-        return pos
+        return pos;
     },
 
     // Bounce : if options.height in pixels is not specified, drop from top.
