@@ -56,6 +56,10 @@
             <section data-scene="scene5">
                 <h2>Scene 5</h2>
             </section>
+            <section data-scene="scene6">
+                <h2>Scene 6</h2>
+                <p>Inspired by the post on <a href="https://adventuresinmapping.com/2016/10/17/firefly-cartography/" target="_blank">Firefly Cartography</a>.</p>
+            </section>
         </div>
         <div id="map" class="col-sm-6 col-md-8 sidebar"></div>
     </div>
@@ -118,7 +122,7 @@
     // Scene 3: Marker
 
     $('html > head').append($("<style> .marker-icon { color: red; font-size: 15px; text-shadow: 0 0 3px #ffffff;} </style>"));
-
+    // $('html > head').append($("<style> .marker-icon { color: #0000ff; font-size: 15px; text-shadow:1px 1px 2px #ffffff, 0 0 25px rgba(0,0,255,0.75), 0 0 5px rgba(0,0,139,0.78);} </style>")); // glow effect: https://adventuresinmapping.com/2016/10/17/firefly-cartography/
 
     var towers = L.geoJson.ajax('../../assets/cell_towers.geojson', {
         pointToLayer: function (feature, latlng) {
@@ -212,13 +216,32 @@
     var towers_circle_legend ='<i class=""><svg height="16" width="16"> <circle cx="8" cy="8" r="6" stroke="white" stroke-width="1" fill="red" fillOpacity="0.4" /> </svg></i><p><b>Tower</b></p>';
 
     //////////////////////////////////////////////////////////////////////////
+    // Scene 6: circleMarker in glow effects
+
+    var towers_circle2 = L.geoJson.ajax('../../assets/cell_towers.geojson', {
+        pointToLayer: function (feature, latlng) {
+            //return L.circle(latlng, 1000 * Math.pow(Math.floor((Math.random() * 3) + 1), 2));
+            return L.marker(latlng, {icon: L.divIcon({className: 'glyphicon glyphicon-one-fine-smaller-dot glow-effect'})});
+        },
+        onEachFeature: function (feature, layer) {
+            layer.bindTooltip(feature.properties.Name, {sticky: true, className: "feature-tooltip"});
+        }
+    });
+
+    var towers_circle2_legend ='<i class=""><svg height="16" width="16"> <circle cx="8" cy="8" r="6" stroke="white" stroke-width="0" fill="#00ff00" fillOpacity="0.4" /> </svg></i><p><b>Tower</b></p>';
+
+    var darkLayer = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png');
+
+    //////////////////////////////////////////////////////////////////////////
 
     var layers = {
         'counties': [counties, counties_legend],
         'counties_choropleth': [ counties_choropleth, counties_choropleth_legend],
         'towers': [towers, tower_legend],
         'towers_color': [towers_color, towers_color_legend],
-        'towers_circle': [towers_circle, towers_circle_legend]
+        'towers_circle': [towers_circle, towers_circle_legend],
+        'towers_circle2': [towers_circle2, towers_circle2_legend],
+        'darkLayer': [darkLayer]
     };
 
 
@@ -227,7 +250,8 @@
         scene2: {lat: 44, lng: -123.5, zoom: 7, name: 'Choropleth', layers: ['counties_choropleth']},
         scene3: {lat: 44, lng: -123.5, zoom: 7, name: 'towers', layers: ['towers']},
         scene4: {lat: 44, lng: -123.5, zoom: 7, name: 'towers categorized by companies', layers: ['towers_color']},
-        scene5: {lat: 44, lng: -123.5, zoom: 7, name: 'tower circles', layers: ['towers_circle']}
+        scene5: {lat: 44, lng: -123.5, zoom: 7, name: 'tower circles', layers: ['towers_circle']},
+        scene6: {lat: 44, lng: -123.5, zoom: 7, name: 'tower circles', layers: ['towers_circle2', 'darkLayer']}
     };
 
     $('.main').storymap({
@@ -243,7 +267,6 @@
             // add an base map, which can be either OSM, mapbox, tilelayer, wmslayer or those designed by yourself.
             L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
                 maxZoom: 18,
-                attribution: '<a href="http://ceoas.oregonstate.edu/profile/zhao/" target="_blank">Bo Zhao</a>',
                 id: 'mapbox.light',
                 detectRetina: true
             }).addTo(map);

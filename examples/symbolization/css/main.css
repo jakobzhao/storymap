@@ -16,3 +16,12 @@
     font-weight: lighter;
 }
 
+
+.glyphicon-one-fine-smaller-dot:before {
+    content:"\25cf";
+    font-size: 1em;
+}
+.glow-effect {
+    color: rgba(0, 255, 0, .6);
+    text-shadow: 0 0 10px rgb(0, 255, 0);
+}
