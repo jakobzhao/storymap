@@ -82,7 +82,8 @@
     // Scene 2: Choropleth
     // Set function for color ramp
     function setColor(density){
-        //condition ? valueIfTrue : valueIfFalse
+        //Tenary operation: condition ? valueIfTrue : valueIfFalse
+        // condition ? value1 : value2
         return  density > 18 ? '#b30000' :
                 density > 13 ? '#e34a33' :
                 density > 10 ? '#fc8d59' :
@@ -106,7 +107,7 @@
         {
             style: style,
             onEachFeature: function (feature, layer) {
-                layer.bindTooltip(feature.properties.NAME, {className: 'feature-label', permanent: true, direction: 'center'});
+                layer.bindTooltip(feature.properties.NAME, {className: 'feature-label', permanent: false, direction: 'center'});
             }
         });
 
@@ -143,7 +144,7 @@
     //////////////////////////////////////////////////////////////////////////
     // Scene 4: Marker categorized by an attribute
 
-    var colors = chroma.scale('Set1').mode('lch').colors(10);
+    var colors = chroma.scale('Set2').mode('lch').colors(10);
     for (i =1; i < 11; i++) {
         $('html > head').append($("<style> .marker-icon-" + i.toString() + " { color: " + colors[i] + "; font-size: 15px; text-shadow: 0 0 3px #ffffff;} </style>"));
     }
