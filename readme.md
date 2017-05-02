@@ -15,7 +15,7 @@ The new version supports:
 
 See demos at
 
-- [Cities of Oregon v.2.1.11](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/video/index.html)
+- [fullpage video or images](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/video/index.html)
 
 ![](img/fullpage.png)
 
@@ -25,7 +25,12 @@ See demos at
 
 ![](img/symbolization.png)
 
-- [Oregon Drink Water](http://rawgit.com/cartobaldrica/water_atlas/master/drinking_index.html) -  made by [cartobaldrica](https://github.com/cartobaldrica)
+- Basemaps
+ - [tileLayers for Stormap](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/tileLayer/index.html)
+ - [Leaflet (basemnap) Preview](https://leaflet-extras.github.io/leaflet-providers/preview/)
+
+
+- [Example: Oregon Drink Water](http://rawgit.com/cartobaldrica/water_atlas/master/drinking_index.html) -  made by [cartobaldrica](https://github.com/cartobaldrica)
 
 ![](img/oregon_drink_water.png)
 
