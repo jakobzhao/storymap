@@ -27,10 +27,10 @@ See demos at
 
 - Basemaps
 
- - [tileLayers for Stormap](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/tileLayer/index.html)
- - [Leaflet (basemnap) Preview](https://leaflet-extras.github.io/leaflet-providers/preview/)
+    - [tileLayers for Stormap](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/tileLayer/index.html)
+    - [Leaflet (basemnap) Preview](https://leaflet-extras.github.io/leaflet-providers/preview/)
 
-- [Data Interaction](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/datInteraction/index.html)
+- [Data Interaction](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/dataInteraction/index.html)
 
 ![](img/datainteraction.png)
 
