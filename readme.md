@@ -32,7 +32,7 @@ See demos at
     2\. [Leaflet (basemnap) Preview](https://leaflet-extras.github.io/leaflet-providers/preview/)
 
 
-- [Data Interaction](http://rawgit.com/jakobzhao/storymap/master/examples/dataInteraction/index.html)
+- [Data Interaction](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/dataInteraction/index.html)
 
 ![](img/datainteraction.png)
 
