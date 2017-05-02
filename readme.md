@@ -26,6 +26,12 @@ See demos at
 ![](img/symbolization.png)
 
 - Basemaps
+
+ - [tileLayers for Stormap](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/tileLayer/index.html)
+ - [Leaflet (basemnap) Preview](https://leaflet-extras.github.io/leaflet-providers/preview/)
+
+- [Data Interaction]()
+
  - [tileLayers for Stormap](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/tileLayer/index.html)
  - [Leaflet (basemnap) Preview](https://leaflet-extras.github.io/leaflet-providers/preview/)
 
@@ -46,7 +52,7 @@ Storymap depends on some common javascript libraries, including:
 - [Leaflet](http://leafletjs.com/)
 - [Bootstrap 3](http://getbootstrap.com/)
 
-> **Note:**The 3d Storymap uses [Cesium](http://cesiumjs.org/) instead of leaflet.
+> **Note:** The 3d Storymap uses [Cesium](http://cesiumjs.org/) instead of leaflet.
 
 ## Usage
 
