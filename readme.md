@@ -46,6 +46,8 @@ Storymap depends on some common javascript libraries, including:
 - [Leaflet](http://leafletjs.com/)
 - [Bootstrap 3](http://getbootstrap.com/)
 
+> **Note:**The 3d Storymap uses [Cesium](http://cesiumjs.org/) instead of leaflet.
+
 ## Usage
 
 In this section, we will walk through the process of making a basic storymap. You can browse the application at [http://rawgit.com/jakobzhao/storymap/master/examples/helloWorld/index.html](http://rawgit.com/jakobzhao/storymap/master/examples/helloWorld/index.html). Above all, you need to include some prerequisite stylesheets and javascript libraries in the head tag.
