@@ -66,8 +66,8 @@ L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png').addTo(m
 
 d3.json('assets/earthquakes.geojson', function(data) {
 
-  //create crossfilter and dimensions
-  var filter = crossfilter(data.features); //filter is the root object of crossfilter
+  //create crossfilter and filter all the data.
+  var filter = crossfilter(data.features); //Create a crossfilter, input all the geospatial data.
   var all = filter.groupAll();  // study some of the key functions of crossfilter, such as groupAll, dimension
   var everything = filter.dimension(function(d) {
     return d
