@@ -1,7 +1,5 @@
 {
 "type": "FeatureCollection",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-                                                                                
 "features": [
 { "type": "Feature", "properties": { "time": "2016-09-01T01:37:16.000Z", "latitude": 62.208600, "longitude": -147.818700, "depth": 27.300000, "mag": 1.600000, "magType": "ml", "nst": 21, "gap": 57.599995, "dmin": 0.373699, "rms": 0.590000, "net": "ak", "id": "ak13889515", "updated": "2016-09-01T01:38:21.603Z", "place": "70km NE of Sutton-Alpine, Alaska", "type": "earthquake", "horizontalError": 0.300000, "depthError": 0.200000, "magError": null, "magNst": null, "status": "automatic", "locationSource": "ak", "magSource": "ak" }, "geometry": { "type": "Point", "coordinates": [ -147.8187, 62.2086 ] } },
 { "type": "Feature", "properties": { "time": "2016-09-01T01:33:44.000Z", "latitude": 59.025200, "longitude": -138.566200, "depth": 3.100000, "mag": 1.800000, "magType": "ml", "nst": 9, "gap": 237.599981, "dmin": 0.768958, "rms": 0.590000, "net": "ak", "id": "ak13889514", "updated": "2016-09-01T01:37:17.642Z", "place": "88km SE of Yakutat, Alaska", "type": "earthquake", "horizontalError": 1.500000, "depthError": 0.500000, "magError": null, "magNst": 2, "status": "automatic", "locationSource": "ak", "magSource": "ak" }, "geometry": { "type": "Point", "coordinates": [ -138.5662, 59.0252 ] } },

@@ -2,35 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-
-  <title>Crossfilter Geo Test</title>
+  <title>Geospatial Data Interaction</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" >
   <link rel="stylesheet" href="https://dc-js.github.io/dc.js/css/dc.min.css">
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <link rel="stylesheet" type="text/css" href="../../dist/storymap.css">
-
-  <style>
-
-    .main {
-      background: rgba(243, 243, 243, 0.81);
-    }
-    #mag-chart {
-      width:100%;
-      margin: 0 auto;
-    }
-
-    #date-chart {
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    .dc-data-count {
-      width: 100%;
-      margin: 0 auto;
-    }
-
-  </style>
+  <link rel="stylesheet" type="text/css" href="css/main.css">
 
   <script src="https://dc-js.github.io/dc.js/js/d3.js"></script>
   <script src="https://dc-js.github.io/dc.js/js/crossfilter.js"></script>
@@ -40,7 +18,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!--story map plugin-->
   <script src="../../dist/storymap.js"></script>
-
 </head>
 
 <body>
@@ -117,9 +94,9 @@ d3.json('assets/earthquakes.geojson', function(data) {
       return L.circleMarker(latlng, {
         radius: Math.pow(feature.properties.mag, 2)/2,
         fillColor: "steelblue",
-        color: "#fff",
+        color: "steelblue",
         weight: 1,
-        stroke: false,
+        stroke: true,
         opacity: 0.1,
         fillOpacity: 0.1
       })
@@ -142,7 +119,6 @@ d3.json('assets/earthquakes.geojson', function(data) {
     .xUnits(dc.units.ordinal)
     .yAxis()
     .ticks(3);
-
 
 
   var depthChart = dc.barChart('#depth-chart');
@@ -182,10 +158,10 @@ d3.json('assets/earthquakes.geojson', function(data) {
       all: 'All records selected. Please click on the graph or change the map view to apply filters.'
     });
 
+
   dc.renderAll();
 
   //chart listeners
-
   magChart.on('filtered', function(chart, filter) {
     updateMap()
   });

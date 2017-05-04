@@ -54,7 +54,7 @@
 
 
     var layers = {
-        'Microsoft Bing': [L.tileLayer.bing('AuhiCJHlGzhg93IqUH_oCpl_-ZUrIE6SPftlyGYUvr9Amx5nzA-WqGcPquyFZl4L')], // please apply for your own BING API KEY.
+        'Microsoft Bing': [L.tileLayer('http://api.mapbox.com/styles/v1/zhaobo/cj1zcv9cf000x2rp7zv8yqekr/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoiemhhb2JvIiwiYSI6ImNqMGdpM2RjNDAyMzQzMnJ1d3FuZmF0NnQifQ.yoQP0NDS5F8ePKjaS3EJgQ',{tileSize: 512, zoomOffset: -1})], // please apply for your own BING API KEY.
         'GEE Forest 2010': [ L.tileLayer('http://earthengine.google.org/static/hansen_2013/tree_alpha/{z}/{x}/{y}.png')],
         'Mapbox Satellite': [ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
             id: 'mapbox.satellite'

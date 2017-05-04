@@ -1,0 +1,17 @@
+.main {
+    background: rgba(243, 243, 243, 0.81);
+}
+#mag-chart {
+    width:100%;
+    margin: 0 auto;
+}
+
+#date-chart {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.dc-data-count {
+    width: 100%;
+    margin: 0 auto;
+}

@@ -95,11 +95,11 @@
             var sections = $(element).find(searchfor);
 
 
-
+            //Update the height of the viewing section by changing the co-efficiency
             $.each(sections, function (key, element) {
                 var section = $(element);
-                if (section.height() <= $(window).height() * 0.67) {
-                    section.height($(window).height() * 0.67)
+                if (section.height() <= $(window).height() * 0.33) {
+                    section.height($(window).height() * 0.33)
                 }
             });
 
