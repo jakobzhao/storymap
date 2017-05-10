@@ -24,6 +24,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-6 col-md-4 main">
+        <p>This application is greatly inspired by chriswhong's <a href="https://github.com/chriswhong/crossfilter-geo-input" target="_blank">crossfilter-geo-input application</a>.</p>
         <div class="dc-data-count"></div>
         <h4>Count by Magnitude</h4>
         <div id="mag-chart"></div>
@@ -39,7 +40,7 @@
 <script>
 
 var map = L.map('map', {zoomControl: false, scrollWheelZoom: true}).setView([30,-150], 3);
-L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png').addTo(map);
+L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png').addTo(map);
 
 d3.json('assets/earthquakes.geojson', function(data) {
 
