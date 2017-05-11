@@ -130,7 +130,6 @@
                 }
 
 
-
                 // Change the arrow-down icon to the home icon when reaching the last scene.
                 if ($(this).data('scene') === sections.last().data('scene')) {
                     $(".arrow-down").removeClass("glyphicon-menu-down")

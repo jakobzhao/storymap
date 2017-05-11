@@ -11,21 +11,17 @@
     <meta property="og:image" content="../../img/social.png" />
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
     <!--animation-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-
     <!--facebook and info icons-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
     <!--use a better font for this web map-->
-    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-
-
-    <link rel="stylesheet" type="text/css" href="../../dist/storymap.css">
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lobster'>
+    <link rel="stylesheet" href="../../dist/storymap.css">
     <!--add favicon for the web page-->
     <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+
     <style>
         .end-background-img {
             background: url(../../assets/end.jpg) no-repeat center center fixed;
@@ -33,7 +29,7 @@
     </style>
 
     <!--add required libraries-->
-    <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
@@ -217,7 +213,7 @@
 
         createMap: function () {
             // create a map in the "map" div, set the view to a given place and zoom
-            var map = L.map('map', {zoomControl: false, scrollWheelZoom: false});
+            var map = L.map('map', {zoomControl: false, scrollWheelZoom: false}).setView([44, -120], 7);
 
             // add an base map, which can be either OSM, mapbox, tilelayer, wmslayer or those designed by yourself.
             L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
