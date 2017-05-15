@@ -141,8 +141,8 @@ If you want to activate the navigation bar and the scrolling down arrow, you wil
     </div>
     <!--add a scrolling down arrow-->
     <div class="animated zoomIn infinite glyphicon glyphicon-menu-down arrow-down"></div>
-    <!--add a navigation bar-->
-    <div class="navbar text-center"></div>
+    <!--add a navigation navwidget-->
+    <div class="navwidget text-center"></div>
 </div>
 ```
 
@@ -283,7 +283,7 @@ $('.main').storymap({
   layers: layers,
   legend: true,
   scale: true,
-  navbar: true,
+  navwidget: true,
   createMap: function () {
     var map = L.map('map', {zoomControl: false}).setView([44, -120], 7);
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {

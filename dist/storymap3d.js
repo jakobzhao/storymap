@@ -1,6 +1,6 @@
 // Modified by Bo Zhao, zhao2@oregonstate.edu
 // Originally obtained from http://atlefren.github.io/storymap/
-// Updated on 2/22/2017 | version 2.1 | MIT License
+// Updated on 5/14/2017 | version 2.22 | MIT License
 (function ($) {
 
     $.fn.storymap = function(options) {
@@ -10,7 +10,7 @@
             breakpointPos: '33.333%',
             legend: false,
             scale: false,
-            navbar: false,
+            navwidget: false,
             createMap: function () {
                 var map = L.map('map', {zoomControl: false, renderer: L.svg()}).setView([44, -120], 7);
                 // L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
@@ -181,22 +181,22 @@
 
 
             // create the navigation bar.
-            if (settings.navbar) {
+            if (settings.navwidget) {
                 $.each(sections, function (key, element) {
                     var section = $(element);
                     sceneName = section.data('scene');
                     scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" + sceneName + "\\']').offset().top - $(window).scrollTop());";
                     if (key === 0) {
-                        $(".navbar").append('<li><a class="fa fa-home" data-toggle="tooltip" style="font-size:16px" title="' + sceneName + '" href="' + scrollScript + '" ></a></li>');
+                        $(".navwidget").append('<li><a class="fa fa-home" data-toggle="tooltip" style="font-size:16px" title="' + sceneName + '" href="' + scrollScript + '" ></a></li>');
                     } else {
-                        $(".navbar").append('<li><a class="fa fa-circle" data-toggle="tooltip" title="' + sceneName + '" href="' + scrollScript + '" ></a></li>');
+                        $(".navwidget").append('<li><a class="fa fa-circle" data-toggle="tooltip" title="' + sceneName + '" href="' + scrollScript + '" ></a></li>');
                     }
                 });
 
                 $('[data-toggle="tooltip"]').tooltip({placement: 'right'});
 
 
-                $( ".navbar" ).hover(function() {
+                $( ".navwidget" ).hover(function() {
                     $(this).fadeTo( 100, 0.8 );
                 }, function() {
                     $(this).fadeTo( 500, 0);
