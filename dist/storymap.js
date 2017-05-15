@@ -1,6 +1,6 @@
 // Modified by Bo Zhao, zhao2@oregonstate.edu
 // Originally obtained from http://atlefren.github.io/storymap/
-// Updated on 2/22/2017 | version 2.1 | MIT License
+// Updated on 5/14/2017 | version 2.22 | MIT License
 (function ($) {
 
     $.fn.storymap = function(options) {
@@ -10,7 +10,7 @@
             breakpointPos: '33.333%',
             legend: false,
             scale: false,
-            navbar: false,
+            navwidget: false,
             createMap: function () {
                 var map = L.map('map', {zoomControl: false}).setView([44, -120], 7);
                 // L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
@@ -26,6 +26,12 @@
 
         if (typeof(L) === 'undefined') {
             throw new Error('Storymap requires Laeaflet.');
+        }
+
+        if ($(".navbar").length !== 0) {
+            navbar_height = $(".navbar").height();
+            origin_main_top = $(".main").position().top;
+            $(".main").css({ top: (navbar_height + origin_main_top).toString() + "px"});
         }
 
         function getDistanceToTop(elem, top) {
@@ -95,13 +101,110 @@
             var sections = $(element).find(searchfor);
 
 
-            //Update the height of the viewing section by changing the co-efficiency
+            var map = settings.createMap();
+            var currentLayerGroup = L.layerGroup().addTo(map);
+            var legendControl = L.control({position: 'topright'}); // you can change the position of the legend Control.
+
+            if (settings.scale) {
+                L.control.scale({position: 'bottomright', metric: false}).addTo(map);
+            }
+
+            if (!String.prototype.includes) {
+                String.prototype.includes = function() {
+                    'use strict';
+                    return String.prototype.indexOf.apply(this, arguments) !== -1;
+                };
+            }
+
             $.each(sections, function (key, element) {
                 var section = $(element);
+
+                //Update the height of the viewing section by changing the co-efficiency
                 if (section.height() <= $(window).height() * 0.33) {
                     section.height($(window).height() * 0.33)
                 }
-            });
+
+                if (section[0].className === 'viewing' && scenes[section.data('scene')].position !== "fullpage") {
+                    var scene = scenes[$(section).data('scene')];
+
+                    map.setView([scene.lat, scene.lng], scene.zoom);
+
+                    var layernames = scene.layers;
+                    var legendContent = "";
+                    if(typeof layernames !== 'undefined') {
+                        for (var i = 0; i < layernames.length; i++) {
+                            //add new layers
+                            currentLayerGroup.addLayer(layers[layernames[i]][0]);
+
+                            //add new legends
+                            if (layers[layernames[i]].length === 2) {
+                                legendContent += layers[layernames[i]][1];
+                            }
+                        }
+                    }
+
+                    legendControl.onAdd = function () {
+                        var div = new L.DomUtil.create('div', 'legend');
+                        div.innerHTML = legendContent;
+
+                        return div;
+                    };
+
+                    if (settings.legend === true && legendContent !== "")
+                    {
+                        legendControl.addTo(map);
+
+                        if ($(".navbar").length !== 0) {
+                            navbar_height = $(".navbar").height();
+                            origin_legend_top = $(".legend").position().top;
+                            $(".legend").css({ top: (navbar_height + origin_legend_top).toString() + "px"});
+                        }
+                    }
+
+                }
+            } );
+
+            function showMapView(key) {
+
+                currentLayerGroup.clearLayers();
+
+                if (settings.legend === true)
+                {
+                    legendControl.remove();
+                }
+
+                var scene = scenes[key];
+                var layernames = scene.layers;
+                var legendContent = "";
+
+                if(typeof layernames !== 'undefined' && scene.position !== "fullpage") {
+                    for (var i=0; i < layernames.length; i++)
+                    {
+                        currentLayerGroup.addLayer(layers[layernames[i]][0]);
+                        if (layers[layernames[i]].length === 2)  {
+                            legendContent += layers[layernames[i]][1];
+                        }
+                    }
+                }
+
+                legendControl.onAdd = function () {
+                    var div = new L.DomUtil.create('div', 'legend');
+                    div.innerHTML = legendContent;
+                    return div;
+                };
+
+                // the condition legendContent != "" will make sure the legend will only be added on when there is content in the legend.
+                if (settings.legend === true && legendContent !== "")
+                {
+                    legendControl.addTo(map);
+                    if ($(".navbar").length !== 0) {
+                        navbar_height = $(".navbar").height();
+                        origin_legend_top = $(".legend").position().top;
+                        $(".legend").css({ top: (navbar_height + origin_legend_top).toString() + "px"});
+                    }
+                }
+                map.setView([scene.lat, scene.lng], scene.zoom, 1);
+            }
 
             sections.on('viewing', function () {
                 $(this).addClass('viewing');
@@ -129,8 +232,7 @@
                     console.log("no position parameter.")
                 }
 
-
-                // Change the arrow-down icon to the home icon when reaching the last scene.
+                // // Change the arrow-down icon to the home icon when reaching the last scene.
                 if ($(this).data('scene') === sections.last().data('scene')) {
                     $(".arrow-down").removeClass("glyphicon-menu-down")
                         .addClass("glyphicon-home");
@@ -147,7 +249,7 @@
                     $(".arrow-down").removeClass("animated");
                 }
 
-
+                showMapView($(this).data('scene'));
 
             });
 
@@ -164,26 +266,16 @@
 
             watchHighlight(element, searchfor, top);
 
-            if (!String.prototype.includes) {
-                String.prototype.includes = function() {
-                    'use strict';
-                    return String.prototype.indexOf.apply(this, arguments) !== -1;
-                };
-            }
-
-
             $('.arrow-down').click(function () {
                 if ($(".arrow-down")[0].className.includes("menu")) {
                     window.scrollBy(0, $(".viewing").offset().top -$(window).scrollTop() + $('.viewing').height());
                 } else if ($(".arrow-down")[0].className.includes("home")) {
                     window.scrollTo(0, 0);
                 }
-
             });
 
-
-            // create the navigation bar.
-            if (settings.navbar) {
+            // create the navigation widget anchored on the side.
+            if (settings.navwidget) {
                 $.each(sections, function (key, element) {
                     var section = $(element);
                     // if no name attribute for a specific scene, the name on the navigation bar will be the object name.
@@ -192,108 +284,30 @@
                     } else {
                         sceneName = scenes[section.data('scene')].name.replace(" ","&nbsp;");
                     }
-                    scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" + section.data('scene') + "\\']').offset().top - $(window).scrollTop());";
-                    if (key == 0) {
-                        $(".navbar").append('<li><a class="glyphicon glyphicon-home" data-toggle="tooltip" style="font-size:16px" title="' + sceneName + '" href="' + scrollScript + '" ></a></li>');
+
+                    if ($(".navbar").length !== 0) {
+                        scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" + section.data('scene') + "\\']').offset().top - $(window).scrollTop() - $('.navbar').height() - 10);";
                     } else {
-                        $(".navbar").append('<li><a class="glyphicon glyphicon-one-fine-full-dot" data-toggle="tooltip" title="' + sceneName + '" href="' + scrollScript + '" ></a></li>');
+                        scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" + section.data('scene') + "\\']').offset().top - $(window).scrollTop() - 10);";
+                    }
+
+                    if (key == 0) {
+                        $(".navwidget").append('<li><a class="glyphicon glyphicon-home" data-toggle="tooltip" style="font-size:16px" title="' + sceneName + '" href="' + scrollScript + '" ></a></li>');
+                    } else {
+                        $(".navwidget").append('<li><a class="glyphicon glyphicon-one-fine-full-dot" data-toggle="tooltip" title="' + sceneName + '" href="' + scrollScript + '" ></a></li>');
                     }
                 });
 
                 $('[data-toggle="tooltip"]').tooltip({placement: 'right', html: true});
 
 
-                $( ".navbar" ).hover(function() {
+                $( ".navwidget" ).hover(function() {
                     $(this).fadeTo( 100, 0.8 );
                 }, function() {
                     $(this).fadeTo( 300, 0);
                 });
             }
 
-
-            var map = settings.createMap();
-            var currentLayerGroup = L.layerGroup().addTo(map);
-            var legendControl = L.control({position: 'topright'}); // you can change the position of the legend Control.
-
-            if (settings.scale) {
-                L.control.scale({position: 'bottomright', metric: false}).addTo(map);
-            }
-
-            $.each(sections, function (key, element) {
-                var section = $(element);
-                if (section[0].className === 'viewing' && scenes[section.data('scene')].position !== "fullpage") {
-                    var scene = scenes[$(section).data('scene')];
-                    map.setView([scene.lat, scene.lng], scene.zoom);
-
-                    var layernames = scene.layers;
-                    var legendContent = "";
-                    if(typeof layernames !== 'undefined') {
-                        for (var i = 0; i < layernames.length; i++) {
-                            //add new layers
-                            currentLayerGroup.addLayer(layers[layernames[i]][0]);
-
-                            //add new legends
-                            if (layers[layernames[i]].length === 2) {
-                                legendContent += layers[layernames[i]][1];
-                            }
-                        }
-                    }
-
-                    legendControl.onAdd = function () {
-                        var div = new L.DomUtil.create('div', 'legend');
-                        div.innerHTML = legendContent;
-                        return div;
-                    };
-
-                    if (settings.legend === true && legendContent !== "")
-                    {
-                        legendControl.addTo(map);
-                    }
-                }
-            } );
-
-            function showMapView(key) {
-
-                currentLayerGroup.clearLayers();
-
-                if (settings.legend === true)
-                {
-                    legendControl.remove();
-                }
-
-                var scene = scenes[key];
-
-                var layernames = scene.layers;
-                var legendContent = "";
-                if(typeof layernames !== 'undefined' && scene.position !== "fullpage") {
-                    for (var i=0; i < layernames.length; i++)
-                    {
-                        currentLayerGroup.addLayer(layers[layernames[i]][0]);
-
-                        if (layers[layernames[i]].length === 2)  {
-                            legendContent += layers[layernames[i]][1];
-                        }
-                    }
-                }
-
-                legendControl.onAdd = function () {
-                    var div = new L.DomUtil.create('div', 'legend');
-                    div.innerHTML = legendContent;
-                    return div;
-                };
-
-                // the condition legendContent != "" will make sure the legend will only be added on when there is content in the legend.
-                if (settings.legend === true && legendContent !== "")
-                {
-                    legendControl.addTo(map);
-                }
-
-                map.setView([scene.lat, scene.lng], scene.zoom, 1);
-            }
-
-            sections.on('viewing', function () {
-                showMapView($(this).data('scene'));
-            });
         };
 
         makeStoryMap(this, settings.scenes, settings.layers);

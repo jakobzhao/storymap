@@ -1,6 +1,7 @@
 body {
     margin: 0;
-    font-family:  'Open Sans', sans-serif;
+    font-family: sans-serif;
+    font-size: 12px;
 
 }
 
@@ -58,7 +59,7 @@ h3 {
     font-size: 40px;
 }
 
-.navbar {
+.navwidget {
     position: fixed;
     top: 40%;
     left: 0;
@@ -80,22 +81,33 @@ h3 {
     font-size: 2em;
 }
 
-.navbar > li {
+
+.navwidget > li {
     position: relative;
     display: block !important;
     cursor: pointer;
 }
 
-.navbar li a {
+.navwidget li a {
     outline: 1px;
-    outline-color: azure;
+    outline-color: rgba(63, 63, 63, 0.3);
     border: 0;
     padding: 4px;
     background-color: transparent;
 }
 
-.navbar li a:visited,.navbar li a:active, .navbar li a:link  {color: rgba(62, 62, 62, 0.6); text-decoration:none}
-.navbar li a:hover   {color: rgba(234, 234, 234, 0.68); text-decoration:none; font-size:12px}
+.navwidget li a:visited,.navwidget li a:active, .navwidget li a:link  {color: rgba(62, 62, 62, 0.6); text-decoration:none}
+.navwidget li a:hover   {color: rgba(234, 234, 234, 0.68); text-decoration:none; font-size:12px}
+
+
+.navbar-nav > li > a, .navbar-brand {
+    padding-top:6px !important;
+    padding-bottom:0 !important;
+    height: 32px;
+}
+.navbar {min-height:32px !important;}
+
+
 
 /*support video in IE 8 and 9*/
 video {display: block;}

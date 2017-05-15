@@ -1,7 +1,10 @@
 # storymap.js changelog
 
-
 (all changes without author notice are by [@jakbzhao, Bo Zhao](https://github.com/jakobzhao))
+
+## 2.22 (05/14/2017)
+
+* change the navbar class to navwidget, in order to be compatible with Boostraps's navbar elements
 
 ## 2.20 (04/14/2017)
 

@@ -4,12 +4,34 @@ Storymap.js is a javascript map library to tell a story using web maps. Using th
 
 ![](img/logo.png)
 
-The new version supports:
 
+The new version 2.22 supports:
+
+* Add a [nav bar](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/navbar/index.html) on the top;
 * **3D thematic map** [a preview](http://rawgit.com/jakobzhao/storymap/master/examples/3d/index.html);
 * add video as background;
 * animated arrow-down icon; and
 * add a navigation bar on the left of the browser view.
+
+In order to be compatible with the Boostrap's navbar elements, I changed the name of the **navbar** class to **navwidget**. Now, to adopt a **navwidget** in your mapstory, you need to change the **navbar** parameter in the storymap as `true`:
+
+```javascript
+   $('.main').storymap({
+        scenes: scenes,
+        layers: layers,
+        legend: true,
+        scale: true,
+        navwidget: true, // the default value is false
+        ...
+```
+
+Then, in the html, include the following line:
+
+```html
+<div class="navwidget text-center"></div>
+```
+
+In addition, you can make a navbar on the top, please see [the example](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/navbar/index.html)
 
 ## Demo
 
