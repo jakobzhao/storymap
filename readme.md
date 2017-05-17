@@ -84,12 +84,12 @@ In this section, we will walk through the process of making a basic storymap. Yo
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   	<!--add required stylesheets-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
   	<!--animation-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   
     <!--add required libraries-->
-    <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -204,11 +204,7 @@ element.storymap({
     legend: false, // the legend is invisible, if the legend parameter is false.
     createMap: function () {
       var map = L.map('map', {zoomControl: false}).setView([44, -120], 7);
-      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
-        maxZoom: 18,
-        attribution: '',
-        id: 'mapbox.light'
-      }).addTo(map);
+      L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png').addTo(map);
       return map;
     }
 })
@@ -285,11 +281,7 @@ $('.main').storymap({
   navwidget: true,
   createMap: function () {
     var map = L.map('map', {zoomControl: false}).setView([44, -120], 7);
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
-      maxZoom: 18,
-      attribution: '',
-      id: 'mapbox.light'
-    }).addTo(map);
+    L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png').addTo(map);
     return map;
   }
 });
