@@ -5,7 +5,7 @@
 The latest version supports: :new:
 
 * Add a [nav bar](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/navbar/index.html) on the top;
-* **3D thematic map** [a preview](http://rawgit.com/jakobzhao/storymap/master/examples/3d/index.html);
+* [3D thematic map](http://rawgit.com/jakobzhao/storymap/master/examples/3d/index.html);
 * add video as background; and
 * animated arrow-down icon.
 
