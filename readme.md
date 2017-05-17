@@ -31,7 +31,7 @@ In the meantime, you can make a navbar on the top, please see the example at [he
 
 ## Demo
 
-- [fullpage video or images](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/video/index.html)
+- [Fullpage video or images](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/video/index.html)
 
 ![](img/fullpage.png)
 
@@ -41,17 +41,11 @@ In the meantime, you can make a navbar on the top, please see the example at [he
 
 ![](img/symbolization.png)
 
-- Basemaps
-
-    1\. [tileLayers for Stormap](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/tileLayer/index.html)
-
-    2\. [Leaflet (basemnap) Preview](https://leaflet-extras.github.io/leaflet-providers/preview/)
-
+- [TileLayers for Stormap](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/tileLayer/index.html)
 
 - [Data Interaction](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/dataInteraction/index.html)
 
 ![](img/datainteraction.png)
-
 
 - [Example: Oregon Drink Water](http://rawgit.com/cartobaldrica/water_atlas/master/drinking_index.html) -  made by [cartobaldrica](https://github.com/cartobaldrica)
 
