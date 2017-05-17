@@ -299,7 +299,7 @@ $('.main').storymap({
 
 Storymap is currently maintained by the [Cartography and Geovisualization group](geoviz.ceoas.oregonstate.edu) at Oregon State University.
 
-<img src="img/geoviz_osu.png" height="25%" width="25%"/>
+<img src="img/geoviz_osu.png" height="30%" width="30%"/>
 
 - **[Bo Zhao](https://ceoas.oregonstate.edu/profile/zhao/)** (Project Leader)
 
