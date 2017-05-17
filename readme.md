@@ -73,7 +73,7 @@ Storymap depends on some common javascript libraries, including:
 
 ## Usage
 
-In this section, we will walk through the process of making a basic storymap. You can browse the application at [http://rawgit.com/jakobzhao/storymap/master/examples/helloWorld/index.html](http://rawgit.com/jakobzhao/storymap/master/examples/helloWorld/index.html). Above all, you need to include some prerequisite stylesheets and javascript libraries in the head tag.
+In this section, we will walk through the process of making a basic storymap. You can browse the application at [here](http://rawgit.com/jakobzhao/storymap/master/examples/helloWorld/index.html). Above all, you need to include some prerequisite stylesheets and javascript libraries in the head tag.
 
 ```html
 <!DOCTYPE html>
@@ -294,8 +294,6 @@ $('.main').storymap({
   }
 });
 ```
-
-In order to see how the code works, you can see the application (as well as the code) of the story map at [the Hello World Example](http://rawgit.com/jakobzhao/storymap/master/examples/helloWorld/index.html).
 
 ## Team
 
