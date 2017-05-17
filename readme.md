@@ -4,8 +4,8 @@
 
 The latest version supports:
 
-* Add a [nav bar](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/navbar/index.html) on the top;
-* [3D thematic map](http://rawgit.com/jakobzhao/storymap/master/examples/3d/index.html);
+* add a [nav bar](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/navbar/index.html) on the top;
+* [3d thematic map](http://rawgit.com/jakobzhao/storymap/master/examples/3d/index.html);
 * add video as background; and
 * animated arrow-down icon.
 
