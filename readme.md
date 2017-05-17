@@ -309,4 +309,4 @@ Storymap is currently maintained by the [Cartography and Geovisualization group]
 
 ## License
 
-This storymap map library is under the MIT license.
+This storymap map library is under [the MIT license](LICENSE).
