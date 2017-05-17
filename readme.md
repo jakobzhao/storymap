@@ -295,7 +295,9 @@ In order to see how the code works, you can see the application (as well as the 
 ![the story map template](img/template.png)
 
 ## Team
-Storymap is currently maintained by the [Cartography and Geovisualization group](geoviz.ceoas.oregonstate.edu) at Oregon State University. <img src="img/geoviz_osu.png" height="25%" width="25%" align="right"/>
+Storymap is currently maintained by the [Cartography and Geovisualization group](geoviz.ceoas.oregonstate.edu) at Oregon State University.
+
+<img src="img/geoviz_osu.png" height="25%" width="25%"/>
 
 - **[Bo Zhao](https://ceoas.oregonstate.edu/profile/zhao/)** (Project Leader)
 
