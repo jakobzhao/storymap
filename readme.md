@@ -17,7 +17,7 @@ In order to be compatible with the Boostrap's navbar elements, I changed the nam
         layers: layers,
         legend: true,
         scale: true,
-        navwidget: true, // the default value is false
+        navwidget: true,
         ...
 ```
 
