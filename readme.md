@@ -179,6 +179,11 @@ A Story Map
 │             │──── Layer 1
 │             │──── Layer 2
 │             │──── Layer N
+│
+│... ... ... ... ... ... ...
+│... ... ... ... ... ... ...
+│... ... ... ... ... ... ...
+│
 ├───Scene N: Falling action and Resolution
 │      │──── Content 5
 │      │──── Map 5
@@ -188,7 +193,7 @@ A Story Map
 │             │──── Layer N
 ```
 
-To script a story map, you need to define a storymap object as below:
+To make a story map, you need to construct a storymap object as below:
 
 ```javascript
 element.storymap({
