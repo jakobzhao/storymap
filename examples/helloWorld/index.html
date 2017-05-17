@@ -69,11 +69,7 @@
         navwidget: true,
         createMap: function () {
             var map = L.map('map', {zoomControl: false}).setView([44, -120], 7);
-            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
-                maxZoom: 18,
-                attribution: '',
-                id: 'mapbox.light'
-            }).addTo(map);
+            L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png').addTo(map);
             return map;
         }
     });

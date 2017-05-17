@@ -216,11 +216,7 @@
             var map = L.map('map', {zoomControl: false, scrollWheelZoom: false}).setView([44, -120], 7);
 
             // add an base map, which can be either OSM, mapbox, tilelayer, wmslayer or those designed by yourself.
-            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
-                maxZoom: 18,
-                attribution: '<a href="http://ceoas.oregonstate.edu/profile/zhao/" target="_blank">Bo Zhao</a>',
-                id: 'mapbox.light' // ,detectRetina: true
-            }).addTo(map);
+            L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png').addTo(map);
 
 
             // create a mini globe as the overview map control.
