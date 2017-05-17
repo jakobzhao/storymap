@@ -34,8 +34,6 @@ In addition, you can make a navbar on the top, please see [the example](http://c
 
 ## Demo
 
-See demos at
-
 - [fullpage video or images](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/video/index.html)
 
 ![](img/fullpage.png)
