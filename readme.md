@@ -10,7 +10,7 @@ The latest version supports: :new:
 * add video as background; and
 * animated arrow-down icon.
 
-In order to be compatible with the Boostrap's navbar elements, I changed the name of the **navbar** class to **navwidget**. Now, to adopt a **navwidget** in your mapstory, you need to change the **navbar** parameter in the storymap as `true`:
+In order to be compatible with the Boostrap's navbar elements, I changed the name of the **navbar** class to **navwidget**. Now, to adopt a **navwidget** in your mapstory, you need to change the **navwidget** parameter in the storymap as `true`:
 
 ```javascript
    $('.main').storymap({
@@ -28,7 +28,7 @@ Then, in the html, include the following line:
 <div class="navwidget text-center"></div>
 ```
 
-In addition, you can make a navbar on the top, please see [the example](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/navbar/index.html)
+In the meantime, you can make a navbar on the top, please see [the example](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/navbar/index.html)
 
 ## Demo
 
