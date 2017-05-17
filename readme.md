@@ -295,9 +295,7 @@ $('.main').storymap({
 });
 ```
 
-In order to see how the code works, you can see the application (as well as the code) of the story map at [Hello World Example](http://rawgit.com/jakobzhao/storymap/master/examples/helloWorld/index.html).
-
-![the story map template](img/template.png)
+In order to see how the code works, you can see the application (as well as the code) of the story map at [the Hello World Example](http://rawgit.com/jakobzhao/storymap/master/examples/helloWorld/index.html).
 
 ## Team
 
