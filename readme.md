@@ -1,17 +1,16 @@
 # Storymap
 
-Storymap.js is a javascript map library to tell a story using web maps. Using this library, you can create a map that follows a storyline. For each paragraph, you can place a map alongside it, and manipulate the map by zooming, panning, and even adding more thematic layers. This map library follows the concept **responsive design**, meaning the stories can be shown on any Desktop or mobile devices. This library is initially developed for the use of the course **GEOG 371 Geovisualization: Web Mapping** at Oregon State University, and now it has been used for multiple geovisualization related courses.
+<img src="img/logo.png" height="80%" width="80%"/>
 
-![](img/logo.png)
+Storymap.js is a javascript map library to help you tell a story using web maps. A storymap are organically made up by several scence. For each scene, there is a paragraph and a web map which helps to elabrate the paragraph. You can manipulate the map by zooming, panning, and even adding more thematic layers. This map library embodies the concept responsive web design, meaning the storymaps can be shown on any Desktop or mobile devices. This library is currently maintained by Cartography and Geovisualization Group at Oregon State University, and have been used for multiple geovisualization related courses.
 
 
-The new version 2.22 supports:
+The latest version supports: :new:
 
 * Add a [nav bar](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/navbar/index.html) on the top;
 * **3D thematic map** [a preview](http://rawgit.com/jakobzhao/storymap/master/examples/3d/index.html);
-* add video as background;
-* animated arrow-down icon; and
-* add a navigation bar on the left of the browser view.
+* add video as background; and
+* animated arrow-down icon.
 
 In order to be compatible with the Boostrap's navbar elements, I changed the name of the **navbar** class to **navwidget**. Now, to adopt a **navwidget** in your mapstory, you need to change the **navbar** parameter in the storymap as `true`:
 
