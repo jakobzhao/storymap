@@ -301,13 +301,13 @@ In order to see how the code works, you can see the application (as well as the 
 ![the story map template](img/template.png)
 
 ## Team
-Storymap is currently maintained by the cartography group at Oregon State University.
+Storymap is currently maintained by the [Cartography and Geovisualization group](geoviz.ceoas.oregonstate.edu) at Oregon State University.
 
 <img src="img/geoviz_osu.png" height="30%" width="30%"/>
 
-Project Leader: **[Bo Zhao](https://ceoas.oregonstate.edu/profile/zhao/)**
+- **[Bo Zhao](https://ceoas.oregonstate.edu/profile/zhao/)** (Project Leader)
 
-Members: **[Gareth Baldrica-franklin](https://github.com/cartobaldrica)**
+- **[Gareth Baldrica-franklin](https://github.com/cartobaldrica)**
 
 ## License
 
