@@ -9,7 +9,7 @@ The latest version supports:
 * add video as background; and
 * animated arrow-down icon.
 
-In order to be compatible with the Boostrap's navbar elements, I changed the name of the **navbar** class to **navwidget**. Now, to adopt a **navwidget** in your mapstory, you need to change the **navwidget** parameter in the storymap as `true`:
+In order to be compatible with the Boostrap's **navbar** elements, I changed the name of the original **navbar** class to **navwidget**. Now, if you want to adopt a **navwidget** in your storymap, you need to change the **navwidget** parameter to `true`:
 
 ```javascript
    $('.main').storymap({
