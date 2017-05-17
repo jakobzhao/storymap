@@ -13,11 +13,7 @@
             navwidget: false,
             createMap: function () {
                 var map = L.map('map', {zoomControl: false}).setView([44, -120], 7);
-                // L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
-                //     maxZoom: 18,
-                //     attribution: '',
-                //     id: 'mapbox.light'
-                // }).addTo(map);
+                L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png');
                 return map;
             }
         };
@@ -35,6 +31,7 @@
         }
 
         function getDistanceToTop(elem, top) {
+
             var docViewTop = $(window).scrollTop();
 
             var elemTop = $(elem).offset().top;
@@ -79,8 +76,10 @@
         }
 
         function watchHighlight(element, searchfor, top) {
+
             var sections = element.find(searchfor);
             highlightTopPara(sections, top);
+
             $(window).scroll(function () {
                 highlightTopPara(sections, top);
             });
@@ -117,6 +116,7 @@
             }
 
             $.each(sections, function (key, element) {
+
                 var section = $(element);
 
                 //Update the height of the viewing section by changing the co-efficiency
@@ -125,8 +125,8 @@
                 }
 
                 if (section[0].className === 'viewing' && scenes[section.data('scene')].position !== "fullpage") {
-                    var scene = scenes[$(section).data('scene')];
 
+                    var scene = scenes[$(section).data('scene')];
                     map.setView([scene.lat, scene.lng], scene.zoom);
 
                     var layernames = scene.layers;
@@ -207,8 +207,9 @@
             }
 
             sections.on('viewing', function () {
-                $(this).addClass('viewing');
 
+
+                $(this).addClass('viewing');
                 $(".arrow-down").css("left", "2%");
 
                 if (scenes[$(this).data('scene')].position === "fullpage") {

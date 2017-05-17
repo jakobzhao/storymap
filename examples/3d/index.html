@@ -26,7 +26,38 @@
     <!--story map plugin-->
     <title> Storytelling Using Virtual Globe</title>
 </head>
+<body>
 
+<div class="navbar navbar-inverse navbar-fixed-top navbar-toggleable-md" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+
+        <!--<a class="navbar-brand" href="#"></a>-->
+            <a class="navbar-brand" href="#">
+                <img src="../../img/logo.png" class="align-top" height="20px" align="left"> &nbsp; 3D Storymap
+            </a>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=overview]').offset().top - $(window).scrollTop() - 40);">Home</a>
+                </li>
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=scene1]').offset().top - $(window).scrollTop() - 40);">New York</a>
+                </li>
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=scene2]').offset().top - $(window).scrollTop() - 40);">Oregon</a>
+                </li>
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=end]').offset().top - $(window).scrollTop() - 40);">End</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</div>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-6 col-md-4 main">
@@ -66,9 +97,22 @@
     <div class="animated zoomIn infinite glyphicon glyphicon-menu-down arrow-down"></div>
     <!--add a navigation bar-->
     <div class="navwidget text-center"></div>
+    <!--add loading page -->
+    <div id="loading">
+        <i class="animated zoomIn infinite glyphicon glyphicon-globe"></i>
+    </div>
+
+
 </div>
 <script>
-
+    // Set function for color ramp
+    function setColor(density){
+        return density > 1200 ? '#bd0026' :
+                density > 650 ?  '#f03b20' :
+                density > 400 ?  '#fd8d3c' :
+                density > 260 ?  '#fecc5c' :
+                '#ffffb2' ;
+    }
 
     var layer1 = new Cesium.GeoJsonDataSource();
 
@@ -99,33 +143,38 @@
         accessToken : 'pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpenh0dG41ZjAyY3gzMXFsdTJqbm5oNmwifQ.ucAGT19EfvxX2EUaHUwAxA'
     });
 
+    var layer4 =  new Cesium.UrlTemplateImageryProvider({
+        url : 'http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png'
+    });
 
     var layers = {
         'layer1': [layer1],
         'layer2': [layer2],
-        'layer3': [layer3]
+        'layer3': [layer3],
+        'layer4': [layer4]
     };
 
     var scenes = {
         overview: {lat: 44, lng: -123.5, zoom: 7, mode: 3, layers: [], position: "fullpage"},
-        scene1: {lat: 44, lng: -123.5, zoom: 7, mode: 3, layers: ['layer1', 'layer3']},
+        scene1: {lat: 44, lng: -123.5, zoom: 7, mode: 3, layers: ['layer1']},
         scene2: {lat: 45.5186089, lng: -122.7270297, mode: 3, zoom: 11, layers: ['layer2']},
         end: {lat: 44, lng: -123.5, zoom: 7, mode: 3, layers: [], position: "fullpage"}
     };
-
 
     $('.main').storymap({
         scenes: scenes,
         layers: layers,
         navwidget: true,
-
         createMap: function () {
             var map = new Cesium.Viewer('map', {
                 terrainProvider : new Cesium.CesiumTerrainProvider({
                         url : 'https://assets.agi.com/stk-terrain/world',
-                        requestWaterMask: true,
-                        requestVertexNormals: true
+                        requestWaterMask: false,
+                        requestVertexNormals: false
                     }),
+                imageryProvider :  new Cesium.ArcGisMapServerImageryProvider({
+                    url :  'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer'
+                }),
                 vrButton: false,  // virtual reality support
                 infoBox: false, // pick a feature and show its attributes
                 sceneModePicker: false, // 2d, 2.5d and 3d
@@ -147,14 +196,6 @@
         }
     });
 
-    // Set function for color ramp
-    function setColor(density){
-        return density > 1200 ? '#bd0026' :
-            density > 650 ?  '#f03b20' :
-                density > 400 ?  '#fd8d3c' :
-                    density > 260 ?  '#fecc5c' :
-                        '#ffffb2' ;
-    }
 </script>
 </body>
 </html>
