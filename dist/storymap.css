@@ -276,10 +276,10 @@ section {
 }
 
 .progress-line {
-    position: absolute;
+    position: fixed;
     top:0px;
     left:0px;
-    z-index: 1001;
+    z-index: 1030;
     height: 3px;
     background: rgba(255, 30, 0, 0.80);
     width: 0%;
