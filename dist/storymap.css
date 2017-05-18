@@ -279,10 +279,9 @@ section {
     position: absolute;
     top:0px;
     left:0px;
-    z-index: 3003;
-    height: 2px;
-    margin-bottom: -2px;
-    background: rgba(255, 58, 2, 0.80);
+    z-index: 1001;
+    height: 3px;
+    background: rgba(255, 30, 0, 0.80);
     width: 0%;
 }
 

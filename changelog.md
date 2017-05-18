@@ -2,6 +2,10 @@
 
 (all changes without author notice are by [@jakbzhao, Bo Zhao](https://github.com/jakobzhao))
 
+
+## 2.25 (05/16/2017)
+* Progress Line
+
 ## 2.22 (05/14/2017)
 
 * change the navbar class to navwidget, in order to be compatible with Boostraps's navbar elements
