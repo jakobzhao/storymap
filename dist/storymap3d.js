@@ -284,6 +284,18 @@
 
             });
 
+
+            // create a progress line
+            $(window).scroll(function(){
+                var wintop = $(window).scrollTop(), docheight =
+
+                    $(document).height(), winheight = $(window).height();
+                var scrolled = (wintop/(docheight-winheight))*100;
+
+                $('.progress-line').css('width', (scrolled + '%'));
+            });
+
+
             // create the navigation widget anchored on the side.
             if (settings.navwidget) {
                 $.each(sections, function (key, element) {

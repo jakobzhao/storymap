@@ -26,7 +26,7 @@ h3 {
 
 .main {
     padding: 20px;
-    padding-bottom: 1600px;
+    padding-bottom: 800px;
     z-index: 1001;
     display: block;
 }
@@ -274,3 +274,66 @@ section {
     line-height: 16px;
     margin: 0;
 }
+
+.progress-line {
+    position: absolute;
+    top:0px;
+    left:0px;
+    z-index: 3003;
+    height: 2px;
+    margin-bottom: -2px;
+    background: rgba(255, 58, 2, 0.80);
+    width: 0%;
+}
+
+
+/*.icon-scroll,*/
+/*.icon-scroll:before {*/
+    /*position: absolute;*/
+    /*left: 50%;*/
+/*}*/
+/*.icon-scroll {*/
+    /*width: 40px;*/
+    /*height: 70px;*/
+    /*margin-left: -20px;*/
+    /*top: 50%;*/
+    /*margin-top: -35px;*/
+    /*box-shadow: inset 0 0 0 1px #fff;*/
+    /*border-radius: 25px;*/
+    /*z-index: 3000*/
+/*}*/
+/*.icon-scroll:before {*/
+    /*content: '';*/
+    /*width: 8px;*/
+    /*height: 8px;*/
+    /*background: #fff;*/
+    /*margin-left: -4px;*/
+    /*top: 8px;*/
+    /*border-radius: 4px;*/
+    /*-webkit-animation-duration: 1.5s;*/
+    /*animation-duration: 1.5s;*/
+    /*-webkit-animation-iteration-count: infinite;*/
+    /*animation-iteration-count: infinite;*/
+    /*-webkit-animation-name: scroll;*/
+    /*animation-name: scroll;*/
+/*}*/
+/*@-webkit-keyframes scroll {*/
+    /*0% {*/
+        /*opacity: 1;*/
+    /*}*/
+    /*100% {*/
+        /*opacity: 0;*/
+        /*-webkit-transform: translateY(46px);*/
+        /*transform: translateY(46px);*/
+    /*}*/
+/*}*/
+/*@keyframes scroll {*/
+    /*0% {*/
+        /*opacity: 1;*/
+    /*}*/
+    /*100% {*/
+        /*opacity: 0;*/
+        /*-webkit-transform: translateY(46px);*/
+        /*transform: translateY(46px);*/
+    /*}*/
+/*}*/
