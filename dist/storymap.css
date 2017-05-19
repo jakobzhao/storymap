@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: sans-serif;
+    font-family: 'open sans','Helvetica Neue','Helvetica','Arial',sans-serif;
     font-size: 12px;
 
 }
@@ -19,9 +19,10 @@ body {
 h3 {
     margin: 0;
     padding-top: 100px;
-    font-family:  Lobster, 'Open Sans', sans-serif;
-    color: rgba(169, 169, 169, 0.8);
+    font-family: 'open sans','Helvetica Neue','Helvetica','Arial',sans-serif;
+    color: rgba(255, 255, 255, 0.95);
     font-size: 50px;
+    text-shadow: 0 0 6px rgba(0,0,0,.95);
 }
 
 .main {
@@ -220,11 +221,13 @@ section {
     cursor: pointer;
     z-index:1002;
     font-size: 40px;
-    color: rgba(165, 165, 165, 0.6);
+    color: rgba(255, 255, 255, 0.6);
+    text-shadow: 0 0 6px rgba(197, 197, 197, 0.95);
 }
 
 .arrow-down:hover {
     color: rgba(14, 14, 14, 0.8);
+    text-shadow: 0 0 6px rgba(197, 197, 197, 0.95);
 }
 
 
@@ -284,55 +287,3 @@ section {
     background: rgba(255, 30, 0, 0.80);
     width: 0%;
 }
-
-
-/*.icon-scroll,*/
-/*.icon-scroll:before {*/
-    /*position: absolute;*/
-    /*left: 50%;*/
-/*}*/
-/*.icon-scroll {*/
-    /*width: 40px;*/
-    /*height: 70px;*/
-    /*margin-left: -20px;*/
-    /*top: 50%;*/
-    /*margin-top: -35px;*/
-    /*box-shadow: inset 0 0 0 1px #fff;*/
-    /*border-radius: 25px;*/
-    /*z-index: 3000*/
-/*}*/
-/*.icon-scroll:before {*/
-    /*content: '';*/
-    /*width: 8px;*/
-    /*height: 8px;*/
-    /*background: #fff;*/
-    /*margin-left: -4px;*/
-    /*top: 8px;*/
-    /*border-radius: 4px;*/
-    /*-webkit-animation-duration: 1.5s;*/
-    /*animation-duration: 1.5s;*/
-    /*-webkit-animation-iteration-count: infinite;*/
-    /*animation-iteration-count: infinite;*/
-    /*-webkit-animation-name: scroll;*/
-    /*animation-name: scroll;*/
-/*}*/
-/*@-webkit-keyframes scroll {*/
-    /*0% {*/
-        /*opacity: 1;*/
-    /*}*/
-    /*100% {*/
-        /*opacity: 0;*/
-        /*-webkit-transform: translateY(46px);*/
-        /*transform: translateY(46px);*/
-    /*}*/
-/*}*/
-/*@keyframes scroll {*/
-    /*0% {*/
-        /*opacity: 1;*/
-    /*}*/
-    /*100% {*/
-        /*opacity: 0;*/
-        /*-webkit-transform: translateY(46px);*/
-        /*transform: translateY(46px);*/
-    /*}*/
-/*}*/
