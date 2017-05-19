@@ -214,7 +214,10 @@
 
             sections.on('viewing', function () {
 
-                // $("#loading").show();
+                $(".main").fadeTo(0, 0);
+                $(".loader").show();
+
+
                 $(this).addClass('viewing');
                 $(".arrow-down").css("left", "2%");
 
@@ -258,7 +261,13 @@
                 }
 
                 showMapView($(this).data('scene'));
-                //$("#loading").hide();
+
+                $('.viewing').ready(function(){
+                    $(".main").fadeTo(3000, 1);
+                    $(".loader").hide();
+                })
+
+
 
             });
 
@@ -277,7 +286,17 @@
 
             $('.arrow-down').click(function () {
                 if ($(".arrow-down")[0].className.includes("menu")) {
-                    window.scrollBy(0, $(".viewing").offset().top -$(window).scrollTop() + $('.viewing').height());
+
+
+                    if ($(".navbar").length !== 0) {
+
+                        window.scrollBy(0, $(".viewing").offset().top -$(window).scrollTop() - $('.navbar').height() + $('.viewing').height() - 10);
+                    } else {
+                        window.scrollBy(0, $(".viewing").offset().top -$(window).scrollTop() + $('.viewing').height() - 10);
+                    }
+
+
+
                 } else if ($(".arrow-down")[0].className.includes("home")) {
                     window.scrollTo(0, 0);
                 }
@@ -308,9 +327,9 @@
                     }
 
                     if ($(".navbar").length !== 0) {
-                        scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" + section.data('scene') + "\\']').offset().top - $(window).scrollTop() - $('.navbar').height() - 10);";
+                        scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" +  sceneName + "\\']').offset().top - $(window).scrollTop() - $('.navbar').height() - 10);";
                     } else {
-                        scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" + section.data('scene') + "\\']').offset().top - $(window).scrollTop() - 10);";
+                        scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" +  sceneName + "\\']').offset().top - $(window).scrollTop() - 10);";
                     }
 
                     if (key == 0) {
