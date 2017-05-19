@@ -165,8 +165,6 @@
             } );
 
             function showMapView(key) {
-                $(".main").fadeTo(0, 0);
-                $(".loader").show();
 
                 currentLayerGroup.clearLayers();
 
@@ -207,17 +205,13 @@
                 }
                 map.setView([scene.lat, scene.lng], scene.zoom, 1);
 
-                //smooth transation.
-
-                $('.viewing').ready(function(){
-                $(".main").fadeTo(3000, 1);
-                $(".loader").hide();
-                })
             }
 
             sections.on('viewing', function () {
 
 
+                // $(".loading-screen").fadeTo(0,1);
+                $(".loader").fadeTo(0,1);
 
                 $(this).addClass('viewing');
                 $(".arrow-down").css("left", "2%");
@@ -256,7 +250,12 @@
 
                 showMapView($(this).data('scene'));
 
+
+                // $(".loading-screen").fadeTo(3000,0);
+                $(".loader").fadeTo(500,0);
+
             });
+
 
             sections.on('notviewing', function () {
                 $(this).removeClass('viewing');

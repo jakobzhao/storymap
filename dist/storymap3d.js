@@ -214,9 +214,7 @@
 
             sections.on('viewing', function () {
 
-                $(".main").fadeTo(0, 0);
-                $(".loader").show();
-
+                $(".loader").fadeTo(0,1);
 
                 $(this).addClass('viewing');
                 $(".arrow-down").css("left", "2%");
@@ -232,13 +230,6 @@
 
                     $(".arrow-down").css("left", "50%");
 
-                    //smooth transation.
-                    $(".main").fadeTo(0, 0);
-                    $("#loading").show();
-                    $('.viewing').ready(function(){
-                        $(".main").fadeTo(3000, 1);
-                        $("#loading").hide();
-                    });
                 } else {
                     console.log("no position parameter.")
                 }
@@ -262,14 +253,10 @@
 
                 showMapView($(this).data('scene'));
 
-                $('.viewing').ready(function(){
-                    $(".main").fadeTo(3000, 1);
-                    $(".loader").hide();
-                })
-
-
+                $(".loader").fadeTo(500,0);
 
             });
+
 
             sections.on('notviewing', function () {
                 $(this).removeClass('viewing');

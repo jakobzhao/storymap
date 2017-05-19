@@ -28,7 +28,7 @@ h3 {
 
 .main {
     padding: 20px;
-    padding-bottom: 800px;
+    padding-bottom: 1000px;
     z-index: 1001;
     display: block;
 }
@@ -38,31 +38,42 @@ h3 {
     margin-top: 0;
 }
 
+/*.loading-screen {*/
+    /*position: fixed;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /*background: rgba(0, 0, 0, 0.15);*/
+    /*display: none;*/
+    /*z-index: 1002;*/
+/*}*/
+
 .loader {
+    color: rgba(255, 255, 255, 0.95);
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.15);
-    display: none;
-    z-index: 1001;
-    color: rgb(255, 255, 255);
+    top: 45%;
+    left: 50%;
+    font-size: 32px;
+    z-index: 1002;
+    animation: spin 2s linear infinite;
 }
 
-.loader i {
-    color: rgba(63, 63, 63, 0.4);
-    position: fixed;
-    top: 40%;
-    left: 50%;
-    font-size: 40px;
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .navwidget {
     position: fixed;
     top: 40%;
     left: 0;
-    z-index: 1002;
+    z-index: 1005;
     border-radius: 5px;
     background: rgba(115, 115, 115, 0.2);
     color: rgba(63, 63, 63, 0.3);
@@ -217,7 +228,7 @@ section {
     top:90%;
     left:2%;
     cursor: pointer;
-    z-index:1002;
+    z-index:1005;
     font-size: 40px;
     color: rgba(255, 255, 255, 0.6);
     text-shadow: 0 0 6px rgba(197, 197, 197, 0.95);
@@ -234,7 +245,7 @@ section {
     cursor: pointer;
     font-size:16px;
     color: rgba(169, 169, 169, 0.8);
-    z-index:1003;
+    z-index:1005;
     top: 20px;
     left:5px;
 }
