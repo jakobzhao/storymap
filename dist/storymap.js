@@ -25,8 +25,11 @@
         }
 
         if ($(".navbar").length !== 0) {
-            navbar_height = $(".navbar").height();
-            origin_main_top = $(".main").position().top;
+
+            var navbar_height = $(".navbar").height();
+
+            var origin_main_top = $(".main").position().top;
+
             $(".main").css({ top: (navbar_height + origin_main_top).toString() + "px"});
         }
 
@@ -53,7 +56,7 @@
                 return {el: $(element), distance: dist};
             });
 
-            function findMin(pre, cur){
+            function findMin(pre, cur) {
                 if (pre.distance > cur.distance) {
                     return cur;
                 } else {
@@ -64,6 +67,7 @@
             var closest = distances.reduce(findMin);
 
             $.each(sections, function (key, element) {
+
                 var section = $(element);
                 if (section[0] !== closest.el[0]) {
                     section.trigger('notviewing');
@@ -124,44 +128,50 @@
                     section.height($(window).height() * 0.33)
                 }
 
-                if (section[0].className === 'viewing' && scenes[section.data('scene')].position !== "fullpage") {
+                // if (section[0].className === 'viewing' && scenes[section.data('scene')].position !== "fullpage") {
+                //
+                //     var scene = scenes[$(section).data('scene')];
+                //
+                //     map.setView([scene.lat, scene.lng], scene.zoom);
+                //
+                //     var layernames = scene.layers;
+                //     var legendContent = "";
+                //
+                //     if(typeof layernames !== 'undefined') {
+                //
+                //         for (var i = 0; i < layernames.length; i++) {
+                //
+                //             //add new layers
+                //             currentLayerGroup.addLayer(layers[layernames[i]][0]);
+                //
+                //             //add new legends
+                //             if (layers[layernames[i]].length === 2) {
+                //                 legendContent += layers[layernames[i]][1];
+                //             }
+                //         }
+                //     }
+                //
+                //     legendControl.onAdd = function () {
+                //         var div = new L.DomUtil.create('div', 'legend');
+                //         div.innerHTML = legendContent;
+                //
+                //         return div;
+                //     };
+                //
+                //     if (settings.legend === true && legendContent !== "")
+                //     {
+                //         legendControl.addTo(map);
+                //
+                //         if ($(".navbar").length !== 0) {
+                //             navbar_height = $(".navbar").height();
+                //             origin_legend_top = $(".legend").position().top;
+                //             $(".legend").css({ top: (navbar_height + origin_legend_top).toString() + "px"});
+                //         }
+                //     }
+                // }
+                //
 
-                    var scene = scenes[$(section).data('scene')];
-                    map.setView([scene.lat, scene.lng], scene.zoom);
 
-                    var layernames = scene.layers;
-                    var legendContent = "";
-                    if(typeof layernames !== 'undefined') {
-                        for (var i = 0; i < layernames.length; i++) {
-                            //add new layers
-                            currentLayerGroup.addLayer(layers[layernames[i]][0]);
-
-                            //add new legends
-                            if (layers[layernames[i]].length === 2) {
-                                legendContent += layers[layernames[i]][1];
-                            }
-                        }
-                    }
-
-                    legendControl.onAdd = function () {
-                        var div = new L.DomUtil.create('div', 'legend');
-                        div.innerHTML = legendContent;
-
-                        return div;
-                    };
-
-                    if (settings.legend === true && legendContent !== "")
-                    {
-                        legendControl.addTo(map);
-
-                        if ($(".navbar").length !== 0) {
-                            navbar_height = $(".navbar").height();
-                            origin_legend_top = $(".legend").position().top;
-                            $(".legend").css({ top: (navbar_height + origin_legend_top).toString() + "px"});
-                        }
-                    }
-
-                }
             } );
 
             function showMapView(key) {
@@ -223,12 +233,7 @@
                     $(this).find(".background-fullscreen-setting")
                         .addClass('fullpage')
                         .css("display", "block");
-
                     $(".arrow-down").css("left", "50%");
-
-
-                } else {
-                    console.log("no position parameter.")
                 }
 
                 // // Change the arrow-down icon to the home icon when reaching the last scene.
@@ -250,8 +255,6 @@
 
                 showMapView($(this).data('scene'));
 
-
-                // $(".loading-screen").fadeTo(3000,0);
                 $(".loader").fadeTo(500,0);
 
             });
@@ -289,9 +292,7 @@
 
             // create a progress line
             $(window).scroll(function(){
-                var wintop = $(window).scrollTop(), docheight =
-
-                    $(document).height(), winheight = $(window).height();
+                var wintop = $(window).scrollTop(), docheight = $(document).height(), winheight = $(window).height();
                 var scrolled = (wintop/(docheight-winheight))*100;
 
                 $('.progress-line').css('width', (scrolled + '%'));
