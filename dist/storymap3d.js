@@ -91,6 +91,10 @@
                 if (section[0] !== closest.el[0]) {
                     section.trigger('notviewing');
                 }
+
+                if (section.height() <= $(window).height() * 0.33) {
+                    section.height($(window).height() * 0.33)
+                }
             });
 
             if (!closest.el.hasClass('viewing')) {
@@ -131,38 +135,38 @@
                 };
             }
 
-            $.each(sections, function (key, element) {
-
-                var section = $(element);
-
-                //Update the height of the viewing section by changing the co-efficiency
-                if (section.height() <= $(window).height() * 0.33) {
-                    section.height($(window).height() * 0.33)
-                }
-
-                // if (section[0].className === 'viewing' && scenes[section.data('scene')].position !== "fullpage") {
-                //
-                //     var scene = scenes[$(section).data('scene')];
-                //     //map.setView([scene.lat, scene.lng], scene.zoom);
-                //     //map.zoomTo(layers[layernames[0]][0]); //
-                //     var layernames = scene.layers;
-                //     var legendContent = "";
-                //     if(typeof layernames !== 'undefined') {
-                //         for (var i = 0; i < layernames.length; i++) {
-                //             //add new layers
-                //             //currentLayerGroup.addLayer(layers[layernames[i]][0]);
-                //             if (layers[layernames[i]][0].constructor.name === "Y") {
-                //                 map.dataSources.add(layers[layernames[i]][0]);
-                //             }
-                //
-                //             if (layers[layernames[i]][0].constructor.name === "s") {
-                //                 imageryLayers.addImageryProvider(layers[layernames[i]][0]);
-                //             }
-                //         }
-                //     }
-                //
-                // }
-            } );
+            // $.each(sections, function (key, element) {
+            //
+            //     var section = $(element);
+            //
+            //     //Update the height of the viewing section by changing the co-efficiency
+            //     if (section.height() <= $(window).height() * 0.33) {
+            //         section.height($(window).height() * 0.33)
+            //     }
+            //
+            //     if (section[0].className === 'viewing' && scenes[section.data('scene')].position !== "fullpage") {
+            //
+            //         var scene = scenes[$(section).data('scene')];
+            //         //map.setView([scene.lat, scene.lng], scene.zoom);
+            //         //map.zoomTo(layers[layernames[0]][0]); //
+            //         var layernames = scene.layers;
+            //         var legendContent = "";
+            //         if(typeof layernames !== 'undefined') {
+            //             for (var i = 0; i < layernames.length; i++) {
+            //                 //add new layers
+            //                 //currentLayerGroup.addLayer(layers[layernames[i]][0]);
+            //                 if (layers[layernames[i]][0].constructor.name === "Y") {
+            //                     map.dataSources.add(layers[layernames[i]][0]);
+            //                 }
+            //
+            //                 if (layers[layernames[i]][0].constructor.name === "s") {
+            //                     imageryLayers.addImageryProvider(layers[layernames[i]][0]);
+            //                 }
+            //             }
+            //         }
+            //
+            //     }
+            // } );
 
             function showMapView(key) {
 
