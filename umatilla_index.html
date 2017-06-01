@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Umatilla</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta property="og:title" content="Oregon Drinking Water" />
+    <meta property="og:url" content="http://rawgit.com/cartobaldrica/water_atlas/master/infrastructure_index.html" />
+    <meta property="og:description" content="Explore Oregon's drinking water." />
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+    <link rel="stylesheet" type="text/css" href="css/umatilla_style.css">
+    <link rel="stylesheet" href="css/control-minimap.css" />
+    <link rel="stylesheet" href="css/ekko-lightbox.css"/>        
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Inconsolata" />
+
+	<link rel="shortcut icon" href="img/oregon.ico" type="image/x-icon">
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+
+    <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/leaflet.ajax.min.js"></script>
+    <script src="js/storymap.js"></script>
+	<script src="js/ekko-lightbox.js"></script>
+	<script src="js/control-minimap.js" type="text/javascript"></script>
+	
+</head>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top navbar-toggleable-md" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header" style="left:10px; position: fixed;">
+            <a class="navbar-brand" href="http://cartobaldrica.github.io/">Home</a>
+            <a class="navbar-brand" href="#">Surface Water</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=rivers]').offset().top - $(window).scrollTop() - 10);">Rivers</a>
+                </li>
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=watersheds]').offset().top - $(window).scrollTop() - 10);">Watersheds</a>
+                </li>
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=lakes]').offset().top - $(window).scrollTop() - 10);">Lakes</a>
+                </li>
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=councils]').offset().top - $(window).scrollTop() - 10);">Watershed Councils</a>
+                </li>
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=wetlands]').offset().top - $(window).scrollTop() - 10);">Wetlands</a>
+                </li>
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=river_pollution]').offset().top - $(window).scrollTop() - 10);">Pollution</a>
+                </li>
+            	 </li>
+                <li>
+            		<a  data-toggle="modal" data-target="#info-modal">About</a>
+                </li>
+                <li>
+                 <div class="dropdown">
+  					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    					Share
+  					</button>
+  					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    					<a class="dropdown-item" target="_blank" href="http://facebook.com/sharer.php?u=http://rawgit.com/cartobaldrica/water_atlas/master/infrastructure_index.html">Facebook</a><br/>
+   						<a class="dropdown-item" target="_blank" href="http://twitter.com/home?status=Oregon's%20Groundwater%0Ahttp%3A//rawgit.com/cartobaldrica/water_atlas/master/infrastructure_index.html">Twitter</a><br/>
+    					<a class="dropdown-item" target="_blank" href="http://github.com/cartobaldrica/water_atlas">Github</a>
+  					</div>
+				</div>
+				</li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+     <!-- /.container -->
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 main">
+        
+             <section data-scene="overview">
+				 	<div class= "overview-background-img background-fullscreen-setting text-responsive text-shadow: black 0.2em 0.2em 0.3em;"><h4 class="text-center" style="color: white">Infrastructure</h4><h4 class ="text-center" style="font-size:20px; margin-top:0px; color: #ffffff; text-shadow: black 0.2em 0.2em 0.3em; margin-left: 25%; margin-right:25%; text-align: justify;">Water is capable of many extraordinary things. Throughout history, humans have attempted to control or utilize the power of water. In Oregon, water presents both opportunities and obstacles, and we have used infrastructure to exploit both.</h4>
+                	<br/><br/>
+                	<p class ="text-center" style="font-size:14px; margin-top:0px; color: #ffffff; text-shadow: black 0.2em 0.2em 0.3em; margin-left:30%; margin-right:30%; display:block">Created by Gareth Baldrica-Franklin, Institute for Water and Watersheds, Oregon State University</p></div>
+                	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>               
+            </section>
+            
+             <section data-scene="basin">
+                <p>This is the Umatilla River Basin. Today, it is home to over 70,000 people.</p>
+				<div class ="leg">
+				</div>
+			</section>  
+			
+			<section data-scene="river">
+                <p>Much of the population is concentrated in the irrigated areas towards the mouth of the Umatilla River. Upstream, the Umatilla Indian Reservation houses nearly 3,000 people.</p>
+				<br/><br/>
+				<div class ="leg">
+				<i style = "background: #ffb3b3;"></i><p>Irrigation Districts</p><br/>
+				<i style = "background: #f4f0bd;"></i><p>Umatilla Reservation</p>
+				</div>
+			</section>  
+			
+			<section data-scene="reservation">
+				<p>In 1855, the Umatilla, Cayuse, and Walla Walla peoples entered in treaty with the United States, ceding their native lands and relocating to a reservation. The treaty provided protections for hunting and fishing, both within the reservation and at "usual and accustomed" places outside the reservation.</p>
+				<br/><br/>
+				<div class ="leg">
+				<i style = "background: #f4f0bd;"></i><p>Umatilla Reservation</p>
+				</div>
+			</section> 
+			
+			<section data-scene="settlements">
+				<p>Umatilla County was formed by the territorial government in 1862, anchored around the Euro-American towns of Pendleton and Hermiston.</p>
+				<br/><br/>
+				<div class ="leg">
+				</div>
+			</section> 
+			
+			<section data-scene="irrigation">
+				<p>As population increased throughout the end of 19th century, demands for irrigation grew along the lower Umatilla.</p>
+				<br/><br/>
+				<div class ="leg">
+				</div>
+			</section> 
+			
+			<section data-scene="usbr">
+				<p>In 1905, the United States Bureau of Reclamation began the Umatilla Basin Project, constructing dams, canals, and reservoirs throughout the basin.</p>
+				<br/><br/><p>The main feature of the project was Cold Springs Reservoir, which was created from diversions directly from the Umatilla River.</p>
+				<br/><br/>
+				<div class ="leg">
+				</div>
+			</section> 
+			
+			<section data-scene="mckay">
+				<p>Upstream, the Mckay reservoir was created in the 1920s to provide more water to the irrigators of the lower Umatilla.</p>
+				<br/><br/>
+				<div class ="leg">
+				</div>
+			</section> 
+			
+			<section data-scene="status">
+				<p>An irrigation-based economy emerged in the Basin. However, for several months of the year, irrigation demands would completely dry the Umatilla River.</p>
+				<br/><br/>
+				<p>The drying river, combined with blockages created by the dams, severely depleted salmon runs. </p>
+				<div class ="leg">
+				</div>
+			</section> 
+			
+			<section data-scene="drying">
+				<p>Salmon are of primary importance to the culture and economy of the Umatilla Reservation. Additionally, the 1855 treaty gave the tribes a right to the water necessary to fulfill their purposes.</p>
+				<br/><br/>
+				<p>The federal government effectively prioritized the water rights of the irrigation economy of the lower Umatilla over the already established needs of the reservation.</p>
+				<div class ="leg">
+				</div>
+			</section> 
+			
+			<section data-scene="conflict">
+				<p>The conflict between irrigators and the tribes grew increasingly heated. In the 1970s, Senator Mark O. Hatfield held a hearing in Pendleton regarding the Umatilla conflict. It was an important step in the establishment of dialogue between the two groups.</p>
+				<br/><br/>
+				<p>Both quickly realized that their blame should be directed at the federal government, which had promised both parties sufficient water.</p>
+				<div class ="leg">
+				</div>
+			</section> 
+			
+			<section data-scene="solution1">
+				<p>In 1988, after a decade of negotiations, an out-of-court solution was finally reached.</p>
+				<br/><br/>
+				<div class ="leg">
+				</div>
+			</section> 
+			
+			<section data-scene="solution2">
+				<p>A series of pumps, pipelines and canals, would transfer river directly from the Columbia to Cold Springs Reservoir and the irrigation districts to the south. Additionally, fish ladders were improved or installed at five dams along the river.</p>
+				<br/><br/>
+				<div class ="leg">
+				</div>
+			</section> 
+			
+			<section data-scene="solution3">
+				<p>The diversions from the Columbia offset the water need at McKay reservoir, freeing water for the Umatilla. While the river still dries in certain months, the agreement ensures that it flows during major fish runs.</p>
+				<br/><br/>
+				<div class ="leg">
+				</div>
+			</section> 
+			
+			<section data-scene="fishReturn">
+				<p>The Umatilla Project was completed in 1996. Senator Hatfield noted that the Umatilla offers an example of how to resolve water conflicts through grassroots negotiation.</p>
+				<br/><br/>
+				<p>After its completion, Chinook and other salmon returned to the Umatilla, spawning for the first time in 70 years. In most years since, there have been enough fish for native and non-native populations.</p>
+				<br/><br/>
+				<p>But more work can be done. There are currently efforts to remove some of the smaller dams along the Umatilla, namely, Dillon Dam.</p>
+				<div class ="leg">
+				</div>
+			</section> 
+            
+            
+            <section data-scene="end">
+				 	<div class= "end-background-img background-fullscreen-setting text-responsive"><br>
+                	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>     
+            </section>
+        	
+        	<i class="animated zoomIn infinite glyphicon glyphicon-arrow-up arrow-up"></i>
+        	<i class="animated zoomIn infinite glyphicon glyphicon-arrow-down arrow-down"></i>
+        	
+        </div>
+        <div id="map" class="col-sm-6 col-md-8 sidebar"></div>
+    </div>
+    
+    <i class="fa fa-info-circle social" style="right:70px;" data-toggle="modal" data-target="#info-modal"></i>
+    
+	<a class="fa fa-facebook-square social2" style="right:55px;" href="https://facebook.com/sharer.php?u=http://rawgit.com/cartobaldrica/water_atlas/master/infrastructure_index.html" target="_blank"></a>
+        
+    <a class="fa fa-twitter-square social3" style="right:40px;" href="https://twitter.com/home?status=Oregon's%20Groundwater%0Ahttp%3A//rawgit.com/cartobaldrica/water_atlas/master/infrastructure_index.html" target="_blank"></a>
+	
+	<a class="fa fa-github-square social3" style="right:25px;" href="https://github.com/cartobaldrica/water_atlas" target="_blank"></a>
+	
+    <ul class="navbar text-center"></ul>
+
+    
+    <div class="modal fade" id="info-modal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title">About</h2>
+                </div>
+                <div class="modal-body">
+                    <p2>Overview Photo by Walter Siegmund - retrieved from Wikimedia Commons</p2><br>
+                    <p2 style="font-size:20px">Geographic Data</p2><br>
+                    <p2>Dams/Storage/Risk/Height: <a href = "http://spatialdata.oregonexplorer.info/geoportal/details;id=523fed781b444e278e86fd0c63fd7c53" target="_blank">Oregon Spatial Data Library</a></p2><br>
+                	<p2>Dam Dates: <a href = "http://nid.usace.army.mil/cm_apex/f?p=838:12" target="_blank">National Inventory of Dams</a></p2><br>
+                	<p2>River Basins: <a href = "https://github.com/TheOregonian/groundwater" target="_blank">The Oregonian/USGS</a></p2><br>
+                	<p2>Dam Removal: <a href = "http://rivers.bee.oregonstate.edu/oregon-dam-removal" target="_blank">Oregon Dam Removal Database</a></p2><br>
+                	<p2>Hydropower: <a href = "http://www.nwp.usace.army.mil/Missions/Hydropower/" target="_blank">U.S Army Corps of Engineers</a>, <a href = "http://www.pacificorp.com/es/hydro/hl.html" target="_blank">Pacificorps</a>, <a href = "https://www.idahopower.com/AboutUs/EnergySources/OurPowerPlants/default.cfm" target="_blank">Idaho Power Company</a>, <a href = "http://www.eweb.org/about-us/power-supply" target="_blank">Eugene Water and Electric Board</a> and <a href = "https://www.portlandgeneral.com/our-company/energy-strategy/how-we-generate-electricity" target="_blank">Portland General Electric</a></p2><br>
+                	<p2>Bridges: <a href = "http://spatialdata.oregonexplorer.info/geoportal/details;id=022ea3e8756b4632ba377558336d268d" target="_blank">Oregon Spatial Data Library</a></p2><br>
+                	<p2 style="font-size:20px">Text Data</p2><br>
+                	<p2>Oregon Department of Transportation</p2><br/>
+                	<p2>Oregon Water Resources Department</p2><br/>
+                	<p2>The Oregonian</p2><br/>
+                	<p2>Bonneville Power Administration</p2><br/>
+                </div>
+                <div class="modal-footer">
+                    <p2>Created with Leaflet</p>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="share-modal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <a class="fa fa-facebook-square social2" style="font-size: 8em; display:inline;" href="http://facebook.com/sharer.php?u=http://rawgit.com/cartobaldrica/water_atlas/master/infrastructure_index.html" target="_blank"></a>
+    				<a class="fa fa-twitter-square social3" style="font-size: 8em; display:inline;" href="http://twitter.com/home?status=Oregon's%20Groundwater%0Ahttp%3A//rawgit.com/cartobaldrica/water_atlas/master/infrastructure_index.html" target="_blank"></a>
+					<a class="fa fa-github-square social3" style="font-size: 8em; display:inline;" href="http://github.com/cartobaldrica/water_atlas" target="_blank"></a>
+					<br/>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+<script type="text/javascript">
+	//dams             
+    function damSize(string){
+        if (string == "COLD SPRINGS RES. (USBR)" | string == "MCKAY RES. (USBR)") {return 5}
+        else if (string == "MCNARY DAM"){return 0}
+        else {return 3}
+    	}
+    	
+    //rivers
+    function riverSize(density){
+		if (density==1){return 3}
+        else if (density==2){return 2}
+        else if (density==3){return 1}
+        else {return 1}
+    }
+    
+    function riverStyle(feature) {
+        return {
+           color: '#66a3ff', 
+           opacity: 0.8, 
+           weight: riverSize(feature.properties.type_num)
+        };
+    }
+    
+    function riverSize2(density){
+		if (density==1){return 3}
+        else if (density==2){return 1}
+        else if (density==3){return 1}
+        else {return 1}
+    }
+    
+    function riverStyle2(feature) {
+        return {
+           color: '#66a3ff', 
+           opacity: 0.8, 
+           weight: riverSize2(feature.properties.type_num)
+        };
+    }
+    function riverSize3(density){
+		if (density==1){return 0}
+        else if (density==2){return 1}
+        else if (density==3){return 1}
+        else {return 1}
+    }
+    
+    function riverStyle3(feature) {
+        return {
+           color: '#66a3ff', 
+           opacity: 0.8, 
+           weight: riverSize3(feature.properties.type_num)
+        };
+    }
+    function projectSize(density){
+		if (density=='pipe'){return '#520066'}
+        else {return '#e066ff'}
+    }
+    
+    function projectStyle(feature) {
+        return {
+           color: projectSize(feature.properties.Type), 
+           opacity: 0.8, 
+           weight: 2
+        };
+    }
+    function highlightRiver(e) {
+    	var layer = e.target;
+    	
+    	layer.setStyle({
+        	fillOpacity: 1,
+        	color: '#b3d1ff', 
+    	});
+    }
+    
+    function resetRiver(e) {
+    	var layer = e.target;
+    	
+    	layer.setStyle({
+           	fillOpacity: 0.8,
+           	color: '#66a3ff', 
+    	});
+    }
+    //city style
+	var city_style = {fillColor: '#bfbfbf', fillOpacity: .8, color: '#bfbfbf', radius: 1, opacity: 1, weight: 1};
+	function city_style2(feature){ 
+		return {fillColor: '#bfbfbf', fillOpacity: cityOpacity(feature.properties.CITY_NAME), color: '#bfbfbf', radius: 1, opacity: cityOpacity(feature.properties.CITY_NAME), weight: 1};
+		}
+	function cityOpacity(string){
+        if (string == "Hermiston" | string == "Pendleton") {return 1}
+        else {return 0}
+    	}
+	//reservation
+	var reservation_style = {fillColor: '#f4f0bd', fillOpacity: .6, color: '#bfbfbf', radius: 1, opacity: 0, weight: 1};
+	//lakes
+	function lake_style(feature){ 
+		return {fillColor: '#66a3ff', fillOpacity: lakeOpacity(feature.properties.GNIS_Name), color: '#bfbfbf', radius: 1, opacity: 0, weight: 1};
+	}
+	function lakeOpacity(string){
+        if (string == "Lake Umatilla" || string == "Lake Wallula" ) {return 0}
+        else {return 1}
+    	}
+	function highlightLake(e) {
+    	var layer = e.target;
+    	
+    	layer.setStyle({
+        	fillColor: '#b3d1ff', 
+    	});
+    }
+    
+    function resetLake(e) {
+    	var layer = e.target;
+    	
+    	layer.setStyle({
+           	fillColor: '#66a3ff', 
+    	});
+    }
+	//irrigation
+	var irrigation_style = {fillColor: '#ffb3b3', fillOpacity: .6, color: '#bfbfbf', radius: 1, opacity: 0, weight: 1};
+    
+
+    var layers = {  
+            'dams' : [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:umatilla_rivers&maxFeatures=100&outputFormat=application%2Fjson', {
+            	pointToLayer: function (feature, latlng) {
+    			return L.circleMarker(latlng, {
+    				color: '#ffffff',
+    				fillColor: damColor(feature.properties.Decade),
+    				radius: damSize(feature.properties.storage),
+    				opacity: 1,
+    				fillOpacity: 1,
+    				weight: 0.5
+    				}
+    					).bindTooltip(feature.properties.dam_name + " : " + feature.properties.storage + " Acre-ft" + "<br>" + "Completed: " + feature.properties.date_com_1, {className: 'label_tooltip'});
+    				}
+				})],
+    		'rivers': [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:umatilla_rivers&maxFeatures=100&outputFormat=application%2Fjson', {
+            	style:riverStyle, onEachFeature: function(feature, featureLayer) {
+            		if (feature.properties.type != 'canal'){
+        			featureLayer.bindTooltip(feature.properties.NAME, {className: 'label_tooltip', sticky:true});
+        			featureLayer.on({
+        					mouseover: highlightRiver,
+        					mouseout: resetRiver
+        				})
+        			}
+    			}}
+            	)],
+            'rivers2': [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:umatilla_rivers&maxFeatures=100&outputFormat=application%2Fjson', {
+            	style:riverStyle2, onEachFeature: function(feature, featureLayer) {
+            		if (feature.properties.type != 'canal'){
+        			featureLayer.bindTooltip(feature.properties.NAME, {className: 'label_tooltip', sticky:true});
+        			featureLayer.on({
+        					mouseover: highlightRiver,
+        					mouseout: resetRiver
+        				})
+        			}
+    			}}
+            	)],
+            'rivers3': [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:umatilla_rivers&maxFeatures=100&outputFormat=application%2Fjson', {
+            	style:riverStyle3, onEachFeature: function(feature, featureLayer) {
+            		if (feature.properties.type != 'canal'){
+        			featureLayer.bindTooltip(feature.properties.NAME, {className: 'label_tooltip', sticky:true});
+        			featureLayer.on({
+        					mouseover: highlightRiver,
+        					mouseout: resetRiver
+        				})
+        			}
+    			}}
+            	)],
+            'cities': [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:umatilla_cities&maxFeatures=50&outputFormat=application%2Fjson',
+            	{style:city_style, onEachFeature: function(feature, featureLayer) {
+            		if (feature.properties.CITY_NAME == 'Pendleton' || feature.properties.CITY_NAME == 'Hermiston'){
+        				featureLayer.bindTooltip(feature.properties.CITY_NAME, {className: 'label_tooltip2', permanent: true, offset: L.point({x: 0, y: 0})});
+        			} else if (feature.properties.CITY_NAME == 'Stanfield' || feature.properties.CITY_NAME == 'Echo'){
+        				featureLayer.bindTooltip(feature.properties.CITY_NAME, {className: 'label_tooltip3', permanent:true, offset: L.point({x: -2, y: 0})});
+        			} else{
+        				featureLayer.bindTooltip(feature.properties.CITY_NAME, {className: 'label_tooltip3', permanent:true, offset: L.point({x: 6, y: 0})});
+        			}
+    			}}
+            	)],
+            'cities2': [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:umatilla_cities&maxFeatures=50&outputFormat=application%2Fjson',
+            	{style:city_style2, onEachFeature: function(feature, featureLayer) {
+            		if (feature.properties.CITY_NAME == 'Hermiston'){
+        				featureLayer.bindTooltip(feature.properties.CITY_NAME, {className: 'label_tooltip2', permanent: true, offset: L.point({x: 0, y: 0})});
+        			} else if (feature.properties.CITY_NAME == 'Pendleton'){
+        				featureLayer.bindTooltip(feature.properties.CITY_NAME, {className: 'label_tooltip2', permanent: true, offset: L.point({x: -40, y: 0})});
+        			}
+    			}}
+            	)],
+            'reservation': [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:umatilla_reservation&maxFeatures=50&outputFormat=application%2Fjson',
+            	{style:reservation_style, onEachFeature: function(feature, featureLayer) {
+    			}}
+            	)],
+            'lakes': [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:umatilla_lakes&maxFeatures=50&outputFormat=application%2Fjson',
+            	{style:lake_style, onEachFeature: function(feature, featureLayer) {
+        				featureLayer.bindTooltip(feature.properties.GNIS_Name, {className: 'label_tooltip'});
+        				featureLayer.on({
+        					mouseover: highlightLake,
+        					mouseout: resetLake
+        				})
+    			}}
+            	)],
+            'irrigation': [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:umatilla_irrigation_districts&maxFeatures=50&outputFormat=application%2Fjson',
+            	{style:irrigation_style, onEachFeature: function(feature, featureLayer) {
+    				}}
+            	)],
+            'labels': [L.tileLayer('http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png', {
+					attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+					subdomains: 'abcd',
+					minZoom: 6,
+        			maxZoom: 15,
+				})],
+			'dams' : [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:umatilla_dams&maxFeatures=50&outputFormat=application%2Fjson', {
+            	pointToLayer: function (feature, latlng) {
+    			return L.circleMarker(latlng, {
+    				color: '#ff2701',
+    				fillColor: '#ff2701',
+    				radius: damSize(feature.properties.dam_name),
+    				opacity: 1,
+    				weight: 1,
+    				fillOpacity: 1
+    				}
+    					).bindTooltip(feature.properties.dam_name, {className: 'label_tooltip'});
+    				}
+				})],
+			'projectPoints' : [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:umatilla_project_points&maxFeatures=50&outputFormat=application%2Fjson', {
+            	pointToLayer: function (feature, latlng) {
+    			return L.circleMarker(latlng, {
+    				color: '#ff2701',
+    				fillColor: '#ff2701',
+    				radius: 5,
+    				opacity: 1,
+    				weight: 1,
+    				fillOpacity: 1
+    				}
+    					).bindTooltip(feature.properties.dam_name, {className: 'label_tooltip'});
+    				}
+				})],
+			'projectLines': [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:umatilla_project_lines&maxFeatures=100&outputFormat=application%2Fjson', {
+            	style:projectStyle, onEachFeature: function(feature, featureLayer) {
+        			featureLayer.bindTooltip(feature.properties.NAME, {className: 'label_tooltip', sticky:true});
+        			featureLayer.on({
+        					mouseover: highlightRiver,
+        					mouseout: resetRiver
+        				})
+    			}}
+            	)],
+			
+			
+    };
+
+    var scenes = {
+            overview: {lat: 44.1347254, lng:-122.7411479, zoom: 7, position:'fullpage'},
+            basin: {lat: 45.6025, lng:-119.3239, zoom: 9, layers:['rivers']},
+            river: {lat: 45.6851, lng:-119.1007, zoom: 10, layers:['reservation','irrigation','cities','rivers','lakes']},
+           	reservation: {lat: 45.6373, lng:-118.6799, zoom: 11, layers:['reservation','rivers2']},
+           	settlements: {lat: 45.7256, lng:-119.1702, zoom: 11, layers:['reservation','cities2','rivers2']},
+           	irrigation: {lat: 45.7869, lng:-119.3496, zoom: 11, layers:['reservation','irrigation','cities','rivers2']},
+           	usbr: {lat: 45.7869, lng:-119.3496, zoom: 11, layers:['reservation','irrigation','cities','lakes','rivers','dams','lakes']},
+           	mckay: {lat: 45.6163, lng:-118.8280, zoom: 12, layers:['reservation','irrigation','cities','lakes','rivers','dams','lakes']},
+           	status: {lat: 45.6851, lng:-119.1007, zoom: 10, layers:['reservation','irrigation','cities','rivers','lakes']},
+           	drying: {lat: 45.6851, lng:-119.1007, zoom: 10, layers:['reservation','irrigation','cities','rivers3','lakes']},
+           	conflict: {lat: 45.6442, lng:-118.8362, zoom: 12, layers:['reservation','irrigation','cities','rivers2','lakes']},
+           	solution1: {lat: 45.7869, lng:-119.3496, zoom: 11, layers:['reservation','irrigation','cities','rivers2','lakes']},
+           	solution2: {lat: 45.8576, lng:-119.2580, zoom: 12, layers:['reservation','irrigation','cities','rivers2','lakes','projectLines', 'projectPoints']},
+           	solution3: {lat: 45.6163, lng:-118.8280, zoom: 12, layers:['reservation','irrigation','cities','rivers2','lakes']},
+           	fishReturn: {lat: 45.6851, lng:-119.1007, zoom: 10, layers:['reservation','irrigation','cities','rivers2','lakes']},
+            end: {lat: 45.6851, lng:-119.1007, zoom: 7, name: 'End', position:'fullpage'}
+    };
+    
+
+    $('.main').storymap({
+        scenes: scenes,
+        layers:layers,
+        legend: false,
+        scale:false,
+        navbar: true,
+        createMap: function () {
+            // create a map in the "map" div, set the view to a given place and zoom
+                var map = L.map('map',{zoomControl:false,  scrollWheelZoom:false}).setView([44.1347254, -122.7411479], 7);
+            // add an basemap, which can be either OSM, mapbox, tilelayer, wmslayer or those designed by yourself.
+           		/*L.tileLayer.wms("http://localhost:8080/geoserver/basemap/wms", {
+        			layers: 'basemap:basemap_dark',
+       				format: 'image/png',
+       				minZoom: 6,
+        			maxZoom: 15,
+        			transparent: true,
+        		attribution: "Created by Gareth Baldrica-Franklin"
+    			}).addTo(map);
+    			
+    			L.tileLayer.wms("http://localhost:8080/geoserver/basemap/wms", {
+        			layers: 'basemap:basemap_dark_labels',
+        			format: 'image/png',
+        			minZoom: 6,
+        			maxZoom: 15,
+        			transparent: true,
+        			tiled: true, 
+        			tilesorigin: [-180, 90]
+    			}).addTo(map);
+    			
+    			var CartoDB_Positron = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+					attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+					subdomains: 'abcd',
+					minZoom: 6,
+        			maxZoom: 15
+				}).addTo(map);
+				*/
+				
+				var Esri_WorldImagery = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+					attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+					minZoom: 6,
+        			maxZoom: 15
+					}).addTo(map);
+					
+				Esri_WorldImagery.setOpacity(0.2);
+				
+				L.tileLayer.wms("http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_basemap/wms", {
+        			layers: 'baldricg_basemap:or_relief',
+        			format: 'image/png',
+        			minZoom: 6,
+        			maxZoom: 10,
+        			opacity:0.2,
+        			transparent: true,
+    			}).addTo(map);
+				
+				var oregonWater = L.tileLayer.wms("http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/wms", {
+        			layers: 'baldricg_atlas:gw_counties',
+        			format: 'image/png',
+        			minZoom: 6,
+        			maxZoom: 15,
+        			transparent: true,
+    			}).addTo(map);
+    			
+    			oregonWater.setOpacity(0.5);
+    			
+    			var oregonCover = L.tileLayer.wms("http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/wms", {
+        			layers: 'baldricg_atlas:umatilla_cover2',
+        			format: 'image/png',
+        			minZoom: 6,
+        			maxZoom: 15,
+        			transparent: true,
+    			}).addTo(map);
+    			
+    			oregonCover.setOpacity(0.7);
+			
+ 				
+ 				var mini = new L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+					attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+					subdomains: 'abcd',
+					maxZoom: 8,
+					minZoom: 5
+				});
+			    var currentZoom = 0;
+
+
+				var miniMap = new L.Control.MiniMap(mini, { toggleDisplay: false});
+ 				
+				miniMap.addTo(map);
+			
+				new L.Control.Zoom({ position: 'bottomright'}).addTo(map);
+				
+
+				/*if (scene == 'portland'){
+				miniMap;
+				}*/
+				map.setMaxBounds(map.getBounds());
+
+            return map;
+        }
+
+    });
+    
+    document.getElementsByClassName("leaflet-control-attribution")[0].style.visibility = "hidden";
+
+    
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+   		event.preventDefault();
+    $(this).ekkoLightbox();
+	});
+
+</script>
+</body>
+</html>

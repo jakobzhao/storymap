@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Infrastructure</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta property="og:title" content="Oregon Water Atlas: Water Infrastructure" />
+    <meta property="og:url" content="http://rawgit.com/cartobaldrica/water_atlas/master/infrastructure_index.html" />
+    <meta property="og:description" content="Explore Oregon's water infrastructure." />
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+    <link rel="stylesheet" type="text/css" href="css/infrastructure_style.css">
+    <link rel="stylesheet" href="css/control-minimap.css" />
+    <link rel="stylesheet" href="css/ekko-lightbox.css"/>        
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Inconsolata" />
+
+	<link rel="shortcut icon" href="img/oregon.ico" type="image/x-icon">
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+
+    <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/leaflet.ajax.min.js"></script>
+    <script src="js/storymap.js"></script>
+	<script src="js/ekko-lightbox.js"></script>
+	<script src="js/control-minimap.js" type="text/javascript"></script>
+	
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top navbar-toggleable-md" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header" style="left:10px; position: fixed;">
+            <a class="navbar-brand" href="https://cartobaldrica.github.io/">Home</a>
+            <a class="navbar-brand" href="#">Infrastructure</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=dams]').offset().top - $(window).scrollTop() - 10);">Dams</a>
+                </li>
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=basins]').offset().top - $(window).scrollTop() - 10);">Dam Density</a>
+                </li>
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=hazard]').offset().top - $(window).scrollTop() - 10);">Hazards</a>
+                </li>
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=removal]').offset().top - $(window).scrollTop() - 10);">Dam Removal</a>
+                </li>
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=hydro]').offset().top - $(window).scrollTop() - 10);">Hydropower</a>
+                </li>
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=bridges]').offset().top - $(window).scrollTop() - 10);">Bridges</a>
+                </li>
+                <li>
+            		<a  data-toggle="modal" data-target="#info-modal">About</a>
+                </li>
+                <li>
+                 <div class="dropdown">
+  					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    					Share
+  					</button>
+  					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    					<a class="dropdown-item" target="_blank" href="https://facebook.com/sharer.php?u=http://rawgit.com/cartobaldrica/water_atlas/master/infrastructure_index.html">Facebook</a><br/>
+   						<a class="dropdown-item" target="_blank" href="https://twitter.com/home?status=Oregon's%20Groundwater%0Ahttp%3A//rawgit.com/cartobaldrica/water_atlas/master/infrastructure_index.html">Twitter</a><br/>
+    					<a class="dropdown-item" target="_blank" href="https://github.com/cartobaldrica/water_atlas">Github</a>
+  					</div>
+				</div>
+				</li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+     <!-- /.container -->
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 main">
+        
+             <section data-scene="overview">
+				 	<div class= "overview-background-img background-fullscreen-setting text-responsive text-shadow: black 0.2em 0.2em 0.3em;"><h4 class="text-center" style="color: white">Infrastructure</h4><h4 class ="text-center" style="font-size:20px; margin-top:0px; color: #ffffff; text-shadow: black 0.2em 0.2em 0.3em; margin-left: 25%; margin-right:25%; text-align: justify;">Water is capable of many extraordinary things. Throughout history, humans have attempted to control or utilize the power of water. In Oregon, water presents both opportunities and obstacles, and we have used infrastructure to exploit both.</h4>
+                	<br/><br/>
+                	<p class ="text-center" style="font-size:14px; margin-top:0px; color: #ffffff; text-shadow: black 0.2em 0.2em 0.3em; margin-left:30%; margin-right:30%; display:block">Created by Gareth Baldrica-Franklin, Institute for Water and Watersheds, Oregon State University</p></div>
+                	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>       
+            </section>
+            
+             <section data-scene="dams">
+                <h3>Dams</h3>
+                <p>Of all water infrastructure, dams are probably the most apparent – and impressive.</p>
+                <p>There are almost 900 recorded dams in Oregon. Over 65% are privately owned, and over 55% are for irrigation. Dam building in Oregon began in the late 1800s, and dam construction reached its peak in the 1950s and 60s.</p>
+				<br/>
+				<br/>
+				<div class ="leg">
+				<p style="font-weight:bold">Dam Storage in Thousands of Acre-Feet</p>
+				<br/><i2 style ="width: 6px; height: 6px; display: inline-block; margin-bottom: 6px;"></i2><i2 style ="width: 10px; height: 10px; display: inline-block; margin-left:46px; margin-bottom: 4px;"></i2><i2 style ="width: 16px; height: 16px; display: inline-block; margin-left:44px; margin-bottom: 2px;"></i2><i2 style ="width: 20px; height: 20px; display: inline-block; margin-left:45px; margin-bottom: 1px;"></i2><i2 style ="width: 24px; height: 24px;  display: inline-block; margin-left:45px;"></i2><br/><p><1&nbsp&nbsp 1-50&nbsp&nbsp51-100&nbsp 101-500&nbsp&nbsp >501&nbsp</p><br/>
+				<p>Year Completed</p><br/>
+				<p>Pre-1910&nbsp&nbsp 1910-1929&nbsp 1930-1949</p></br>
+				<i style="background: #c2c2c2; margin-right: 0px; weight: 1; width: 85px;"></i><i style="background: #949494; margin-right: 0px; weight: 1; width: 85px;"></i><i style="background: #dacea1; margin-right: 0px; weight: 1; width: 85px;"></i>
+				<br/><br/><i style="background: #b3ab3f; margin-right: 0px; weight: 1; width: 85px; margin-top:-7px;"></i><i style="background: #756c34; margin-right: 0px; weight: 1; width: 85px; margin-top:-7px;"></i><i style="background: #0f0d00; margin-right: 0px; weight: 1; width: 85px; margin-top:-7px;"></i><br/><br/>
+				<p style="line-height:16px;">1950-1969&nbsp 1970-1989&nbsp Post-1990</p>
+				<br/><br/><p>Hover over points for details</p>
+				</div>
+			</section>  
+			
+			 <section data-scene="basins">
+                <h3>Dams per Basin</h3>
+				<p>Dams fundamentally change the environment of their surrounding watersheds. They reduce flow, alter the habitats of freshwater organisms, and affect the amount of sediment that is transported by the river. At the same time, the presence of dams can reduce flood severity and provide water storage. The basins outlined in this map represent the watersheds of many of the largest rivers in Oregon.</p>
+				<br/><br/><div class="leg"><p style ="font-weight: bold;"># of Dams</p></br><i style="background: #333333; opacity: 0.8"></i><p>51+</p></br><i style="background: #666666; opacity: 0.8"></i><p>31 - 50</p></br><i style="background: #a6a6a6; opacity: 0.8"></i><p>16 - 30</p></br><i style="background: #cccccc; opacity: 0.8"></i><p>6 - 15</p></br><i style="background: #f2f2f2; opacity: 0.8"></i><p>< 5</p>
+				<br/><p>Hover over basins for details</p>
+				</div>
+			</section>    
+			
+			<section data-scene="hazard">
+                <h3>Risk and Hazards</h3>
+                <p>Each dam represents a potential hazard. Dam risk is a measure of the amount of economic damage a dam failure would cause.</p>
+                <p style="color:#6fdc6f">Low Hazard</p><p> dams are likely not to result in loss of life or the destruction of other infrastructure.</p><p style="color:#ffff00"> Significant Hazard</p><p> dams still offer a low likelihood of death, though they do have the potential to destroy or flood infrastructure (roads, power lines, etc.)</p><p style="color:#ff0000"> High Hazard</p><p> dams have a strong likelihood of death and the destruction of buildings and infrastructure.</p>
+				<br/><br/>
+				<div class ="leg"> 
+				<p style="font-weight:bold">Dam Height in Feet</p>
+				<br/><i2 style ="width: 6px; height: 6px; display: inline-block; margin-bottom: 6px;"></i2><i2 style ="width: 10px; height: 10px; display: inline-block; margin-left:61px; margin-bottom: 4px;"></i2><i2 style ="width: 16px; height: 16px; display: inline-block; margin-left:55px; margin-bottom: 2px;"></i2><i2 style ="width: 20px; height: 20px; display: inline-block; margin-left:55px; margin-bottom: 1px;"></i2><i2 style ="width: 24px; height: 24px;  display: inline-block; margin-left:45px;"></i2>
+				<br/><p><25&nbsp&nbsp 26-100&nbsp&nbsp101-200&nbsp 201-300&nbsp&nbsp >301&nbsp</p><br/>
+				<p>Hazard Rating</p><br/>
+				<i style="background: #6fdc6f; margin-right: 0px; width: 85px;"></i><i style="background: #ffff00; margin-right: 0px; width: 85px;"></i><i style="background: #ff0000; margin-right: 0px; width: 85px;"></i><br/>
+				<br/><p style="line-height:16px;">Low&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  Sig.&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspHigh</p>
+				<br/><br/><p>Hover over points for details</p>
+				</div>
+			</section> 
+			            
+            <section data-scene="removal">
+                <h3>Dam Removal</h3>
+            	<p>Over 30 dams in Oregon have been removed. Many of the dams were removed due to lack of use and pressure from non-profit organizations. Depending on the size of the dam, removal can be a dangerous and very expensive process. Studies have shown surrounding ecosystems are quick to recover after dams are removed.</p>
+            	<br/><br/>
+            	<div class="leg">
+            	<p style="font-weight:bold">Dam Height in Feet</p>
+				<br/><i2 style ="background: #3366ff; width: 8px; height: 8px; display: inline-block; margin-bottom: 4px;margin-left:8px;"></i2><i2 style ="background: #3366ff; width: 12px; height: 12px; display: inline-block; margin-left:42px; margin-bottom: 2px;"></i2><i2 style =" background: #3366ff; width: 18px; height: 18px; display: inline-block; margin-left:38px; margin-bottom: 1px;"></i2><i2 style ="background: #3366ff; width: 24px; height: 24px;  display: inline-block; margin-left: 40px;"></i2><br/>
+				<p><10&nbsp 11-20&nbsp&nbsp21-40&nbsp&nbsp&nbsp 40+</p><br/>
+				<br/><p>Hover over points for details</p>
+           		</div>
+            </section>     
+
+            
+            <section data-scene="hydro">
+                <h3>Hydropower</h3>
+            	<p>Over 40% of Oregon's electricity is hydroelectric power produced by dams. Flowing water drives a water turbine and a generator, producing usable electricity. The first hydroelectric dams in Oregon were built in the 1930s and 40s, beginning with Bonneville Dam on the Columbia River. Many of the federally operated dams were constructed by the Army Corps. of Engineers and administered by the Bonneville Power Administration.</p>
+            	<br/><br/>
+            	<div class ="leg">
+				<p style="font-weight:bold">Power Capacity in Megawatts</p>
+				<br/><i2 style ="width: 6px; height: 6px; display: inline-block; margin-bottom: 6px;margin-left:12px;"></i2><i2 style ="width: 10px; height: 10px; display: inline-block; margin-left:46px; margin-bottom: 4px;"></i2><i2 style ="width: 16px; height: 16px; display: inline-block; margin-left:54px; margin-bottom: 2px;"></i2><i2 style ="width: 20px; height: 20px; display: inline-block; margin-left:56px; margin-bottom: 1px;"></i2><i2 style ="width: 24px; height: 24px;  display: inline-block; margin-left:50px;"></i2>
+				<br/><p><10&nbsp&nbsp 11-50&nbsp&nbsp 51-100&nbsp 101-1000&nbsp&nbsp >1001&nbsp</p><br/>
+				<p>Owner</p><br/>
+				<i style="background: #3366ff; margin-right: 0px; weight: 1; width: 85px;"></i><i style="background: #f66fdf; margin-right: 0px; weight: 1; width: 85px;"></i><i style="background: #e6e600; margin-right: 0px; weight: 1; width: 85px;"></i><br/>
+				<br/><p style="line-height:16px;">Federal&nbsp&nbsp&nbsp Municipal&nbsp Other</p>
+				<br/><br/><p>Hover over points for details</p>
+            	</div>
+            </section> 
+           <!-- 
+            <section data-scene="columbia">
+                <h3>Columbia Dams</h3>
+                <p>35% of Oregonians rely on groundwater, typically from either small public water systems or private wells. Groundwater recharge areas require different protection strategies than surface watersheds. Wells are more commonly utilized in drier parts of the state.</p>
+            </section> 
+            -->
+            
+            <section data-scene="bridges">
+                <h3>Bridges	</h3>
+            	<p>While dams are an attempt to control waterways, bridges are a reaction to them. The bridges included in this map all cross waterways, and do not include those that are federally owned. Bridges can be a barrier to fish passage, and the failure of a bridge can have major effects on surrounding ecosystems and infrastructure. Bridges that are deemed structurally deficient are eligible for funding for updates or replacement.</p>
+            	<br/>
+            	<div class ="leg">
+            	<br/><p>Bridge Condition</p><br/>
+            	<i style ="background: #6fdc6f; display: inline-block; margin-right: 5px;"></i><p>Not Deficient</p><br/><i style ="background: #ff0000; display: inline-block; margin-right: 5px;"></i><p>Structurally Deficient/Obsolete</p><br/><i style ="background: #999999;  display: inline-block; margin-right: 5px;"></i><p>No Data</p>
+            	<br/><br/><p>Hover over points for details.</p>
+            	</div>
+            </section>
+            
+            <section data-scene="end">
+				 	<div class= "end-background-img background-fullscreen-setting text-responsive"><br>
+            </section>
+        	<i class="animated zoomIn infinite glyphicon glyphicon-arrow-up arrow-up"></i>
+        	<i class="animated zoomIn infinite glyphicon glyphicon-arrow-down arrow-down"></i>
+
+        </div>
+        <div id="map" class="col-sm-6 col-md-8 sidebar"></div>
+    </div>
+    
+    <i class="fa fa-info-circle social" style="right:70px;" data-toggle="modal" data-target="#info-modal"></i>
+    
+	<a class="fa fa-facebook-square social2" style="right:55px;" href="https://facebook.com/sharer.php?u=http://rawgit.com/cartobaldrica/water_atlas/master/infrastructure_index.html" target="_blank"></a>
+        
+    <a class="fa fa-twitter-square social3" style="right:40px;" href="https://twitter.com/home?status=Oregon's%20Groundwater%0Ahttp%3A//rawgit.com/cartobaldrica/water_atlas/master/infrastructure_index.html" target="_blank"></a>
+	
+	<a class="fa fa-github-square social3" style="right:25px;" href="https://github.com/cartobaldrica/water_atlas" target="_blank"></a>
+	
+    
+    <div class="modal fade" id="info-modal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title" style="color:black;">About</h2>
+                </div>
+                <div class="modal-body">
+                    <p2>Cover Photo by Walter Siegmund - retrieved from Wikimedia Commons</p2><br>
+                    <p2>Basemap by Esri, labels by CARTO</p><br/>
+                    <p2 style="font-size:20px">Geographic Data</p2><br>
+                    <p2>Dams/Storage/Risk/Height: <a href = "http://spatialdata.oregonexplorer.info/geoportal/details;id=523fed781b444e278e86fd0c63fd7c53" target="_blank">Oregon Spatial Data Library</a></p2><br>
+                	<p2>Dam Dates: <a href = "http://nid.usace.army.mil/cm_apex/f?p=838:12" target="_blank">National Inventory of Dams</a></p2><br>
+                	<p2>River Basins: <a href = "https://github.com/TheOregonian/groundwater" target="_blank">The Oregonian/USGS</a></p2><br>
+                	<p2>Dam Removal: <a href = "http://rivers.bee.oregonstate.edu/oregon-dam-removal" target="_blank">Oregon Dam Removal Database</a></p2><br>
+                	<p2>Hydropower: <a href = "http://www.nwp.usace.army.mil/Missions/Hydropower/" target="_blank">U.S Army Corps of Engineers</a>, <a href = "http://www.pacificorp.com/es/hydro/hl.html" target="_blank">Pacificorps</a>, <a href = "https://www.idahopower.com/AboutUs/EnergySources/OurPowerPlants/default.cfm" target="_blank">Idaho Power Company</a>, <a href = "http://www.eweb.org/about-us/power-supply" target="_blank">Eugene Water and Electric Board</a> and <a href = "https://www.portlandgeneral.com/our-company/energy-strategy/how-we-generate-electricity" target="_blank">Portland General Electric</a></p2><br>
+                	<p2>Bridges: <a href = "http://spatialdata.oregonexplorer.info/geoportal/details;id=022ea3e8756b4632ba377558336d268d" target="_blank">Oregon Spatial Data Library</a></p2><br>
+                	<p2 style="font-size:20px">Text Data</p2><br>
+                	<p2>Oregon Department of Transportation</p2><br/>
+                	<p2>Oregon Water Resources Department</p2><br/>
+                	<p2>The Oregonian</p2><br/>
+                	<p2>Bonneville Power Administration</p2><br/>
+                </div>
+                <div class="modal-footer">
+                    <p2>Created with Leaflet and storymap.js</p>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="share-modal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <a class="fa fa-facebook-square social2" style="font-size: 8em; display:inline;" href="https://facebook.com/sharer.php?u=http://rawgit.com/cartobaldrica/water_atlas/master/infrastructure_index.html" target="_blank"></a>
+    				<a class="fa fa-twitter-square social3" style="font-size: 8em; display:inline;" href="https://twitter.com/home?status=Oregon's%20Groundwater%0Ahttp%3A//rawgit.com/cartobaldrica/water_atlas/master/infrastructure_index.html" target="_blank"></a>
+					<a class="fa fa-github-square social3" style="font-size: 8em; display:inline;" href="https://github.com/cartobaldrica/water_atlas" target="_blank"></a>
+					<br/>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+<script type="text/javascript">
+
+//dam hazard         
+
+          
+    function hazardColor(string){
+        if (string == "H") {return '#ff0000'}
+        else if (string == "S"){return '#ffff00'}
+        else {return '#6fdc6f'}
+    	}
+    	
+    function hazardSize(density){
+		return density >300 ? 12:
+        density >200 ? 10:
+        density >100 ? 8:
+        density >25 ? 5:
+        3;
+    }
+//dams        
+
+          
+    function damColor(string){
+        if (string == "1990" | string == "2000") {return '#0f0d00'}
+        else if (string == "1970" | string == "1980"){return '#756c34'}
+        else if (string == "1950" | string == "1960"){return '#b3ab3f'}
+        else if (string == "1930" | string == "1940"){return '#dacea1'}
+        else if (string == "1910" | string == "1920"){return '#949494'}
+        else {return '#c2c2c2'}
+    	}
+    	
+    function damSize(density){
+		return density >500000 ? 12:
+        density >100000 ? 10:
+        density >50000 ? 8:
+        density >1000 ? 5:
+        3;
+    }
+//hydro
+	function hydroSize(density){
+        return density >1000 ? 12:
+        density >100 ? 10:
+        density >50 ? 8:
+        density >10 ? 5:
+        3;
+    }
+    
+    function hydroColor(string){
+        if (string == "Army Corps of Engineers" | string == "U.S Bureau of Reclaimation") {return '#3366ff'}
+        else if (string == "Portland General Electric" | string == "Eugene Water & Electric Board" ){return '#f66fdf'}
+        else {return '#e6e600'}
+    	}
+    	
+    function hydroOpacity(string){
+        if (string == "Columbia River") {return 1}
+        else {return 0}
+    	}	
+
+//removal
+	function removalSize(density){
+        return density >40 ? 12:
+        density >20 ? 9:
+        density >= 10 ? 6:
+        4;
+    }
+    
+//basin
+      function setBasinColor(density){
+        return density > 50 ? '#333333' :
+        density > 30 ? '#666666':
+        density > 15 ? '#a6a6a6':
+        density > 5 ? '#cccccc':
+        '#f2f2f2';
+    }
+    
+    function basinStyle(feature) {
+        return {
+           fillColor: setBasinColor(feature.properties.NUMPOINTS), 
+           fillOpacity: .8, 
+           color: '#ffffff', 
+           radius: 4, 
+           opacity: .8, 
+           weight: 1
+        };
+    }
+    
+    function highlightBasin(e) {
+    	var layer = e.target;
+    	
+    	layer.setStyle({
+        	fillOpacity: 1,
+        	weight: 2
+    	});
+    	layer.bringToFront();
+    }
+    
+    function resetBasin(e) {
+    	var layer = e.target;
+    	
+    	layer.setStyle({
+           	fillOpacity: 0.8,
+        	weight: 1
+    	});
+    }
+    
+//bridges
+function bridgeColor(string){
+        if (string == "Structurally Deficient" | string == "Functionally Obsolete") {return '#ff0000'}
+        else if (string == "Not Deficient"){return '#6fdc6f'}
+        else {return '#999999'}
+    }
+
+    	var county_style = {color:'#ffffff', opacity: 0.8, weight: .5,fillOpacity:0};
+
+
+//	
+    var legend_sw = '<i style="background: #b3d1ff; fillOpacity: .8; color:#4d94ff; weight: 1; opacity: 0.8; border:1px solid #4d94ff"></i><b><p style="text-align: left; margin-left: 25px">Surface Source Protection Zone</b></p>';
+    var legend_gw = '<i style="background: #0066ff; fillOpacity: .8; color:#b3d1ff; weight: 1; opacity: 0.8; border:1px solid #b3d1ff"></i><b><p style="text-align: left; margin-left: 25px">Groundwater Source Protection Zone</b></p>';
+    var legend_grid = '<p style="text-align: center; font-weight:bold">Contaminants</p><img src="img/total.png" style="height:10px; margin-top:5px; width:10px; margin-left:1px;"><p style="font-weight:bold">Hover for number</p><br><i style="background: #0066ff; fillOpacity: .8; color:#b3d1ff; weight: 1; opacity: 0.8; border:1px solid #b3d1ff"></i><b><p style="text-align: left;  margin-left: 25px">Groundwater Zones</b></p><i style="background: #b3d1ff; fillOpacity: .8; color:#4d94ff; weight: 1; opacity: 0.8; border:1px solid #4d94ff"></i><b><p style="text-align: left;  margin-left: 25px">Surface Water Zones</b></p>';
+	var legend_contaminants = '<p style="text-align: center">Potential Contaminant Sources</p><img src="img/lowest.png" style="height:10px; width:10px; margin-top:8px; margin-left:1px;"><p style = "margin-top:5px;">Lowest-Risk</p><img src="img/medium.png" style="height:10px; width:10px; margin-top:8px; margin-left:1px;"><p style = "margin-top:5px;">Medium-Risk</p><img src="img/highest.png" style="height:10px; width:10px; margin-top:8px; margin-left:1px;"><p style = "margin-top:5px;">Highest-Risk</p><br><p style="text-align:left; font-weight:bold">Hover for source name</p>';
+	var legend_bottle = '<img src="img/bottle.png" style="height:30px; width:12px; margin-top:8px; margin-left:1px;"><p style = "margin-top:16px; margin-left: 20px;">Bottling Facility</p><p style = "margin-top:15px;">Hover for name</p>'
+//<p style="text-align:left; font-weight:bold">Hover for source</p>'
+
+    var layers = {  
+             'basins': [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:dam_basin&maxFeatures=1000&outputFormat=application%2Fjson', {
+            	style:basinStyle, onEachFeature: function(feature, featureLayer) {
+        			featureLayer.bindTooltip(feature.properties.HU_8_NAME + " : "+feature.properties.NUMPOINTS+" dams", {className: 'label_tooltip'});
+        			featureLayer.on({
+        					mouseover: highlightBasin,
+        					mouseout: resetBasin
+        				})
+    			}}
+            	)],
+            'dams' : [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:dams_reprojected&maxFeatures=100000&outputFormat=application%2Fjson', {
+            	pointToLayer: function (feature, latlng) {
+    			return L.circleMarker(latlng, {
+    				color: '#ffffff',
+    				fillColor: damColor(feature.properties.Decade),
+    				radius: damSize(feature.properties.storage),
+    				opacity: 1,
+    				fillOpacity: 1,
+    				weight: 0.5
+    				}
+    					).bindTooltip(feature.properties.dam_name + " : " + feature.properties.storage + " Acre-ft" + "<br>" + "Completed: " + feature.properties.date_com_1, {className: 'label_tooltip'});
+    				}
+				})],
+			'dam_hazard' : [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:dams_reprojected&maxFeatures=100000&outputFormat=application%2Fjson', {
+            	pointToLayer: function (feature, latlng) {
+    			return L.circleMarker(latlng, {
+    				color: '#ffffff',
+    				fillColor: hazardColor(feature.properties.hazard),
+    				radius: hazardSize(feature.properties.dam_height),
+    				opacity: 1,
+    				fillOpacity: 1,
+    				weight: 0.5
+    				}
+    					).bindTooltip(feature.properties.dam_name + " : " + feature.properties.dam_height + " ft.", {className: 'label_tooltip'});
+    				}
+				})],
+			'hydro' : [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:dams_hydropower&maxFeatures=100000&outputFormat=application%2Fjson', {
+            	pointToLayer: function (feature, latlng) {
+    			return L.circleMarker(latlng, {
+    				color: '#ffffff',
+    				fillColor: hydroColor(feature.properties.owner_name),
+    				radius: hydroSize(feature.properties.capacity),
+    				opacity: 1,
+    				weight: 1,
+    				fillOpacity: 1
+    				}
+    					).bindTooltip(feature.properties.dam_name + " : " + feature.properties.capacity + " MW" +"<br>"+"Owner: " + feature.properties.owner_name, {className: 'label_tooltip'});
+    				}
+				})],
+			'removal' : [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:dam_removal&maxFeatures=100000&outputFormat=application%2Fjson', {
+            	pointToLayer: function (feature, latlng) {
+    			return L.circleMarker(latlng, {
+    				color: '#ffffff',
+    				fillColor: '#3366ff',
+    				radius: removalSize(feature.properties.DAM_HEIGHT),
+    				opacity: 1,
+    				weight: 1,
+    				fillOpacity: 1
+    				}
+    					).bindTooltip(feature.properties.DAM_NAME + " : " + feature.properties.height + " ft." + "<br>" + "Year Removed: " + feature.properties.removal_yr, {className: 'label_tooltip'});
+    				}
+				})],
+			'hydro_columbia' : [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:dams_hydropower&maxFeatures=100000&outputFormat=application%2Fjson', {
+            	pointToLayer: function (feature, latlng) {
+    			return L.circleMarker(latlng, {
+    				color: '#ffffff',
+    				fillColor: hydroColor(feature.properties.owner_name),
+    				radius: hydroSize(feature.properties.capacity),
+    				opacity: hydroOpacity(feature.properties.river),
+    				weight: 1,
+    				fillOpacity: hydroOpacity(feature.properties.river)
+    				}
+    					).bindTooltip(feature.properties.dam_name + " : " + feature.properties.capacity + " MW", {className: 'label_tooltip', permanent: true, opacity:hydroOpacity(feature.properties.river), direction:'left'});
+    				}
+				})],
+			'bridges' : [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:water_bridges&maxFeatures=100000&outputFormat=application%2Fjson', {
+            	pointToLayer: function (feature, latlng) {
+    			return L.circleMarker(latlng, {
+    				color:'#ffffff',
+    				fillColor: bridgeColor(feature.properties.SD_FO),
+    				weight:.3,
+    				radius: 2,
+    				opacity: 1,
+    				fillOpacity:1
+    				}
+    					).bindTooltip(feature.properties.BRIDGE_NAM, {className: 'label_tooltip'});
+    				}
+				})],
+			'basin1': [L.tileLayer.wms("http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/wms", {
+        			layers: 'baldricg_atlas:dam_basin',
+        			format: 'image/png',
+        			minZoom: 6,
+        			maxZoom: 15,
+        			transparent: true,
+    			})],
+    		'rivers': [L.tileLayer.wms("http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_basemap/wms", {
+        			layers: 'baldricg_basemap:rivers_oregon',
+        			format: 'image/png',
+        			minZoom: 6,
+        			maxZoom: 15,
+        			transparent: true,
+    			})],
+    		'counties': [L.tileLayer.wms("http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/wms", {
+        			layers: 'baldricg_atlas:gw_counties',
+        			format: 'image/png',
+        			minZoom: 6,
+        			maxZoom: 15,
+        			transparent: true,
+    			})],
+			
+			
+    };
+
+    var scenes = {
+            overview: {lat: 44.1347254, lng:-122.7411479, zoom: 7, position:'fullpage'},
+            dams: {lat: 44.1347254, lng:-122.7411479, zoom: 7, layers:['dams']},
+            basins: {lat: 44.1347254, lng:-122.7411479, zoom: 7, layers:['basins']},
+            hazard: {lat: 44.1347254, lng:-122.7411479, zoom: 7, layers:['dam_hazard']},
+            removal: {lat: 44.1347254, lng:-122.7411479, zoom: 7, layers:['removal']},
+            hydro: {lat: 44.1347254, lng:-122.7411479, zoom: 7, layers:['hydro']},
+            //columbia: {lat: 45.6025, lng:-122.1852, zoom: 8, layers:['hydro_columbia']},
+            bridges: {lat: 44.1347254, lng:-122.7411479, zoom: 7, layers:['bridges']},
+            end: {lat: 44.1347254, lng:-122.7411479, zoom: 7, position:'fullpage'}
+    };
+    
+
+    $('.main').storymap({
+        scenes: scenes,
+        layers:layers,
+        legend: false,
+        scale:false,
+        navbar: true,
+        createMap: function () {
+            // create a map in the "map" div, set the view to a given place and zoom
+                var map = L.map('map',{zoomControl:false,  scrollWheelZoom:false}).setView([44.1347254, -122.7411479], 7);
+            // add an basemap, which can be either OSM, mapbox, tilelayer, wmslayer or those designed by yourself.
+           		/*L.tileLayer.wms("http://localhost:8080/geoserver/basemap/wms", {
+        			layers: 'basemap:basemap_dark',
+       				format: 'image/png',
+       				minZoom: 6,
+        			maxZoom: 15,
+        			transparent: true,
+        		attribution: "Created by Gareth Baldrica-Franklin"
+    			}).addTo(map);
+    			
+    			L.tileLayer.wms("http://localhost:8080/geoserver/basemap/wms", {
+        			layers: 'basemap:basemap_dark_labels',
+        			format: 'image/png',
+        			minZoom: 6,
+        			maxZoom: 15,
+        			transparent: true,
+        			tiled: true, 
+        			tilesorigin: [-180, 90]
+    			}).addTo(map);
+    			
+    			var CartoDB_Positron = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+					attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+					subdomains: 'abcd',
+					minZoom: 6,
+        			maxZoom: 15
+				}).addTo(map);
+				*/
+				
+				var Esri_WorldImagery = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+					attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+					minZoom: 6,
+        			maxZoom: 15
+					}).addTo(map);
+					
+				Esri_WorldImagery.setOpacity(0.2);
+				
+				
+				var oregonWater = L.tileLayer.wms("http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_basemap/wms", {
+        			layers: 'baldricg_basemap:oregon_water',
+        			format: 'image/png',
+        			minZoom: 6,
+        			maxZoom: 15,
+        			transparent: true,
+    			}).addTo(map);
+    			
+    			oregonWater.setOpacity(0.5);
+    			
+    			var CartoDB_PositronOnlyLabels = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png', {
+					attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+					subdomains: 'abcd',
+					minZoom: 6,
+        			maxZoom: 15,
+					}).addTo(map);
+					
+				CartoDB_PositronOnlyLabels.setOpacity(0.6);
+    			
+    			var oregonCover = L.tileLayer.wms("http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/wms", {
+        			layers: 'baldricg_atlas:oregon_cover',
+        			format: 'image/png',
+        			minZoom: 6,
+        			maxZoom: 15,
+        			transparent: true,
+    			}).addTo(map);
+    			
+    			oregonCover.setOpacity(0.2);
+			
+ 				
+ 				var mini = new L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+					attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+					subdomains: 'abcd',
+					maxZoom: 8,
+					minZoom: 5
+				});
+			    var currentZoom = 0;
+
+
+				var miniMap = new L.Control.MiniMap(mini, { toggleDisplay: false});
+ 				
+				miniMap.addTo(map);
+			
+				new L.Control.Zoom({ position: 'bottomright'}).addTo(map);
+				
+
+				/*if (scene == 'portland'){
+				miniMap;
+				}*/
+				map.setMaxBounds(map.getBounds());
+
+            return map;
+        }
+
+    });
+    
+    document.getElementsByClassName("leaflet-control-attribution")[0].style.visibility = "hidden";
+
+    
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+   		event.preventDefault();
+    $(this).ekkoLightbox();
+	});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Surface Water</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta property="og:title" content="Oregon Water Atlas: Surface Water" />
+    <meta property="og:url" content="http://rawgit.com/cartobaldrica/water_atlas/master/surface_index.html" />
+    <meta property="og:description" content="Explore Oregon's surface water." />
+    
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+    <link rel="stylesheet" type="text/css" href="css/surface_style.css">
+    <link rel="stylesheet" href="css/control-minimap.css" />
+	<link rel="stylesheet" href="css/ekko-lightbox.css"/>        
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Inconsolata" />
+
+	<link rel="shortcut icon" href="img/oregon.ico" type="image/x-icon">
+	
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+
+    <script src="http://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/leaflet.ajax.min.js"></script>
+    <script src="js/storymap.js"></script>
+	<script src="js/ekko-lightbox.js"></script>
+	<script src="js/control-minimap.js" type="text/javascript"></script>
+	
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top navbar-toggleable-md" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header" style="left:10px; position: fixed;">
+            <a class="navbar-brand" href="http://cartobaldrica.github.io/">Home</a>
+            <a class="navbar-brand" href="#">Surface Water</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=rivers]').offset().top - $(window).scrollTop() - 10);">Rivers</a>
+                </li>
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=watersheds]').offset().top - $(window).scrollTop() - 10);">Watersheds</a>
+                </li>
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=lakes]').offset().top - $(window).scrollTop() - 10);">Lakes</a>
+                </li>
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=councils]').offset().top - $(window).scrollTop() - 10);">Watershed Councils</a>
+                </li>
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=wetlands]').offset().top - $(window).scrollTop() - 10);">Wetlands</a>
+                </li>
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=river_pollution]').offset().top - $(window).scrollTop() - 10);">Pollution</a>
+                </li>
+            	 </li>
+                <li>
+            		<a  data-toggle="modal" data-target="#info-modal">About</a>
+                </li>
+                <li>
+                 <div class="dropdown">
+  					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    					Share
+  					</button>
+  					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    					<a class="dropdown-item" target="_blank" href="http://facebook.com/sharer.php?u=http://rawgit.com/cartobaldrica/water_atlas/master/infrastructure_index.html">Facebook</a><br/>
+   						<a class="dropdown-item" target="_blank" href="http://twitter.com/home?status=Oregon's%20Groundwater%0Ahttp%3A//rawgit.com/cartobaldrica/water_atlas/master/infrastructure_index.html">Twitter</a><br/>
+    					<a class="dropdown-item" target="_blank" href="http://github.com/cartobaldrica/water_atlas">Github</a>
+  					</div>
+				</div>
+				</li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+     <!-- /.container -->
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 main">
+        
+             <section data-scene="overview">
+				 	<div class= "overview-background-img background-fullscreen-setting text-responsive text-shadow: black 0.1em 0.1em 0.2em;"><h4 class="text-center" style="color: white">Surface Water</h4><h4 class ="text-center" style="font-size:20px; margin-top:0px; color: #ffffff; text-shadow: black 0.1em 0.1em 0.2em; margin-left: 25%; margin-right:25%; text-align: justify;">Surface water weaves across the Oregon landscape, defining distinct ecoregions and watersheds. Surface freshwater includes rivers, lakes, and wetlands. Surface water is an important environmental resource for natural systems and human use.</h4>
+                	<br/><br/>
+                	<p class ="text-center" style="font-size:14px; margin-top:0px; color: #ffffff; text-shadow: black 0.1em 0.1em 0.2em; margin-left:30%; margin-right:30%; display:block">Created by Gareth Baldrica-Franklin, Institute for Water and Watersheds, Oregon State University</p></div>
+                	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>       
+            </section>
+            
+             <section data-scene="rivers">
+                <h3>Rivers</h3>
+                <p>Rivers are the primary driver of surface water systems. The largest river in Oregon is the Columbia, which snakes its way across the northern Oregon border. Many of Oregon's larger rivers are tributaries of the Columbia, such as the Willamette, Deschutes, and John Day. Other major rivers include the Klamath, Rogue, and Umpqua.</p>
+				<br/><br/><p>Widespread damming has reduced the flow of many Oregon Rivers below their natural levels. The John Day River is the longest river in Oregon that has remained undammed.</p>
+				<br/>
+				<br/>
+				<div class ="leg">
+				<p>Hover over rivers for details.</p>
+				</div>
+			</section>  
+             
+             <section data-scene="watersheds">
+                <h3>Watersheds</h3>
+                <p>Rivers define watersheds (or basins). Watersheds represent the total area that drains into a river, or river section. Watersheds can be defined at various scales, representing vast basins of major rivers, or small areas of urban creeks.</p>
+                <br/>
+				<br/>
+                <p>Mid-level watersheds are shown on the map, and are colored by their underlying basin.</p>
+				<br/>
+				<br/>
+				<div class ="leg">
+				<p>Hover over watersheds for details.</p>
+				</div>
+			</section>  
+			
+			<section data-scene="lakes">
+                <h3>Lakes</h3>
+                <p>Oregon has many lakes. Some are naturally occurring, some are manmade, and some are ephemeral, only existing in wet months. Many of Oregon's largest naturally occurring lakes exist in the southern part of the state.</p>
+				<br/>
+				<br/>
+				<div class ="leg">
+				<p>Lake Type</p><br/>
+				<i style = "background: #0047b3;"></i><p>Lake</p><br/>
+				<i style = "background: #4d94ff;"></i><p>Reservoir</p><br/>
+				<p>Hover over lakes for details.</p>
+				</div>
+			</section> 
+			
+			<section data-scene="councils">
+                <h3>Watershed Councils</h3>
+                <p>Watershed councils are independent, voluntary organizations established to improve watersheds in their localities. Watershed are strictly managed locally, although the state provides guidance for their formation. Councils assess local water conditions, provide restorative and conservation services, and create communities centered around protecting water.</p>
+				<br/>
+				<br/>
+				<div class ="leg">
+				<p>Hover over map for details.</p>
+				</div>
+			</section> 
+			
+			<section data-scene="wetlands">
+                <h3>Major Wetlands</h3>
+                <p>Over 40% of Oregon's wetlands have drained or filled-in since Euro-American settlement. Wetlands are among the most important ecosystems for wildlife and water quality. Wetlands store and clean water, prevent erosion, and control flooding. They are also important habitats for a variety of plants and animals.</p>
+				<br/>
+				<br/>
+				<p>This map shows Oregon's "Greatest Wetlands", which were identified by the <a src="http://wetlandsconservancy.org/">Wetlands Conservancy.</a></p>
+				<div class ="leg">
+				<br/>
+				<br/>
+				<p>Hover over wetlands for details.</p>
+				</div>
+			</section> 
+			 
+			<section data-scene="river_pollution">
+                <h3>Pollution</h3>
+                <p>The Oregon Department of Environmental Quality (DEQ) assesses rivers and lakes for pollutants. Pollutants can include minerals, chemicals, biological agents, or sediments. Temperature issues are also classified as pollutants. If identified pollutants are above certain concentrations, a waterbody is declared Water Quality Limited for that pollutant.</p>
+				<br/>
+				<br/>
+				<p>The map aggregates all identified water quality limited pollutants for 2012 into their respective watersheds.</p>
+				<br/>
+				<br/>
+				<div class ="leg">
+				<p>Number of Pollutants</p><br/>
+				<i style = "background: #f8000c;"></i><p> Greater than 101</p><br/>
+				<i style = "background: #ff6343;"></i><p> 51-100</p><br/>
+				<i style = "background: #ffa458;"></i><p> 26-50</p><br/>
+				<i style = "background: #ffd58d;"></i><p> 11-25</p><br/>
+				<i style = "background: #feffcd;"></i><p> Less than 10</p><br/>
+				<p>Hover over watersheds for details.</p>
+				</div>
+			</section>  
+            
+			
+            <section data-scene="end">
+				 	<div class= "end-background-img background-fullscreen-setting text-responsive"><br>
+            </section>
+        	<i class="animated zoomIn infinite glyphicon glyphicon-arrow-up arrow-up"></i>
+        	<i class="animated zoomIn infinite glyphicon glyphicon-arrow-down arrow-down"></i>
+
+        </div>
+        <div id="map" class="col-sm-6 col-md-8 sidebar"></div>
+    </div>
+    
+    <i class="fa fa-info-circle social" style="right:70px;" data-toggle="modal" data-target="#info-modal"></i>
+    
+	<a class="fa fa-facebook-square social2" style="right:55px;" href="http://facebook.com/sharer.php?u=http://rawgit.com/cartobaldrica/water_atlas/master/surface_index.html" target="_blank"></a>
+        
+    <a class="fa fa-twitter-square social3" style="right:40px;" href="http://twitter.com/home?status=Oregon's%20Surfacewater%0Ahttp%3A//rawgit.com/cartobaldrica/water_atlas/master/surface_index.html" target="_blank"></a>
+	
+	<a class="fa fa-github-square social3" style="right:25px;" href="http://github.com/cartobaldrica/water_atlas" target="_blank"></a>
+	
+    
+    <div class="modal fade" id="info-modal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title" style="color:black;">About</h2>
+                </div>
+                <div class="modal-body">
+                    <p2 style="font-size:20px">Geographic Data</p2><br>
+                    <p2>Rivers: <a href = "spatialdata.oregonexplorer.info/geoportal/details;id=161b8e74e7ef457180fba6429c9ee1ee" target="_blank">Oregon Spatial Data Library</a></p2><br>
+                	<p2>Watersheds: <a href = "http://spatialdata.oregonexplorer.info/geoportal/details;id=4b1b008d5a764a209b2df040689c0779" target="_blank">Oregon Spatial Data Library</a></p2><br>
+                	<p2>Lakes: <a href = "http://spatialdata.oregonexplorer.info/geoportal/details;id=c56af1d4a19040e98e25c05abc5e690f" target="_blank">Oregon Spatial Data Library</a></p2><br>
+                	<p2>Watershed Councils: <a href = "http://spatialdata.oregonexplorer.info/geoportal/details;id=8091c70c2e7347d4ba0f8d8d0c5647c0" target="_blank">Oregon Spatial Data Library</a></p2><br>
+                	<p2>Wetlands: <a href = "http://spatialdata.oregonexplorer.info/geoportal/details;id=1d70e0668a804b5fa4a4c5492a05168a" target="_blank">Oregon Spatial Data Library/Wetlands Conservancy</a></p2><br>
+                	<p2>Pollution: <a href = "http://www.oregon.gov/deq/Data-and-Reports/Pages/GIS.aspx" target="_blank">Oregon Department of Environmental Quality</a></p2><br>
+                	<p2 style="font-size:20px">Text Data</p2><br>
+                	<p2>United States Geological Survey</p2><br/>
+                	<p2>Oregon Water Resources Department</p2><br/>
+                	<p2>The Wetlands Conservancy</p2><br/>
+                	<p2>Oregon Department of Environmental Quality</p2><br/>
+                </div>
+                <div class="modal-footer">
+                    <p2>Created with Leaflet and storymap.js</p>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="share-modal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <a class="fa fa-facebook-square social2" style="font-size: 8em; display:inline;" href="http://facebook.com/sharer.php?u=http://rawgit.com/cartobaldrica/water_atlas/master/infrastructure_index.html" target="_blank"></a>
+    				<a class="fa fa-twitter-square social3" style="font-size: 8em; display:inline;" href="http://twitter.com/home?status=Oregon's%20Groundwater%0Ahttp%3A//rawgit.com/cartobaldrica/water_atlas/master/infrastructure_index.html" target="_blank"></a>
+					<a class="fa fa-github-square social3" style="font-size: 8em; display:inline;" href="http://github.com/cartobaldrica/water_atlas" target="_blank"></a>
+					<br/>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+<script type="text/javascript">
+    
+//basin
+      function setBasinColor(string){
+        if (string == 'Black Rock Desert'){return '#66a3ff'}
+        else if (string == 'Deschutes'){return '#80b3ff'}
+        else if (string == 'John Day'){return '#66a3ff'}
+        else if (string == 'Klamath'){return '#3385ff'}
+        else if (string == 'Lower Columbia'){return '#66a3ff'}
+        else if (string == 'Lower Snake'){return '#005ce6'}
+        else if (string == 'Middle Columbia'){return '#3385ff'}
+		else if (string == 'Middle Snake-Boise'){return '#3385ff'}
+		else if (string == 'Middle Snake-Powder'){return '#80b3ff'}
+		else if (string == 'Northern California Coastal'){return '#66a3ff'}
+		else if (string == 'Northern Oregon Coastal'){return '#80b3ff'}
+		else if (string == 'Oregon Closed Basins'){return '#4d94ff'}
+		else if (string == 'Southern Oregon Coastal'){return '#4d94ff'}
+		else if (string == 'Upper Sacramento'){return '#005ce6'}
+		else if (string == 'Washington Coastal'){return '#3385ff'}
+		else {return'#005ce6'}
+
+    }
+    
+    function basinStyle(feature) {
+        return {
+           fillColor: setBasinColor(feature.properties.HU6NAME), 
+           fillOpacity: .6, 
+           color: setBasinColor(feature.properties.HU6NAME), 
+           radius: 4, 
+           opacity: 0.8, 
+           weight: 1
+        };
+    }
+    
+    function highlightBasin(e) {
+    	var layer = e.target;
+    	
+    	layer.setStyle({
+        	fillOpacity: 1,
+        	weight: 2
+    	});
+    	layer.bringToFront();
+    }
+    
+    function resetBasin(e) {
+    	var layer = e.target;
+    	
+    	layer.setStyle({
+           	fillOpacity: 0.6,
+        	weight: 1
+    	});
+
+    }
+//rivers
+    function riverSize(density){
+		return density >200 ? 3:
+        density >100 ? 2.5:
+        density >50 ? 2:
+        density >25 ? 1:
+        density >10 ? .4:
+        .15;
+    }
+    
+    function riverStyle(feature) {
+        return {
+           color: '#66a3ff', 
+           opacity: 0.8, 
+           weight: riverSize(feature.properties.length_mi)
+        };
+    }
+    function highlightRiver(e) {
+    	var layer = e.target;
+    	
+    	layer.setStyle({
+        	fillOpacity: 1,
+        	color: '#b3d1ff', 
+    	});
+    	layer.bringToFront();
+    }
+    
+    function resetRiver(e) {
+    	var layer = e.target;
+    	
+    	layer.setStyle({
+           	fillOpacity: 0.8,
+           	color: '#66a3ff', 
+    	});
+    }
+//lakes
+
+	
+     function lakeColor(density){
+		if (density == 1){return '#4d94ff'}
+        else {return '#0047b3'}
+    }
+    
+    function lakeStyle(feature) {
+        return {
+           fillColor: lakeColor(feature.properties.reservoir), 
+           fillOpacity: .6, 
+           color: lakeColor(feature.properties.reservoir), 
+           radius: 4, 
+           opacity: 0.8, 
+           weight: 1
+        };
+    }
+//watershed councils
+  function councilStyle(feature) {
+        return {
+           fillColor: '#66a3ff', 
+           fillOpacity: .6, 
+           color: '#66a3ff', 
+           radius: 4, 
+           opacity: 0.8, 
+           weight: 1
+        };
+    }
+    
+    function councilSmall(feature) {
+        return {
+           fillColor: '#66a3ff', 
+           fillOpacity: 0, 
+           color: '#66a3ff', 
+           radius: 4, 
+           opacity: 0.8, 
+           weight: 1,
+           dashArray: "10, 5"
+        };
+    }
+    
+    function resetCouncil(e) {
+    	var layer = e.target;
+    	
+    	layer.setStyle({
+           	fillOpacity: 0,
+        	weight: 1,
+        	dashArray: "5, 5"
+    	});
+    	layer.bringToFront();
+    }
+    
+    function front(e) {
+    	var layer = e.target;
+    	layer.bringToFront();
+    }
+//river pollution
+	function riverPollutionColor(density){
+		return density > 15 ? '#f8000c':
+        density >10 ? '#ff6343':
+        density >5 ? '#ffa458':
+        density >1 ? '#ffd58d':
+        '#feffcd';
+    }
+    function pollutionSize(density){
+		return density >200 ? 5:
+        density >100 ? 4:
+        density >50 ? 3:
+        density >25 ? 2:
+       	1;
+    }
+    
+    function pollutionStyle(feature) {
+        return {
+           color: riverPollutionColor(feature.properties.SUM_count), 
+           opacity: 0.8, 
+           weight: pollutionSize(feature.properties.length_mi)
+        };
+    }
+    function highlightPollution(e) {
+    	var layer = e.target;
+    	
+    	layer.setStyle({
+        	fillOpacity: 1,
+    	});
+    	layer.bringToFront();
+    }
+    
+    function resetPollution(e) {
+    	var layer = e.target;
+    	
+    	layer.setStyle({
+           	fillOpacity: 0.8,
+    	});
+    }
+//river pollution points
+	function pointRadius(density){
+		return density > 200 ? 12:
+        density >100 ? 10:
+        density >50 ? 8:
+        density >25 ? 5:
+       	3;
+    }
+    function pointColor(density){
+		return density > 15 ? '#f8000c':
+        density >10 ? '#ff6343':
+        density >5 ? '#ffa458':
+        density >2 ? '#ffd58d':
+        '#feffcd';
+    }
+    
+//lake pollution
+    function lakePollutionColor(density){
+		return density > 6 ? '#f8000c':
+        density >4 ? '#ff6343':
+        density >2 ? '#ffa458':
+        density >1 ? '#ffd58d':
+        '#feffcd';
+    }
+     function lakePollutionStyle(feature) {
+        return {
+           color: lakePollutionColor(feature.properties.SUM_count), 
+           opacity: 0.8, 
+           weight: 1,
+           fillColor: lakePollutionColor(feature.properties.SUM_count), 
+           fillOpacity:0.6, 
+           
+        };
+    }
+//lake pollution points
+	function lakePollutionRadius(density){
+		return density > 200 ? 12:
+        density >100 ? 10:
+        density >50 ? 8:
+        density >25 ? 5:
+       	3;
+    }
+//wetlands
+function wetlandStyle(feature) {
+        return {
+           fillColor: '#29a3a3', 
+           fillOpacity: .6, 
+           color: '#29a3a3', 
+           radius: 4, 
+           opacity: 0.8, 
+           weight: 1
+        };
+    }    
+    
+//watershed pollution 
+	  function watershedPollutionStyle(feature) {
+        return {
+           fillColor: watershedPollutionColor(feature.properties.NUMPOINTS), 
+           fillOpacity: .6, 
+           color: watershedPollutionColor(feature.properties.NUMPOINTS), 
+           radius: 4, 
+           opacity: 0.8, 
+           weight: 1
+        };
+    }
+    
+    function watershedPollutionColor(density){
+		return density > 100 ? '#f8000c':
+        density >50 ? '#ff6343':
+        density >25 ? '#ffa458':
+        density >10 ? '#ffd58d':
+        '#feffcd';
+    }
+//counties
+function countyStyle(feature) {
+        return {
+           color: '#bfbfbf', 
+           opacity: 1, 
+           weight: 1
+        };
+    }
+    
+    var layers = {  
+             'basins': [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:oregon_watersheds_small&maxFeatures=1000&outputFormat=application%2Fjson', {
+            	style:basinStyle, onEachFeature: function(feature, featureLayer) {
+        			featureLayer.bindTooltip(feature.properties.Name + "<br>" + feature.properties.HU6NAME + " Basin", {className: 'label_tooltip'});
+        			featureLayer.on({
+        					mouseover: highlightBasin,
+        					mouseout: resetBasin
+        				})
+    			}}
+            	)],
+            'watershed_pollution': [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:watershed_pollution&maxFeatures=1000&outputFormat=application%2Fjson', {
+            	style:watershedPollutionStyle, onEachFeature: function(feature, featureLayer) {
+        			featureLayer.bindTooltip(feature.properties.Name + "<br>" + feature.properties.NUMPOINTS + " Water Quality Limited Pollutants", {className: 'label_tooltip'});
+        			featureLayer.on({
+        					mouseover: highlightBasin,
+        					mouseout: resetBasin
+        				})
+    			}}
+            	)],
+            'councils': [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:watershed_councils&maxFeatures=1000&outputFormat=application%2Fjson', {
+            	style:councilStyle, onEachFeature: function(feature, featureLayer) {
+        			featureLayer.bindTooltip(feature.properties.instName, {className: 'label_tooltip'});
+        			featureLayer.on({
+        					mouseover: highlightBasin,
+        					mouseout: resetBasin
+        				})
+    			}}
+            	)],
+             'councils_small': [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:watershed_councils_small&maxFeatures=1000&outputFormat=application%2Fjson', {
+            	style:councilSmall, onEachFeature: function(feature, featureLayer) {
+        			featureLayer.bindTooltip(feature.properties.instName, {className: 'label_tooltip'});
+        			featureLayer.on({
+        					mouseover: highlightBasin,
+        					mouseout: resetCouncil,
+        					add: front
+        				})
+    			}}
+            	)],
+    		'rivers': [L.tileLayer.wms("http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_basemap/wms", {
+        			layers: 'baldricg_basemap:oregon_surface_water2',
+        			format: 'image/png',
+        			minZoom: 6,
+        			maxZoom: 15,
+        			transparent: true,
+    			})],
+    		'lakes': [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:lakes_or&maxFeatures=5000&outputFormat=application%2Fjson', {
+            	style:lakeStyle, onEachFeature: function(feature, featureLayer) {
+        			featureLayer.bindTooltip(feature.properties.NAME, {className: 'label_tooltip'});
+        			featureLayer.on({
+        					mouseover: highlightBasin,
+        					mouseout: resetBasin
+        				})
+    			}}
+            	)],
+            'wetlands': [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:oregon_wetlands&maxFeatures=5000&outputFormat=application%2Fjson', {
+            	style:wetlandStyle, onEachFeature: function(feature, featureLayer) {
+        			featureLayer.bindTooltip(feature.properties.OGW_Site_N, {className: 'label_tooltip'});
+        			featureLayer.on({
+        					mouseover: highlightBasin,
+        					mouseout: resetBasin
+        				})
+    			}}
+            	)],
+            'lake_pollutants': [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:lake_pollutants_2012&maxFeatures=5000&outputFormat=application%2Fjson', {
+            	style:lakePollutionStyle, onEachFeature: function(feature, featureLayer) {
+        			featureLayer.bindTooltip(feature.properties.LAKE_NAME + " : " + feature.properties.SUM_count + " Pollutants", {className: 'label_tooltip'});
+        			featureLayer.on({
+        					mouseover: highlightBasin,
+        					mouseout: resetBasin
+        				})
+    			}}
+            	)],
+            'hydrography': [L.tileLayer.wms("http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_basemap/wms", {
+        			layers: 'baldricg_basemap:oregon_hydrogaphy',
+        			format: 'image/png',
+        			minZoom: 6,
+        			maxZoom: 15,
+        			transparent: true,
+    			})],
+            'surface_rivers': [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:surface_rivers&maxFeatures=13000&outputFormat=application%2Fjson', {
+            	style:riverStyle, onEachFeature: function(feature, featureLayer) {
+        			featureLayer.bindTooltip(feature.properties.NAME, {className: 'label_tooltip', sticky:true});
+        			featureLayer.on({
+        					mouseover: highlightRiver,
+        					mouseout: resetRiver
+        				})
+    			}}
+            	)],
+            'river_pollutants': [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:river_pollutants_2012&maxFeatures=13000&outputFormat=application%2Fjson', {
+            	style:pollutionStyle, onEachFeature: function(feature, featureLayer) {
+        			featureLayer.bindTooltip(feature.properties.STREAM_NAM + " : " + feature.properties.SUM_count + " Pollutants", {className: 'label_tooltip', sticky:true});
+        			featureLayer.on({
+        					mouseover: highlightPollution,
+        					mouseout: resetPollution
+        				})
+    			}}
+            	)],
+            'river_pollutant_points': [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:river_pollutant_points_2012&maxFeatures=13000&outputFormat=application%2Fjson', {
+            	pointToLayer: function (feature, latlng) {
+    			return L.circleMarker(latlng, {
+    				color: '#ffffff',
+    				fillColor: pointColor(feature.properties.SUM_count),
+    				radius: pointRadius(feature.properties.length_mi),
+    				opacity: 1,
+    				fillOpacity: 1,
+    				weight: 0.5
+    				}
+    					).bindTooltip(feature.properties.STREAM_NAM + " : " + feature.properties.SUM_count + " Pollutants", {className: 'label_tooltip'});
+    				}
+				})],
+			'counties': [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:oregon_line&maxFeatures=10&outputFormat=application%2Fjson',
+            	{style:countyStyle}
+            	)],
+			
+    };
+
+    var scenes = {
+            overview: {lat: 44.1347254, lng:-122.7411479, zoom: 7, position:'fullpage'},
+            rivers: {lat: 44.1347254, lng:-122.7411479, zoom: 7, layers:['surface_rivers','hydrography']},
+            watersheds: {lat: 44.1347254, lng:-122.7411479, zoom: 7, layers:['counties','basins']},
+            lakes: {lat: 44.1347254, lng:-122.7411479, zoom: 7, layers:['lakes']},
+            councils: {lat: 44.1347254, lng:-122.7411479, zoom: 7, layers:['councils','councils_small']},
+            wetlands: {lat: 44.1347254, lng:-122.7411479, zoom: 7, layers:['wetlands']},
+            river_pollution: {lat: 44.1347254, lng:-122.7411479, zoom: 7, layers:['counties','watershed_pollution']},
+            end: {lat: 44.1347254, lng:-122.7411479, zoom: 7, position:'fullpage'}
+    };
+    
+
+    $('.main').storymap({
+        scenes: scenes,
+        layers:layers,
+        legend: false,
+        scale:false,
+        navbar: true,
+        createMap: function () {
+            // create a map in the "map" div, set the view to a given place and zoom
+                var map = L.map('map',{zoomControl:false,  scrollWheelZoom:false}).setView([44.1347254, -122.7411479], 7);
+            // add an basemap, which can be either OSM, mapbox, tilelayer, wmslayer or those designed by yourself.
+           		/*L.tileLayer.wms("http://localhost:8080/geoserver/basemap/wms", {
+        			layers: 'basemap:basemap_dark',
+       				format: 'image/png',
+       				minZoom: 6,
+        			maxZoom: 15,
+        			transparent: true,
+        		attribution: "Created by Gareth Baldrica-Franklin"
+    			}).addTo(map);
+    			
+    			L.tileLayer.wms("http://localhost:8080/geoserver/basemap/wms", {
+        			layers: 'basemap:basemap_dark_labels',
+        			format: 'image/png',
+        			minZoom: 6,
+        			maxZoom: 15,
+        			transparent: true,
+        			tiled: true, 
+        			tilesorigin: [-180, 90]
+    			}).addTo(map);
+    			
+					var CartoDB_DarkMatterNoLabels = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
+					attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+					subdomains: 'abcd',
+					minZoom: 6,
+        			maxZoom: 10,
+				}).addTo(map);
+				*/
+			
+				L.tileLayer.wms("http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_basemap/wms", {
+        			layers: 'baldricg_basemap:or_relief',
+        			format: 'image/png',
+        			minZoom: 6,
+        			maxZoom: 10,
+        			opacity:0.2,
+        			transparent: true,
+    			}).addTo(map);
+    			
+    			L.tileLayer.wms("http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_basemap/wms", {
+        			layers: 'baldricg_basemap:states_light',
+        			format: 'image/png',
+        			minZoom: 6,
+        			maxZoom: 10,
+        			opacity:0.5,
+        			transparent: true,
+    			}).addTo(map);
+    			
+    			L.tileLayer.wms("http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_basemap/wms", {
+        			layers: 'baldricg_basemap:water_counties',
+        			format: 'image/png',
+        			minZoom: 6,
+        			maxZoom: 10,
+        			opacity:0.8,
+        			transparent: true,
+    			}).addTo(map);
+				
+				
+				oregonCover = L.tileLayer.wms("http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/wms", {
+        			layers: 'baldricg_atlas:oregon_cover_white',
+        			format: 'image/png',
+        			minZoom: 6,
+        			maxZoom: 15,
+        			transparent: true,
+    			}).addTo(map);
+    			
+    			oregonCover.setOpacity(0.1);
+ 				
+ 				var mini = new L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+					attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+					subdomains: 'abcd',
+					maxZoom: 8,
+					minZoom: 5
+				});
+			    var currentZoom = 0;
+
+
+				var miniMap = new L.Control.MiniMap(mini, { toggleDisplay: false});
+ 				
+				miniMap.addTo(map);
+			
+				new L.Control.Zoom({ position: 'bottomright'}).addTo(map);
+				
+				
+				map.setMaxBounds(map.getBounds());
+				/*if (scene == 'portland'){
+				miniMap;
+				}*/
+
+            return map;
+        }
+
+    });
+    
+    document.getElementsByClassName("leaflet-control-attribution")[0].style.visibility = "hidden";
+
+    
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+   		event.preventDefault();
+    $(this).ekkoLightbox();
+	});
+	/*
+	document.onreadystatechange = function () {
+  	var state = document.readyState
+ 		if (state == 'interactive') {
+       document.getElementById('contents').style.visibility="hidden";
+  	} else if (state == 'complete') {
+      setTimeout(function(){
+         	document.getElementById('interactive');
+         	document.getElementById('load').style.visibility="hidden";
+         	document.getElementById('contents').style.visibility="visible";
+      	},1000);
+  	}
+	}	
+*/
+</script>
+</body>
+</html>

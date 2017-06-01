@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Flooding</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta property="og:title" content="Oregon Water Atlas: Flooding" />
+    <meta property="og:url" content="https://cartobaldrica.github.io/flood_index.html" />
+    <meta property="og:description" content="Explore Oregon's historical floods and current flood risk." />
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+    <link rel="stylesheet" type="text/css" href="css/flood_style.css">
+    <link rel="stylesheet" href="css/control-minimap.css" />
+    <link rel="stylesheet" href="css/ekko-lightbox.css"/>        
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="shortcut icon" href="img/oregon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+    
+	<link href="https://fonts.googleapis.com/css?family=La+Belle+Aurore" rel="stylesheet">	
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Inconsolata" />
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+
+
+    <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/leaflet.ajax.min.js"></script>
+    <script src="js/storymap.js"></script>
+	<script src="js/ekko-lightbox.js"></script>
+	<script src="js/control-minimap.js" type="text/javascript"></script>
+	
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top navbar-toggleable-md" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header" style="left:10px; position: fixed;">
+            <a class="navbar-brand" href="https://cartobaldrica.github.io/">Home</a>
+            <a class="navbar-brand" href="#">Flooding</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=flood_1861]').offset().top - $(window).scrollTop() - 10);">1861</a>
+                </li>
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=vanport]').offset().top - $(window).scrollTop() - 10);">Vanport</a>
+                </li>
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=flood_1964]').offset().top - $(window).scrollTop() - 10);">1964</a>
+                </li>
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=flood_1996_january]').offset().top - $(window).scrollTop() - 10);">1996 - January</a>
+                </li>
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=flood_1996_february]').offset().top - $(window).scrollTop() - 10);">1996 - February</a>
+                </li>
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=predictions]').offset().top - $(window).scrollTop() - 10);">Risk</a>
+                </li>
+                <li>
+            		<a  data-toggle="modal" data-target="#info-modal">About</a>
+                </li>
+                <li>
+                 <div class="dropdown">
+  					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    					Share
+  					</button>
+  					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    					<a class="dropdown-item" target="_blank" href="https://facebook.com/sharer.php?u=http://rawgit.com/cartobaldrica/water_atlas/master/infrastructure_index.html">Facebook</a><br/>
+   						<a class="dropdown-item" target="_blank" href="https://twitter.com/home?status=Oregon's%20Groundwater%0Ahttp%3A//rawgit.com/cartobaldrica/water_atlas/master/infrastructure_index.html">Twitter</a><br/>
+    					<a class="dropdown-item" target="_blank" href="https://github.com/cartobaldrica/water_atlas">Github</a>
+  					</div>
+				</div>
+				</li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+     <!-- /.container -->
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 main">
+
+            <section data-scene="overview">
+				 	<div class= "overview-background-img2 background-fullscreen-setting text-responsive"><h4 class="text-center">Flooding</h4><br><h4 class ="text-center" style="font-size:20px; margin-top:0px; color: #ffffff; text-shadow: black 0.2em 0.2em 0.3em; margin-left: 25%; margin-right:25%; text-align:justify">Approximately 25% of Oregonians live in floodplains. Despite the increased management and regulation of rivers, flooding remains a risk throughout most of the state, particularly west of the Cascades. Understanding the impacts of historic floods and surveying at-risk areas can aid hazard planning and response.</h4>
+                	<br/><br/>
+                	<p class ="text-center" style="font-size:14px; margin-top:0px; color: #ffffff; text-shadow: black 0.2em 0.2em 0.3em; margin-left: 30%; margin-right:30%; display:block">Created by Gareth Baldrica-Franklin, Institute for Water and Watersheds, Oregon State University</p></div>	
+                	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>     
+            </section>
+            
+             <section data-scene="flood_1861">
+                <br/><h5>"... and a morning dawned when there was not a sign of civilization left to tell where Champoeg had stood."</h5>
+                <h5>from The Oregonian, February 21, 1988, reprinted in Oregon Historical Quarterly</h5>
+                <h3>1861 Flood</h3>
+            	<p>The city of Champoeg was not the only victim of the massive flooding that struck the Willamette Valley between November and December, 1861. The flood marked either the end for Linn City, Santiam and Orleans, which were growing towns throughout the valley. USGS estimates place floodwater at its highest (near Oregon City) 55 feet above base level, and at flows of approximately 590,000 cubic feet per second (cfs). These flow rates are almost 5 times greater than Willamette River average discharge.</p><p style = "color: #bf4040">It is thought to the largest Willamette flood in the past 200 years.</p>
+				<br/><br/><div class="leg"><img src="img/point.png" style="height:10px; width:10px; margin-top:7px; margin-left:1px;"><p style = "margin-top:5px;">Towns Destroyed</p><br><i style="background: #bf4040; fillOpacity: .5; color:#993333; weight: 1; opacity: 0.5"></i><b><p>Flood Extent</b></p></div>
+				<br>
+				<a href="img/1861_flood_account.png" data-toggle="lightbox" data-footer="Uddated account by Oregon City steamboat captain George Anson Pease."> <img src="img/1861_flood_account.png" class="img-sup" style="height:80px; width:80px; border:4px solid #000000;"></a><br/><p style="font-size:16px;">Select to view</p>
+			</section>           
+
+    		<section  data-scene="vanport">
+                <br/><h5>"Remember. Dikes are safe at present. You will be warned if necessary. You will have time to leave. Don't get excited."</h5>
+                <h5>from a flyer provided by the Housing Authority of Portland on the morning of Memorial Day, 1948.</h5>
+                <h3>Vanport 1948</h3>
+                <p style = "color: #bf4040">The Vanport flood was one of the most catastrophic events in Oregon history, fundamentally altering the foundation of race relations in Portland (and Oregon) forever.</p><p> In the 1940s, the city of Vanport was the second largest in Oregon and also housed the state's largest African-American population.</p>
+                <p>The city was protected by an embankment that kept the Columbia River out of the city. On Memorial Day, 1948, the Columbia swelled 15 feet higher than its normal level. The flood punctured the embankment, spilling water into the city. The flood displaced 18,000 people, many of them African-Americans.</p>
+                <br/><br/><div class="leg"><i style="background: #862d2d; fillOpacity: .5; color:#bf4040; weight: 2; opacity: 0.5; radius: 4"></i><b><p>Vanport City Limits</b></p></div>
+                <br>
+                <a href="img/vanport_flood.jpg" data-toggle="lightbox" data-gallery="vanport_gallery" data-footer="Aerial view of Vanport during the flood."> <img src="img/vanport_flood.jpg" class="img-fluid" style="height:80px; width:80px; border:4px solid #000000;"></a>
+            	<a href="img/Vanport_overturned.jpg" data-toggle="lightbox" data-gallery="vanport_gallery" data-footer="Overturned cars in the aftermath of the Vanport Flood."> <img src="img/Vanport_overturned.jpg" class="img-fluid" style="height:80px; width:80px; border:4px solid #000000;"></a>
+            	<a href="img/Vanport_street.jpg" data-toggle="lightbox" data-gallery="vanport_gallery" data-footer="Vanport in 1943."> <img src="img/Vanport_street.jpg" class="img-fluid" style="height:80px; width:80px; border:4px solid #000000;"></a>
+            	<a href="img/vanport_map.jpg" data-toggle="lightbox" data-gallery="vanport_gallery" data-footer="Map of Vanport."> <img src="img/vanport_map.jpg" class="img-fluid" style="height:80px; width:120px; border:4px solid #000000;"></a>
+            	<br/><p style="font-size:16px;">Select to view</p>
+            </section>     
+
+            <section  data-scene="flood_1964">
+                <br/><h5>"This is the worst disaster ever to hit the state."</h5>
+                <h5>Oregon Governor Mark Hatfield</h5>
+                <h3>1964 Flood</h3>
+                <p>A cold spell that began on December 13th, 1964, brought over 10 inches of snow to most of Oregon, freezing the ground. The snowstorm was followed by a Pineapple Express storm that brought heavy rainfail and raised temperatures. The snow melted, but the ground remained frozen, creating an impermeable surface. While the damages were worst along the Willamette River, flooding also occurred on the Pacific Coast, along the Columbia, and throughout Northern California and Western Idaho.</p>
+           		<br/><br/><div class="leg"><i style="background: #bf4040; fillOpacity: .5; color:#993333; weight: 1; opacity: 0.5"></i><b><p>Flood Extent</b></p></div>
+           		<br>
+           		<a href="img/1964_flood.jpg" data-toggle="lightbox"  data-gallery="1964_gallery" data-footer="Downtown Oregon City during the 1964 Flood. Note the abscence of Willamette Falls. Photo from the Portland Corps."> <img src="img/1964_flood.jpg" class="img-fluid" style="height:80px; width:80px; border:4px solid #000000;"></a>
+           	 	<a href="img/1964_mudslide.jpg" data-toggle="lightbox"  data-gallery="1964_gallery" data-footer="A mudslide in SW Portland. Photo from The Oregonian."> <img src="img/1964_mudslide.jpg" class="img-fluid" style="height:80px; width:80px; border:4px solid #000000;"></a>
+                <a href="img/1964_freeze.jpg" data-toggle="lightbox"  data-gallery="1964_gallery" data-footer="The freeze before the 1964 flood. Photo from the Portland Corps."> <img src="img/1964_freeze.jpg" class="img-fluid" style="height:80px; width:80px; border:4px solid #000000;"></a>
+                <br/><p style="font-size:16px;">Select to view</p>
+            </section>
+            
+            <section  data-scene="flood_1996_january" title="1996">
+                <h3>1996 Flood</h3>
+                <h3 style = "font-size: 30px; margin-top: 5px;">January</h3>
+                <p>In 1996, Oregonians were experiencing a wet winter. Saturated soil, bloated creeks, and daily rainfall. It was nothing new.</p>
+            	<p>However, a late January snowstorm and a subsequent Pineapple Express storm created the perfect conditions for Oregon's worst flood disaster since 1964.</p>
+            	<div class="leg"></div>
+            </section>
+            
+            <section  data-scene="flood_1996_february">
+                <h3>1996 Flood</h3>
+                <h3 style = "font-size: 30px; margin-top: 5px;">February</h3>
+                <p>As the waters began to rise, city workers in Portland began constructing what was known as Vera's Wall, named after Portland Mayor Vera Katz. The Willamette River ultimately rose 28 feet in downtown Portland.</p>
+            	<p>However, the Willamette wasn't the only river affected. 26 rivers throughout Oregon experienced flooding and 26 counties were declared federal emergency zones. In total, over 20,000 people were evacuated from their homes.</p>
+            	<div class="leg"></div>
+            	<br>
+            	<a href="img/1996_flood.jpg" data-toggle="lightbox"  data-gallery="1996_flood" data-footer="View of the floodwaters in the Willamette Valley."> <img src="img/1996_flood.jpg" class="img-fluid" style="height:80px; width:80px; border:4px solid #ffffff;"></a>
+            	<a href="img/1996_wall.jpg" data-toggle="lightbox"  data-gallery="1996_flood" data-footer="A view of 'Vera's Wall'. Photo by Steve Morgan."> <img src="img/1996_wall.jpg" class="img-fluid" style="height:80px; width:80px; border:4px solid #ffffff;"></a>
+            	<a href="img/1996_clinton.jpg" data-toggle="lightbox"  data-gallery="1996_flood" data-footer="President Bill Clinton standing in front of the swollen Willamette River. President Clinton declared the 1996 flooding a federal disaster. Photo by Portland Corps."> <img src="img/1996_clinton.jpg" class="img-fluid" style="height:80px; width:80px; border:4px solid #ffffff;"></a>
+           		<br/><p style="font-size:16px;">Select to view</p>	
+            </section>
+            
+             <section  data-scene="predictions">
+                <h3>Flood Risk</h3>
+                <p>Over 900,000 Oregonians live in areas designated by FEMA as flood insurance zones. These are areas where there is a greater than 1% annual chance of flooding.<p><p style = "color: #bf4040"> Living in these flood zones requires flood insurance.</p>
+            	<br/><br/>
+            	<div class="leg"><i style="background: #bf4040; fillOpacity: .5; color:#993333; weight: 1; opacity: 0.5"></i><b><p>Flood Risk Zones</b></p></div>
+            </section>
+            
+           <!-- 
+            <section  data-scene="demographics_portland">
+                <h3>Demographics and Risk</h3>
+                <p>Marginalized groups are at greater risk from the effects of natural hazards. The Vanport flood exemplifies the damaging power flooding can have on at-risk communities.</p><p style = "color: #bf4040"> As flood hazard planning continues to evolve, understanding the magnitude of risk for marginalized groups is important to ensure equitable preparation and response.</p>
+            	<div class="leg"><p style="text-align:left">Percent Non-White Population</p><br><i style="background: #602020; opacity: 0.8"></i><b><p>31-100%</b></p><br><i style="background: #bf4040; opacity: 0.8"></i><b><p>21-30%</b></p><br><i style="background: #df9f9f; opacity: 0.8"></i><b><p>11-20%</b></p><br><i style="background: #f9ecec; opacity: 0.8"></i><b><p>0-10%</b></p><br></div>
+            </section>
+            -->
+            <section data-scene="end">
+				 	<div class= "end-background-img background-fullscreen-setting text-responsive">
+            </section>
+        	<i class="animated zoomIn infinite glyphicon glyphicon-arrow-up arrow-up"></i>
+        	<i class="animated zoomIn infinite glyphicon glyphicon-arrow-down arrow-down"></i>
+        </div>
+        <div id="map" class="col-sm-6 col-md-8 sidebar"></div>
+    </div>
+        <i class="fa fa-info-circle social" style="right:70px;" data-toggle="modal" data-target="#info-modal"></i>
+    
+	<a class="fa fa-facebook-square social2" style="right:55px;" href="https://facebook.com/sharer.php?u=http://rawgit.com/cartobaldrica/water_atlas/master/infrastructure_index.html" target="_blank"></a>
+        
+    <a class="fa fa-twitter-square social3" style="right:40px;" href="https://twitter.com/home?status=Oregon's%20Groundwater%0Ahttp%3A//rawgit.com/cartobaldrica/water_atlas/master/infrastructure_index.html" target="_blank"></a>
+	
+	<a class="fa fa-github-square social3" style="right:25px;" href="https://github.com/cartobaldrica/water_atlas" target="_blank"></a>
+	
+
+    
+    <div class="modal fade" id="info-modal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title" style="color:black;">About</h2>
+                </div>
+                <div class="modal-body">
+                    <p2>Basemap by CARTO</p><br/>
+                    <p2 style="font-size:20px">Geographic Data</p2><br>
+                    <p2>1861, 1964, 1996 Flood Extent: <a href = "http://spatialdata.oregonexplorer.info/geoportal/catalog/search/resource/details.page?uuid=%7B12E0DFA1-5503-495A-9B4C-F01BF36CF717%7D" target="_blank">FEMA/Oregon Spatial Data Library</a></p2><br>
+                    <p2>Flood Insurance Zones: <a href = "http://spatialdata.oregonexplorer.info/geoportal/catalog/search/resource/details.page?uuid=%7BF2CC36DE-1F0A-42D2-9B8D-FDD71721A7D3%7D" target="_blank">FEMA/Oregon Spatial Data Library</a></p2><br>
+                	<p2>Vanport: <a href = "https://oregonhistoryproject.org/articles/essays/the-vanport-flood/#.WOvVClPyuYU" target="_blank">Oregon Historical Society<a></p2><br>
+                	<p2>1996 Satellite Imagery: <a href = "https://landsatlook.usgs.gov/viewer.html" target="_blank">LandsatLook Image Viewer</a></p2><br>
+                	<p2>Demographics: <a href = "http://spatialdata.oregonexplorer.info/geoportal/catalog/search/resource/details.page?uuid=%7B3DDDF24C-9164-4BBC-9579-672B992727BC%7D" target="_blank">U.S Census Bureau/Oregon Spatial Data Library</a></p2><br>
+                	<p2 style="font-size:20px">Text Data</p2><br>
+                	<p2>1861 Flood: Oregon Historical Quarterly</p2><br>
+                	<p2>Vanport Flood: Oregon Historical Society, Smithsonian</p2><br>
+                	<p2>1964 Flood: The Oregonian</p2><br>
+                	<p2>1996 Flood: Oregonian</p2><br>
+                	<p2>Flood Insurance and Demographics: FEMA, Oregon Risk MAP</p2><br>
+                </div>
+                <div class="modal-footer">
+                    <p2>Created with Leaflet and storymap.js</p>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="share-modal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <a class="fa fa-facebook-square social2" style="font-size: 8em; display:inline;" href="https://facebook.com/sharer.php?u=http://rawgit.com/cartobaldrica/water_atlas/master/infrastructure_index.html" target="_blank"></a>
+    				<a class="fa fa-twitter-square social3" style="font-size: 8em; display:inline;" href="https://twitter.com/home?status=Oregon's%20Groundwater%0Ahttp%3A//rawgit.com/cartobaldrica/water_atlas/master/infrastructure_index.html" target="_blank"></a>
+					<a class="fa fa-github-square social3" style="font-size: 8em; display:inline;" href="https://github.com/cartobaldrica/water_atlas" target="_blank"></a>
+					<br/>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+<script type="text/javascript">
+
+    var vanportStyle = {color: 'black', radius: 2, fillColor: 'black', fillOpacity: 1};
+    var heppnerStyle = {color: 'black', radius: 4, opacity: 1};
+   	
+    var legend = '<p style="text-align:left">Percent Non-White Population</p><br><i style="background: #602020; opacity: 0.8"></i><b><p>31-100%</b></p><br><i style="background: #bf4040; opacity: 0.8"></i><b><p>21-30%</b></p><br><i style="background: #df9f9f; opacity: 0.8"></i><b><p>11-20%</b></p><br><i style="background: #f9ecec; opacity: 0.8"></i><b><p>0-10%</b></p><br><p>Drag map to see other parts of Oregon';
+    var legend_1861 = '<img src="img/point.png" style="height:5px; width:5px; margin-top:7px; margin-left:1px;"><p style = "margin-top:5px;">Towns Destroyed</p><br><i style="background: #bf4040; fillOpacity: .5; color:#993333; weight: 1; opacity: 0.5"></i><b><p>Flood Extent</b></p>';
+    var legend_vanport = '<i style="background: #862d2d; fillOpacity: .5; color:#bf4040; weight: 2; opacity: 0.5; radius: 4"></i><b><p>Vanport City Limits</b></p>';
+    var legend_1964 = '<i style="background: #bf4040; fillOpacity: .5; color:#993333; weight: 1; opacity: 0.5"></i><b><p>Flood Extent</b></p>';
+    var legend_zones = '<i style="background: #bf4040; fillOpacity: .5; color:#993333; weight: 1; opacity: 0.5"></i><b><p>Flood Risk Zones</b></p>';
+
+
+    var layers = {  
+          'floods' : [L.tileLayer.wms('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/wms', {
+              layers: 'baldricg_atlas:flood_risk_zones',
+              tiled: true,
+              format: 'image/png',
+              transparent: true,
+              maxZoom: 14,
+              minZoom: 6,
+              continuousWorld: true
+              }), legend_zones],
+           'labels': [L.tileLayer.wms("http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_basemap/wms", {
+        			layers: 'baldricg_basemap:basemap_dark_labels',
+        			format: 'image/png',
+        			minZoom: 6,
+        			maxZoom: 15,
+        			transparent: true,
+        			tiled: true, 
+        			tilesorigin: [-180, 90]
+    			})],
+    		'labels2': [L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}.png', {
+					attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+					subdomains: 'abcd',
+					minZoom: 6,
+        			maxZoom: 15
+				})],
+            'flood_1861': [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:1861_floods&maxFeatures=50&outputFormat=application%2Fjson',
+            	{fillColor: '#bf4040', fillOpacity: .5, color: '#993333', weight: 1, opacity: 0.5}), legend_1861],
+            'heppner': [L.circle([45.3448, -119.5436], {
+    					opacity: 0,
+					}).bindTooltip('Willow Creek <br> Reservoir', {permanent: true, className: 'label_tooltip',  offset: L.point({x: 80, y: -10})})
+    			],
+            'vanport_polygon': [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:vanport_polygons&maxFeatures=50&outputFormat=application%2Fjson',
+            	{fillColor: '#862d2d', fillOpacity: .5, color: '#bf4040', radius: 4, opacity: 0.5, weight:2}), legend_vanport],
+            'vanport_points': [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:vanport_points&maxFeatures=50&outputFormat=application%2Fjson', 
+            	{pointToLayer: function (feature, latlng) {
+    					return L.circleMarker(latlng, vanportStyle).bindTooltip('Embankment Failure', {permanent: true, className: 'label_tooltip',  offset: L.point({x: 6, y: -8})}); map.dragging.enable();}
+    			})],
+    		'flood_1964': [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:1964_flood&maxFeatures=1000&outputFormat=application%2Fjson',
+            	{fillColor: '#bf4040', fillOpacity: .5, color: '#993333', radius: 4, opacity: 0}), legend_1964],
+            'flood_1861_cities': [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:flooded_1861_cities&maxFeatures=10&outputFormat=application%2Fjson', 
+            		{pointToLayer: function (feature, latlng) {
+    					return L.circleMarker(latlng, vanportStyle).bindTooltip(feature.properties.Name, {permanent: true, className: 'label_tooltip',  offset: L.point({x: 6, y: -8})}); map.dragging.enable();
+    				}
+    			})],	
+    		'zones': [L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=baldricg_atlas:flood_risk_zones&maxFeatures=10000&outputFormat=application%2Fjson',
+            	{fillColor: '#bf4040', fillOpacity: .5, color: '#bf4040', radius: 4, opacity: 0, weight:2}), legend_zones],
+            'flood_1996_january' : [L.tileLayer.wms('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/wms',{
+              	layers: 'baldricg_atlas:flood_1996_january',
+              	tiled: true,
+              	format: 'image/png',
+              	transparent: true,
+              	maxZoom: 14,
+              	minZoom: 6,
+              	continuousWorld: true
+              	})],
+            'flood_1996_february' : [L.tileLayer.wms('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/wms',{
+              	layers: 'baldricg_atlas:flood_1996_february',
+              	tiled: true,
+              	format: 'image/png',
+              	transparent: true,
+              	maxZoom: 14,
+              	minZoom: 6,
+              	continuousWorld: true
+              })],
+              'flood_demographics2' : [L.tileLayer.wms('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/wms',{
+              	layers: 'baldricg_atlas:flood_demographics',
+              	tiled: true,
+              	format: 'image/png',
+              	transparent: true,
+              	maxZoom: 14,
+              	minZoom: 6,
+              	continuousWorld: true
+              }), legend],
+              'satellite': [L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+					attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+					minZoom: 6,
+        			maxZoom: 15,
+        			opacity: 0.9
+					})]
+    };
+
+    var scenes = {
+            overview: {lat: 44.1347254, lng:-122.7411479, zoom: 7, position: 'fullpage', name: 'Home'},
+            flood_1861: {lat: 44.7251, lng:-123.5893, zoom: 9, layers:['flood_1861', 'flood_1861_cities'], name: '1861'},
+            vanport: {lat: 45.6025, lng:-122.7163, zoom: 14, layers:['vanport_polygon','vanport_points'], name: 'Vanport'},
+            flood_1964: {lat: 44.7251, lng:-123.5893, zoom: 9, layers:['flood_1964'], name: '1964'},
+            flood_1996_january: {lat: 45.4245, lng:-123.1004, zoom: 10, layers:['satellite','flood_1996_january','labels2'], name: 'Pre-1996'},
+            flood_1996_february: {lat: 45.4245, lng:-123.1004, zoom: 10, layers:['satellite','flood_1996_february','labels2'], name: '1996'},
+            predictions: {lat: 44.1347254, lng:-122.7411479, zoom: 7,layers:['floods'], name: 'Flood Risk'},
+			end: {lat: 44.1347254, lng:-122.7411479, zoom: 7, position: 'fullpage', name: 'End'}
+    };
+    
+    
+
+    $('.main').storymap({
+        scenes: scenes,
+        layers:layers,
+        legend: false,
+        scale:false,
+        navbar: true,
+        createMap: function () {
+            // create a map in the "map" div, set the view to a given place and zoom
+                var map = L.map('map',{zoomControl:false, scrollWheelZoom:false}).setView([44.1347254, -122.7411479], 7);
+            // add an basemap, which can be either OSM, mapbox, tilelayer, wmslayer or those designed by yourself.
+          /* L.tileLayer.wms("http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_basemap/wms", {
+        			layers: 'baldricg_basemap:basemap_light',
+       				format: 'image/png',
+       				minZoom: 6,
+       				transparent: true,
+        			maxZoom: 15,
+        			
+        		attribution: "Created by Gareth Baldrica-Franklin"
+    			}).addTo(map);
+    			
+    			L.tileLayer.wms("http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_basemap/wms", {
+        			layers: 'baldricg_basemap:basemap_light_labels',
+        			format: 'image/png',
+        			minZoom: 6,
+        			maxZoom: 15,
+        			transparent: true,
+        			tiled: true, 
+        			tilesorigin: [-180, 90]
+    			}).addTo(map);
+    	*/
+    	
+    			var CartoDB_Positron = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+					attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+					subdomains: 'abcd',
+					minZoom: 6,
+        			maxZoom: 15
+				}).addTo(map);
+				/*
+				var north_america = L.tileLayer.wms('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_atlas/wms',{
+              	layers: 'baldricg_atlas:north_america',
+              	tiled: true,
+              	format: 'image/png',
+              	transparent: true,
+              	maxZoom: 14,
+              	minZoom: 6,
+              	continuousWorld: true
+              }).addTo(map);
+    			
+    	*/
+ 				
+ 				var mini = new L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+					attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+					subdomains: 'abcd',
+					maxZoom: 8,
+					minZoom:5
+				});
+				
+				var miniMap = new L.Control.MiniMap(mini, { toggleDisplay: false});
+				
+				miniMap.addTo(map);
+
+				
+				new L.Control.Zoom({ position: 'bottomright'}).addTo(map);
+ 				
+			
+				
+				/*if (scene == 'portland'){
+				miniMap;
+				}*/
+				map.setMaxBounds(map.getBounds());
+
+            return map;
+        }
+    });
+    
+    document.getElementsByClassName("leaflet-control-attribution")[0].style.visibility = "hidden";
+
+    
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+   		event.preventDefault();
+    $(this).ekkoLightbox();
+	});
+
+</script>
+</body>
+</html>
