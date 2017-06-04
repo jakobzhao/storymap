@@ -194,9 +194,6 @@
             }
 
 
-
-
-
             sections.on('viewing', function () {
 
 
