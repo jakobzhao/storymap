@@ -1,6 +1,7 @@
 // Modified by Bo Zhao, zhao2@oregonstate.edu
 // Originally obtained from http://atlefren.github.io/storymap/
 // Updated on 5/14/2017 | version 2.22 | MIT License
+
 (function ($) {
 
     $.fn.storymap = function(options) {
@@ -13,7 +14,7 @@
             navwidget: false,
             createMap: function () {
                 var map = L.map('map', {zoomControl: false}).setView([44, -120], 7);
-                L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png');
+                L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}@2x.png');
                 return map;
             }
         };
@@ -75,8 +76,6 @@
             if (!closest.el.hasClass('viewing')) {
                 closest.el.trigger('viewing');
             }
-
-
         }
 
         function watchHighlight(element, searchfor, top) {
@@ -327,15 +326,9 @@
 
                     //if there is a navbar.
                     if ($(".navbar").length !== 0) {
-                        // scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" + section.data('scene') + "\\']').offset().top + $('section[data-scene=\\'" + section.data('scene') + "\\']').height() - $(window).scrollTop() - $('.navbar').height() - 10);";
                         scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" + section.data('scene') + "\\']').offset().top - $(window).scrollTop() - $('.navbar').height() - 10);";
-
-                        //scrollScript = "javascript:window.scrollBy(0, $('.viewing').offset().top + $('.viewing').height() - $(window).scrollTop() - $('.navbar').height() - 10);";
                     } else {
-                        // scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" + section.data('scene') + "\\']').offset().top + $('section[data-scene=\\'" + section.data('scene') + "\\']').height() - $(window).scrollTop() - 10);";
                         scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" + section.data('scene') + "\\']').offset().top  - $(window).scrollTop() - 10);";
-
-                       // scrollScript = "javascript:window.scrollBy(0, $('.viewing').offset().top + $('.viewing').height() - $(window).scrollTop() - 10);";
                     }
                     // if key is equal to 0, meaning it is the first scene.
                     if (key == 0) {
@@ -343,12 +336,9 @@
                     }  else {
                         $(".navwidget").append('<li><a class="glyphicon glyphicon-one-fine-full-dot" data-toggle="tooltip" title="' + sceneName + '" href="' + scrollScript + '" ></a></li>');
                     }
-
-
                 });
 
                 $('[data-toggle="tooltip"]').tooltip({placement: 'right', html: true});
-
 
                 $( ".navwidget" ).hover(function() {
                     $(this).fadeTo( 100, 0.8 );
