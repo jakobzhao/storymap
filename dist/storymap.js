@@ -131,59 +131,6 @@
 
             }
 
-            // $.each(sections, function (key, element) {
-            //
-            //     var section = $(element);
-            //
-            //     //Update the height of the viewing section by changing the co-efficiency
-            //     if (section.height() <= $(window).height() * 0.33) {
-            //         section.height($(window).height() * 0.33)
-            //     }
-            //
-            //     if (section[0].className === 'viewing' && scenes[section.data('scene')].position !== "fullpage") {
-            //
-            //         var scene = scenes[$(section).data('scene')];
-            //
-            //         map.setView([scene.lat, scene.lng], scene.zoom);
-            //
-            //         var layernames = scene.layers;
-            //         var legendContent = "";
-            //
-            //         if(typeof layernames !== 'undefined') {
-            //
-            //             for (var i = 0; i < layernames.length; i++) {
-            //
-            //                 //add new layers
-            //                 currentLayerGroup.addLayer(layers[layernames[i]][0]);
-            //
-            //                 //add new legends
-            //                 if (layers[layernames[i]].length === 2) {
-            //                     legendContent += layers[layernames[i]][1];
-            //                 }
-            //             }
-            //         }
-            //
-            //         legendControl.onAdd = function () {
-            //             var div = new L.DomUtil.create('div', 'legend');
-            //             div.innerHTML = legendContent;
-            //
-            //             return div;
-            //         };
-            //
-            //         if (settings.legend === true && legendContent !== "")
-            //         {
-            //             legendControl.addTo(map);
-            //
-            //             if ($(".navbar").length !== 0) {
-            //                 navbar_height = $(".navbar").height();
-            //                 origin_legend_top = $(".legend").position().top;
-            //                 $(".legend").css({ top: (navbar_height + origin_legend_top).toString() + "px"});
-            //             }
-            //         }
-            //     }
-            //
-            //
-            // } );
 
             function showMapView(key) {
 
@@ -285,7 +232,7 @@
             });
 
             watchHighlight(element, searchfor, top);
-
+            window.scrollTo(0, 1);
 
 
             $('.arrow-down').click(function () {
@@ -313,7 +260,7 @@
             });
 
 
-            // create the navigation widget anchored on the side.
+            // create the navigation widget to the left side of the browser's window.
             if (settings.navwidget) {
                 $.each(sections, function (key, element) {
                     var section = $(element);
@@ -347,9 +294,12 @@
                 });
             }
 
+            //
+
         };
 
         makeStoryMap(this, settings.scenes, settings.layers);
+
         return this;
     }
 
