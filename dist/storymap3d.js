@@ -242,6 +242,8 @@
 
             watchHighlight(element, searchfor, top);
             window.scrollTo(0, 1);
+            window.scrollTo(0, 0);
+
 
 
             $('.arrow-down').click(function () {

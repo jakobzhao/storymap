@@ -132,6 +132,16 @@
             }
 
 
+            $.each(layers, function (key, layer) {
+
+                layer = layer[0];
+                layer.on('load', function (){
+                    $(".loader").fadeTo(500,0);
+                })
+
+            });
+
+
             function showMapView(key) {
 
                 currentLayerGroup.clearLayers();
@@ -149,12 +159,18 @@
 
                     for (var i=0; i < layernames.length; i++)
                     {
+                        $(".loader").fadeTo(0,1);
                         currentLayerGroup.addLayer(layers[layernames[i]][0]);
 
                         if (layers[layernames[i]].length === 2)  {
                             legendContent += layers[layernames[i]][1];
                         }
                     }
+                }
+
+                if(scene.position == "fullpage") {
+
+                    $(".loader").fadeTo(0,0);
                 }
 
                 legendControl.onAdd = function () {
@@ -177,9 +193,13 @@
 
             }
 
+
+
+
+
             sections.on('viewing', function () {
 
-                $(".loader").fadeTo(0,1);
+
 
                 $(this).addClass('viewing');
 
@@ -213,8 +233,6 @@
                 }
 
                 showMapView($(this).data('scene'));
-
-                $(".loader").fadeTo(500,0);
 
             });
 
