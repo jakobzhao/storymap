@@ -34,7 +34,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-6 col-md-4 main">
-            <section data-scene="scene1"><h2>Microsoft Bing</h2><p><a href="https://leaflet-extras.github.io/leaflet-providers/preview/" target="_blank">leaflet tilelayer providers</a></p></section>
+            <section data-scene="scene1"><h2>ESRI Satellite</h2><p><a href="https://leaflet-extras.github.io/leaflet-providers/preview/" target="_blank">leaflet tilelayer providers</a></p></section>
             <section data-scene="scene2"><h2>GEE Forest 2010</h2></section>
             <section data-scene="scene3"><h2>Mapbox Satellite</h2></section>
             <section data-scene="scene4"><h2>Mapbox Light</h2></section>
@@ -51,28 +51,30 @@
     <div class="animated zoomIn infinite glyphicon glyphicon-menu-down arrow-down"></div>
     <!--add a navigation bar-->
     <div class="navwidget text-center"></div>
+    <!--add loading page -->
+    <div class="glyphicon glyphicon-refresh loader"></div>
 
 </div>
 <script type="text/javascript">
 
 
     var layers = {
-        'Microsoft Bing': [L.tileLayer('http://api.mapbox.com/styles/v1/zhaobo/cj1zcv9cf000x2rp7zv8yqekr/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoiemhhb2JvIiwiYSI6ImNqMGdpM2RjNDAyMzQzMnJ1d3FuZmF0NnQifQ.yoQP0NDS5F8ePKjaS3EJgQ',{tileSize: 512, zoomOffset: -1})], // please apply for your own BING API KEY.
+        'ESRI': [L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}')],
         'GEE Forest 2010': [ L.tileLayer('http://earthengine.google.org/static/hansen_2013/tree_alpha/{z}/{x}/{y}.png')],
         'Mapbox Satellite': [ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
             id: 'mapbox.satellite'
         })],
         'Mapbox Light': [L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
-            id: 'mapbox.light' // ,detectRetina: true
+            id: 'mapbox.light',detectRetina: true
         })],
         'Mapbox Dark': [L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
-            id: 'mapbox.dark' // ,detectRetina: true
+            id: 'mapbox.dark' ,detectRetina: true
         })],
         'Mapbox Outdoors': [L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
-            id: 'mapbox.outdoors' // ,detectRetina: true
+            id: 'mapbox.outdoors',detectRetina: true
         })],
         'Mapbox Streets': [L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
-            id: 'mapbox.streets' // ,detectRetina: true
+            id: 'mapbox.streets', detectRetina: true
         })],
         'NightView': [L.tileLayer('http://map1.vis.earthdata.nasa.gov/wmts-webmerc/VIIRS_CityLights_2012/default/{time}/{tilematrixset}{maxZoom}/{z}/{y}/{x}.{format}', {
             minZoom: 1,
@@ -84,7 +86,7 @@
     };
 
     var scenes = {
-        scene1: {lat: 44, lng: -123.5, zoom: 7, layers: ['Microsoft Bing'], name: "Microsoft Bing"},
+        scene1: {lat: 44, lng: -123.5, zoom: 7, layers: ['ESRI'], name: "ESRI"},
         scene2: {lat: 44, lng: -123.5, zoom: 7, layers: ['GEE Forest 2010'], name: "GEE Forest"},
         scene3: {lat: 44, lng: -123.5, zoom: 7, layers: ['Mapbox Satellite'], name: "Mapbox Satellite"},
         scene4: {lat: 44, lng: -123.5, zoom: 7, layers: ['Mapbox Light'], name: "Mapbox Light"},

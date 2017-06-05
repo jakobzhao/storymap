@@ -4,6 +4,8 @@
 
 **The latest version supports:**
 
+* add [a spinned layer loader](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/tileLayer/index.html).
+
 * add a [progress line](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/navbar/index.html) on the top;
 * add a [nav bar](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/navbar/index.html) on the top;
 * [3d thematic map](http://rawgit.com/jakobzhao/storymap/master/examples/3d/index.html);

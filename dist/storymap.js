@@ -1,6 +1,7 @@
 // Modified by Bo Zhao, zhao2@oregonstate.edu
 // Originally obtained from http://atlefren.github.io/storymap/
 // Updated on 5/14/2017 | version 2.22 | MIT License
+
 (function ($) {
 
     $.fn.storymap = function(options) {
@@ -13,7 +14,7 @@
             navwidget: false,
             createMap: function () {
                 var map = L.map('map', {zoomControl: false}).setView([44, -120], 7);
-                L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png');
+                L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}@2x.png');
                 return map;
             }
         };
@@ -75,8 +76,6 @@
             if (!closest.el.hasClass('viewing')) {
                 closest.el.trigger('viewing');
             }
-
-
         }
 
         function watchHighlight(element, searchfor, top) {
@@ -132,59 +131,16 @@
 
             }
 
-            // $.each(sections, function (key, element) {
-            //
-            //     var section = $(element);
-            //
-            //     //Update the height of the viewing section by changing the co-efficiency
-            //     if (section.height() <= $(window).height() * 0.33) {
-            //         section.height($(window).height() * 0.33)
-            //     }
-            //
-            //     if (section[0].className === 'viewing' && scenes[section.data('scene')].position !== "fullpage") {
-            //
-            //         var scene = scenes[$(section).data('scene')];
-            //
-            //         map.setView([scene.lat, scene.lng], scene.zoom);
-            //
-            //         var layernames = scene.layers;
-            //         var legendContent = "";
-            //
-            //         if(typeof layernames !== 'undefined') {
-            //
-            //             for (var i = 0; i < layernames.length; i++) {
-            //
-            //                 //add new layers
-            //                 currentLayerGroup.addLayer(layers[layernames[i]][0]);
-            //
-            //                 //add new legends
-            //                 if (layers[layernames[i]].length === 2) {
-            //                     legendContent += layers[layernames[i]][1];
-            //                 }
-            //             }
-            //         }
-            //
-            //         legendControl.onAdd = function () {
-            //             var div = new L.DomUtil.create('div', 'legend');
-            //             div.innerHTML = legendContent;
-            //
-            //             return div;
-            //         };
-            //
-            //         if (settings.legend === true && legendContent !== "")
-            //         {
-            //             legendControl.addTo(map);
-            //
-            //             if ($(".navbar").length !== 0) {
-            //                 navbar_height = $(".navbar").height();
-            //                 origin_legend_top = $(".legend").position().top;
-            //                 $(".legend").css({ top: (navbar_height + origin_legend_top).toString() + "px"});
-            //             }
-            //         }
-            //     }
-            //
-            //
-            // } );
+
+            $.each(layers, function (key, layer) {
+
+                layer = layer[0];
+                layer.on('load', function (){
+                    $(".loader").fadeTo(500,0);
+                })
+
+            });
+
 
             function showMapView(key) {
 
@@ -203,12 +159,18 @@
 
                     for (var i=0; i < layernames.length; i++)
                     {
+                        $(".loader").fadeTo(0,1);
                         currentLayerGroup.addLayer(layers[layernames[i]][0]);
 
                         if (layers[layernames[i]].length === 2)  {
                             legendContent += layers[layernames[i]][1];
                         }
                     }
+                }
+
+                if(scene.position == "fullpage") {
+
+                    $(".loader").fadeTo(0,0);
                 }
 
                 legendControl.onAdd = function () {
@@ -231,9 +193,10 @@
 
             }
 
+
             sections.on('viewing', function () {
 
-                $(".loader").fadeTo(0,1);
+
 
                 $(this).addClass('viewing');
 
@@ -268,8 +231,6 @@
 
                 showMapView($(this).data('scene'));
 
-                $(".loader").fadeTo(500,0);
-
             });
 
 
@@ -286,7 +247,7 @@
             });
 
             watchHighlight(element, searchfor, top);
-
+            window.scrollTo(0, 1);
 
 
             $('.arrow-down').click(function () {
@@ -314,7 +275,7 @@
             });
 
 
-            // create the navigation widget anchored on the side.
+            // create the navigation widget to the left side of the browser's window.
             if (settings.navwidget) {
                 $.each(sections, function (key, element) {
                     var section = $(element);
@@ -327,15 +288,9 @@
 
                     //if there is a navbar.
                     if ($(".navbar").length !== 0) {
-                        // scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" + section.data('scene') + "\\']').offset().top + $('section[data-scene=\\'" + section.data('scene') + "\\']').height() - $(window).scrollTop() - $('.navbar').height() - 10);";
                         scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" + section.data('scene') + "\\']').offset().top - $(window).scrollTop() - $('.navbar').height() - 10);";
-
-                        //scrollScript = "javascript:window.scrollBy(0, $('.viewing').offset().top + $('.viewing').height() - $(window).scrollTop() - $('.navbar').height() - 10);";
                     } else {
-                        // scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" + section.data('scene') + "\\']').offset().top + $('section[data-scene=\\'" + section.data('scene') + "\\']').height() - $(window).scrollTop() - 10);";
                         scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" + section.data('scene') + "\\']').offset().top  - $(window).scrollTop() - 10);";
-
-                       // scrollScript = "javascript:window.scrollBy(0, $('.viewing').offset().top + $('.viewing').height() - $(window).scrollTop() - 10);";
                     }
                     // if key is equal to 0, meaning it is the first scene.
                     if (key == 0) {
@@ -343,12 +298,9 @@
                     }  else {
                         $(".navwidget").append('<li><a class="glyphicon glyphicon-one-fine-full-dot" data-toggle="tooltip" title="' + sceneName + '" href="' + scrollScript + '" ></a></li>');
                     }
-
-
                 });
 
                 $('[data-toggle="tooltip"]').tooltip({placement: 'right', html: true});
-
 
                 $( ".navwidget" ).hover(function() {
                     $(this).fadeTo( 100, 0.8 );
@@ -357,9 +309,12 @@
                 });
             }
 
+            //
+
         };
 
         makeStoryMap(this, settings.scenes, settings.layers);
+
         return this;
     }
 
