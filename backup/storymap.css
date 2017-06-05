@@ -289,11 +289,11 @@ section {
 
 .progress-line {
     position: fixed;
-    top:0px;
-    left:0px;
+    top:0;
+    left:0;
     z-index: 1030;
     height: 3px;
     background: rgba(255, 30, 0, 0.80);
     box-shadow: 0 0 2px rgba(98, 16, 0, 0.91);
-    width: 0%;
+    width: 0;
 }

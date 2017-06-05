@@ -27,8 +27,7 @@ h3 {
 }
 
 .main {
-    padding: 20px;
-    padding-bottom: 1000px;
+    padding: 20px 20px 1000px 20px;
     z-index: 1001;
     display: block;
 }
@@ -38,16 +37,6 @@ h3 {
     margin-top: 0;
 }
 
-/*.loading-screen {*/
-    /*position: fixed;*/
-    /*top: 0;*/
-    /*left: 0;*/
-    /*width: 100%;*/
-    /*height: 100%;*/
-    /*background: rgba(0, 0, 0, 0.15);*/
-    /*display: none;*/
-    /*z-index: 1002;*/
-/*}*/
 
 .loader {
     color: rgba(255, 255, 255, 0.95);
@@ -289,11 +278,11 @@ section {
 
 .progress-line {
     position: fixed;
-    top:0px;
-    left:0px;
+    top:0;
+    left:0;
     z-index: 1030;
     height: 3px;
     background: rgba(255, 30, 0, 0.80);
     box-shadow: 0 0 2px rgba(98, 16, 0, 0.91);
-    width: 0%;
+    width: 0;
 }

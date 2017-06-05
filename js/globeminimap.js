@@ -83,7 +83,7 @@ var worlddata = {"type":"Topology","objects":{"land":{"type":"MultiPolygon","arc
 
 		  var canvas = d3.select('.leaflet-control-minimap').append("canvas")
 		    .attr("width", this.options.width)
-		    .attr("height", this.options.height)
+		    .attr("height", this.options.height);
 
 		  this.c = canvas.node().getContext("2d");
 
