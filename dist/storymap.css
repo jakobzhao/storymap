@@ -146,15 +146,14 @@ video {display: block;}
     opacity: 1;
     filter:alpha(opacity=100);
     -moz-opacity:1;
-    /*-khtml-opacity: 1;*/
 }
 
 
 .background-fullscreen-setting {
-    -webkit-background-size: 100%;
-    -moz-background-size: 100%;
-    -o-background-size: 100%;
-    background-size: 100%;
+    -webkit-background-size: contain !important;
+    -moz-background-size:  contain !important;
+    -o-background-size:  contain !important;
+    background-size:  contain !important;
 }
 
 @media (min-width: 768px) {
