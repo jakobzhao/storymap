@@ -1,9 +1,9 @@
 // Modified by Bo Zhao, zhao2@oregonstate.edu
 // Originally obtained from http://atlefren.github.io/storymap/
 // Updated on 5/14/2017 | version 2.22 | MIT License
-(function($) {
+(function ($) {
 
-    $.fn.storymap = function(options) {
+    $.fn.storymap = function (options) {
 
         var defaults = {
             selector: '[data-scene]',
@@ -11,7 +11,7 @@
             legend: false,
             scale: false,
             navwidget: false,
-            createMap: function() {
+            createMap: function () {
                 var map = new Cesium.Viewer('map', {
                     terrainProvider: new Cesium.CesiumTerrainProvider({
                         url: 'https://assets.agi.com/stk-terrain/world',
@@ -73,7 +73,7 @@
 
         function highlightTopPara(sections, top) {
 
-            var distances = $.map(sections, function(element) {
+            var distances = $.map(sections, function (element) {
                 var dist = getDistanceToTop(element, top);
                 return {
                     el: $(element),
@@ -91,7 +91,7 @@
 
             var closest = distances.reduce(findMin);
 
-            $.each(sections, function(key, element) {
+            $.each(sections, function (key, element) {
                 var section = $(element);
                 if (section[0] !== closest.el[0]) {
                     section.trigger('notviewing');
@@ -112,7 +112,7 @@
             var sections = element.find(searchfor);
             highlightTopPara(sections, top);
 
-            $(window).scroll(function() {
+            $(window).scroll(function () {
                 highlightTopPara(sections, top);
             });
         }
@@ -120,7 +120,7 @@
         //support video for IE 8 and 9.
         document.createElement('video');
 
-        var makeStoryMap = function(element, scenes, layers) {
+        var makeStoryMap = function (element, scenes, layers) {
 
             var topElem = $('<div class="breakpoint-current"></div>')
                 .css('top', settings.breakpointPos);
@@ -134,7 +134,7 @@
             var imageryLayers = map.scene.imageryLayers;
 
             if (!String.prototype.includes) {
-                String.prototype.includes = function() {
+                String.prototype.includes = function () {
                     'use strict';
                     return String.prototype.indexOf.apply(this, arguments) !== -1;
                 };
@@ -187,7 +187,7 @@
                 }
             }
 
-            sections.on('viewing', function() {
+            sections.on('viewing', function () {
 
                 $(".loader").fadeTo(0, 1);
 
@@ -233,7 +233,7 @@
             });
 
 
-            sections.on('notviewing', function() {
+            sections.on('notviewing', function () {
                 $(this).removeClass('viewing');
 
                 if (scenes[$(this).data('scene')].position === "fullpage") {
@@ -249,8 +249,7 @@
             window.scrollTo(0, 0);
 
 
-
-            $('.arrow-down').click(function() {
+            $('.arrow-down').click(function () {
                 if ($(".arrow-down")[0].className.includes("menu")) {
 
 
@@ -262,7 +261,6 @@
                     }
 
 
-
                 } else if ($(".arrow-down")[0].className.includes("home")) {
                     window.scrollTo(0, 0);
                 }
@@ -271,7 +269,7 @@
 
 
             // create a progress line
-            $(window).scroll(function() {
+            $(window).scroll(function () {
                 var wintop = $(window).scrollTop(),
                     docheight =
 
@@ -285,7 +283,7 @@
 
             // create the navigation widget anchored on the side.
             if (settings.navwidget) {
-                $.each(sections, function(key, element) {
+                $.each(sections, function (key, element) {
                     var section = $(element);
                     // if no name attribute for a specific scene, the name on the navigation bar will be the object name.
                     if (typeof(scenes[section.data('scene')].name) === "undefined") {
@@ -313,9 +311,9 @@
                 });
 
 
-                $(".navwidget").hover(function() {
+                $(".navwidget").hover(function () {
                     $(this).fadeTo(100, 0.8);
-                }, function() {
+                }, function () {
                     $(this).fadeTo(300, 0);
                 });
             }
