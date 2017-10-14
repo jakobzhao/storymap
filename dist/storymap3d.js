@@ -1,7 +1,7 @@
 // Modified by Bo Zhao, zhao2@oregonstate.edu
 // Originally obtained from http://atlefren.github.io/storymap/
 // Updated on 5/14/2017 | version 2.22 | MIT License
-(function ($) {
+(function($) {
 
     $.fn.storymap = function(options) {
 
@@ -11,21 +11,21 @@
             legend: false,
             scale: false,
             navwidget: false,
-            createMap: function () {
+            createMap: function() {
                 var map = new Cesium.Viewer('map', {
-                    terrainProvider : new Cesium.CesiumTerrainProvider({
-                        url : 'https://assets.agi.com/stk-terrain/world',
+                    terrainProvider: new Cesium.CesiumTerrainProvider({
+                        url: 'https://assets.agi.com/stk-terrain/world',
                         requestWaterMask: true,
                         requestVertexNormals: true
                     }),
-                    imageryProvider :  new Cesium.ArcGisMapServerImageryProvider({
-                        url :  'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer'
+                    imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
+                        url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer'
                     }),
-                    vrButton: false,  // virtual reality support
+                    vrButton: false, // virtual reality support
                     infoBox: false, // pick a feature and show its attributes
                     sceneModePicker: false, // 2d, 2.5d and 3d
                     navigationHelpButton: false,
-                    baseLayerPicker : false,
+                    baseLayerPicker: false,
                     fullscreenButton: false,
                     geocoder: false,
                     selectionIndicator: false,
@@ -50,7 +50,9 @@
         if ($(".navbar").length !== 0) {
             navbar_height = $(".navbar").height();
             origin_main_top = $(".main").position().top;
-            $(".main").css({ top: (navbar_height + origin_main_top).toString() + "px"});
+            $(".main").css({
+                top: (navbar_height + origin_main_top).toString() + "px"
+            });
         }
 
         function getDistanceToTop(elem, top) {
@@ -71,12 +73,15 @@
 
         function highlightTopPara(sections, top) {
 
-            var distances = $.map(sections, function (element) {
+            var distances = $.map(sections, function(element) {
                 var dist = getDistanceToTop(element, top);
-                return {el: $(element), distance: dist};
+                return {
+                    el: $(element),
+                    distance: dist
+                };
             });
 
-            function findMin(pre, cur){
+            function findMin(pre, cur) {
                 if (pre.distance > cur.distance) {
                     return cur;
                 } else {
@@ -86,7 +91,7 @@
 
             var closest = distances.reduce(findMin);
 
-            $.each(sections, function (key, element) {
+            $.each(sections, function(key, element) {
                 var section = $(element);
                 if (section[0] !== closest.el[0]) {
                     section.trigger('notviewing');
@@ -107,7 +112,7 @@
             var sections = element.find(searchfor);
             highlightTopPara(sections, top);
 
-            $(window).scroll(function () {
+            $(window).scroll(function() {
                 highlightTopPara(sections, top);
             });
         }
@@ -115,7 +120,7 @@
         //support video for IE 8 and 9.
         document.createElement('video');
 
-        var makeStoryMap = function (element, scenes, layers) {
+        var makeStoryMap = function(element, scenes, layers) {
 
             var topElem = $('<div class="breakpoint-current"></div>')
                 .css('top', settings.breakpointPos);
@@ -139,7 +144,7 @@
 
                 //currentLayerGroup.clearLayers();
                 //map.dataSources.removeAll();
-                while (imageryLayers.length > 1 ) {
+                while (imageryLayers.length > 1) {
                     imageryLayers.remove(imageryLayers.get(1));
                 }
 
@@ -147,9 +152,8 @@
 
                 var layernames = scene.layers;
                 var legendContent = "";
-                if(typeof layernames !== 'undefined' && scene.position !== "fullpage") {
-                    for (var i=0; i < layernames.length; i++)
-                    {
+                if (typeof layernames !== 'undefined' && scene.position !== "fullpage") {
+                    for (var i = 0; i < layernames.length; i++) {
                         // currentLayerGroup.addLayer(layers[layernames[i]][0]);
                         if (layers[layernames[i]][0].constructor.name === "Y") {
                             map.dataSources.add(layers[layernames[i]][0]);
@@ -166,7 +170,7 @@
                 }
 
                 // And then morph to different modes using morphTo functions:
-                switch(scene.mode) {
+                switch (scene.mode) {
                     case 3:
                         map.scene.morphTo3D();
                         break;
@@ -178,22 +182,22 @@
                 }
 
                 //map.scene.morphToColumbusView();
-                if(typeof layernames !== 'undefined' && scene.position !== "fullpage") {
+                if (typeof layernames !== 'undefined' && scene.position !== "fullpage") {
                     map.zoomTo(layers[layernames[0]][0]);
                 }
             }
 
-            sections.on('viewing', function () {
+            sections.on('viewing', function() {
 
-                $(".loader").fadeTo(0,1);
+                $(".loader").fadeTo(0, 1);
 
                 $(this).addClass('viewing');
                 $(".arrow-down").css("left", "2%");
 
                 if (scenes[$(this).data('scene')].position === "fullpage") {
                     $(this).addClass('section-opacity')
-                           .css('width', "0px")
-                           .css('padding', "0 0 0 0");
+                        .css('width', "0px")
+                        .css('padding', "0 0 0 0");
                     $(this).find(".background-fullscreen-setting")
                         .addClass('fullpage')
                         .css("display", "block");
@@ -224,12 +228,12 @@
 
                 showMapView($(this).data('scene'));
 
-                $(".loader").fadeTo(500,0);
+                $(".loader").fadeTo(500, 0);
 
             });
 
 
-            sections.on('notviewing', function () {
+            sections.on('notviewing', function() {
                 $(this).removeClass('viewing');
 
                 if (scenes[$(this).data('scene')].position === "fullpage") {
@@ -246,15 +250,15 @@
 
 
 
-            $('.arrow-down').click(function () {
+            $('.arrow-down').click(function() {
                 if ($(".arrow-down")[0].className.includes("menu")) {
 
 
                     if ($(".navbar").length !== 0) {
 
-                        window.scrollBy(0, $(".viewing").offset().top -$(window).scrollTop() - $('.navbar').height() + $('.viewing').height() - 10);
+                        window.scrollBy(0, $(".viewing").offset().top - $(window).scrollTop() - $('.navbar').height() + $('.viewing').height() - 10);
                     } else {
-                        window.scrollBy(0, $(".viewing").offset().top -$(window).scrollTop() + $('.viewing').height() - 10);
+                        window.scrollBy(0, $(".viewing").offset().top - $(window).scrollTop() + $('.viewing').height() - 10);
                     }
 
 
@@ -267,11 +271,13 @@
 
 
             // create a progress line
-            $(window).scroll(function(){
-                var wintop = $(window).scrollTop(), docheight =
+            $(window).scroll(function() {
+                var wintop = $(window).scrollTop(),
+                    docheight =
 
-                    $(document).height(), winheight = $(window).height();
-                var scrolled = (wintop/(docheight-winheight))*100;
+                        $(document).height(),
+                    winheight = $(window).height();
+                var scrolled = (wintop / (docheight - winheight)) * 100;
 
                 $('.progress-line').css('width', (scrolled + '%'));
             });
@@ -279,19 +285,19 @@
 
             // create the navigation widget anchored on the side.
             if (settings.navwidget) {
-                $.each(sections, function (key, element) {
+                $.each(sections, function(key, element) {
                     var section = $(element);
                     // if no name attribute for a specific scene, the name on the navigation bar will be the object name.
                     if (typeof(scenes[section.data('scene')].name) === "undefined") {
                         sceneName = section.data('scene');
                     } else {
-                        sceneName = scenes[section.data('scene')].name.replace(" ","&nbsp;");
+                        sceneName = scenes[section.data('scene')].name.replace(" ", "&nbsp;");
                     }
 
                     if ($(".navbar").length !== 0) {
-                        scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" +  sceneName + "\\']').offset().top - $(window).scrollTop() - $('.navbar').height() - 10);";
+                        scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" + sceneName + "\\']').offset().top - $(window).scrollTop() - $('.navbar').height() - 10);";
                     } else {
-                        scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" +  sceneName + "\\']').offset().top - $(window).scrollTop() - 10);";
+                        scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" + sceneName + "\\']').offset().top - $(window).scrollTop() - 10);";
                     }
 
                     if (key == 0) {
@@ -301,13 +307,16 @@
                     }
                 });
 
-                $('[data-toggle="tooltip"]').tooltip({placement: 'right', html: true});
+                $('[data-toggle="tooltip"]').tooltip({
+                    placement: 'right',
+                    html: true
+                });
 
 
-                $( ".navwidget" ).hover(function() {
-                    $(this).fadeTo( 100, 0.8 );
+                $(".navwidget").hover(function() {
+                    $(this).fadeTo(100, 0.8);
                 }, function() {
-                    $(this).fadeTo( 300, 0);
+                    $(this).fadeTo(300, 0);
                 });
             }
 

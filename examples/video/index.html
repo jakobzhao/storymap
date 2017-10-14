@@ -39,10 +39,6 @@
     <!--story map plugin-->
     <script src="../../dist/storymap.js"></script>
 
-    <!-- bing map -->
-    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise"></script>
-    <script src="https://gmaclennan.github.io/leaflet-bing-layer/leaflet-bing-layer.js"></script>
-
     <!-- mini globle map -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
@@ -151,7 +147,7 @@
                     <p>The context about Oregon cities was collected from Wikipedia.</p>
                     <p>The <a src="https://www.youtube.com/watch?v=UJ_vQC9PNY4">background video</a> on the front page was clipped from Youtube. </p>
                     <p>The favicon image was acquired from <a>http://www.udlcenter.org/advocacy/state/oregon.</a></p>
-                    <p>This story map uses geospatial data from mapbox, Google Earth Engine, Microsoft Bing map, Open Street Maps and Oregon Explorer.</p>
+                    <p>This story map uses geospatial data from mapbox, Google Earth Engine, ESRI Map, Open Street Maps and Oregon Explorer.</p>
                 </div>
             </div>
         </div>
@@ -178,7 +174,7 @@
     // }
 
     var layers = {
-        'bing' : [L.tileLayer.bing('AuhiCJHlGzhg93IqUH_oCpl_-ZUrIE6SPftlyGYUvr9Amx5nzA-WqGcPquyFZl4L')],
+        'ESRI': [L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}')],
         'counties': [ L.geoJson.ajax('../../assets/counties.geojson',  {
             color: 'black',
             weight: 2,
@@ -196,7 +192,7 @@
     var scenes = {
         overview: {lat: 44, lng: -123.5, zoom: 7, position: 'fullpage', name: 'Cover Page'},
         portland: {lat: 45.5186089, lng: -122.7270297, zoom: 11, name: 'Portland'},
-        corvallis: {lat: 44.5701158, lng: -123.2949388, zoom: 14, name: 'Corvallis', layers: ['bing','corvallis admin']},
+        corvallis: {lat: 44.5701158, lng: -123.2949388, zoom: 14, name: 'Corvallis', layers: ['ESRI','corvallis admin']},
         eugene: {lat: 44.0549563, lng: -123.0958048, zoom: 13, name: 'Eugene' },
         salem: {lat: 44.9419055, lng: -123.0356407, zoom: 13, name: 'Salem'},
         bend: {lat: 44.0519385, lng: -121.3042125, zoom: 14, name: 'Bend', layers: ['satellite']},
