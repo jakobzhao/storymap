@@ -4,31 +4,12 @@
     <title>Hello World</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!--add required stylesheets-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
-
-    <!--animation-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-
-    <link rel="stylesheet" type="text/css" href="../../dist/storymap.css">
-
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-
-    <!--add required libraries-->
-    <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
-
-    <!--story map plugin-->
-    <script src="../../dist/storymap.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="../../dist/storymap.2.3.css">
+    <script src="../../dist/storymap.2.3.js"></script>
 </head>
 <body>
 <div class="container-fluid">
-
     <div class="row">
         <div class="col-sm-6 col-md-4 main">
             <section data-scene="scene1">
@@ -54,9 +35,45 @@
 </div>
 <script type="text/javascript">
 
+
+    function loadjscssfile(filename){
+        var filetype = filename.split(".")[filename.split(".").length-1];
+        var fileref = null;
+        if (filetype==="js"){ //if filename is a external JavaScript file
+            fileref=document.createElement('script');
+            fileref.setAttribute("type","text/javascript");
+            fileref.setAttribute("src", filename);
+        }
+        else if (filetype==="css"){ //if filename is an external CSS file
+            fileref=document.createElement("link");
+            fileref.setAttribute("rel", "stylesheet");
+            fileref.setAttribute("type", "text/css");
+            fileref.setAttribute("href", filename)
+        }
+        if (typeof fileref!=="undefined")
+            document.getElementsByTagName("head")[0].appendChild(fileref)
+    }
+
+
+    libraries = [
+        "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css",
+        "https://unpkg.com/leaflet@1.0.2/dist/leaflet.css",
+        "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css",
+        "https://unpkg.com/leaflet@1.0.2/dist/leaflet.js",
+        "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js",
+        "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"
+    ];
+
+
+    for (var i =0; i < libraries.length; i++) {
+        loadjscssfile(libraries[i]);
+    }
+
+
     var layers = {
         'layer 1': [ L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'), '<i style="background: black; opacity: 0.5"></i><p><b>legend 1</b></p>'],
-        'layer 2': [ L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/mapious/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ore_counties&outputFormat=application%2Fjson', {color: 'orange', weight: 5}), '<i style="background: orange; opacity: 0.5"></i><p><b>legend 2</b></p>']
+        'layer 2': [ L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/ceoas/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ceoas:admin&outputFormat=application%2Fjson', {color: 'orange', weight: 5}), '<i style="background: orange; opacity: 0.5"></i><p><b>legend 2</b></p>']
     };
 
     var scenes = {
