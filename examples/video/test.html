@@ -80,16 +80,29 @@
         layers: 'nurc:Arc_Sample'
     }).addTo(map);
 
-    c= b.getContainer();
+    c = b.getContainer();
 
-    img1 = $(c).find("img")[0];
+//    console.log( $(c).find("img").length);
+    count = $(c).find("img").length;
+//    img1 = $(c).find("img")[0];
 
-    var c = document.createElement("canvas");
-    c.width = img1.width;
-    c.height = img1.height;
-    var ctx = c.getContext("2d");
-    ctx.drawImage(img1, 0, 0);
-    var idata = ctx.getImageData(0, 0, img1.width, img1.height);
+    var d = document.createElement("canvas");
+    d.width = 256;
+    d.height = 256;
+    var ctx = d.getContext("2d");
+
+    for (var i=0; i < count; i++) {
+        img = $(c).find("img")[i];
+        ctx.drawImage(img, 0, 0);
+        var idata = ctx.getImageData(0, 0, 256, 256);
+
+        console.log(i)
+    }
+
+
+
+//    ctx.drawImage(img1, 0, 0);
+//    var idata = ctx.getImageData(0, 0, img1.width, img1.height);
 
 
 </script>
