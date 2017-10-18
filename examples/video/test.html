@@ -75,7 +75,11 @@
     //d = L.tileLayer('http://earthengine.google.org/static/jakobzhao/NDVI_test/{z}/{x}/{y}.png').addTo(map);
    // d = L.tileLayer('http://earthengine.google.org/static/MODIS/MOD13A1/{z}/{x}/{y}.png').addTo(map);
 
-    //LANDSAT/LE7_L1T_ANNUAL_NDVI
+
+    b = L.tileLayer.wms('http://mapious.ceoas.oregonstate.edu/geoserver/ows?', {
+        layers: 'nurc:Arc_Sample'
+    }).addTo(map);
+
     c= b.getContainer();
 
     img1 = $(c).find("img")[0];
@@ -86,6 +90,7 @@
     var ctx = c.getContext("2d");
     ctx.drawImage(img1, 0, 0);
     var idata = ctx.getImageData(0, 0, img1.width, img1.height);
+
 
 </script>
 </body>
