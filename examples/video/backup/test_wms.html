@@ -65,8 +65,8 @@
     <script src="https://unpkg.com/leaflet.nontiledlayer/dist/NonTiledLayer.js"></script>
     <script src="js/geotiff.js"></script>
     <script src="js/plotty.js"></script>
-    <script src="js/pako.min.js"></script>
-    <script src="js/UPNG.js"></script>
+    <!--<script src="js/NonTiledLayer.WCS.customized.js"></script>-->
+    <!--<script src="js/Leaflet.singletilewms.js"></script>-->
 </head>
 <body>
 <div id='map'>
@@ -77,14 +77,11 @@
 
     // https://github.com/stuartmatthews/Leaflet.NonTiledLayer.WCS
     // manipulate Uint8Array
-    // http://geoexamples.com/d3-raster-tools-docs/intr/reading-raster-data.html
-    // http://www.henryalgus.com/reading-binary-files-using-jquery-ajax/
-    // https://github.com/photopea/UPNG.js?files=1
-
     var map = L.map('map').setView([45, -119], 6);
 
     // a = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png').addTo(map);
     a = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}').addTo(map);
+
 
     b = L.nonTiledLayer.wms('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_PNW_ATLAS/wms?', {
 //        maxZoom: 19,
@@ -97,31 +94,61 @@
     map.on('moveend',updateMapFilter);
     map.on('zoomend',updateMapFilter);
 
-    function updateMapFilter() {
+//    map.on('load',updateMapFilter);
 
+    function updateMapFilter() {
         src= b._ctx.canvas._image.src;
-        //console.log(src);
+        w = b._currentCanvas.width;
+        h = b._currentCanvas.height;
+
+        console.log(src.substr(180));
+
         var xhr = new XMLHttpRequest();
         xhr.open('GET', src, true);
         xhr.responseType = 'arraybuffer';
-        xhr.onload = function(e) {
-            var img  = UPNG.decode(this.response);
-            var rgba = UPNG.toRGBA8(img)[0];
-            var h = img.height;
-            var w = img.width;
-            var ctype = img.ctype;
-            var depth = img.depth;
-            var data = img.data;
+        xhr.responseType = 'blob';
 
-            console.log("depth:" + depth.toString());
-            console.log("ctype:" + ctype.toString());
-            console.log("mean:" + ss.mean(data).toString());
-            console.log("median:" + ss.median(data).toString());
-            console.log(data)
+        xhr.onload = function(e) {
+            // response is unsigned 8 bit integer
+            var data = "data:image/png;base64,"+buffer;
+            var responseArray = new Uint8Array(this.response);
+            console.log("mean:" + ss.mean(responseArray).toString());
+            console.log("median:" + ss.median(responseArray).toString());
+            console.log(responseArray.length);
+            console.log((w).toString());
+            console.log((h).toString());
+
+            tt =333;
+
+
         };
 
         xhr.send();
 
+
+
+//
+//        w = b._currentCanvas.width;
+//        h = b._currentCanvas.height;
+//
+//
+//
+//        var c = document.getElementById("mycanvas");
+//        c.width = w;
+//        c.height = h;
+//        var ctx=c.getContext("2d");
+//        var img = new Image();
+//        img.src = src;
+//        img.crossOrigin = "anonymous";
+//        ctx.drawImage(img,0,0);
+//        data= ctx.getImageData(0,0,w,h).data;
+//
+
+
+        //data = b._currentCanvas.getContext("2d").getImageData(0,0,w, h).data;
+
+//         console.log("mean:" + ss.mean(data).toString());
+//        console.log("median:" + ss.median(data).toString());
 
     }
 
