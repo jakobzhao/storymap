@@ -1,5 +1,6 @@
 /*
  * L.NonTiledLayer.WCS is used for putting WCS non tiled layers on the map.
+ * bug fixed by Bo Zhao
  */
 
 L.NonTiledLayer.WCS = L.NonTiledLayer.extend({

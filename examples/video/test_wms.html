@@ -65,10 +65,12 @@
     <script src="https://unpkg.com/leaflet.nontiledlayer/dist/NonTiledLayer.js"></script>
     <script src="js/geotiff.js"></script>
     <script src="js/plotty.js"></script>
-    <script src="js/NonTiledLayer.WCS.customized.js"></script>
+    <!--<script src="js/NonTiledLayer.WCS.customized.js"></script>-->
+    <!--<script src="js/Leaflet.singletilewms.js"></script>-->
 </head>
 <body>
 <div id='map'>
+    <canvas id="mycanvas"></canvas>
 </div>
 
 <script type="text/javascript">
@@ -77,23 +79,17 @@
     // manipulate Uint8Array
     var map = L.map('map').setView([45, -119], 6);
 
-    a = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png').addTo(map);
-    L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}').addTo(map);
-    b = L.nonTiledLayer.wcs('http://mapious.ceoas.oregonstate.edu/geoserver/ows?', {
-        wcsOptions: {
-            coverage: 'baldricg_PNW_ATLAS:pnw_snowfall',
-            version: '1.0.0',
-            format: 'tiff'
-        },
-        displayMin: 1,
-        displayMax: 100,
-        colorScale: 'rainbow',
-        clampLow: false,
-        clampHigh: false,
-        uppercase: true,
-        useCanvas: true
-    }).addTo(map);
+    // a = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png').addTo(map);
+    a = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}').addTo(map);
 
+
+    b = L.nonTiledLayer.wms('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_PNW_ATLAS/wms?', {
+//        maxZoom: 19,
+//        minZoom: 0,
+        layers: 'pnw_snowfall',
+        format: 'image/png',
+        transparent: 'true'
+    }).addTo(map);
 
     map.on('moveend',updateMapFilter);
     map.on('zoomend',updateMapFilter);
@@ -101,11 +97,41 @@
     map.on('load',updateMapFilter);
 
     function updateMapFilter() {
-        data = b.raster.data;
-        w = b.raster.width;
-        h = b.raster.height;
-       // console.log("mean:" + ss.mean(data).toString());
-        //console.log("median:" + ss.median(data).toString());
+
+//    // b.wmsParams.height
+//       // b.wmsParams.width
+//        var image = new Image();
+//        image.crossOrigin = "Anonymous";
+//        tt = b._currentCanvas._image;
+////        fff = 2;
+////
+
+
+        src= b._ctx.canvas._image.src;
+
+
+
+        w = b._currentCanvas.width;
+        h = b._currentCanvas.height;
+
+
+
+        var c = document.getElementById("mycanvas");
+        c.width = w;
+        c.height = h;
+        var ctx=c.getContext("2d");
+        var img = new Image();
+        img.src = src;
+        img.crossOrigin = "anonymous";
+        ctx.drawImage(img,0,0);
+        data= ctx.getImageData(0,0,w,h).data;
+
+
+
+        //data = b._currentCanvas.getContext("2d").getImageData(0,0,w, h).data;
+
+         console.log("mean:" + ss.mean(data).toString());
+        console.log("median:" + ss.median(data).toString());
 
     }
 
