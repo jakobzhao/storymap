@@ -1,0 +1,105 @@
+/* General */
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: black;
+}
+
+html,
+body,
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+.title {
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+}
+
+.mapTitle {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    z-index: 999;
+    margin-left: 50px;
+}
+
+body {
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+}
+
+#examples {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+h2 {
+    font-weight: 100;
+}
+
+ul a {
+    font-size: 16px;
+    color: white;
+}
+
+
+/* No rounded borders */
+
+.leaflet-bar,
+.leaflet-control-layers,
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out,
+.leaflet-popup-content-wrapper {
+    border-radius: 0px !important;
+}
+
+
+/* Panel to interact with layers */
+
+#floating-panel {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10000;
+    background-color: #111;
+    padding: 2px;
+    opacity: 0.85;
+}
+
+#floating-panel ul {
+    list-style-type: none;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#floating-panel ul li>label {
+    display: block;
+    margin: 2px;
+}
+
+#floating-panel ul li {
+    margin-bottom: 10px;
+}
+
+.verticalRange {
+    margin-top: 60px!important;
+    margin-bottom: 60px!important;
+    margin-left: -30px;
+    margin-right: -30px;
+    transform: rotate(270deg);
+}
+
+
+/* Popup*/
+
+span.popupText {
+    font-size: 18px;
+    letter-spacing: -0.25px;
+    line-height: 20px;
+    word-spacing: 0;
+}

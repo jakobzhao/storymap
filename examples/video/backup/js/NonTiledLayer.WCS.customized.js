@@ -144,7 +144,7 @@ L.NonTiledLayer.WCS = L.NonTiledLayer.extend({
                 data: self.raster.data,
                 width: self.raster.width, height: self.raster.height,
                 domain: [self.options.displayMin, self.options.displayMax], colorScale: this.options.colorScale,
-                clampLow: self.options.clampLow, clampHigh: self.options.clampHigh,
+                clampLow: self.options.clampLow, clampHigh: self.options.clampHigh
             });
             this.plot.setNoDataValue(-9999); //TODO: This should be an option not a magic number
             this.plot.render();

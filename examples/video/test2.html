@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ScalarField / Geotiff WCS </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="//unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <link rel="stylesheet" href="examples.css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,400" rel="stylesheet">
+</head>
+
+<body>
+<h1 class="title mapTitle">ScalarField WCS</h1>
+<div id="map"></div>
+
+<!-- CDN -->
+<script src="//d3js.org/d3.v4.min.js"></script>
+<script src="//npmcdn.com/leaflet@1.0.3/dist/leaflet.js"></script>
+<script src="//npmcdn.com/geotiff@0.3.6/dist/geotiff.js"></script>
+<script src="js/plotty.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/chroma-js/1.3.0/chroma.min.js"></script>
+
+<!-- Plugin -->
+<script src="js/leaflet.canvaslayer.field.js"></script>
+
+<script src="js/leaflet-geotiff.js"></script>
+
+<script>
+    var map = L.map('map').setView([45, -119], 6);
+
+    /* Dark basemap */
+    var url = 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png';
+    L.tileLayer(url).addTo(map);
+
+    /* DTM from an OGC-WCS */
+    // let getCapabilities = "http://www.juntadeandalucia.es/medioambiente/mapwms/REDIAM_WCS_mdt?SERVICE=wcs&VERSION=1.0.0&REQUEST=GetCapabilities";
+
+    var getCoverage = "http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_PNW_ATLAS/ows?";
+    getCoverage += "SERVICE=wcs&";
+    getCoverage += "VERSION=1.0.0&";
+    getCoverage += "REQUEST=GetCoverage&";
+    getCoverage += "COVERAGE=pnw_snowfall&";
+    getCoverage += "CRS=EPSG:4326&";
+    getCoverage += "BBOX=-7.58390693285438,35.964208075556,-1.6006002035338,38.7503547383259&"; // full extension...
+    getCoverage += "RESX=0.01&"; // ...but reduced resolution (~800m)
+    getCoverage += "RESY=0.01&";
+    getCoverage += "FORMAT=GTiff";
+
+    getCoverage = "http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_PNW_ATLAS/wcs?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&FORMAT=image/geotiff&COVERAGE=baldricg_PNW_ATLAS:pnw_DEM_feet&CRS=EPSG:4326&WIDTH=768&HEIGHT=392&BBOX=-121.4208984375,43.978271484375,-112.9833984375,48.284912109375";
+//    getCoverage  = "http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_PNW_ATLAS/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image/geotiff&TRANSPARENT=true&STYLES&LAYERS=baldricg_PNW_ATLA:pnw_DEM_feet&SRS=EPSG:4326&WIDTH=768&HEIGHT=392&BBOX=-121.4208984375,43.978271484375,-112.9833984375,48.284912109375&RESX=0.01&RESY=0.01";
+
+
+    //http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_PNW_ATLAS/wcs?&SERVICE=WCS&REQUEST=GetCoverage&VERSION=1.0.0&COVERAGE=baldricg_PNW_ATLAS%3Apnw_DEM_feet&FORMAT=image%2Fgeotiff&CRS=EPSG%3A3857&WIDTH=1123&HEIGHT=1260&BBOX=-13933553.012048211,4851611.05931671,-12560132.487820163,6392581.54954586
+    //
+    //http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_PNW_ATLAS/wms?&service=WMS&request=GetMap&version=1.1.1&layers=pnw_snowfall&styles=&format=image%2Fgeotiff&transparent=true&srs=EPSG%3A3857&width=1123&height=1260&bbox=-14651449.581702588,3664085.3878782094,-11904608.533246491,6746026.368336514
+    //
+    //
+    //http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_PNW_ATLAS/wms?&service=WMS&request=GetMap&version=1.1.1&layers=pnw_DEM_feet&styles=&format=geotiff&transparent=true&srs=EPSG%3A3857&width=1123&height=1309&bbox=-14619651.777935954,4021199.184026554,-11872810.729479859,7222993.424836016
+
+    var urlCoverage = encodeURI(getCoverage);
+
+//    urlCoverage= "http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_PNW_ATLAS/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image%2Fgeotiff&TRANSPARENT=true&STYLES&LAYERS=baldricg_PNW_ATLAS%3Apnw_DEM_feet&SRS=EPSG%3A4326&WIDTH=768&HEIGHT=392&BBOX=-121.4208984375%2C43.978271484375%2C-112.9833984375%2C48.284912109375";
+    //console.log(urlCoverage);
+
+
+
+    // palette from http://www.juntadeandalucia.es/medioambiente/site/rediam/menuitem.04dc44281e5d53cf8ca78ca731525ea0/?vgnextoid=f6284d9721fa3410VgnVCM2000000624e50aRCRD&vgnextchannel=8ca090a63670f210VgnVCM2000000624e50aRCRD&vgnextfmt=rediam&lr=lang_es
+
+
+    d3.request(urlCoverage).responseType('arraybuffer').get(
+        function (error, tiffData) {
+            // band 0
+            tt = tiffData.response;
+            qq= GeoTIFF.parse(tt);
+            geo = L.ScalarField.fromGeoTIFF(tt);
+
+
+
+            colorScale = chroma.scale('RdYlGn').domain([geo.range[1], geo.range[0]]);
+
+            dtm = L.canvasLayer.scalarField(geo, {
+                color: colorScale,
+                opacity: 0.7,
+                inFilter: (v) => v > 0
+        }).addTo(map);
+
+
+        });
+
+
+</script>
+</body>
+
+</html>
