@@ -1,6 +1,5 @@
 /*
  * L.NonTiledLayer.WCS is used for putting WCS non tiled layers on the map.
- * bug fixed by Bo Zhao
  */
 
 L.NonTiledLayer.WCS = L.NonTiledLayer.extend({
@@ -13,17 +12,19 @@ L.NonTiledLayer.WCS = L.NonTiledLayer.extend({
         format: 'GEOTIFF'
     },
 
+
     options: {
         crs: null,
-        uppercase: true
+        uppercase: true,
+        url: null
     },
 
     initialize: function (url, options) { // (String, Object)
         this._wcsUrl = url;
         this.raster = {};
-        
+
         var wcsParams = L.extend({}, this.defaultWcsParams);
-        
+
         // all keys that are not NonTiledLayer options go to WCS params
         for (var i in options.wcsOptions) {
             wcsParams[i] = options.wcsOptions[i];
@@ -50,7 +51,7 @@ L.NonTiledLayer.WCS = L.NonTiledLayer.extend({
     },
 
     getImageUrl: function (world1, world2, width, height) {
-        
+
         var wcsParams = this.wcsParams;
         wcsParams.width = width;
         wcsParams.height = height;
@@ -78,7 +79,7 @@ L.NonTiledLayer.WCS = L.NonTiledLayer.extend({
         return this;
     },
     setBand: function (band) {
-        this.options.band = band
+        this.options.band = band;
         var image = this.tiff.getImage(this.options.image);
         this.raster.data = image.readRasters({samples: [band]})[0];
         this.raster.width = image.getWidth();
@@ -88,7 +89,7 @@ L.NonTiledLayer.WCS = L.NonTiledLayer.extend({
         this.options.colorScale = colorScale;
         this._preLoadColorScale();
         this._renderImage();
-        
+
     },
     getValueAtPoint: function (location) {
         var i = parseInt(location.y*this.raster.width+location.x);
@@ -108,12 +109,12 @@ L.NonTiledLayer.WCS = L.NonTiledLayer.extend({
         };
         request.open("GET", url, true);
         request.responseType = "arraybuffer";
-        request.send();        
+        request.send();
     },
     _parseTIFF: function (arrayBuffer) {
         this.tiff = GeoTIFF.parse(arrayBuffer);
         this._map.fire('wcsloaded');
-        
+
         if (typeof(this.options.image)==='undefined') {
             this.options.image = 0;
         }
@@ -128,10 +129,10 @@ L.NonTiledLayer.WCS = L.NonTiledLayer.extend({
         plot = new plotty.plot({
             canvas: canvas, data: [0],
             width: 1, height: 1,
-            domain: [this.options.displayMin, this.options.displayMax], 
+            domain: [this.options.displayMin, this.options.displayMax],
             colorScale: this.options.colorScale
         });
-        this.colorScaleData = plot.colorScaleCanvas.toDataURL();            
+        this.colorScaleData = plot.colorScaleCanvas.toDataURL();
     },
     _drawImage: function () {
         var self = this;
@@ -144,11 +145,11 @@ L.NonTiledLayer.WCS = L.NonTiledLayer.extend({
                 data: self.raster.data,
                 width: self.raster.width, height: self.raster.height,
                 domain: [self.options.displayMin, self.options.displayMax], colorScale: this.options.colorScale,
-                clampLow: self.options.clampLow, clampHigh: self.options.clampHigh,
+                clampLow: self.options.clampLow, clampHigh: self.options.clampHigh
             });
             this.plot.setNoDataValue(-9999); //TODO: This should be an option not a magic number
             this.plot.render();
-            this.colorScaleData = plot.colorScaleCanvas.toDataURL();            
+            this.colorScaleData = plot.colorScaleCanvas.toDataURL();
             this.dataURL = this.plotCanvas.toDataURL();
         }
     },
@@ -170,7 +171,7 @@ L.NonTiledLayer.WCS = L.NonTiledLayer.extend({
                 this._currentImage.key = this.key;
                 this._currentImage.src = this.dataURL;
             }
-        }
+        };
     },
     _update: function () {
         var bounds = this._getClippedBounds();
@@ -186,8 +187,8 @@ L.NonTiledLayer.WCS = L.NonTiledLayer.extend({
 
 
         // re-project to corresponding pixel bounds
-        var pix1 = this._map.latLngToContainerPoint(bounds.getNorthWest());
-        var pix2 = this._map.latLngToContainerPoint(bounds.getSouthEast());
+        var pix1 = this._map.latLngToLayerPoint(bounds.getNorthWest());
+        var pix2 = this._map.latLngToLayerPoint(bounds.getSouthEast());
 
         // get pixel size
         var width = pix2.x - pix1.x;
@@ -225,9 +226,13 @@ L.NonTiledLayer.WCS = L.NonTiledLayer.extend({
         // create a key identifying the current request
         this.key = '' + bounds.getNorthWest() + ', ' + bounds.getSouthEast() + ', ' + width + ', ' + height;
         i.key = this.key;
-        
+
         //Request coverage from the WCS server
         var url = this.getImageUrl(bounds.getNorthWest(), bounds.getSouthEast(), width, height);
+
+
+        this.options.url = url;
+
         this._getData(url);
 
         if (this._useCanvas) {
@@ -236,7 +241,7 @@ L.NonTiledLayer.WCS = L.NonTiledLayer.extend({
             L.DomUtil.setOpacity(this._currentImage, 0);
         }
     }
-    
+
 });
 
 L.nonTiledLayer.wcs = function (url, options) {

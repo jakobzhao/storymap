@@ -17,6 +17,10 @@
             width: 100%;
             height: 100%;
         }
+        #canvas2 {
+            width: 900px;
+            height: 450px;
+        }
         /*info panel*/
         .info {
             z-index: 1000;
@@ -59,6 +63,7 @@
     </style>
     <link rel="stylesheet" href="examples.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,400" rel="stylesheet">
+    <script src="//d3js.org/d3.v4.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -68,13 +73,14 @@
     <!--<script src="https://npmcdn.com/geotiff@0.3.6/dist/geotiff.js"></script>-->
     <script src="js/dist/geotiff.browserify.js"></script>
     <script src="js/plotty.js"></script>
-
+    <script src="js/leaflet-geotiff.js"></script>
     <script src="js/NonTiledLayer.WCS.js"></script>
     <script src="js/pako.min.js"></script>
     <script src="js/UPNG.js"></script>
     <script src="js/leaflet.canvaslayer.field.js"></script>
 </head>
 <body>
+<canvas id="canvas2"></canvas>
 <div id='map'>
     <canvas id="mycanvas"></canvas>
 </div>
@@ -89,34 +95,20 @@
 
     var map = L.map('map').setView([45, -119], 7);
 
+
     // a = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png').addTo(map);
     a = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}').addTo(map);
 
-//    b = L.nonTiledLayer.wms('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_PNW_ATLAS/wms?', {
-////        maxZoom: 19,
-////        minZoom: 0,
-//        layers: 'pnw_DEM_feet',
-//        format: 'image/png',
-//        transparent: 'true'
-//    }).addTo(map);
 
-
-   b=L.nonTiledLayer.wcs("http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_PNW_ATLAS/wcs?", {
-        wcsOptions: {
-            coverage: 'baldricg_PNW_ATLAS:pnw_DEM_feet',
-            version: '1.0.0',
-            format: 'image/geotiff'
-        },
-        displayMin: 1,
-       displayMax: 3000,
-        colorScale: 'rainbow',
-        clampLow: false,
-        clampHigh: false,
-        uppercase: false,
-        useCanvas: true
+    b = L.nonTiledLayer.wms('http://mapious.ceoas.oregonstate.edu/geoserver/baldricg_PNW_ATLAS/wms?', {
+//        maxZoom: 19,
+//        minZoom: 0,
+        layers: 'pnw_DEM_feet',
+        format: 'image/geotiff',
+        transparent: 'true'
     }).addTo(map);
 
-  //  $(b._ctx.canvas).hide();
+
 
     map.on('moveend',updateMapFilter);
     map.on('zoomend',updateMapFilter);
@@ -126,37 +118,52 @@
 
     function updateMapFilter() {
 
-        // src= b._ctx.canvas._image.src;
+        src= b._ctx.canvas._image.src;
+
+        if(src.indexOf("data:image") < 0 ) {
+            console.log(src);
+            d3.request(src).responseType('arraybuffer').get(
+                function (error, tiffData) {
+                    // band 0
+                    tt = tiffData.response;
+                    qq = GeoTIFF.parse(tt);
+                    image = qq.getImage();
+                    console.log(image);
+
+                    console.log(image.getWidth(), image.getHeight(), image.getSamplesPerPixel());
+
+                    width = image.getWidth();
+                    height = image.getHeight();
+
+                    plot = new plotty.plot({
+                        canvas: document.getElementById("canvas2"),
+                        data: image.readRasters()[0], width: width, height: height,
+                        domain: [0, 255], colorScale: 'viridis'
+                    });
+                    plot.render();
 
 
-        //console.log(src);
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', b.options.url, true);
-        xhr.responseType = 'arraybuffer';
-        xhr.onload = function(e) {
-
-            // band 0
-            var tt = this.response;
-
-
-            geo = L.ScalarField.fromGeoTIFF(tt);
-
-            colorScale = chroma.scale('OrRd').domain([geo.range[1], geo.range[0]]);
-
-            dtm = L.canvasLayer.scalarField(geo, {
-                color: colorScale,
-                opacity: 0.7,
-                inFilter: (v) => v > 0}).addTo(map);
-
+//                geo = L.ScalarField.fromGeoTIFF(tt);
 //
-//            console.log("depth:" + depth.toString());
-//            console.log("ctype:" + ctype.toString());
-//            console.log("mean:" + ss.mean(data).toString());
-//            console.log("median:" + ss.median(data).toString());
-//            console.log(data)
-        };
+//
+//
+//                colorScale = chroma.scale('RdYlGn').domain([geo.range[1], geo.range[0]]);
+//
+//                dtm = L.canvasLayer.scalarField(geo, {
+//                    color: colorScale,
+//                    opacity: 0.7}).addTo(map);
+//
+//
+//                console.log(geo);
+//               // $(b._ctx.canvas).hide();
 
-        xhr.send();
+
+                });
+        }
+
+
+
+
 
 
     }
