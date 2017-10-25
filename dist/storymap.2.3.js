@@ -2,7 +2,6 @@
 // Originally obtained from http://atlefren.github.io/storymap/
 // Updated on 5/14/2017 | version 2.22 | MIT License
 
-
 (function ($) {
 
     $.fn.storymap = function (options) {
@@ -11,10 +10,13 @@
             selector: '[data-scene]',
             breakpointPos: '33.333%',
             legend: false,
-            scale: false,
+            scalebar: false,
+            flyto: false,
+            scrolldown: "zoomIn infinite glyphicon glyphicon-menu-down storymap-scroll-down",
+            progressline: "storymap-progressline",
             navwidget: false,
             createMap: function () {
-                var map = L.map('map', {
+                var map = L.map($(".storymap-map")[0], {
                     zoomControl: false
                 }).setView([44, -120], 7);
                 L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}@2x.png');
@@ -25,7 +27,7 @@
         var settings = $.extend(defaults, options);
 
         if (typeof(L) === 'undefined') {
-            throw new Error('Storymap requires Laeaflet.');
+            throw new Error('Storymap requires Leaflet.');
         }
 
 
@@ -102,9 +104,11 @@
 
         var makeStoryMap = function (element, scenes, layers) {
 
+            $(element).addClass("storymap");
             var topElem = $('<div class="breakpoint-current"></div>')
                 .css('top', settings.breakpointPos);
             $('body').append(topElem);
+
 
             var top = topElem.offset().top - $(window).scrollTop();
             var searchfor = settings.selector;
@@ -117,11 +121,26 @@
                 position: 'topright'
             }); // you can change the position of the legend Control.
 
-            if (settings.scale) {
+            if (settings.scrolldown) {
+                $(".storymap").append("<div class='" + settings.scrolldown + "' />")
+            }
+
+            if (settings.scalebar) {
                 L.control.scale({
-                    position: 'bottomright',
+                    position: settings.scalebar,
                     metric: false
                 }).addTo(map);
+            }
+
+            if (settings.progressline) {
+                $(".storymap").append("<div class='" + settings.progressline + "' />")
+
+            }
+
+
+            if (settings.navwidget) {
+                $(".storymap").append("<div class='" + settings.navwidget + " text-center' />")
+
             }
 
             if (!String.prototype.includes) {
@@ -136,9 +155,9 @@
 
                 var navbar_height = $(".navbar").height();
 
-                var origin_main_top = $(".main").position().top;
+                var origin_main_top = $(".storymap-story").position().top;
 
-                $(".main").css({
+                $(".storymap-story").css({
                     top: (navbar_height + origin_main_top).toString() + "px"
                 });
 
@@ -147,8 +166,8 @@
 
             $.each(layers, function (key, layer) {
 
-                layer = layer[0];
-                layer.on('load', function () {
+                // layer = layer.layer;
+                layer.layer.on('load', function () {
                     $(".loader").fadeTo(500, 0);
                 })
 
@@ -171,10 +190,10 @@
 
                     for (var i = 0; i < layernames.length; i++) {
                         $(".loader").fadeTo(0, 1);
-                        currentLayerGroup.addLayer(layers[layernames[i]][0]);
+                        currentLayerGroup.addLayer(layers[layernames[i]].layer);
 
                         if (layers[layernames[i]].length === 2) {
-                            legendContent += layers[layernames[i]][1];
+                            legendContent += layers[layernames[i]].legend;
                         }
                     }
                 }
@@ -201,9 +220,12 @@
                         });
                     }
                 }
+                if (settings.flyto) {
+                    map.flyTo([scene.lat, scene.lng], scene.zoom, 1)
+                } else {
+                    map.setView([scene.lat, scene.lng], scene.zoom, 1)
 
-                map.setView([scene.lat, scene.lng], scene.zoom, 1);
-
+                }
             }
 
 
@@ -212,7 +234,7 @@
 
                 $(this).addClass('viewing');
 
-                $(".arrow-down").css("left", "2%");
+                $(".storymap-scroll-down").css("left", "2%");
 
                 if (scenes[$(this).data('scene')].position === "fullpage") {
                     $(this).addClass('section-opacity')
@@ -221,24 +243,24 @@
                     $(this).find(".background-fullscreen-setting")
                         .addClass('fullpage')
                         .css("display", "block");
-                    $(".arrow-down").css("left", "50%");
+                    $(".storymap-scroll-down").css("left", "50%");
                 }
 
-                // // Change the arrow-down icon to the home icon when reaching the last scene.
+                // // Change the storymap-scroll-down icon to the home icon when reaching the last scene.
                 if ($(this).data('scene') === sections.last().data('scene')) {
-                    $(".arrow-down").removeClass("glyphicon-menu-down")
+                    $(".storymap-scroll-down").removeClass("glyphicon-menu-down")
                         .addClass("glyphicon-home");
 
                 } else {
-                    $(".arrow-down").removeClass("glyphicon-home")
+                    $(".storymap-scroll-down").removeClass("glyphicon-home")
                         .addClass("glyphicon-menu-down");
                 }
 
-                // Bounce the arrow-down icon when the icon is on the front page.
+                // Bounce the storymap-scroll-down icon when the icon is on the front page.
                 if ($(this).data('scene') === sections.first().data('scene') || $(this).data('scene') === sections.last().data('scene')) {
-                    $(".arrow-down").addClass("animated");
+                    $(".storymap-scroll-down").addClass("animated");
                 } else {
-                    $(".arrow-down").removeClass("animated");
+                    $(".storymap-scroll-down").removeClass("animated");
                 }
 
                 showMapView($(this).data('scene'));
@@ -262,9 +284,13 @@
             window.scrollTo(0, 1);
 
 
-            $('.arrow-down').click(function () {
+            $('.storymap-scroll-down').click(function () {
 
-                if ($(".arrow-down")[0].className.includes("glyphicon-menu-down")) {
+
+
+                if ($(".viewing").data("scene") !== $($("section")[$("section").length - 1]).data("scene")  ){
+
+               // if ($(".storymap-scroll-down")[0].className.includes("glyphicon-menu-down")) {
 
                     //if there is a navbar.
                     if ($(".navbar").length !== 0) {
@@ -272,7 +298,11 @@
                     } else {
                         window.scrollBy(0, $(".viewing").offset().top + $('.viewing').height() - $(window).scrollTop() - 10);
                     }
-                } else if ($(".arrow-down")[0].className.includes("glyphicon-home")) {
+                // } else if ($(".storymap-scroll-down")[0].className.includes("glyphicon-home")) {
+                //     window.scrollTo(0, 0);
+                // }
+
+                } else  {
                     window.scrollTo(0, 0);
                 }
             });
@@ -285,7 +315,7 @@
                     winheight = $(window).height();
                 var scrolled = (wintop / (docheight - winheight)) * 100;
 
-                $('.progress-line').css('width', (scrolled + '%'));
+                $('.storymap-progressline').css('width', (scrolled + '%'));
             });
 
 
@@ -307,10 +337,10 @@
                         scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" + section.data('scene') + "\\']').offset().top  - $(window).scrollTop() - 10);";
                     }
                     // if key is equal to 0, meaning it is the first scene.
-                    if (key == 0) {
-                        $(".navwidget").append('<li><a class="glyphicon glyphicon-home" data-toggle="tooltip" style="font-size:16px" title="' + sceneName + '" href="' + scrollScript + '" ></a></li>');
+                    if (key === 0) {
+                        $(".storymap-navwidget").append('<li><a class="glyphicon glyphicon-home" data-toggle="tooltip" style="font-size:16px" title="' + sceneName + '" href="' + scrollScript + '" ></a></li>');
                     } else {
-                        $(".navwidget").append('<li><a class="glyphicon glyphicon-one-fine-full-dot" data-toggle="tooltip" title="' + sceneName + '" href="' + scrollScript + '" ></a></li>');
+                        $(".storymap-navwidget").append('<li><a class="glyphicon glyphicon-one-fine-full-dot" data-toggle="tooltip" title="' + sceneName + '" href="' + scrollScript + '" ></a></li>');
                     }
                 });
 
@@ -319,7 +349,7 @@
                     html: true
                 });
 
-                $(".navwidget").hover(function () {
+                $(".storymap-navwidget").hover(function () {
                     $(this).fadeTo(100, 0.8);
                 }, function () {
                     $(this).fadeTo(300, 0);
