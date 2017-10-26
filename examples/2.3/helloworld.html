@@ -69,12 +69,13 @@
         scenes: scenes,
         layers: layers,
         baselayer: layers.layer3,
-        legend: "storymap-legend",
+        legend: true,
+        loader: true,
         flyto: false,
-        scalebar: "bottomright",
-        scrolldown: "zoomIn infinite glyphicon glyphicon-menu-down storymap-scroll-down",
-        progressline: "storymap-progressline",
-        navwidget: "storymap-navwidget",
+        scalebar: true,
+        scrolldown: true,
+        progressline: true,
+        navwidget: true,
         createMap: function () {
             var map = L.map($(".storymap-map")[0], {zoomControl: false}).setView([44, -120], 7);
             basemap = this.baselayer.layer.addTo(map);

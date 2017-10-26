@@ -22,35 +22,17 @@
 
     <!--story map plugin-->
     <script src="../../dist/storymap.2.3.js"></script>
-
 </head>
-
 <body>
 
-<div class="navbar navbar-inverse navbar-fixed-top navbar-toggleable-md" role="navigation">
+<nav class="navbar-inverse navbar-fixed-top navbar-toggleable-md">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <a class="navbar-brand" href="#">Hello, World!</a>
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="javascript:window.scrollBy(0, $('section[data-scene=scene1]').offset().top  - $(window).scrollTop() - $('.navbar').height()  - 10);">Scene 1</a>
-                </li>
-                <li>
-                    <a href="javascript:window.scrollBy(0, $('section[data-scene=scene2]').offset().top  - $(window).scrollTop() - $('.navbar').height()  - 10);">Scene 2</a>
-                </li>
-                <li>
-                    <a href="javascript:window.scrollBy(0, $('section[data-scene=scene3]').offset().top  - $(window).scrollTop() - $('.navbar').height()  - 10);">Scene 3</a>
-                </li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
     </div>
-    <!-- /.container -->
-</div>
+</nav>
 
 <div id="storymap" class="container-fluid">
     <div class="row">
@@ -99,13 +81,14 @@
         scenes: scenes,
         layers: layers,
         baselayer: layers.layer3,
-        legend: "storymap-legend",
-        loader: "glyphicon glyphicon-refresh storymap-loader",
+        navbar: true,
+        legend: true,
+        loader: true,
         flyto: false,
-        scalebar: "bottomright",
-        scrolldown: "zoomIn infinite glyphicon glyphicon-menu-down storymap-scroll-down",
-        progressline: "storymap-progressline",
-        navwidget: "storymap-navwidget",
+        scalebar: true,
+        scrolldown: true,
+        progressline: true,
+        navwidget: true,
         createMap: function () {
             var map = L.map($(".storymap-map")[0], {zoomControl: false}).setView([44, -120], 7);
             basemap = this.baselayer.layer.addTo(map);

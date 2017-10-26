@@ -1,6 +1,6 @@
 // Modified by Bo Zhao, zhao2@oregonstate.edu
 // Originally obtained from http://atlefren.github.io/storymap/
-// Updated on 5/14/2017 | version 2.22 | MIT License
+// Updated on 5/14/2017 | version 2.3 | MIT License
 
 (function ($) {
 
@@ -9,20 +9,22 @@
         var defaults = {
             selector: '[data-scene]',
             breakpointPos: '33.333%',
-            legend: false,
-            scalebar: false,
-            flyto: false,
-            scrolldown: "zoomIn infinite glyphicon glyphicon-menu-down storymap-scroll-down",
-            progressline: "storymap-progressline",
+            navbar: false,
             navwidget: false,
+            legend: true,
+            loader: true,
+            flyto: false,
+            scalebar: true,
+            scrolldown: true,
+            progressline: true,
             createMap: function () {
-                var map = L.map($(".storymap-map")[0], {
-                    zoomControl: false
-                }).setView([44, -120], 7);
+                var map = L.map($(".storymap-map")[0], {zoomControl: false}).setView([44, -120], 7);
                 L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}@2x.png').addTo(map);
                 return map;
             }
         };
+
+
 
         var settings = $.extend(defaults, options);
 
@@ -79,6 +81,7 @@
                 }
 
 
+
             });
 
             if (!closest.el.hasClass('viewing')) {
@@ -113,40 +116,92 @@
             var top = topElem.offset().top - $(window).scrollTop();
             var searchfor = settings.selector;
             var sections = $(element).find(searchfor);
-
             var map = settings.createMap();
             var currentLayerGroup = L.layerGroup().addTo(map);
+            var nav = $("nav");
+
 
             if (settings.legend) {
-                $(".storymap").append("<div class='" + settings.legend + "' />")
+                $(".storymap").append("<div class='storymap-legend' />")
             }
 
             if (settings.scrolldown) {
-                $(".storymap").append("<div class='" + settings.scrolldown + "' />")
+                $(".storymap").append("<div class='zoomIn infinite glyphicon glyphicon-menu-down storymap-scroll-down' />")
             }
 
             if (settings.scalebar) {
                 L.control.scale({
-                    position: settings.scalebar,
+                    position: "bottomright",
                     metric: false
                 }).addTo(map);
             }
 
             if (settings.progressline) {
-                $(".storymap").append("<div class='" + settings.progressline + "' />")
+                $(".storymap").append("<div class='storymap-progressline' />")
 
             }
 
-
             if (settings.navwidget) {
-                $(".storymap").append("<div class='" + settings.navwidget + " text-center' />")
+                $(".storymap").append("<div class='storymap-navwidget text-center' />")
 
             }
 
             if (settings.loader) {
-                $(".storymap").append("<div class='" + settings.loader + "' />")
+                $(".storymap").append("<div class='glyphicon glyphicon-refresh storymap-loader' />")
 
             }
+
+            if (settings.navbar && $("nav").length> 0) {
+
+                $(".navbar-header").after("<div class='nav navbar-nav navbar-right storymap-navbar'>");
+
+
+                $.each(sections, function (key, element) {
+                    var section = $(element);
+                    // if no name attribute for a specific scene, the name on the navigation bar will be the object name.
+                    if (typeof(scenes[section.data('scene')].name) === "undefined") {
+                        sceneName = section.data('scene');
+                    } else {
+                        sceneName = scenes[section.data('scene')].name.replace(" ", "&nbsp;");
+                    }
+
+                    scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" + section.data('scene') + "\\']').offset().top - $(window).scrollTop() - $('.storymap-navbar').height() - 10);";
+
+                    $(".storymap-navbar").append('<li><a title="' + sceneName + '" href="' + scrollScript + '" >' + sceneName + '</a></li>');
+
+
+
+
+                });
+            }
+
+
+            $.each(sections, function (key, element) {
+                var section = $(element);
+
+
+                var path = section.data('background');
+                if (typeof path !== 'undefined') {
+
+
+                    if (path.indexOf("jpg")>= 0 || path.indexOf("jpeg")>= 0 ||path.indexOf("png")>= 0 ||path.indexOf("bmp")>= 0 ||path.indexOf("gif")>= 0) {
+                        $("head").append("<style> ." + section.data('scene') + "-bg-img { background: url(" + path  + ") no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover;  -o-background-size: cover; background-size: cover; }</style>");
+
+                        $(section).find(".fullpage").addClass(section.data('scene') + "-bg-img");
+
+                    } else if (path.indexOf("mp4")>= 0) {
+
+                        $(section).find(".fullpage").before( '<video class="fullpage" playsinline autoplay muted loop><source src=' + path +'  type="video/mp4"></video>' )
+
+                    } else {
+                        console.log(path);
+                    }
+                }
+
+            });
+
+
+
 
             if (!String.prototype.includes) {
                 String.prototype.includes = function () {
@@ -156,17 +211,21 @@
             }
 
             // make nav bar on the top.
-            if ($(".navbar").length !== 0) {
+            if (nav.length !== 0) {
 
-                var navbar_height = $(".navbar").height();
+                var navbar_height = nav.height();
 
-                var origin_main_top = $(".storymap-story").position().top;
+                var origin_main_top = nav.position().top;
 
                 $(".storymap-story").css({
                     top: (navbar_height + origin_main_top).toString() + "px"
                 });
 
             }
+
+
+            // hidden the credits, but show in the about page.
+            $(".storymap-map .leaflet-control-attribution").css("display", "none");
 
 
             $.each(layers, function (key, layer) {
@@ -179,48 +238,49 @@
             });
 
 
+
             function showMapView(key) {
 
                 currentLayerGroup.clearLayers();
 
-                if (settings.legend === true) {
-                    legendContent = "";
-                }
+                // if (settings.legend === true) {
+                //     legendContent = "";
+                //     $(".storymap-legend").html("");
+                //     $(".storymap-legend").show();
+                // }
 
                 var scene = scenes[key];
                 var layernames = scene.layers;
                 var legendContent = "";
 
-                if (typeof layernames !== 'undefined' && scene.position !== "fullpage") {
+
+
+                if (typeof $("section[data-scene='"+ key+"']").data("background") !== 'undefined') {
+
+                    $(".storymap-loader").fadeTo(0, 0);
+
+                } else if (typeof layernames !== 'undefined' && typeof $("section[data-scene='"+ key+"']").data("background") === 'undefined' ){
 
                     for (var i = 0; i < layernames.length; i++) {
                         $(".storymap-loader").fadeTo(0, 1);
                         currentLayerGroup.addLayer(layers[layernames[i]].layer);
 
-                        if (layers[layernames[i]].length !== "undefined") {
+                        if (typeof layers[layernames[i]].legend !== 'undefined') {
                             legendContent += layers[layernames[i]].legend;
                         }
                     }
 
                 }
 
-                if (scene.position === "fullpage") {
-
-                    $(".storymap-loader").fadeTo(0, 0);
-                }
-
 
                 // the condition legendContent != "" will make sure the legend will only be added on when there is some contents in the legend.
                 if (settings.legend && legendContent !== "") {
-                    //legendControl.addTo(map);
-                    $( ".storymap-legend" ).html(legendContent);
-                    if ($(".navbar").length !== 0) {
-                        // navbar_height = $(".navbar").height();
-                        // origin_legend_top = $(".storymap-legend").position().top;
-                        // $(".storymap-legend").css({
-                        //     top: (navbar_height + origin_legend_top ).toString() + "px"
-                        // });
-                    }
+                    $(".storymap-legend")
+                        .html(legendContent)
+                        .show();
+                } else {
+                    $(".storymap-legend").hide();
+
                 }
 
                 if (settings.flyto) {
@@ -234,35 +294,41 @@
 
             sections.on('viewing', function () {
 
-
                 $(this).addClass('viewing');
 
                 $(".storymap-scroll-down").css("left", "2%");
 
-                if (scenes[$(this).data('scene')].position === "fullpage") {
-                    $(this).addClass('section-opacity')
+                if (typeof $(this).data("background") !== 'undefined') {
+                    $(this)
+                        .addClass('section-opacity')
                         .css('width', "0px")
                         .css('padding', "0 0 0 0");
-                    $(this).find(".background-fullscreen-setting")
-                        .addClass('fullpage')
-                        .css("display", "block");
+                    // $(this).find(".background-fullscreen-setting")
+                    //     .addClass('fullpage')
+                        // .css("display", "block");
                     $(".storymap-scroll-down").css("left", "50%");
+
+
                 }
 
                 // // Change the storymap-scroll-down icon to the home icon when reaching the last scene.
                 if ($(this).data('scene') === sections.last().data('scene')) {
-                    $(".storymap-scroll-down").removeClass("glyphicon-menu-down")
+                    $(".storymap-scroll-down")
+                        .removeClass("glyphicon-menu-down")
                         .addClass("glyphicon-home");
                 } else {
-                    $(".storymap-scroll-down").removeClass("glyphicon-home")
+                    $(".storymap-scroll-down")
+                        .removeClass("glyphicon-home")
                         .addClass("glyphicon-menu-down");
                 }
 
                 // Bounce the storymap-scroll-down icon when the icon is on the front page.
                 if ($(this).data('scene') === sections.first().data('scene') || $(this).data('scene') === sections.last().data('scene')) {
-                    $(".storymap-scroll-down").addClass("animated");
+                    $(".storymap-scroll-down")
+                        .addClass("animated");
                 } else {
-                    $(".storymap-scroll-down").removeClass("animated");
+                    $(".storymap-scroll-down")
+                        .removeClass("animated");
                 }
 
                 showMapView($(this).data('scene'));
@@ -274,11 +340,12 @@
 
                 $(this).removeClass('viewing');
 
-                if (scenes[$(this).data('scene')].position === "fullpage") {
-                    $(this).removeClass('section-opacity');
-                    $(this).find(".background-fullscreen-setting")
-                        .removeClass('fullpage')
-                        .css("display", "none");
+                if (typeof $(this).data("background") !== 'undefined') {
+                    $(this)
+                        .removeClass('section-opacity');
+                    // $(this)
+                    //     .removeClass('fullpage')
+                        // .css("display", "none");
                 }
             });
 
@@ -288,23 +355,14 @@
 
             $('.storymap-scroll-down').click(function () {
 
+                if ($(".viewing").data("scene") !== $("section:last").data("scene")) {
 
-
-                if ($(".viewing").data("scene") !== $("section:last").data("scene")  ){
-
-               // if ($(".storymap-scroll-down")[0].className.includes("glyphicon-menu-down")) {
-
-                    //if there is a navbar.
-                    if ($(".navbar").length !== 0) {
-                        window.scrollBy(0, $(".viewing").offset().top + $('.viewing').height() - $(window).scrollTop() - $('.navbar').height() - 10);
+                    if (nav.length !== 0) {
+                        window.scrollBy(0, $(".viewing").offset().top + $('.viewing').height() - $(window).scrollTop() - $('.storymap-navbar').height() - 10);
                     } else {
                         window.scrollBy(0, $(".viewing").offset().top + $('.viewing').height() - $(window).scrollTop() - 10);
                     }
-                // } else if ($(".storymap-scroll-down")[0].className.includes("glyphicon-home")) {
-                //     window.scrollTo(0, 0);
-                // }
-
-                } else  {
+                } else {
                     window.scrollTo(0, 0);
                 }
             });
@@ -333,8 +391,8 @@
                     }
 
                     //if there is a navbar.
-                    if ($(".navbar").length !== 0) {
-                        scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" + section.data('scene') + "\\']').offset().top - $(window).scrollTop() - $('.navbar').height() - 10);";
+                    if (nav.length !== 0) {
+                        scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" + section.data('scene') + "\\']').offset().top - $(window).scrollTop() - $('.storymap-navbar').height() - 10);";
                     } else {
                         scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" + section.data('scene') + "\\']').offset().top  - $(window).scrollTop() - 10);";
                     }
@@ -362,6 +420,7 @@
 
         makeStoryMap(this, settings.scenes, settings.layers);
         window.scrollTo(0, 0);
+
 
         return this;
     }
