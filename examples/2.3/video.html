@@ -283,7 +283,7 @@
         eugene: {lat: 44.0549563, lng: -123.0958048, zoom: 13, name: 'Eugene'},
         salem: {lat: 44.9419055, lng: -123.0356407, zoom: 13, name: 'Salem'},
         bend: {lat: 44.0519385, lng: -121.3042125, zoom: 14, name: 'Bend', layers: ['counties', 'satellite']},
-        oregon: {lat: 44, lng: -123.5, zoom: 7, name: 'Oregon State', layers: ['counties']},
+        oregon: {lat: 44, lng: -123.5, zoom: 7, name: 'Oregon State', layers: ['counties', 'GEE']},
         end: {lat: 44, lng: -123.5, zoom: 7, name: 'The End'}
     };
 
@@ -307,7 +307,6 @@
                 marker: 'red',
                 position: 'bottomright'
             }).addTo(map);
-
 
             return map;
         }
