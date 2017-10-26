@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Hello World</title>
+    <title>Nav Bar</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -12,7 +12,7 @@
     <!--animation-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" type="text/css" href="../../dist/storymap.2.3.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
 
     <!--add required libraries-->
     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
@@ -22,8 +22,36 @@
 
     <!--story map plugin-->
     <script src="../../dist/storymap.2.3.js"></script>
+
 </head>
+
 <body>
+
+<div class="navbar navbar-inverse navbar-fixed-top navbar-toggleable-md" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Hello, World!</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=scene1]').offset().top  - $(window).scrollTop() - $('.navbar').height()  - 10);">Scene 1</a>
+                </li>
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=scene2]').offset().top  - $(window).scrollTop() - $('.navbar').height()  - 10);">Scene 2</a>
+                </li>
+                <li>
+                    <a href="javascript:window.scrollBy(0, $('section[data-scene=scene3]').offset().top  - $(window).scrollTop() - $('.navbar').height()  - 10);">Scene 3</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</div>
+
 <div id="storymap" class="container-fluid">
     <div class="row">
         <div class="col-sm-6 col-md-4 storymap-story">
@@ -40,6 +68,7 @@
         <div class="col-sm-6 col-md-8 storymap-map"></div>
     </div>
 </div>
+
 <script type="text/javascript">
 
     var layers = {
@@ -53,19 +82,25 @@
                 weight: 5
             }),
             legend: '<i style="background: orange; opacity: 0.5"></i><p><b>legend 2</b></p>'
+        },
+        layer3: {
+            layer: L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png')
         }
     };
 
     var scenes = {
-        scene1: {lat: 44, lng: -123.5, zoom: 7,  layers: ['layer1'], name: "scene 1"},
+        scene1: {lat: 44, lng: -123.5, zoom: 7, layers: ['layer2'], name: "scene 1"},
         scene2: {lat: 44.5701158, lng: -123.2949388, zoom: 10, layers: ['layer2'], name: "scene 2"},
         scene3: {lat: 44.5701158, lng: -123.2949388, zoom: 12, layers: ['layer1', 'layer2'], name: "scene 3"}
     };
 
+
     $('#storymap').storymap({
         scenes: scenes,
         layers: layers,
+        baselayer: layers.layer3,
         legend: "storymap-legend",
+        loader: "glyphicon glyphicon-refresh storymap-loader",
         flyto: false,
         scalebar: "bottomright",
         scrolldown: "zoomIn infinite glyphicon glyphicon-menu-down storymap-scroll-down",
@@ -73,7 +108,7 @@
         navwidget: "storymap-navwidget",
         createMap: function () {
             var map = L.map($(".storymap-map")[0], {zoomControl: false}).setView([44, -120], 7);
-            L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png').addTo(map);
+            basemap = this.baselayer.layer.addTo(map);
             return map;
         }
     });

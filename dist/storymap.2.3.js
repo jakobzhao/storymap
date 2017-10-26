@@ -19,7 +19,7 @@
                 var map = L.map($(".storymap-map")[0], {
                     zoomControl: false
                 }).setView([44, -120], 7);
-                L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}@2x.png');
+                L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}@2x.png').addTo(map);
                 return map;
             }
         };
@@ -116,10 +116,6 @@
 
             var map = settings.createMap();
             var currentLayerGroup = L.layerGroup().addTo(map);
-            // var legendControl = L.control({
-            //     position: 'topright'
-            // }); // you can change the position of the legend Control.
-
 
             if (settings.legend) {
                 $(".storymap").append("<div class='" + settings.legend + "' />")
@@ -144,6 +140,11 @@
 
             if (settings.navwidget) {
                 $(".storymap").append("<div class='" + settings.navwidget + " text-center' />")
+
+            }
+
+            if (settings.loader) {
+                $(".storymap").append("<div class='" + settings.loader + "' />")
 
             }
 
@@ -172,7 +173,7 @@
 
                 // layer = layer.layer;
                 layer.layer.on('load', function () {
-                    $(".loader").fadeTo(500, 0);
+                    $(".storymap-loader").fadeTo(500, 0);
                 })
 
             });
@@ -183,7 +184,7 @@
                 currentLayerGroup.clearLayers();
 
                 if (settings.legend === true) {
-                    legendContent = ""
+                    legendContent = "";
                 }
 
                 var scene = scenes[key];
@@ -193,7 +194,7 @@
                 if (typeof layernames !== 'undefined' && scene.position !== "fullpage") {
 
                     for (var i = 0; i < layernames.length; i++) {
-                        $(".loader").fadeTo(0, 1);
+                        $(".storymap-loader").fadeTo(0, 1);
                         currentLayerGroup.addLayer(layers[layernames[i]].layer);
 
                         if (layers[layernames[i]].length !== "undefined") {
@@ -205,7 +206,7 @@
 
                 if (scene.position === "fullpage") {
 
-                    $(".loader").fadeTo(0, 0);
+                    $(".storymap-loader").fadeTo(0, 0);
                 }
 
 
@@ -214,11 +215,11 @@
                     //legendControl.addTo(map);
                     $( ".storymap-legend" ).html(legendContent);
                     if ($(".navbar").length !== 0) {
-                        navbar_height = $(".navbar").height();
-                        origin_legend_top = $(".storymap-legend").position().top;
-                        $(".storymap-legend").css({
-                            top: (navbar_height + origin_legend_top).toString() + "px"
-                        });
+                        // navbar_height = $(".navbar").height();
+                        // origin_legend_top = $(".storymap-legend").position().top;
+                        // $(".storymap-legend").css({
+                        //     top: (navbar_height + origin_legend_top ).toString() + "px"
+                        // });
                     }
                 }
 
@@ -289,7 +290,7 @@
 
 
 
-                if ($(".viewing").data("scene") !== $($("section")[$("section").length - 1]).data("scene")  ){
+                if ($(".viewing").data("scene") !== $("section:last").data("scene")  ){
 
                // if ($(".storymap-scroll-down")[0].className.includes("glyphicon-menu-down")) {
 

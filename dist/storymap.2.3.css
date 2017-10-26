@@ -4,7 +4,7 @@ html {
 }
 body {
     height: 100%;
-    font-family: 'Open Sans', sans-serif;
+    font-family: Cairo, sans-serif;
     font-size: 12px;
 }
 
@@ -25,14 +25,14 @@ body {
 h3 {
     margin: 0;
     padding-top: 100px;
-    font-family: 'open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    font-family: Cairo, sans-serif;
     color: rgba(255, 255, 255, 0.95);
     font-size: 50px;
     text-shadow: 0 0 6px rgba(0, 0, 0, .95);
 }
 
 .storymap-story {
-    padding: 20px;
+    padding: 20px 10px;
     padding-bottom: 1000px;
     z-index: 1001;
     display: block;
@@ -72,7 +72,7 @@ h3 {
 
 /*}*/
 
-.loader {
+.storymap-loader {
     color: rgba(255, 255, 255, 0.95);
     position: fixed;
     top: 45%;
@@ -262,7 +262,7 @@ section {
     margin: 10px;
     border-radius: 10px;
     background: #ccc;
-    opacity: 0.5;
+    opacity: 0;
 }
 
 .storymap-scroll-down {
@@ -300,13 +300,13 @@ section {
     position: fixed;
 
     line-height: 16px;
-    width: 130px;
+    width: 100px;
     z-index: 1000;
     right: 20px;
-    top: 20px;
+    top: 50px;
 
     color: #333333;
-    font-family: 'Open Sans', Helvetica, sans-serif;
+    font-family: Cairo, sans-serif;
     padding: 6px 8px;
     background: rgba(255, 255, 255, 0.5);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
