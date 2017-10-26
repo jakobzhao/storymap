@@ -259,9 +259,10 @@ video {
 
 section {
     padding: 5px 10px 10px 10px;
+    margin: 10px;
     border-radius: 10px;
     background: #ccc;
-    opacity: 0;
+    opacity: 0.5;
 }
 
 .storymap-scroll-down {
@@ -272,12 +273,12 @@ section {
     z-index: 1005;
     font-size: 40px;
     color: rgba(255, 255, 255, 0.6);
-    text-shadow: 0 0 6px rgba(197, 197, 197, 0.95);
+    text-shadow: 0 0 1px rgba(197, 197, 197, 0.95);
 }
 
 .storymap-scroll-down:hover {
     color: rgba(14, 14, 14, 0.8);
-    text-shadow: 0 0 6px rgba(197, 197, 197, 0.95);
+    text-shadow: 0 0 1px rgba(197, 197, 197, 0.95);
 }
 
 .btn {
@@ -295,9 +296,15 @@ section {
     text-decoration: none;
 }
 
-.legend {
+.storymap-legend {
+    position: fixed;
+
     line-height: 16px;
     width: 130px;
+    z-index: 1000;
+    right: 20px;
+    top: 20px;
+
     color: #333333;
     font-family: 'Open Sans', Helvetica, sans-serif;
     padding: 6px 8px;
@@ -306,7 +313,7 @@ section {
     border-radius: 5px;
 }
 
-.legend i {
+.storymap-legend i {
     width: 16px;
     height: 16px;
     float: left;
@@ -314,14 +321,14 @@ section {
     opacity: 0.9;
 }
 
-.legend img {
+.storymap-legend img {
     width: 16px;
     height: 16px;
     margin-right: 3px;
     float: left;
 }
 
-.legend p {
+.storymap-legend p {
     font-size: 12px;
     line-height: 16px;
     margin: 0;
@@ -329,11 +336,11 @@ section {
 
 .storymap-progressline {
     position: fixed;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     z-index: 1030;
     height: 3px;
     background: rgba(255, 30, 0, 0.80);
     box-shadow: 0 0 2px rgba(98, 16, 0, 0.91);
-    width: 0%;
+    width: 0;
 }

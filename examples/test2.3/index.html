@@ -57,15 +57,15 @@
     };
 
     var scenes = {
-        scene1: {lat: 44, lng: -123.5, zoom: 7, layers: ['layer1'], name: "scene 1"},
-        scene2: {lat: 44.5701158, lng: -123.2949388, zoom: 14, layers: ['layer2'], name: "scene 2"},
+        scene1: {lat: 44, lng: -123.5, zoom: 7,  layers: ['layer1'], name: "scene 1"},
+        scene2: {lat: 44.5701158, lng: -123.2949388, zoom: 10, layers: ['layer2'], name: "scene 2"},
         scene3: {lat: 44.5701158, lng: -123.2949388, zoom: 12, layers: ['layer1', 'layer2'], name: "scene 3"}
     };
 
     $('#storymap').storymap({
         scenes: scenes,
         layers: layers,
-        legend: true,
+        legend: "storymap-legend",
         flyto: false,
         scalebar: "bottomright",
         scrolldown: "zoomIn infinite glyphicon glyphicon-menu-down storymap-scroll-down",

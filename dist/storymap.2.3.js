@@ -114,12 +114,16 @@
             var searchfor = settings.selector;
             var sections = $(element).find(searchfor);
 
-
             var map = settings.createMap();
             var currentLayerGroup = L.layerGroup().addTo(map);
-            var legendControl = L.control({
-                position: 'topright'
-            }); // you can change the position of the legend Control.
+            // var legendControl = L.control({
+            //     position: 'topright'
+            // }); // you can change the position of the legend Control.
+
+
+            if (settings.legend) {
+                $(".storymap").append("<div class='" + settings.legend + "' />")
+            }
 
             if (settings.scrolldown) {
                 $(".storymap").append("<div class='" + settings.scrolldown + "' />")
@@ -179,7 +183,7 @@
                 currentLayerGroup.clearLayers();
 
                 if (settings.legend === true) {
-                    legendControl.remove();
+                    legendContent = ""
                 }
 
                 var scene = scenes[key];
@@ -192,34 +196,32 @@
                         $(".loader").fadeTo(0, 1);
                         currentLayerGroup.addLayer(layers[layernames[i]].layer);
 
-                        if (layers[layernames[i]].length === 2) {
+                        if (layers[layernames[i]].length !== "undefined") {
                             legendContent += layers[layernames[i]].legend;
                         }
                     }
+
                 }
 
-                if (scene.position == "fullpage") {
+                if (scene.position === "fullpage") {
 
                     $(".loader").fadeTo(0, 0);
                 }
 
-                legendControl.onAdd = function () {
-                    var div = new L.DomUtil.create('div', 'legend');
-                    div.innerHTML = legendContent;
-                    return div;
-                };
 
                 // the condition legendContent != "" will make sure the legend will only be added on when there is some contents in the legend.
-                if (settings.legend === true && legendContent !== "") {
-                    legendControl.addTo(map);
+                if (settings.legend && legendContent !== "") {
+                    //legendControl.addTo(map);
+                    $( ".storymap-legend" ).html(legendContent);
                     if ($(".navbar").length !== 0) {
                         navbar_height = $(".navbar").height();
-                        origin_legend_top = $(".legend").position().top;
-                        $(".legend").css({
+                        origin_legend_top = $(".storymap-legend").position().top;
+                        $(".storymap-legend").css({
                             top: (navbar_height + origin_legend_top).toString() + "px"
                         });
                     }
                 }
+
                 if (settings.flyto) {
                     map.flyTo([scene.lat, scene.lng], scene.zoom, 1)
                 } else {
@@ -250,7 +252,6 @@
                 if ($(this).data('scene') === sections.last().data('scene')) {
                     $(".storymap-scroll-down").removeClass("glyphicon-menu-down")
                         .addClass("glyphicon-home");
-
                 } else {
                     $(".storymap-scroll-down").removeClass("glyphicon-home")
                         .addClass("glyphicon-menu-down");
