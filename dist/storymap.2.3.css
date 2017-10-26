@@ -6,7 +6,7 @@ html {
 body {
     height: 100%;
     font-family: Cairo, sans-serif;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .cesium-viewer-cesiumWidgetContainer {
@@ -144,7 +144,7 @@ video {
     -khtml-opacity: 0.8;
 }
 
-.fullpage {
+.fullscreen {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -161,13 +161,6 @@ video {
     filter: alpha(opacity=100);
     -moz-opacity: 1;
     -khtml-opacity: 1;
-}
-
-.background-fullscreen-setting {
-    /*-webkit-background-size: cover;*/
-    /*-moz-background-size: cover;*/
-    /*-o-background-size: cover;*/
-    /*background-size: cover;*/
 }
 
 @media (min-width: 768px) {

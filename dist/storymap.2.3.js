@@ -187,11 +187,11 @@
                     if (path.indexOf("jpg")>= 0 || path.indexOf("jpeg")>= 0 ||path.indexOf("png")>= 0 ||path.indexOf("bmp")>= 0 ||path.indexOf("gif")>= 0) {
                         $("head").append("<style> ." + section.data('scene') + "-bg-img { background: url(" + path  + ") no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover;  -o-background-size: cover; background-size: cover; }</style>");
 
-                        $(section).find(".fullpage").addClass(section.data('scene') + "-bg-img");
+                        $(section).find(".fullscreen").addClass(section.data('scene') + "-bg-img");
 
                     } else if (path.indexOf("mp4")>= 0) {
 
-                        $(section).find(".fullpage").before( '<video class="fullpage" playsinline autoplay muted loop><source src=' + path +'  type="video/mp4"></video>' )
+                        $(section).find(".fullscreen").before( '<video class="fullscreen" playsinline autoplay muted loop><source src=' + path +'  type="video/mp4"></video>' )
 
                     } else {
                         console.log(path);
@@ -303,9 +303,7 @@
                         .addClass('section-opacity')
                         .css('width', "0px")
                         .css('padding', "0 0 0 0");
-                    // $(this).find(".background-fullscreen-setting")
-                    //     .addClass('fullpage')
-                        // .css("display", "block");
+
                     $(".storymap-scroll-down").css("left", "50%");
 
 
@@ -343,9 +341,6 @@
                 if (typeof $(this).data("background") !== 'undefined') {
                     $(this)
                         .removeClass('section-opacity');
-                    // $(this)
-                    //     .removeClass('fullpage')
-                        // .css("display", "none");
                 }
             });
 

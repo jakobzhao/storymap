@@ -10,7 +10,6 @@
     <meta property="og:description" content="This is an example of map story."/>
     <meta property="og:image" content="../../img/social.png"/>
 
-
     <!--add required stylesheets-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css">
@@ -46,7 +45,7 @@
     <div class="row">
         <div class="col-sm-6 col-md-4 storymap-story">
             <section data-scene="overview" data-background="../../assets/portland.mp4">
-                <div class="fullpage text-center">
+                <div class="fullscreen text-center">
                     <h3>The Cities of Oregon</h3>
                     <h3>
                         <small style="color: rgba(255,255,255,0.95)"> This story map illustrates the major cities in
@@ -175,7 +174,7 @@
             </section>
 
             <section data-scene="end" data-background="../../assets/end.jpg">
-                <div class="fullpage text-center">
+                <div class="fullscreen text-center">
                     <br/>
                     <h3 class="">Thanks for watching!!!</h3>
                     <h3>
@@ -250,8 +249,8 @@
 
     // For each layer, the first variable is the layer, the second is the legend. The layer variable can be any kinds of layers that leaflet.js supports.
     // var layers = {
-    //      'layer1': [layer1, legend1]
-    //      'layer2': [layer2, legend2]
+    //      layer1: {layer: layer1, legend: legend1},
+    //      layer2: {layer: layer2, legend: legend2}
     //      ...
     // }
 
@@ -277,14 +276,14 @@
     };
 
     var scenes = {
-        overview: {lat: 44, lng: -123.5, zoom: 7, name: 'Cover Page'},
+        overview: {lat: 44.0000000, lng: -123.5000000, zoom: 7, name: 'Cover Page'},
         portland: {lat: 45.5186089, lng: -122.7270297, zoom: 11, name: 'Portland'},
         corvallis: {lat: 44.5701158, lng: -123.2949388, zoom: 14, name: 'Corvallis', layers: ['ESRI']},
         eugene: {lat: 44.0549563, lng: -123.0958048, zoom: 13, name: 'Eugene'},
         salem: {lat: 44.9419055, lng: -123.0356407, zoom: 13, name: 'Salem'},
         bend: {lat: 44.0519385, lng: -121.3042125, zoom: 14, name: 'Bend', layers: ['counties', 'satellite']},
-        oregon: {lat: 44, lng: -123.5, zoom: 7, name: 'Oregon State', layers: ['counties', 'GEE']},
-        end: {lat: 44, lng: -123.5, zoom: 7, name: 'The End'}
+        oregon: {lat: 44.0000000, lng: -123.5000000, zoom: 7, name: 'Oregon State', layers: ['counties', 'GEE']},
+        end: {lat: 44.0000000, lng: -123.5000000, zoom: 7, name: 'The End'}
     };
 
     $('#storymap').storymap({
