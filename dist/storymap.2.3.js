@@ -18,7 +18,7 @@
             scrolldown: true,
             progressline: true,
             createMap: function () {
-                var map = L.map($(".storymap-map")[0], {zoomControl: false}).setView([44, -120], 7);
+                var map = L.map($('.storymap-map')[0], {zoomControl: false}).setView([44, -120], 7);
                 L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}@2x.png').addTo(map);
                 return map;
             }
@@ -111,8 +111,6 @@
             var topElem = $('<div class="breakpoint-current"></div>')
                 .css('top', settings.breakpointPos);
             $('body').append(topElem);
-
-
             var top = topElem.offset().top - $(window).scrollTop();
             var searchfor = settings.selector;
             var sections = $(element).find(searchfor);
@@ -156,7 +154,7 @@
             }
 
 
-            if (settings.navbar && $("nav").length> 0) {
+            if (settings.navbar && nav.length> 0) {
 
                 $(".navbar-header").after("<div class='nav navbar-nav navbar-right storymap-navbar'>");
 
@@ -354,13 +352,13 @@
 
 
             $('.storymap-scroll-down').click(function () {
-
-                if ($(".viewing").data("scene") !== $("section:last").data("scene")) {
+                var viewing = $(".viewing");
+                if (viewing.data("scene") !== $("section:last").data("scene")) {
 
                     if (nav.length !== 0) {
-                        window.scrollBy(0, $(".viewing").offset().top + $('.viewing').height() - $(window).scrollTop() - $('.storymap-navbar').height() - 10);
+                        window.scrollBy(0, viewing.offset().top + viewing.height() - $(window).scrollTop() - $('.storymap-navbar').height() - 10);
                     } else {
-                        window.scrollBy(0, $(".viewing").offset().top + $('.viewing').height() - $(window).scrollTop() - 10);
+                        window.scrollBy(0, viewing.offset().top + viewing.height() - $(window).scrollTop() - 10);
                     }
                 } else {
                     window.scrollTo(0, 0);

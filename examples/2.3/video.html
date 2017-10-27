@@ -4,10 +4,11 @@
     <title>Cities of Oregon</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!--meta data for sharing links on Facebook-->
     <meta property="og:title" content="The major cities in Oregon"/>
     <meta property="og:url" content="http://geoviz.ceoas.oregonstate.edu/storymap/examples/2.3/video.html"/>
-    <meta property="og:description" content="This is an example of map story."/>
+    <meta property="og:description" content="This is an example of a storymap."/>
     <meta property="og:image" content="../../img/social.png"/>
 
     <!--add required stylesheets-->
@@ -20,6 +21,8 @@
 
     <!--animation-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+    <!--Font-->
     <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="../../dist/storymap.2.3.css">
@@ -28,7 +31,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
-
 
     <!--mini globle map-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
@@ -225,7 +227,7 @@
                     <p><b>Author: Bo Zhao</b> | College of Earth, Ocean, Atmospheric Science | Oregon State University
                     </p>
                     <p>The context about Oregon cities was collected from Wikipedia.</p>
-                    <p>The <a src="https://www.youtube.com/watch?v=UJ_vQC9PNY4">background video</a> on the front page
+                    <p>The <a href="https://www.youtube.com/watch?v=UJ_vQC9PNY4">background video</a> on the front page
                         was clipped from Youtube. </p>
                     <p>The favicon image was acquired from <a>http://www.udlcenter.org/advocacy/state/oregon.</a></p>
                     <p>This story map uses geospatial data from mapbox, Google Earth Engine, ESRI Map, Open Street Maps
@@ -295,8 +297,8 @@
             // create a map in the "map" div, set the view to a given place and zoom
             var map = L.map($(".storymap-map")[0], {zoomControl: false, scrollWheelZoom: false}).setView([44, -120], 7);
 
-            //add an miniglobe
-            var miniMap = new L.Control.GlobeMiniMap({
+            //add an miniglobe<abbr
+            new L.Control.GlobeMiniMap({
                 marker: 'red',
                 position: 'bottomright'
             }).addTo(map);
