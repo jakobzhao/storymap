@@ -268,13 +268,11 @@ section {
     border-radius: 2px;
 }
 
-
-
 .storymap-attribution a:visited,
 .storymap-attribution a:active,
 .storymap-attribution a:link {
     color: #333333;
-    text-decoration: none
+    text-decoration: none;
 }
 
 .storymap-legend {
