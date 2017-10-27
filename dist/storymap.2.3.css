@@ -261,6 +261,21 @@ section {
     text-decoration: none;
 }
 
+.storymap-attribution {
+    font-family: Cairo, sans-serif;
+    background: rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2) ;
+    border-radius: 2px;
+}
+
+
+
+.storymap-attribution a:visited,
+.storymap-attribution a:active,
+.storymap-attribution a:link {
+    color: #333333;
+    text-decoration: none
+}
 
 .storymap-legend {
     position: fixed;

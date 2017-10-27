@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Cities of Oregon</title>
+    <title>Cities in Oregon</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -290,18 +290,21 @@
         layers: layers,
         baselayer: layers.cartodb_light,
         legend: true, // if you do not want a legend feature, you can simply not define the createLegend function.
-        scale: false,
+        credits: "",
+        loader: true,
+        scalebar: false,
         navwidget: true,
 
         createMap: function () {
             // create a map in the "map" div, set the view to a given place and zoom
             var map = L.map($(".storymap-map")[0], {zoomControl: false, scrollWheelZoom: false}).setView([44, -120], 7);
 
-            //add an miniglobe<abbr
+            //add an miniglobe
             new L.Control.GlobeMiniMap({
                 marker: 'red',
                 position: 'bottomright'
             }).addTo(map);
+
 
             return map;
         }

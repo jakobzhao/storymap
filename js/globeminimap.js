@@ -39,11 +39,11 @@ var worlddata = {
         //layer is the map layer to be shown in the minimap
         initialize: function (options) {
             L.Util.setOptions(this, options);
-            console.log(this.options);
+            // console(this.options);
         },
 
         onAdd: function (map) {
-            console.log('onAdd()');
+            // console('onAdd()');
 
             this._mainMap = map;
 
@@ -66,7 +66,7 @@ var worlddata = {
         },
 
         addTo: function (map) {
-            console.log('addTo()');
+            // console('addTo()');
             L.Control.prototype.addTo.call(this, map);
             this.initCanvas();
 
@@ -132,7 +132,7 @@ var worlddata = {
             return dpr / bsr;
         },
         transitionMap: function (p) {
-            console.log('transtionMap');
+            // console('transtionMap');
             var that = this;
             var c = that.c;
             //c.scale(this.pixel_ratio(), this.pixel_ratio());
@@ -158,7 +158,7 @@ var worlddata = {
         },
 
         _onMainMapMoved: function (e) {
-            console.log('mainmapmoved');
+            // console('mainmapmoved');
             if (!this._miniMapMoving) {
                 this._mainMapMoving = true;
 

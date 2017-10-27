@@ -14,7 +14,7 @@
             legend: true,
             loader: true,
             flyto: false,
-            scalebar: true,
+            scalebar: false,
             scrolldown: true,
             progressline: true,
             createMap: function () {
@@ -23,7 +23,6 @@
                 return map;
             }
         };
-
 
 
         var settings = $.extend(defaults, options);
@@ -81,7 +80,6 @@
                 }
 
 
-
             });
 
             if (!closest.el.hasClass('viewing')) {
@@ -118,7 +116,8 @@
             var currentLayerGroup = L.layerGroup().addTo(map);
             var nav = $("nav");
 
-            if(settings.baselayer) {
+
+            if (settings.baselayer) {
                 // add an base map, which can be either OSM, mapbox, tilelayer, wmslayer or those designed by yourself.
                 settings.baselayer.layer.addTo(map);
             }
@@ -154,7 +153,18 @@
             }
 
 
-            if (settings.navbar && nav.length> 0) {
+            $(".storymap-map .leaflet-control-attribution")
+                .addClass("storymap-attribution")
+                .html("<a href='https://github.com/jakobzhao/storymap'><img src='../../img/logo.png' width='18px' target='_blank' > storymap.js </a>");
+
+            if (settings.credits) {
+                $(".storymap-attribution").find("a").prepend(settings.credits + " | ");
+
+
+            }
+
+
+            if (settings.navbar && nav.length > 0) {
 
                 $(".navbar-header").after("<div class='nav navbar-nav navbar-right storymap-navbar'>");
 
@@ -173,8 +183,6 @@
                     $(".storymap-navbar").append('<li><a title="' + sceneName + '" href="' + scrollScript + '" >' + sceneName + '</a></li>');
 
 
-
-
                 });
             }
 
@@ -187,14 +195,14 @@
                 if (typeof path !== 'undefined') {
 
 
-                    if (path.indexOf("jpg")>= 0 || path.indexOf("jpeg")>= 0 ||path.indexOf("png")>= 0 ||path.indexOf("bmp")>= 0 ||path.indexOf("gif")>= 0) {
-                        $("head").append("<style> ." + section.data('scene') + "-bg-img { background: url(" + path  + ") no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover;  -o-background-size: cover; background-size: cover; }</style>");
+                    if (path.indexOf("jpg") >= 0 || path.indexOf("jpeg") >= 0 || path.indexOf("png") >= 0 || path.indexOf("bmp") >= 0 || path.indexOf("gif") >= 0) {
+                        $("head").append("<style> ." + section.data('scene') + "-bg-img { background: url(" + path + ") no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover;  -o-background-size: cover; background-size: cover; }</style>");
 
                         $(section).find(".fullscreen").addClass(section.data('scene') + "-bg-img");
 
-                    } else if (path.indexOf("mp4")>= 0) {
+                    } else if (path.indexOf("mp4") >= 0) {
 
-                        $(section).find(".fullscreen").before( '<video class="fullscreen" playsinline autoplay muted loop><source src=' + path +'  type="video/mp4"></video>' )
+                        $(section).find(".fullscreen").before('<video class="fullscreen" playsinline autoplay muted loop><source src=' + path + '  type="video/mp4"></video>')
 
                     } else {
                         console.log(path);
@@ -202,8 +210,6 @@
                 }
 
             });
-
-
 
 
             if (!String.prototype.includes) {
@@ -227,10 +233,6 @@
             }
 
 
-            // hidden the credits, but show in the about page.
-            $(".storymap-map .leaflet-control-attribution").css("display", "none");
-
-
             $.each(layers, function (key, layer) {
 
                 // layer = layer.layer;
@@ -239,7 +241,6 @@
                 })
 
             });
-
 
 
             function showMapView(key) {
@@ -257,12 +258,11 @@
                 var legendContent = "";
 
 
-
-                if (typeof $("section[data-scene='"+ key+"']").data("background") !== 'undefined') {
+                if (typeof $("section[data-scene='" + key + "']").data("background") !== 'undefined') {
 
                     $(".storymap-loader").fadeTo(0, 0);
 
-                } else if (typeof layernames !== 'undefined' && typeof $("section[data-scene='"+ key+"']").data("background") === 'undefined' ){
+                } else if (typeof layernames !== 'undefined' && typeof $("section[data-scene='" + key + "']").data("background") === 'undefined') {
 
                     for (var i = 0; i < layernames.length; i++) {
                         $(".storymap-loader").fadeTo(0, 1);
