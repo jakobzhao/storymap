@@ -261,9 +261,9 @@ section {
     text-decoration: none;
 }
 
+
 .storymap-legend {
     position: fixed;
-
     line-height: 16px;
     width: 100px;
     z-index: 1000;

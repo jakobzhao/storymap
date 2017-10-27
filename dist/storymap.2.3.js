@@ -120,6 +120,10 @@
             var currentLayerGroup = L.layerGroup().addTo(map);
             var nav = $("nav");
 
+            if(settings.baselayer) {
+                // add an base map, which can be either OSM, mapbox, tilelayer, wmslayer or those designed by yourself.
+                settings.baselayer.layer.addTo(map);
+            }
 
             if (settings.legend) {
                 $(".storymap").append("<div class='storymap-legend' />")
@@ -150,6 +154,7 @@
                 $(".storymap").append("<div class='glyphicon glyphicon-refresh storymap-loader' />")
 
             }
+
 
             if (settings.navbar && $("nav").length> 0) {
 

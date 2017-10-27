@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
 
-
     <link rel="stylesheet" type="text/css" href="../../dist/storymap.2.3.css">
     <!--add required libraries-->
     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
@@ -31,7 +30,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
 
 
-    <!-- mini globle map -->
+    <!--mini globle map-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
     <script src="../../js/globeminimap.js"></script>
@@ -187,7 +186,7 @@
 
         </div>
         <!--map div-->
-        <div id="map" class="col-sm-6 col-md-8 storymap-map"></div>
+        <div class="col-sm-6 col-md-8 storymap-map"></div>
     </div>
 
 
@@ -240,10 +239,8 @@
 <!-- main javascript -->
 <script type="text/javascript">
 
-    /**
-     * Created by jakob on 4/20/2017.
-     */
-        // Create Legend Contents in html format
+
+    // Create Legend Contents in html format
     var county_legend = '<i style="background: orange; opacity: 0.5"></i><p><b>Counties</b></p>';
     var forest_legend = '<i style="background: green; opacity: 0.5"></i><p><b>Forest</b></p>';
 
@@ -288,8 +285,8 @@
 
     $('#storymap').storymap({
         scenes: scenes,
-        baselayer: layers.cartodb_light,
         layers: layers,
+        baselayer: layers.cartodb_light,
         legend: true, // if you do not want a legend feature, you can simply not define the createLegend function.
         scale: false,
         navwidget: true,
@@ -298,10 +295,7 @@
             // create a map in the "map" div, set the view to a given place and zoom
             var map = L.map($(".storymap-map")[0], {zoomControl: false, scrollWheelZoom: false}).setView([44, -120], 7);
 
-            // add an base map, which can be either OSM, mapbox, tilelayer, wmslayer or those designed by yourself.
-            this.baselayer.layer.addTo(map);
-
-            // create a mini globe as the overview map control.
+            //add an miniglobe
             var miniMap = new L.Control.GlobeMiniMap({
                 marker: 'red',
                 position: 'bottomright'
