@@ -26,7 +26,7 @@
 </head>
 <body>
 
-<nav class="navbar-inverse navbar-fixed-top navbar-toggleable-md">
+<nav class="navbar-inverse navbar-fixed-top blue" >
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -38,13 +38,13 @@
 <div id="storymap" class="container-fluid">
     <div class="row">
         <div class="col-sm-6 col-md-4 storymap-story">
-            <section data-scene="scene1">
+            <section  data-scene="scene1">
                 <h2>scene 1</h2>
             </section>
-            <section data-scene="scene2">
+            <section  data-scene="scene2">
                 <h2>scene 2</h2>
             </section>
-            <section data-scene="scene3">
+            <section  data-scene="scene3">
                 <h2>scene 3</h2>
             </section>
         </div>
@@ -67,25 +67,24 @@
             legend: '<i style="background: orange; opacity: 0.5"></i><p><b>legend 2</b></p>'
         },
         layer3: {
-            layer: L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png')
+            layer: L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}@2x.png')
         }
     };
 
     var scenes = {
-        scene1: {lat: 44, lng: -123.5, zoom: 7, layers: ['layer2'], name: "scene 1"},
-        scene2: {lat: 44.5701158, lng: -123.2949388, zoom: 10, layers: ['layer2'], name: "scene 2"},
-        scene3: {lat: 44.5701158, lng: -123.2949388, zoom: 12, layers: ['layer1', 'layer2'], name: "scene 3"}
+        scene1: {lat: 44, lng: -123.5, zoom: 7,  name: "scene 1"},
+        scene2: {lat: 44.5701158, lng: -123.2949388, zoom: 10,  name: "scene 2"},
+        scene3: {lat: 44.5701158, lng: -123.2949388, zoom: 12, name: "scene 3"}
     };
 
 
     $('#storymap').storymap({
         scenes: scenes,
-        layers: layers,
         baselayer: layers.layer3,
         navbar: true,
         legend: true,
-        loader: true,
-        flyto: false,
+        loader: false,
+        flyto: true,
         scalebar: false,
         scrolldown: true,
         progressline: true,

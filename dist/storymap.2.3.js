@@ -163,10 +163,9 @@
 
             }
 
-
             if (settings.navbar && nav.length > 0) {
 
-                $(".navbar-header").after("<div class='nav navbar-nav navbar-right storymap-navbar'>");
+                $(".navbar-header").after("<div class='collapse navbar-collapse nav navbar-nav navbar-right storymap-navbar'>");
 
 
                 $.each(sections, function (key, element) {
@@ -181,6 +180,7 @@
                     scrollScript = "javascript:window.scrollBy(0, $('section[data-scene=\\'" + section.data('scene') + "\\']').offset().top - $(window).scrollTop() - $('.storymap-navbar').height() - 10);";
 
                     $(".storymap-navbar").append('<li><a title="' + sceneName + '" href="' + scrollScript + '" >' + sceneName + '</a></li>');
+
 
 
                 });
@@ -396,7 +396,7 @@
                     }
                     // if key is equal to 0, meaning it is the first scene.
                     if (key === 0) {
-                        $(".storymap-navwidget").append('<li><a class="glyphicon glyphicon-home" data-toggle="tooltip" style="font-size:16px" title="' + sceneName + '" href="' + scrollScript + '" ></a></li>');
+                        $(".storymap-navwidget").append('<li><a class="glyphicon glyphicon-home" data-toggle="tooltip" title="' + sceneName + '" href="' + scrollScript + '" ></a></li>');
                     } else {
                         $(".storymap-navwidget").append('<li><a class="glyphicon glyphicon-one-fine-full-dot" data-toggle="tooltip" title="' + sceneName + '" href="' + scrollScript + '" ></a></li>');
                     }
