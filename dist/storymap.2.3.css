@@ -1,3 +1,4 @@
+/*Updated on 10/22/2017 | version 2.3 | MIT License*/
 html {
     /*full screen the map*/
     height: 100%;
@@ -62,9 +63,23 @@ h1 {
     top: 45%;
     left: 50%;
     font-size: 50px;
-    z-index: 1002;
+    z-index: 1003;
     animation: spin 1.2s linear infinite;
 
+}
+
+
+.storymap-screenloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 400%;
+    height: 400%;
+    background: rgb(238, 238, 238);
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    display: block;
+    z-index: 1002;
 }
 
 @-webkit-keyframes spin {

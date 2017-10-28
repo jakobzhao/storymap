@@ -1,6 +1,6 @@
 // Modified by Bo Zhao, zhao2@oregonstate.edu
 // Originally obtained from http://atlefren.github.io/storymap/
-// Updated on 5/14/2017 | version 2.3 | MIT License
+// Updated on 10/22/2017 | version 2.3 | MIT License
 
 (function ($) {
 
@@ -113,6 +113,10 @@
             var searchfor = settings.selector;
             var sections = $(element).find(searchfor);
             var map = settings.createMap();
+
+
+            $(".storymap-map").height($(window).height()).width($(window).width());
+
             var currentLayerGroup = L.layerGroup().addTo(map);
             var nav = $("nav");
 
@@ -182,7 +186,6 @@
                     $(".storymap-navbar").append('<li><a title="' + sceneName + '" href="' + scrollScript + '" >' + sceneName + '</a></li>');
 
 
-
                 });
             }
 
@@ -237,7 +240,7 @@
 
                 // layer = layer.layer;
                 layer.layer.on('load', function () {
-                    $(".storymap-loader").fadeTo(500, 0);
+                    $(".storymap-loader").fadeTo(1000, 0);
                 })
 
             });
@@ -247,16 +250,9 @@
 
                 currentLayerGroup.clearLayers();
 
-                // if (settings.legend === true) {
-                //     legendContent = "";
-                //     $(".storymap-legend").html("");
-                //     $(".storymap-legend").show();
-                // }
-
                 var scene = scenes[key];
                 var layernames = scene.layers;
                 var legendContent = "";
-
 
                 if (typeof $("section[data-scene='" + key + "']").data("background") !== 'undefined') {
 
@@ -292,6 +288,7 @@
                     map.setView([scene.lat, scene.lng], scene.zoom, 1)
 
                 }
+
             }
 
 
