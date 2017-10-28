@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Cities in Oregon</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--meta data for sharing links on Facebook-->
+    <meta property="og:title" content="The major cities in Oregon"/>
+    <meta property="og:url" content="http://geoviz.ceoas.oregonstate.edu/storymap/examples/2.3/video.html"/>
+    <meta property="og:description" content="This is an example of a storymap."/>
+    <meta property="og:image" content="../../img/social.png"/>
+
+    <!--add required stylesheets-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css">
+    <!--add favicon for the web page-->
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+    <!--facebook and info icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!--animation-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+    <!--Font-->
+    <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../../dist/storymap.2.3.css">
+    <style>
+
+
+
+
+    </style>
+    <!--add required libraries-->
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+
+    <!--mini globle map-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
+    <script src="../../js/globeminimap.js"></script>
+
+    <!--story map plugin-->
+    <script src="../../dist/storymap.2.3.js"></script>
+</head>
+<body data-spy="scroll">
+
+<div id="storymap" class="container-fluid" >
+    <div class="row">
+        <div class="col-sm-6 col-md-4 storymap-story">
+            <section class=""data-scene="overview" data-background="../../assets/portland.mp4">
+                <div class="fullscreen text-center">
+                    <h3>Cities in Oregon</h3>
+                    <h3>
+                        <small style="color: rgba(255,255,255,0.95)"> This story map illustrates the major cities in
+                            Oregon using a storytelling structure.
+                        </small>
+                    </h3>
+                </div>
+            </section>
+            <section data-scene="portland">
+                <h2>Portland</h2>
+                <p>Portland is a seaport and the largest city in the U.S. state of Oregon and the seat of Multnomah
+                    County. It is in the Willamette Valley region of the Pacific Northwest, at the confluence of the
+                    Willamette and Columbia Rivers. The city covers 145 square miles (380 square kilometers) and had an
+                    estimated population of 632,309 in 2015, making it the 26th most populous city in the United States.
+                    Approximately 2,389,228 people live in the Portland metropolitan statistical area (MSA), the 23rd
+                    most populous MSA in the United States. Its Combined Statistical Area (CSA) ranks 17th with a
+                    population of 3,022,178. Roughly 60% of Oregon's population resides within the Portland metropolitan
+                    area.</p>
+                <p>Named after Portland, Maine, the Oregon settlement began to be populated in the 1830s near the end of
+                    the Oregon Trail. Its water access provided convenient transportation of goods, and the timber
+                    industry was a major force in the city's early economy. At the turn of the 20th century, the city
+                    had a reputation as one of the most dangerous port cities in the world, a hub for organized crime
+                    and racketeering.</p>
+                <p>After the city's economy experienced an industrial boom during World War II, its hard-edged
+                    reputation began to dissipate. Beginning in the 1960s, Portland became noted for its growing liberal
+                    political values, and the city has earned a reputation as a bastion of counterculture, which
+                    proceeded into the 21st century. According to a 2009 Pew Research Center study, Portland ranks as
+                    the eighth most popular American city, based on where people want to live. </p>
+            </section>
+
+            <section data-scene="corvallis">
+                <h2>Corvallis</h2>
+                <p>Corvallis is a city in central western Oregon, United States. It is the county seat of Benton County
+                    and the principal city of the Corvallis, Oregon Metropolitan Statistical Area, which encompasses all
+                    of Benton County. As of the 2010 United States Census, the population was 54,462. Its population was
+                    estimated by the Portland Research Center to be 55,298 in 2013.Corvallis is the location of Oregon
+                    State University, a large Hewlett-Packard research campus, and Good Samaritan Regional Medical
+                    Center.</p>
+                <p>In October 1845, Joseph C. Avery arrived in Oregon from the east. Avery took out a land claim at the
+                    mouth of Marys River where it flows into the Willamette River and in June 1846 took up residence
+                    there in a log cabin hastily constructed to hold what seemed a potentially lucrative claim. Avery's
+                    primitive 1846 dwelling was the first home within the boundaries of today's Corvallis and his land
+                    claim included the southern section of the contemporary city.</p>
+                <p>Corvallis is the largest principal city of the Albany-Corvallis-Lebanon CSA, a Combined Statistical
+                    Area that includes the Corvallis metropolitan area (Benton County) and the Albany-Lebanon
+                    micropolitan area (Linn County),which had a combined population of 202,251 at the 2010 U.S. Census.
+                    As of the 2000 U.S. Census the median income for a household in the city was $35,437, and the median
+                    income for a family was $53,208. Males had a median income of $40,770 versus $29,390 for females.
+                    The per capita income for the city was $19,317. About 9.7% of families and 20.6% of the population
+                    were below the poverty line, including 15.2% of those under age 18 and 6.0% of those age 65 or
+                    over.</p>
+            </section>
+
+            <section data-scene="eugene">
+                <h2>Eugene</h2>
+                <p>Eugene is a city of the Pacific Northwest located in the U.S. state of Oregon. It is located at the
+                    southern end of the Willamette Valley, near the confluence of the McKenzie and Willamette Rivers,
+                    about 50 miles (80 km) east of the Oregon Coast.</p>
+                <p>As of the 2010 census, Eugene had a population of 156,185; it is the second most populous city in the
+                    state (after Portland) and the county seat of Lane County. The Eugene-Springfield, Oregon
+                    metropolitan statistical area (MSA) is the 146th largest metropolitan statistical area in the US and
+                    the third-largest in the state, behind the Portland Metropolitan Area and the Salem Metropolitan
+                    Area. The city's population for 2014 was estimated to be 160,561 by the US Census.</p>
+                <p>Eugene is home to the University of Oregon and Lane Community College. The city is also noted for its
+                    natural beauty, recreational opportunities (especially bicycling, running/jogging, rafting, and
+                    kayaking), and focus on the arts. Eugene's official slogan is "A Great City for the Arts and
+                    Outdoors". It is also referred to as the "Emerald City" and as "Track Town, USA". The Nike
+                    corporation had its beginnings in Eugene. In 2021, the city will host the 18th Track and Field World
+                    Championships.</p>
+            </section>
+
+            <section data-scene="salem">
+                <h2>Salem</h2>
+                <p>Salem is the capital of the U.S. state of Oregon, and the county seat of Marion County. It is located
+                    in the center of the Willamette Valley alongside the Willamette River, which runs north through the
+                    city. The river forms the boundary between Marion and Polk counties, and the city neighborhood of
+                    West Salem is in Polk County. Salem was founded in 1842, became the capital of the Oregon Territory
+                    in 1851, and was incorporated in 1857.</p>
+                <p>Salem had a population of 154,637 at the 2010 census, making it the third largest city in the state
+                    after Portland and Eugene. Salem is less than an hour driving distance away from Portland. Salem is
+                    the principal city of the Salem Metropolitan Statistical Area, a metropolitan area that covers
+                    Marion and Polk counties and had a combined population of 390,738 at the 2010 census. A 2013
+                    estimate placed the metropolitan population at 400,408, the state's second largest.</p>
+                <p>The city is home to Willamette University, Corban University, and Chemeketa Community College. The
+                    State of Oregon is the largest public employer in the city, and Salem Health is the largest private
+                    employer. Transportation includes public transit from Salem-Keizer Transit, Amtrak service, and
+                    non-commercial air travel at McNary Field. Major roads include Interstate 5, Oregon Route 99E, and
+                    Oregon Route 22, which connects West Salem across the Willamette River via the Marion Street and
+                    Center Street bridges.</p>
+            </section>
+            <section data-scene="bend">
+                <h2>Bend</h2>
+                <p>Bend is a city in, and the county seat of Deschutes County, Oregon, United States. It is the
+                    principal city of the Bend, Oregon Metropolitan Statistical Area. Bend is Central Oregon's largest
+                    city, and despite its modest size, is the de facto metropolis of the region, owing to the low
+                    population density of that area. Bend recorded a population of 76,693 at the time of the 2010 U.S.
+                    Census, up from 52,029 at the 2000 census. The estimated population of the city as of 2013 is
+                    81,236. Bend's metro population was estimated at 165,954 as of July 1, 2013. The Bend MSA is the
+                    fifth largest metropolitan area in Oregon.</p>
+                <p>Bend is located on the eastern edge of the Cascade Range along the Deschutes River. Here the
+                    Ponderosa Pine forest transitions into the high desert, characterized by arid land, junipers,
+                    sagebrush, and bitter-brush. Originally a crossing point on the river, settlement began in the early
+                    1900s. Bend was incorporated as a city in 1905. Economically, it started as a logging town but is
+                    now identified as a gateway for many outdoor sports, including mountain biking, fishing, hiking,
+                    camping, rock climbing, white-water rafting, skiing, paragliding and golf. In 2015, Men's Journal
+                    ranked Bend as one of The 10 Best Places to Live Now.</p>
+            </section>
+
+            <section data-scene="oregon">
+                <h2>Oregon</h2>
+                <p>Oregon was inhabited by many indigenous tribes before Western traders, explorers, and settlers
+                    arrived. An autonomous government was formed in the Oregon Country in 1843 before the Oregon
+                    Territory was created in 1848. Oregon became the 33rd state on February 14, 1859. Today, at 98,000
+                    square miles (255,000 km²), Oregon is the ninth largest and, with a population of 4 million, 27th
+                    most populous U.S. state. The capital of Oregon is Salem, the second most populous of its cities,
+                    with 164,549 residents. Portland is Oregon's most populous city, with 632,309 residents, and ranks
+                    as the 26th most populous city in the United States. Portland's metro population of 2,389,228 ranks
+                    the 23rd largest metro in the nation. The Willamette Valley in western Oregon is the state's most
+                    densely populated area, home to eight of the ten most populous cities.</p>
+                <img src="../../img/oregon_flag.png" class="img-responsive" alt="responsive image"
+                     alt-text="the flag of oregon">
+                <p>Oregon's landscape is diverse, with a windswept Pacific coastline; a volcano-studded Cascade Range;
+                    abundant bodies of water in and west of the Cascades; dense evergreen, mixed, and deciduous forests
+                    at lower elevations; and a high desert sprawling across much of its east all the way to the Great
+                    Basin.</p>
+            </section>
+
+            <section data-scene="end" data-background="../../assets/end.jpg">
+                <div class="fullscreen text-center">
+                    <br/>
+                    <h3 class="">Thanks for watching!!!</h3>
+                    <h3>
+                        <small style="color: rgba(255,255,255,0.95)">Download Storymap.js from
+                            http://github.com/jakobzhao/storymap
+                        </small>
+                    </h3>
+                </div>
+            </section>
+
+        </div>
+        <!--map div-->
+        <div class="col-sm-6 col-md-8 storymap-map"></div>
+    </div>
+
+
+    <dl>
+        <dt>
+            <!--facebook icon-->
+            <a class="fa fa-facebook-square btn"
+               href="https://facebook.com/sharer.php?u=http://geoviz.ceoas.oregonstate.edu/storymap/examples/2.3/video.html"
+               target="_blank"></a>
+        </dt>
+        <dt>
+            <!--facebook icon-->
+            <a class="fa fa-git-square btn" href="https://github.com/jakobzhao/storymap" style="top:40px"
+               target="_blank"></a>
+        </dt>
+        <dt>
+            <!--info icon-->
+            <i class="fa fa-file-text-o btn" style="top:60px" data-toggle="modal" data-target="#info-modal"></i>
+        </dt>
+    </dl>
+
+    <!--the info page-->
+    <div class="modal fade" id="info-modal" role="dialog">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">About</h4>
+                </div>
+                <div class="modal-body">
+                    <p>This is a web map of major cities in Oregon. It is mainly made as a demo for a course GEOG 371:
+                        Web Mapping provided by Oregon State University. The story map library is derived from the
+                        storymap plugin for leaflet at <a>http://atlefren.github.io/storymap/</a>, and its functionality
+                        relies on both leaflet and Boostrap.</p>
+                    <p><b>storymap.js</b> | Released Date: 02/20/2017 | Version: 2.1 | MIT License </p>
+                    <p><b>Author: Bo Zhao</b> | College of Earth, Ocean, Atmospheric Science | Oregon State University
+                    </p>
+                    <p>The context about Oregon cities was collected from Wikipedia.</p>
+                    <p>The <a href="https://www.youtube.com/watch?v=UJ_vQC9PNY4">background video</a> on the front page
+                        was clipped from Youtube. </p>
+                    <p>The favicon image was acquired from <a>http://www.udlcenter.org/advocacy/state/oregon.</a></p>
+                    <p>This story map uses geospatial data from mapbox, Google Earth Engine, ESRI Map, Open Street Maps
+                        and Oregon Explorer.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- main javascript -->
+<script type="text/javascript">
+
+
+    // Create Legend Contents in html format
+    var county_legend = '<i style="background: orange; opacity: 0.5"></i><p><b>Counties</b></p>';
+    var forest_legend = '<i style="background: green; opacity: 0.5"></i><p><b>Forest</b></p>';
+
+    // For each layer, the first variable is the layer, the second is the legend. The layer variable can be any kinds of layers that leaflet.js supports.
+    // var layers = {
+    //      layer1: {layer: layer1, legend: legend1},
+    //      layer2: {layer: layer2, legend: legend2}
+    //      ...
+    // }
+
+    var layers = {
+        ESRI: {layer: L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}')},
+        counties: {
+            layer: L.geoJson.ajax('../../assets/counties.geojson', {
+                color: 'orange',
+                weight: 2,
+                opacity: 0.3
+            }), legend: county_legend
+        },
+        GEE: {
+            layer: L.tileLayer('http://earthengine.google.org/static/hansen_2013/tree_alpha/{z}/{x}/{y}.png'),
+            legend: forest_legend
+        },
+        satellite: {
+            layer: L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
+                id: 'mapbox.satellite'
+            })
+        },
+        cartodb_light: {layer: L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png')}
+    };
+
+    var scenes = {
+        overview: {lat: 44.0000000, lng: -123.5000000, zoom: 7, name: 'Cover Page'},
+        portland: {lat: 45.5186089, lng: -122.7270297, zoom: 11, name: 'Portland'},
+        corvallis: {lat: 44.5701158, lng: -123.2949388, zoom: 14, name: 'Corvallis', layers: ['ESRI']},
+        eugene: {lat: 44.0549563, lng: -123.0958048, zoom: 13, name: 'Eugene'},
+        salem: {lat: 44.9419055, lng: -123.0356407, zoom: 13, name: 'Salem'},
+        bend: {lat: 44.0519385, lng: -121.3042125, zoom: 14, name: 'Bend', layers: ['counties', 'satellite']},
+        oregon: {lat: 44.0000000, lng: -123.5000000, zoom: 7, name: 'Oregon State', layers: ['counties', 'GEE']},
+        end: {lat: 44.0000000, lng: -123.5000000, zoom: 7, name: 'The End'}
+    };
+
+    $('#storymap').storymap({
+        scenes: scenes,
+        layers: layers,
+        baselayer: layers.cartodb_light,
+        legend: true, // if you do not want a legend feature, you can simply not define the createLegend function.
+        credits: "",
+        loader: true,
+        scalebar: false,
+        navwidget: true,
+
+        createMap: function () {
+            // create a map in the "map" div, set the view to a given place and zoom
+            var map = L.map($(".storymap-map")[0], {zoomControl: false, scrollWheelZoom: false}).setView([44, -120], 7);
+
+            //add an miniglobe
+            new L.Control.GlobeMiniMap({
+                marker: 'red',
+                position: 'bottomright'
+            }).addTo(map);
+
+
+            return map;
+        }
+    });
+</script>
+</body>
+</html>

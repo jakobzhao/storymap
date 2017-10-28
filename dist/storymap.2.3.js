@@ -413,7 +413,6 @@
                     $(this).fadeTo(300, 0);
                 });
             }
-
         };
 
         makeStoryMap(this, settings.scenes, settings.layers);

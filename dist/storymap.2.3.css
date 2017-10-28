@@ -138,6 +138,7 @@ video {
 
 .viewing {
     background: #eee;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     opacity: 0.8;
     filter: alpha(opacity=80);
     -moz-opacity: 0.8;
@@ -237,20 +238,22 @@ section {
     cursor: pointer;
     z-index: 1005;
     font-size: 40px;
-    color: rgba(255, 255, 255, 0.6);
-    text-shadow: 0 0 1px rgba(197, 197, 197, 0.95);
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow:  0 1px 1px rgba(197, 197, 197, 0.95);
 }
 
 .storymap-scroll-down:hover {
-    color: rgba(14, 14, 14, 0.8);
-    text-shadow: 0 0 1px rgba(197, 197, 197, 0.95);
+    color: rgba(200, 200, 200, 0.9);
+    text-shadow:  0 1px 1px rgba(150, 150, 150, 0.95);
 }
 
 .btn {
     position: fixed;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
+    /*margin: 5px;*/
     color: rgba(169, 169, 169, 0.8);
+    text-shadow: 0 0 1px rgba(100, 100, 100, 0.8);
     z-index: 1005;
     top: 20px;
     left: 5px;
@@ -288,7 +291,7 @@ section {
     font-family: Cairo, sans-serif;
     padding: 6px 8px;
     background: rgba(255, 255, 255, 0.5);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     border-radius: 5px;
 }
 
