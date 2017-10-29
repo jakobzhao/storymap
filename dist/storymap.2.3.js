@@ -115,8 +115,6 @@
             var map = settings.createMap();
 
 
-            $(".storymap-map").height($(window).height()).width($(window).width());
-
             var currentLayerGroup = L.layerGroup().addTo(map);
             var nav = $("nav");
 
@@ -239,6 +237,7 @@
             $.each(layers, function (key, layer) {
 
                 // layer = layer.layer;
+                layer.layer.on('s')
                 layer.layer.on('load', function () {
                     $(".storymap-loader").fadeTo(1000, 0);
                 })
@@ -289,6 +288,8 @@
 
                 }
 
+                map.invalidateSize();
+
             }
 
 
@@ -331,10 +332,12 @@
 
                 showMapView($(this).data('scene'));
 
+
             });
 
 
             sections.on('notviewing', function () {
+
 
                 $(this).removeClass('viewing');
 
@@ -410,6 +413,7 @@
                     $(this).fadeTo(300, 0);
                 });
             }
+
         };
 
         makeStoryMap(this, settings.scenes, settings.layers);
