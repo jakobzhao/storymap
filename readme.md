@@ -6,28 +6,36 @@ A storymap is organically integrated by several scenes. Each scene consists of a
 
 A story map consists of several scenes. Each scene has two basic components, in terms of the content object and the map object. The content object is usually made up by texts, graphics, and audios and videos.
 
-**The latest version supports:**
+## Features
 
-* add a spinned loader.
-* add a progress line;
-* add nav bar on the top;
-* support 3d thematic map;
-* add video or image as background;
-* animated scroll-down arrow;
-* arrow-down icon; and
-* several templates.
+
+1\. [Scene with fullscreen image or video](https://jakobzhao.github.io/storymap/examples/2.3/video.html)
+
+2\. [MiniGlobe](https://jakobzhao.github.io/storymap/examples/2.3/video.html)
+
+3\. [Nav Bar](https://jakobzhao.github.io/storymap/examples/2.3/navbar.html)
+
+4\. [Map Symbolization](https://jakobzhao.github.io/storymap/examples/2.3/style.html)
+
+5\. [Tile Layers](https://jakobzhao.github.io/storymap/examples/2.3/tiles.html)
+
+6\. [Data Interation](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/dataInteraction/index.html)
+
+7\. [Spinned loader,progress line, animated scroll-down arrow and more..](hhttps://jakobzhao.github.io/storymap/examples/2.3/video.html)
+
+8\. :star:[3D thematic map](https://cosgrovc.github.io/GEOG4572-PE1v2/index.html);
 
 ## Prerequisite
 
-### Required
+**Required**
 
 - [jQuery](https://jquery.com/)
 - [Bootstrap 3](http://getbootstrap.com/)
 - [Leaflet](http://leafletjs.com/)
 
-> **Note:** The 3d Storymap uses [Cesium](http://cesiumjs.org/) instead of leaflet.
+>**Note:** 3d Storymap uses [Cesium](http://cesiumjs.org/) instead of leaflet.
 
-### Recommended
+**Recommended**
 
 * Font Awesome
 * Animate
@@ -40,20 +48,18 @@ A story map is organized as a sequence of scenes, and the scenes are associated 
 ```powershell
 A Story Map
 │
-├───Scene 1: Exposition
+├───Scene 1: Setup
 │      │──── Script 1 (e.g., text, video, image, audio, etc.)
 │      │──── Map 1
 │             │
 │             │──── Layer 1
 │             │──── Layer 2
 │             │──── Layer N
-├───Scene 2: Conflict
-├───Scene 3: Rising action
-├───Scene 4: Climax
+├───Scene 2: Confrontation
 │... ... ... ... ... ... ...
 │... ... ... ... ... ... ...
 │... ... ... ... ... ... ...
-├───Scene N: Falling action and Resolution
+├───Scene N: Resolution
 │      │──── Content 5
 │      │──── Map 5
 │             │
@@ -61,6 +67,23 @@ A Story Map
 │             │──── Layer 2
 │             │──── Layer N
 ```
+
+For example, here is a storymap on the standingrock issue, and how it is designed to fulfill the concept of storytelling structure from setup, confrontation and then resolution. And the storymap can be found at [here](https://winkyt.github.io/standwithstandingrock/).
+
+![](img/standingrock.png)
+
+## Demos
+
+1\. [Oregon Water Atlas](http://oregonwater.info/) -- made by *Garath Baldrica-franklin*
+
+2\. [Stand With #StandingRock](https://winkyt.github.io/standwithstandingrock/) -- made by *Yuanyuan Tian and Yingqi Tang*
+
+3\. [Alaskan MoutainSheep and 21st Century Snow](https://cosgrovc.github.io/GEOG4572-PE1v2/index.html) -- made by *Chris Cosgrove*
+
+4\. [Sites in Oregon](https://cdn.rawgit.com/johnsoRiB/storymap_test/1800a77b/PE5/storymap-master/SightsInOregon.html) -- made by *Riley Johnson*
+
+5\. [Stomping Grounds](http://geoviz.ceoas.oregonstate.edu/mathewsn-storymap/) -- made by *Nicolas Mathews*
+
 
 ## Tutorial
 
@@ -159,7 +182,7 @@ A storymap consists of two key components, namely a map and a story, please put 
 
 ```js
 var scenes = {
-    scene1: {lat: 44, lng: -123.5, zoom: 7, layers: ['layer2'], name: "scene 1"},
+    scene1: {lat: 44.0563432, lng: -123.5099875, zoom: 7, layers: ['layer2'], name: "scene 1"},
     scene2: {lat: 44.5701158, lng: -123.2949388, zoom: 10, layers: ['layer2'], name: "scene 2"},
     scene3: {lat: 44.5701158, lng: -123.2949388, zoom: 12, layers: ['layer1', 'layer2'], name: "scene 3"}
 };
@@ -280,7 +303,7 @@ Till now, in the `script` of the `body` element, you have the following code sni
     };
 
     var scenes = {
-        scene1: {lat: 44, lng: -123.5, zoom: 7, layers: ['layer2'], name: "scene 1"},
+        scene1: {lat: 44.0563432, lng: -123.5099875, zoom: 7, layers: ['layer2'], name: "scene 1"},
         scene2: {lat: 44.5701158, lng: -123.2949388, zoom: 10, layers: ['layer2'], name: "scene 2"},
         scene3: {lat: 44.5701158, lng: -123.2949388, zoom: 12, layers: ['layer1', 'layer2'], name: "scene 3"}
     };
@@ -306,40 +329,14 @@ Till now, in the `script` of the `body` element, you have the following code sni
 </script>
 ```
 
-Okay, now we have walk through how to make a simple storymap. look at this `hello world` application by clicking [here](http://geoviz.ceoas.oregonstate.edu/storymap/examples/2.3/helloworld.html).
-
-## Demo
-
-- [Fullpage video or images](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/video/index.html)
-
-![](img/fullpage.png)
-
-![](img/oregon_cities.png)
-
-- [Symbolization](http://jakobzhao.github.io/storymap/examples/symbolization/index.html)
-
-![](img/symbolization.png)
-
-- [TileLayers for Stormap](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/tileLayer/index.html)
-
-- [Data Interaction](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/dataInteraction/index.html)
-
-![](img/datainteraction.png)
-
-- [Example: Oregon Drink Water](http://rawgit.com/cartobaldrica/water_atlas/master/drinking_index.html) -  made by [cartobaldrica](https://github.com/cartobaldrica)
-
-![](img/oregon_drink_water.png)
-
-- [Story Map Template](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/helloWorld/index.html)
-
-![](img/template.png)
+Okay, now we have walk through how to make a simple storymap. See the full source code at [here](https://github.com/jakobzhao/storymap/blob/master/examples/2.3/helloworld.html), and look at this `hello world` application by clicking [here](http://geoviz.ceoas.oregonstate.edu/storymap/examples/2.3/helloworld.html).
 
 
 ## Team
 
 Storymap is currently maintained by the [Cartography and Geovisualization group](geoviz.ceoas.oregonstate.edu) at Oregon State University.
 
-<img src="img/geoviz_osu.png" height="30%" width="30%"/>
+<img src="img/geoviz_osu.png" height="30%" width="30%" align="right"/>
 
 - **[Bo Zhao](https://ceoas.oregonstate.edu/profile/zhao/)** (Project Leader)
 
