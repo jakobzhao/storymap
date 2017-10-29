@@ -25,23 +25,36 @@ A story map consists of several scenes. Each scene has two basic components, in 
 
 8\. :star:[3D thematic map](https://cosgrovc.github.io/GEOG4572-PE1v2/index.html);
 
+## Templates
+
+1\. [Basic Template](https://jakobzhao.github.io/storymap/examples/2.3/helloworld.html);
+2\. [Script panel on the right](https://jakobzhao.github.io/storymap/examples/2.3/right.html);
+3\. [Split the screen in halves](https://jakobzhao.github.io/storymap/examples/2.3/split.html).
+
 ## Prerequisite
 
 **Required**
 
-- [jQuery](https://jquery.com/)
-- [Bootstrap 3](http://getbootstrap.com/)
-- [Leaflet](http://leafletjs.com/)
-
->**Note:** 3d Storymap uses [Cesium](http://cesiumjs.org/) instead of leaflet.
+1\. [jQuery](https://jquery.com/); 2\. [Bootstrap 3](http://getbootstrap.com/); 3\. [Leaflet](http://leafletjs.com/), (3d Storymap uses [Cesium](http://cesiumjs.org/) instead of leaflet).
 
 **Recommended**
 
-* Font Awesome
-* Animate
-* Google Font
-* Chroma.js
-* leaflet.ajax.min.js
+1\. Font Awesome; 2\. Animate; 3\. Google Font; 4\. Chroma.js; 5\. leaflet.ajax.min.js.
+
+## Demos
+
+1\. [Oregon Water Atlas](http://oregonwater.info/) -- made by *Garath Baldrica-franklin*
+
+2\. [Stand With #StandingRock](https://winkyt.github.io/standwithstandingrock/) -- made by *Yuanyuan Tian and Yingqi Tang*
+
+3\. [Alaskan MoutainSheep and 21st Century Snow](https://cosgrovc.github.io/GEOG4572-PE1v2/index.html) -- made by *Chris Cosgrove*
+
+4\. [Sites in Oregon](https://cdn.rawgit.com/johnsoRiB/storymap_test/1800a77b/PE5/storymap-master/SightsInOregon.html) -- made by *Riley Johnson*
+
+5\. [Stomping Grounds](http://geoviz.ceoas.oregonstate.edu/mathewsn-storymap/) -- made by *Nicolas Mathews*
+
+
+## Tutorial
 
 A story map is organized as a sequence of scenes, and the scenes are associated with maps. Each map are mashed up by layers, and the layers can be any types of layers that [leaflet.js](http://leafletjs.com/) support.  Below shows the tree structure of this story map plugin.
 
@@ -71,21 +84,6 @@ A Story Map
 For example, here is a storymap on the standingrock issue, and how it is designed to fulfill the concept of storytelling structure from setup, confrontation and then resolution. And the storymap can be found at [here](https://winkyt.github.io/standwithstandingrock/).
 
 ![](img/standingrock.png)
-
-## Demos
-
-1\. [Oregon Water Atlas](http://oregonwater.info/) -- made by *Garath Baldrica-franklin*
-
-2\. [Stand With #StandingRock](https://winkyt.github.io/standwithstandingrock/) -- made by *Yuanyuan Tian and Yingqi Tang*
-
-3\. [Alaskan MoutainSheep and 21st Century Snow](https://cosgrovc.github.io/GEOG4572-PE1v2/index.html) -- made by *Chris Cosgrove*
-
-4\. [Sites in Oregon](https://cdn.rawgit.com/johnsoRiB/storymap_test/1800a77b/PE5/storymap-master/SightsInOregon.html) -- made by *Riley Johnson*
-
-5\. [Stomping Grounds](http://geoviz.ceoas.oregonstate.edu/mathewsn-storymap/) -- made by *Nicolas Mathews*
-
-
-## Tutorial
 
 In this section, we will introduce how to make the [hello world](http://geoviz.ceoas.oregonstate.edu/storymap/examples/2.3/helloworld.html) story map application.
 
