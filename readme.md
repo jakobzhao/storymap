@@ -219,7 +219,7 @@ var layers = {
 
 A storymap has an array of scenes and a scene has an array of layers. The `scene` and `layer` is defined as below.
 
-```
+```js
 scene = {
     lat: `float number`,  // the latitude of the center point of the scene.
     lng: `float number`,  // the longitude of the center point of the scene.
@@ -229,7 +229,7 @@ scene = {
 }
 ```
 
-```layer
+```js
 layer = {
     layer: `Leaflet Layer`,
     legend: `A legend patch html`
@@ -238,7 +238,7 @@ layer = {
 
 7\. After defining the layers and scenes, you will create a `storymap` object to anchor to the `storymap` div. Since the `id` of `storymap` div is `storyamp`, we can capture that div using $ selector, such as `$('#storymap')`.
 
-```
+```js
 $('#storymap').storymap({
     scenes: scenes,
     layers: layers,
@@ -263,7 +263,7 @@ $('#storymap').storymap({
 
 Here is the data structure of storymap object.
 
-```
+```js
 $(element).storymap({
     breakpointPos: `a string of percentage`, // A percentage string'33.333%',
     scenes: `an array of scene objects`,
