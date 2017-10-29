@@ -1,13 +1,12 @@
 # Storymap
 
-<img src="img/logo.png" height="15%" width="15%" align="left"/> ***[Storymap.js](https://github.com/jakobzhao/storymap)*** is a javascript library for storytelling with web maps. This library aims to enable individuals to effectively create story map applications over the Internet. Three major tasks would be dealt with, including web interface design, map design and storytelling structure. To develop these functions, this library is written in a combination of several web programming languages in terms of HTML, Cascading Style Sheets (CSS) and Javascript, and builds upon several prerequisite libraries and web services. To make the story map library robust and lightweight, we select as fewer prerequisite libraries as possible, and prioritize the use of open source or free libraries. This library is currently maintained by [Cartography and Geovisualization Group](http://geoviz.ceoas.oregonstate.edu) aat Oregon State University, and has been used in multiple geovisualization related courses (e.g., GEOG 371: Web Mapping, GEOG 4/572: Geovisual Analytics).
+<img src="img/logo.png" height="15%" width="15%" align="left"/> ***[Storymap.js](https://github.com/jakobzhao/storymap)*** is a javascript library for storytelling with web maps. This library aims to enable individuals to effectively create story map applications over the Internet. Three major tasks would be dealt with, including web interface design, map design and storytelling structure. To develop these functions, this library is written in a combination of several web programming languages, like HTML, Cascading Style Sheets (CSS) and Javascript, and builds upon several prerequisite libraries and web services. To make the story map library robust and lightweight, we select as fewer prerequisite libraries as possible, and prioritize the use of open source or free libraries. This library is currently maintained by [Cartography and Geovisualization Group](http://geoviz.ceoas.oregonstate.edu) at Oregon State University, and has been used in multiple geovisualization related courses (e.g., GEOG 371: Web Mapping, GEOG 4/572: Geovisual Analytics) and projects.
 
-A storymap is organically integrated by several scenes. Each scene consists of a web map and a script. You can manipulate the map by zooming, panning, and even adding more thematic layers. This library embodies the concept responsive web design, meaning the storymaps can be shown on any Desktop or mobile devices.
-
-A story map consists of several scenes. Each scene has two basic components, in terms of the content object and the map object. The content object is usually made up by texts, graphics, and audios and videos.
+A storymap is organically integrated by several scenes. Each scene consists of a web map and a script. You can manipulate the map by zooming, panning, and even adding more thematic layers. This library embodies the concept responsive web design, meaning the storymaps can be shown on either Desktop or mobile devices.
 
 ## Features
 
+A story map consists of several scenes. Each scene has two basic components, in terms of the content object and the map object. The content object is usually made up by texts, graphics, and audios and videos. Here are some key features of this library.
 
 1\. [Scene with fullscreen image or video](https://jakobzhao.github.io/storymap/examples/2.3/video.html)
 
@@ -66,7 +65,7 @@ A story map consists of several scenes. Each scene has two basic components, in 
 
 ## Tutorial
 
-A story map is organized as a sequence of scenes, and the scenes are associated with maps. Each map are mashed up by layers, and the layers can be any types of layers that [leaflet.js](http://leafletjs.com/) support.  Below shows the tree structure of this story map plugin.
+A story map is organized as a sequence of scenes, and the scenes are associated with maps. Each map are mashed up by layers, and the layers can be any types of layers that [leaflet.js](http://leafletjs.com/) or cesium support. Below shows the tree structure of this story map library.
 
 ```powershell
 A Story Map
@@ -91,11 +90,11 @@ A Story Map
 │             │──── Layer N
 ```
 
-For example, here is a storymap on the standingrock issue, and how it is designed to fulfill the concept of storytelling structure from setup, confrontation and then resolution. And the storymap can be found at [here](https://winkyt.github.io/standwithstandingrock/).
+For example, Below is the storytelling structure of a storymap on the standingrock protest at North Dakota, you can see how this story map is organized to embody the setup, the confrontation and then the resolution. The storymap can be found at [here](https://winkyt.github.io/standwithstandingrock/).
 
 ![](img/standingrock.png)
 
-In this section, we will introduce how to make the [hello world](http://geoviz.ceoas.oregonstate.edu/storymap/examples/2.3/helloworld.html) story map application.
+Here, we will introduce how to make the [hello world](http://geoviz.ceoas.oregonstate.edu/storymap/examples/2.3/helloworld.html) story map application.
 
 1\. Above all, create an empty html page.
 
@@ -113,7 +112,7 @@ In this section, we will introduce how to make the [hello world](http://geoviz.c
 
 ```
 
-2\. In the `head` element, please include all the required stylesheets and javascript, and the `storymap` stylesheet and library. Please make sure you add stylesheets in front of the javascript libraries.
+2\. In the `head` element, please include all the required stylesheets and javascript,the `storymap` stylesheet and library. Please make sure to add stylesheets in front of the javascript libraries.
 
 ```html
 <head>
@@ -145,11 +144,11 @@ In this section, we will introduce how to make the [hello world](http://geoviz.c
 </head>
 ```
 
-To use this storymap library, you need to include two files `storymap.2.3.css` and `storymap.2.3.js`. Also, you can download and put them in your project folder.
+To use this storymap library, two files `storymap.2.3.css` and `storymap.2.3.js` are requried to include. Also, this library can be included by download instead of include the source at this repository.
 
 Check [`storymap.2.3.css`](dist/storymap.2.3.css) and [`storymap.2.3.js`](dist/storymap.2.3.js) to download.
 
-3\. Next, in the `body` element, please create a `div` for holding an `storymap` instance.
+3\. Next, in the `body` element, please create a `div` to contain an `storymap` instance.
 
 ```html
 <body>
@@ -162,9 +161,9 @@ Check [`storymap.2.3.css`](dist/storymap.2.3.css) and [`storymap.2.3.js`](dist/s
 </body>
 ```
 
-A storymap consists of two key components, namely a map and a story, please put two divs in a `row` div under the container of `storymap` div. Please make sure you will append class `storymap-map` and `storymap-story` for one div respectively.
+A storymap consists of two key components, namely a map and a story, please put two divs in a `row` div under the container of `storymap`. Please make sure to append class `storymap-map` and `storymap-story` for each div respectively.
 
-4\. In the `storymap-story` div, please put several scenes. Each scene is held by a `section` element, and you need to assign a `data-scene` attribute to the scene. This attribute will be used to link the `section` element to the map component.
+4\. Several scenes are contained in a `storymap-story` div. Each scene is held by a `section` element, and assign a `data-scene` attribute. This attribute will be used to link the `section` element to the map component.
 
 ```html
 <section data-scene="scene1">
@@ -178,7 +177,7 @@ A storymap consists of two key components, namely a map and a story, please put 
 </section>
 ```
 
-5\. In each scene, you can put the content of the scene. You can take advantage of the `html5` to put various types of multi-media data within a `section` tag. For example, I put a header in the following scene.
+5\. Each scene holds the content of the scene. various types of multi-media data can be put in the `section` element.
 
 ```html
 <section data-scene="scene1">
@@ -186,7 +185,7 @@ A storymap consists of two key components, namely a map and a story, please put 
 </section>
 ```
 
-6\. For example, if the `data-scene` parameter is ***scene1***, the name of the corresponding map object should be ***scene1*** as well. the ***scene1*** map can be defined in the script as:
+6\. For example, if the `data-scene` parameter is `scene1`, the name of the corresponding map object should be scene1` as well. In the layer array object, you will need to include the layer names. For example, layer1, layer2. These layers need to be defined before the scenes object. The `scenes` object can be defined in the script as:
 
 ```js
 var scenes = {
@@ -196,7 +195,7 @@ var scenes = {
 };
 ```
 
-In the layer array object, you will need to include the layer names. For example, layer1, layer2. These layers need to be defined before the scenes object.
+Here is the `layers` array:
 
 ```js
 var layers = {
@@ -236,7 +235,7 @@ layer = {
 }
 ```
 
-7\. After defining the layers and scenes, you will create a `storymap` object to anchor to the `storymap` div. Since the `id` of `storymap` div is `storyamp`, we can capture that div using $ selector, such as `$('#storymap')`.
+7\. After defining the layers and scenes, you will create a `storymap` object to anchor to the `storymap` div. We can capture that div using $ selector, Here, the selector is `$('#storymap')`.
 
 ```js
 $('#storymap').storymap({
