@@ -64,7 +64,7 @@ A Story Map
 
 ## Tutorial
 
-In this section, we will introduce how to make the `[hello world](http://geoviz.ceoas.oregonstate.edu/storymap/examples/2.3/helloworld.html)` story map application.
+In this section, we will introduce how to make the [hello world](http://geoviz.ceoas.oregonstate.edu/storymap/examples/2.3/helloworld.html) story map application.
 
 1\. Above all, create an empty html page.
 
