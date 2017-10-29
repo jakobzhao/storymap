@@ -91,10 +91,14 @@ h1 {
         background-color: #f5f5f5;
     }
 
-
     .viewing {
         background: rgba(221, 221, 221, 0.3);
     }
+
+    .storymap-scroll-down {
+        display: none;
+    }
+
 }
 
 section {
