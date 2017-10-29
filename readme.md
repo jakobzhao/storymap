@@ -45,14 +45,24 @@ A story map consists of several scenes. Each scene has two basic components, in 
 
 1\. [Oregon Water Atlas](http://oregonwater.info/) -- made by *Garath Baldrica-franklin*
 
+![](img/water.png)
+
 2\. [Stand With #StandingRock](https://winkyt.github.io/standwithstandingrock/) -- made by *Yuanyuan Tian and Yingqi Tang*
+
+![](img/swsr.png)
 
 3\. [Alaskan MoutainSheep and 21st Century Snow](https://cosgrovc.github.io/GEOG4572-PE1v2/index.html) -- made by *Chris Cosgrove*
 
+![](img/dan.png)
+
 4\. [Sites in Oregon](https://cdn.rawgit.com/johnsoRiB/storymap_test/1800a77b/PE5/storymap-master/SightsInOregon.html) -- made by *Riley Johnson*
+
+![](img/sites.png)
+
 
 5\. [Stomping Grounds](http://geoviz.ceoas.oregonstate.edu/mathewsn-storymap/) -- made by *Nicolas Mathews*
 
+![](img/stomping.png)
 
 ## Tutorial
 
