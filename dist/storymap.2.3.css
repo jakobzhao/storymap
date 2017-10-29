@@ -1,6 +1,5 @@
 /*Updated on 10/22/2017 | version 2.3 | MIT License*/
 html {
-    /*full screen the map*/
     height: 100%;
 }
 
@@ -225,25 +224,13 @@ section {
     text-decoration: none;
 }
 
-nav {
-    height: 34px !important;
-}
 
-.nav li a,
-.navbar-brand {
-    padding-top: 6px !important;
-    padding-bottom: 0 !important;
-    height: 28px;
-}
 
 /*support video in IE 8 and 9*/
 
 video {
     display: block;
 }
-
-
-
 
 .storymap-scroll-down {
     position: fixed;
@@ -261,22 +248,7 @@ video {
     text-shadow:  0 1px 1px rgba(150, 150, 150, 0.95);
 }
 
-.btn {
-    position: fixed;
-    cursor: pointer;
-    font-size: 18px;
-    padding-bottom: 5px;
-    margin-bottom: 5px;
-    color: rgba(169, 169, 169, 0.8);
-    z-index: 1005;
-    top: 20px;
-    left: 5px;
-}
 
-.btn:hover {
-    color: rgba(0, 117, 255, 0.6);
-    text-decoration: none;
-}
 
 .storymap-attribution {
     font-family: Cairo, sans-serif;
@@ -339,4 +311,34 @@ video {
     z-index: 1030;
     background: rgba(255, 30, 0, 0.80);
     box-shadow: 0 0 2px rgba(98, 16, 0, 0.9);
+}
+
+
+
+nav {
+    height: 34px !important;
+}
+
+.nav li a,
+.navbar-brand {
+    padding-top: 6px !important;
+    padding-bottom: 0 !important;
+    height: 28px;
+}
+
+.btn {
+    position: fixed;
+    cursor: pointer;
+    font-size: 18px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    color: rgba(169, 169, 169, 0.8);
+    z-index: 1005;
+    top: 20px;
+    left: 5px;
+}
+
+.btn:hover {
+    color: rgba(0, 117, 255, 0.6);
+    text-decoration: none;
 }
