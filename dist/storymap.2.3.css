@@ -31,7 +31,7 @@ h1 {
     text-shadow: 0 0 6px rgba(0, 0, 0, .95);
 }
 
-.breakpoint-current {
+.storymap-breakpoint-current {
     left: 0;
     margin-top: -10px;
     position: fixed;
@@ -229,7 +229,6 @@ section {
 }
 
 
-
 /*support video in IE 8 and 9*/
 
 video {
@@ -251,7 +250,6 @@ video {
     color: rgba(200, 200, 200, 0.9);
     text-shadow:  0 1px 1px rgba(150, 150, 150, 0.95);
 }
-
 
 
 .storymap-attribution {
@@ -318,12 +316,11 @@ video {
 }
 
 
-
 nav {
     height: 34px !important;
 }
 
-.nav li a,
+nav li a,
 .navbar-brand {
     padding-top: 6px !important;
     padding-bottom: 0 !important;

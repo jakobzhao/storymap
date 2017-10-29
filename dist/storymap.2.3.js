@@ -106,7 +106,7 @@
         var makeStoryMap = function (element, scenes, layers) {
 
             $(element).addClass("storymap");
-            var topElem = $('<div class="breakpoint-current"></div>')
+            var topElem = $('<div class="storymap-breakpoint-current"></div>')
                 .css('top', settings.breakpointPos);
             $('body').append(topElem);
             var top = topElem.offset().top - $(window).scrollTop();
