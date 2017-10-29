@@ -28,7 +28,8 @@ A story map consists of several scenes. Each scene has two basic components, in 
 
 1\. [Basic Template](https://jakobzhao.github.io/storymap/examples/2.3/helloworld.html);
 2\. [Script panel on the right](https://jakobzhao.github.io/storymap/examples/2.3/right.html);
-3\. [Split the screen in halves](https://jakobzhao.github.io/storymap/examples/2.3/split.html).
+3\. [Split the screen in halves](https://jakobzhao.github.io/storymap/examples/2.3/split.html);
+4\. [Atlas Front Page](https://jakobzhao.github.io/storymap/examples/2.3/atlas.html)
 
 ## Prerequisite
 
