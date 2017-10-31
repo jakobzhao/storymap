@@ -2,6 +2,8 @@
 
 (all changes without author notice are by [@jakbzhao, Bo Zhao](https://github.com/jakobzhao))
 
+## 2.30 (10/16/2017)
+* Fixed bugs
 
 ## 2.25 (05/16/2017)
 * Progress Line
