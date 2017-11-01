@@ -14,7 +14,7 @@ A story map consists of several scenes. Each scene has two basic components, in 
 
 3\. [Nav Bar](https://jakobzhao.github.io/storymap/examples/2.3/navbar.html)
 
-4\. [Map Symbolization](https://jakobzhao.github.io/storymap/examples/2.3/style.html)
+4\. [Map Symbolization](https://jakobzhao.github.io/storymap/examples/2.3/styles.html)
 
 5\. [Tile Layers](https://jakobzhao.github.io/storymap/examples/2.3/tiles.html)
 
