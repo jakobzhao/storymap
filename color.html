@@ -66,12 +66,12 @@
     <hr/>
     <div class="row text-center" >
         <div class="col-md-4">
-            <h3>hsl, multiply</h3>
+            <h3>lab, multiply</h3>
         <table id="hsl-multiply"></table>
         </div>
 
         <div class="col-md-4">
-            <h3>lab, multiply</h3>
+            <h3>hsl, multiply</h3>
             <table id="lab-multiply"></table>
         </div>
         <div class="col-md-4">
@@ -83,7 +83,7 @@
 
     <div class="row text-center">
         <div class="col-md-4">
-            <h3>hsl, darken</h3>
+            <h3>lab, darken</h3>
             <table id="hsl-darken"></table>
         </div>
         <div class="col-md-4">
@@ -91,7 +91,7 @@
             <table id="lab-darken"></table>
         </div>
         <div class="col-md-4">
-            <h3>hsl, darken</h3>
+            <h3>lch, darken</h3>
             <table id="lch-darken"></table>
         </div>
 
@@ -142,7 +142,7 @@
         }
 
         for (i = 0; i < ch_num * cv_num; i++) {
-            $('head').append($("<style class='dynamic'> .patch-" + mode + "-" + method + "-" + (i).toString() + " { background: " + colors[i] + "} </style>"));
+            $('head').append($("<style> .patch-" + mode + "-" + method + "-" + (i).toString() + " { background: " + colors[i] + "} </style>"));
         }
 
     }
