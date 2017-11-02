@@ -24,7 +24,7 @@ A story map consists of several scenes. Each scene has two basic components, in 
 
 8\. :star:[3D thematic map](https://cosgrovc.github.io/GEOG4572-PE1v2/index.html);
 
-9\. [A bivariate color pallete generator](http://geoviz.ceoas.oregonstate.edu/storymap/color.html)
+9\. [Bivariate color pallete generator](http://geoviz.ceoas.oregonstate.edu/storymap/color.html)
 
 ## Templates
 
