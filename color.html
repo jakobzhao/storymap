@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Bivariate Color Pallete Generator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="js/cp/css/bootstrap-colorpicker.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Roboto" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="js/color.css" rel="stylesheet">
+    <style>
+
+    </style>
+
+    <!--add required javascript-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/cp/js/bootstrap-colorpicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/1.3.4/chroma.min.js"></script>
+</head>
+<body>
+<p id="title"> A Bivariate Color Pallet Generator</p>
+<hr/>
+<div class="container">
+    <!-- Page Header -->
+    <div class="row text-center">
+        <a href="https://github.com/jakobzhao/storymap" id="logo" target="_blank"><img src="img/logo.png" height="50px"></a>
+    </div>
+    <br/>
+
+    <div class="row justify-content-center">
+        <div class="col-md-2">
+            <div id="ch" class="input-group colorpicker-component">
+                <input type="text" value="#ff7363" class="form-control"/>
+                <span class="input-group-addon"><i></i> H. Color</span>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div id="cv" class=" input-group colorpicker-component">
+                <input type="text" value="#788bff" class="form-control"/>
+                <span class="input-group-addon"><i></i> V. Color</span>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div id="cl" class="input-group colorpicker-component">
+                <input type="text" value="#e8e8e8" class="form-control"/>
+                <span class="input-group-addon"><i></i> L. Color</span>
+            </div>
+        </div>
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-2">
+            <div id="col_num" class="input-group">
+                <input type="text" value="4" class="form-control"/>
+                <span class="input-group-addon"><i></i># Cols</span>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div id="row_num" class="input-group">
+                <input type="text" value="3" class="form-control"/>
+                <span class="input-group-addon"><i></i> # Rows</span>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row text-center" >
+        <div class="col-md-4">
+            <h3>hsl, multiply</h3>
+        <table id="hsl-multiply"></table>
+        </div>
+
+        <div class="col-md-4">
+            <h3>lab, multiply</h3>
+            <table id="lab-multiply"></table>
+        </div>
+        <div class="col-md-4">
+            <h3>lch, multiply</h3>
+            <table id="lch-multiply"></table>
+        </div>
+
+    </div>
+
+    <div class="row text-center">
+        <div class="col-md-4">
+            <h3>hsl, darken</h3>
+            <table id="hsl-darken"></table>
+        </div>
+        <div class="col-md-4">
+            <h3>hsl, darken</h3>
+            <table id="lab-darken"></table>
+        </div>
+        <div class="col-md-4">
+            <h3>hsl, darken</h3>
+            <table id="lch-darken"></table>
+        </div>
+
+    </div>
+</div>
+<hr/>
+
+<footer><p>&copy; Bo Zhao, Oregon State University</p>
+    <a href="http://geoviz.ceoas.oregonstate.edu" id="geoviz" target="_blank"><img src="https://github.com/jakobzhao/geog371/raw/master/resources/img/logo.png" height="50px"></a>
+</footer>
+<script type="text/javascript">
+
+    var colors = [];
+
+    var ch_orig = $("#ch input").val();
+    var cv_orig = $("#cv input").val();
+    var c_lightest = $("#cl input").val();
+    var ch_num = $("#row_num input").val();
+    var cv_num = $("#col_num input").val();
+    var method = ["multiply", "darken"];
+    var mode = ["lab", "hsl", "lch"]; //"hcl"
+
+    function updatePallete(mode,method) {
+        $("table#" + mode + "-" + method).empty();
+
+        ch_orig = $("#ch input").val();
+        cv_orig = $("#cv input").val();
+        c_lightest = $("#cl input").val();
+        ch_num = $("#row_num input").val();
+        cv_num = $("#col_num input").val();
+
+        ch = chroma.scale([ch_orig, c_lightest]).mode(mode).correctLightness().colors(ch_num);
+        cv = chroma.scale([cv_orig, c_lightest]).mode(mode).correctLightness().colors(cv_num);
+
+        var tr = null;
+        for (var i = 0; i < ch_num; i++) {
+            tr = $("<tr></tr>");
+            for (var j = 0; j < cv_num; j++) {
+                // multiply, darken, lighten, screen overlay, burn, dogde
+                //colors[i * cv_num + j] = chroma.blend(ch[i], cv[j], 'multiply');
+                colors[i * cv_num + j] = chroma.blend(ch[i], cv[j], method);
+                //colors[ i * cv_num + j] = chroma.average([ch[i],cv[j]]);
+                // colors[ i * cv_num + j] = chroma.mix(ch[i],cv[j]);
+                tr.append("<th class='patch-" + mode +"-" + method + "-" + (i * cv_num + j).toString() + "'>" + colors[i * cv_num + j] + "</th>")
+            }
+            $("table#" + mode + "-" + method).append(tr);
+
+        }
+
+        for (i = 0; i < ch_num * cv_num; i++) {
+            $('head').append($("<style class='dynamic'> .patch-" + mode + "-" + method + "-" + (i).toString() + " { background: " + colors[i] + "} </style>"));
+        }
+
+    }
+
+    for (var i = 0; i < mode.length; i++) {
+        for (var j = 0; j < method.length; j++) {
+            updatePallete(mode[i], method[j]);
+        }
+    }
+
+
+
+    $('#ch').colorpicker().on('changeColor', function(e) {
+
+        $("style").remove();
+
+        for (var i = 0; i < mode.length; i++) {
+            //tr = $("<tr></tr>");
+            for (var j = 0; j < method.length; j++) {
+                updatePallete(mode[i], method[j]);
+            }}
+    });
+
+    $('#cv').colorpicker().on('changeColor', function(e) {
+
+        $("style").remove();
+
+        for (var i = 0; i < mode.length; i++) {
+            //tr = $("<tr></tr>");
+            for (var j = 0; j < method.length; j++) {
+                updatePallete(mode[i], method[j]);
+            }}
+
+    });
+
+    $('#cl').colorpicker().on('changeColor', function(e) {
+
+        $("style").remove();
+
+        for (var i = 0; i < mode.length; i++) {
+            //tr = $("<tr></tr>");
+            for (var j = 0; j < method.length; j++) {
+                updatePallete(mode[i], method[j]);
+            }}
+    });
+
+
+    $('#row_num').on('change keyup paste', function(e) {
+
+        $("style").remove();
+
+        for (var i = 0; i < mode.length; i++) {
+            //tr = $("<tr></tr>");
+            for (var j = 0; j < method.length; j++) {
+                updatePallete(mode[i], method[j]);
+            }}
+    });
+
+
+    $('#col_num').on('change keyup paste', function(e) {
+
+        $("style").remove();
+
+        for (var i = 0; i < mode.length; i++) {
+            //tr = $("<tr></tr>");
+            for (var j = 0; j < method.length; j++) {
+                updatePallete(mode[i], method[j]);
+            }}
+    });
+
+
+</script>
+</body>
+</html>
