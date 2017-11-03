@@ -149,7 +149,7 @@ Here, we will introduce how to make the [hello world](http://geoviz.ceoas.oregon
 
 To use this storymap library, two files `storymap.2.3.css` and `storymap.2.3.js` are requried to include. Also, this library can be included by download instead of include the source at this repository.
 
-Check [`storymap.2.3.css`](dist/storymap.2.3.css) and [`storymap.2.3.js`](dist/storymap.2.3.js) to download.
+Check [`storymap.2.3.css`](https://raw.githubusercontent.com/jakobzhao/storymap/master/dist/storymap.2.3.css) and [`storymap.2.3.js`](https://raw.githubusercontent.com/jakobzhao/storymap/master/dist/storymap.2.3.js) to download.
 
 3\. Next, in the `body` element, please create a `div` to contain an `storymap` instance.
 
