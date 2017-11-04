@@ -4,12 +4,15 @@
 
 
 ## 2.30 (11/04/2017)
+
 * Bivariate Choropleth Pallete Generator.
 
 ## 2.30 (10/16/2017)
+
 * Fixed bugs
 
 ## 2.25 (05/16/2017)
+
 * Progress Line
 
 ## 2.22 (05/14/2017)
