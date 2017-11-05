@@ -8,7 +8,7 @@
 
         var defaults = {
             selector: '[data-scene]',
-            breakpointPos: '33.333%',
+            triggerpos: '33.333%',
             navbar: false,
             navwidget: false,
             legend: true,
@@ -23,7 +23,6 @@
                 return map;
             }
         };
-
 
         var settings = $.extend(defaults, options);
 
@@ -107,7 +106,7 @@
 
             $(element).addClass("storymap");
             var topElem = $('<div class="storymap-breakpoint-current"></div>')
-                .css('top', settings.breakpointPos);
+                .css('top', settings.triggerpos);
             $('body').append(topElem);
             var top = topElem.offset().top - $(window).scrollTop();
             var searchfor = settings.selector;
@@ -296,8 +295,9 @@
             sections.on('viewing', function () {
 
                 $(this).addClass('viewing');
+                var scrollDown = $(".storymap-scroll-down")
 
-                $(".storymap-scroll-down").css("left", "2%");
+                scrollDown.css("left", "2%");
 
                 if (typeof $(this).data("background") !== 'undefined') {
                     $(this)
@@ -305,28 +305,28 @@
                         .css('width', "0px")
                         .css('padding', "0 0 0 0");
 
-                    $(".storymap-scroll-down").css("left", "50%");
+                    scrollDown.css("left", "50%");
 
 
                 }
 
                 // // Change the storymap-scroll-down icon to the home icon when reaching the last scene.
                 if ($(this).data('scene') === sections.last().data('scene')) {
-                    $(".storymap-scroll-down")
+                    scrollDown
                         .removeClass("glyphicon-menu-down")
                         .addClass("glyphicon-home");
                 } else {
-                    $(".storymap-scroll-down")
+                    scrollDown
                         .removeClass("glyphicon-home")
                         .addClass("glyphicon-menu-down");
                 }
 
                 // Bounce the storymap-scroll-down icon when the icon is on the front page.
                 if ($(this).data('scene') === sections.first().data('scene') || $(this).data('scene') === sections.last().data('scene')) {
-                    $(".storymap-scroll-down")
+                    scrollDown
                         .addClass("animated");
                 } else {
-                    $(".storymap-scroll-down")
+                    scrollDown
                         .removeClass("animated");
                 }
 
@@ -418,8 +418,6 @@
 
         makeStoryMap(this, settings.scenes, settings.layers);
         window.scrollTo(0, 0);
-
-
         return this;
     }
 

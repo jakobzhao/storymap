@@ -267,7 +267,7 @@ Here is the data structure of storymap object.
 
 ```js
 $(element).storymap({
-    breakpointPos: `a string of percentage`, // A percentage string'33.333%',
+    triggerpos: `a string of percentage`, // A percentage string'33.333%',
     scenes: `an array of scene objects`,
     layers: `an array of layer objects`,
     baselayer: `a layer`,
