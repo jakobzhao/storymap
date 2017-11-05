@@ -32,7 +32,7 @@ A story map consists of several scenes. Each scene has two basic components, in 
 2\. [Script panel on the right](https://jakobzhao.github.io/storymap/examples/2.3/right.html);
 3\. [Split the screen in halves](https://jakobzhao.github.io/storymap/examples/2.3/split.html);
 4\. [Atlas Front Page](https://jakobzhao.github.io/storymap/examples/2.3/atlas.html)
-5\. [Fading out the scripts not being viewed](https://jakobzhao.github.io/storymap/examples/2.3/dim.html)
+5\. [Fading out the scripts not being viewed](https://jakobzhao.github.io/storymap/examples/2.3/fadeout.html)
 
 ## Prerequisite
 
