@@ -147,7 +147,7 @@
     // Scene 3: Marker
 
     $('html > head').append($("<style> .marker-icon { color: red; font-size: 15px; text-shadow: 0 0 3px #ffffff;} </style>"));
-    // $('html > head').append($("<style> .marker-icon { color: #0000ff; font-size: 15px; text-shadow:1px 1px 2px #ffffff, 0 0 25px rgba(0,0,255,0.75), 0 0 5px rgba(0,0,139,0.78);} </style>")); // glow effect: https://adventuresinmapping.com/2016/10/17/firefly-cartography/
+    // $('html > head').append($("<style> .marker-icon { position: relative; color: #0000ff; font-size: 15px; text-shadow:1px 1px 2px #ffffff, 0 0 25px rgba(0,0,255,0.75), 0 0 5px rgba(0,0,139,0.78);} </style>")); // glow effect: https://adventuresinmapping.com/2016/10/17/firefly-cartography/
 
     var towers = L.geoJson.ajax('../../assets/cell_towers.geojson', {
         pointToLayer: function (feature, latlng) {
@@ -157,7 +157,7 @@
 
             return L.marker(latlng, {
                 bounceOnAdd: true,
-                bounceOnAddOptions: {duration: 200, height: window.innerHeight, delay: delay},
+                bounceOnAddOptions: {duration: 100, height: window.innerHeight, delay: delay},
                 icon: L.divIcon({className: 'glyphicon glyphicon-signal marker-icon'})
             });
         },
