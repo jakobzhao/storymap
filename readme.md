@@ -14,7 +14,7 @@ A story map consists of several scenes. Each scene has two basic components, in 
 
 3\. [Nav Bar](https://jakobzhao.github.io/storymap/examples/2.3/navbar.html)
 
-4\. [Map Symbolization](https://jakobzhao.github.io/storymap/examples/2.3/style.html)
+4\. [Map Symbolization](https://jakobzhao.github.io/storymap/examples/2.3/styles.html)
 
 5\. [Tile Layers](https://jakobzhao.github.io/storymap/examples/2.3/tiles.html)
 
@@ -24,12 +24,15 @@ A story map consists of several scenes. Each scene has two basic components, in 
 
 8\. :star:[3D thematic map](https://cosgrovc.github.io/GEOG4572-PE1v2/index.html);
 
+9\. [Bivariate color pallete generator](http://geoviz.ceoas.oregonstate.edu/storymap/color.html)
+
 ## Templates
 
 1\. [Basic Template](https://jakobzhao.github.io/storymap/examples/2.3/helloworld.html);
 2\. [Script panel on the right](https://jakobzhao.github.io/storymap/examples/2.3/right.html);
 3\. [Split the screen in halves](https://jakobzhao.github.io/storymap/examples/2.3/split.html);
 4\. [Atlas Front Page](https://jakobzhao.github.io/storymap/examples/2.3/atlas.html)
+5\. [Fading out the scripts not being viewed](https://jakobzhao.github.io/storymap/examples/2.3/fadeout.html)
 
 ## Prerequisite
 
@@ -147,7 +150,7 @@ Here, we will introduce how to make the [hello world](http://geoviz.ceoas.oregon
 
 To use this storymap library, two files `storymap.2.3.css` and `storymap.2.3.js` are requried to include. Also, this library can be included by download instead of include the source at this repository.
 
-Check [`storymap.2.3.css`](dist/storymap.2.3.css) and [`storymap.2.3.js`](dist/storymap.2.3.js) to download.
+Check [`storymap.2.3.css`](https://raw.githubusercontent.com/jakobzhao/storymap/master/dist/storymap.2.3.css) and [`storymap.2.3.js`](https://raw.githubusercontent.com/jakobzhao/storymap/master/dist/storymap.2.3.js) to download.
 
 3\. Next, in the `body` element, please create a `div` to contain an `storymap` instance.
 
@@ -265,7 +268,7 @@ Here is the data structure of storymap object.
 
 ```js
 $(element).storymap({
-    breakpointPos: `a string of percentage`, // A percentage string'33.333%',
+    triggerpos: `a string of percentage`, // A percentage string'33.333%',
     scenes: `an array of scene objects`,
     layers: `an array of layer objects`,
     baselayer: `a layer`,
