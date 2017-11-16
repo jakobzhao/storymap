@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Hello World</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--add required stylesheets-->
+    <!--make sure you add bootstrap 3.3.7 rather than 4.0.0-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--leaflet css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.css">
+    <!--animation-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../dist/storymap.2.3.css">
+
+
+    <style>
+
+        .arrow-label {
+            color: #ffffff;
+            text-shadow: 0 0 2px black;
+        }
+
+
+    </style>
+
+    <!--add required libraries-->
+    <!--leaflet-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.js"></script>
+    <!--jquery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--boostrap-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--leaflet.ajax for asynchronously adding geojson data-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+    <!--story map plugin-->
+    <script src="../../dist/storymap.2.3.js"></script>
+    <!--flow-->
+    <script src="https://unpkg.com/leaflet-swoopy@2.0.0/build/Leaflet.SwoopyArrow.js"></script>
+</head>
+<body>
+<div id="storymap" class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 col-md-8 storymap-map"></div>
+        <div class="col-sm-6 col-md-4 storymap-story">
+            <section data-scene="scene1">
+                <h2>scene 1</h2>
+            </section>
+            <section data-scene="scene2">
+                <h2>scene 2</h2>
+            </section>
+            <section data-scene="scene3">
+                <h2>scene 3</h2>
+            </section>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+
+    var layers = {
+        layer1: {
+            layer: L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'),
+            legend: '<i style="background: black; opacity: 0.5"></i><p><b>legend 1</b></p>'
+        },
+        layer2: {
+            layer: L.geoJson.ajax('http://mapious.ceoas.oregonstate.edu/geoserver/mapious/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ore_counties&outputFormat=application%2Fjson', {
+                color: 'orange',
+                weight: 5
+            }),
+            legend: '<i style="background: orange; opacity: 0.5"></i><p><b>legend 2</b></p>'
+        },
+        layer3: {
+            layer: L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png')
+        },
+        layer4: {  //https://github.com/wbkd/leaflet-swoopy
+            layer: L.swoopyArrow([44, -123], [45, -130], {
+                text: 'hello!',
+                weight: 3,
+                opacity: 0.5,
+                fontSize: 20,
+                color: "#bb0017",
+                iconAnchor: [0, 0],
+                iconSize: [20,20],
+                textClassName: "arrow-label"
+            })
+        },
+        layer5: {  //https://github.com/wbkd/leaflet-swoopy
+            layer: L.swoopyArrow([45, -125], [45, -127], {
+                text: 'world',
+                weight: 2,
+                opacity: 0.7,
+                fontSize: 20,
+                color: "#ffea00",
+                iconAnchor: [0, 0]
+            })
+        }
+    };
+    var scenes = {
+        scene1: {lat: 44.0563432, lng: -123.5099875, zoom:  7, layers: ['layer4', 'layer5'], name: "scene 1"},
+        scene2: {lat: 44.5701158, lng: -123.2949388, zoom: 10, layers: ['layer2'], name: "scene 2"},
+        scene3: {lat: 44.5701158, lng: -123.2949388, zoom: 12, layers: ['layer1', 'layer2'], name: "scene 3"}
+    };
+
+    $('#storymap').storymap({
+        scenes: scenes,
+        layers: layers,
+        baselayer: layers.layer3,
+        legend: true,
+        loader: true,
+        flyto: true,
+        credits: "build with<i class='glyphicon glyphicon-heart animated zoomIn infinite' style='color: red'></i> from Bo Zhao",
+        scalebar: true,
+        scrolldown: false,
+        progressline: true,
+        navwidget: true,
+        createMap: function () {
+            var map = L.map($(".storymap-map")[0], {zoomControl: false}).setView([44, -120], 7);
+            basemap = this.baselayer.layer.addTo(map);
+            return map;
+        }
+    });
+</script>
+</body>
+</html>
