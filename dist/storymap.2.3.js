@@ -8,7 +8,7 @@
 
         var defaults = {
             selector: '[data-scene]',
-            triggerpos: '33.333%',
+            triggerpos: '20%',
             navbar: false,
             navwidget: false,
             legend: true,
@@ -74,9 +74,9 @@
                     section.trigger('notviewing');
                 }
 
-                if (section.height() <= $(window).height() * 0.33) {
-                    section.height($(window).height() * 0.33)
-                }
+                // if (section.height() <= $(window).height() * 0.33) {
+                //     section.height($(window).height() * 0.33)
+                // }
 
 
             });
