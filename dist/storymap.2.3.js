@@ -74,9 +74,9 @@
                     section.trigger('notviewing');
                 }
 
-                // if (section.height() <= $(window).height() * 0.33) {
-                //     section.height($(window).height() * 0.33)
-                // }
+                if (section.height() <= $(window).height() * 0.33) {
+                    section.height($(window).height() * 0.33)
+                }
 
 
             });
