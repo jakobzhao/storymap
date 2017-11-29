@@ -2,6 +2,10 @@
 
 (all changes without author notice are by [@jakbzhao, Bo Zhao](https://github.com/jakobzhao))
 
+## 2.32 (11/28/2017)
+
+* Change the option name 'breakpointPos to triggerPos'
+* change the image out of info panel issue.
 
 ## 2.30 (11/04/2017)
 
