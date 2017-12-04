@@ -14,7 +14,6 @@
      * note that SVG (x, y) corresponds to (long, lat)
      */
 
-    // customized by Bo Zhao (jakobzhao@gmail.com), modify the arrow
     L.Curve = L.Path.extend({
         options: {
         },
@@ -1716,39 +1715,10 @@
             marker.setAttribute('refX', '1');
             marker.setAttribute('refY', '4');
             marker.setAttribute('fill', this._color);
-            // marker.setAttribute('stroke', this._color);
-            // marker.setAttribute('stroke-width', this._weight);
             marker.setAttribute('opacity', this._opacity);
 
-
-
-            // marker.classList.add('swoopyArrow__marker');
-            // marker.setAttribute('id', 'swoopyarrow__arrowhead' + this._currentId);
-            // marker.setAttribute('markerWidth', '20');
-            // marker.setAttribute('markerHeight', '20');
-            // marker.setAttribute('viewBox', '-10 -10 20 20');
-            // marker.setAttribute('orient', 'auto');
-            // marker.setAttribute('refX', '0');
-            // marker.setAttribute('refY', '0');
-            // marker.setAttribute('fill', 'none');
-            // marker.setAttribute('stroke', this._color);
-            // marker.setAttribute('stroke-width', this._weight);
-            // marker.setAttribute('opacity', this._opacity);
-
-            //
-            // path.setAttribute('stroke-linejoin', 'bevel');
-            // path.setAttribute('fill', this._arrowFilled ? this._color : 'none');
-            // path.setAttribute('stroke', this._color);
-            // path.setAttribute('points', '-6.75,-6.75 0,0 -6.75,6.75');
-
-
-
-            // path.setAttribute('stroke-linejoin', 'bevel');
-            // path.setAttribute('fill', this._arrowFilled ? this._color : 'none');
             path.setAttribute('stroke', "none");
             path.setAttribute('d', 'M 1 1 7 4 1 7 Z');
-
-            // path.setAttribute('points', '10,90 50,80 90,20');
 
             marker.appendChild(path);
             this._container.appendChild(marker);
@@ -1838,6 +1808,12 @@
 
                 this._currentPathVisible = false;
             }
+        },
+
+        onRemove: function onRemove(map) {
+            this._map = map;
+            this._currentPath.remove();
+            this._map.removeLayer(this._currentMarker);
         }
     });
 
