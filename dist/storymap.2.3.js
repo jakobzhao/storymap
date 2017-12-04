@@ -1,6 +1,6 @@
 // Modified by Bo Zhao, zhao2@oregonstate.edu
 // Originally obtained from http://atlefren.github.io/storymap/
-// Updated on 10/22/2017 | version 2.3 | MIT License
+// Updated on 11/28/2017 | version 2.3.2 | MIT License
 
 (function ($) {
 
@@ -8,7 +8,7 @@
 
         var defaults = {
             selector: '[data-scene]',
-            triggerpos: '20%',
+            triggerpos: '30%',
             navbar: false,
             navwidget: false,
             legend: true,
@@ -74,10 +74,14 @@
                     section.trigger('notviewing');
                 }
 
-                if (section.height() <= $(window).height() * 0.33) {
+                // if (section.height() <= $(window).height() * 0.33 ) {
+                //     section.height($(window).height() * 0.33)
+                // }
+
+
+                if (section.height() <= $(window).height() * 0.33 && section.has("img").length === 0) {
                     section.height($(window).height() * 0.33)
                 }
-
 
             });
 

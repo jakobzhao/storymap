@@ -78,7 +78,7 @@
         layer4: {  //https://github.com/wbkd/leaflet-swoopy
             layer: L.swoopyArrow([44, -123], [45, -130], {
                 text: 'hello!',
-                weight: 3,
+                weight: 15,
                 opacity: 0.5,
                 fontSize: 20,
                 color: "#bb0017",
@@ -100,8 +100,8 @@
     };
     var scenes = {
         scene1: {lat: 44.0563432, lng: -123.5099875, zoom:  7, layers: ['layer4', 'layer5'], name: "scene 1"},
-        scene2: {lat: 44.5701158, lng: -123.2949388, zoom: 10, layers: ['layer2'], name: "scene 2"},
-        scene3: {lat: 44.5701158, lng: -123.2949388, zoom: 12, layers: ['layer1', 'layer2'], name: "scene 3"}
+        scene2: {lat: 44.5701158, lng: -123.2949388, zoom: 10,  name: "scene 2"},
+        scene3: {lat: 44.5701158, lng: -123.2949388, zoom: 12, name: "scene 3"}
     };
 
     $('#storymap').storymap({
@@ -111,14 +111,13 @@
         legend: true,
         loader: true,
         flyto: true,
-        credits: "build with<i class='glyphicon glyphicon-heart animated zoomIn infinite' style='color: red'></i> from Bo Zhao",
+        credits: "built with<i class='glyphicon glyphicon-heart animated zoomIn infinite' style='color: red'></i> by Bo Zhao",
         scalebar: true,
         scrolldown: false,
         progressline: true,
         navwidget: true,
         createMap: function () {
             var map = L.map($(".storymap-map")[0], {zoomControl: false}).setView([44, -120], 7);
-            basemap = this.baselayer.layer.addTo(map);
             return map;
         }
     });
