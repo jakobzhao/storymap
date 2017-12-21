@@ -4,7 +4,7 @@
 
 A storymap is organically integrated by several scenes. Each scene consists of a web map and a script. You can manipulate the map by zooming, panning, and even adding more thematic layers. This library embodies the concept responsive web design, meaning the storymaps can be shown on either Desktop or mobile devices.
 
-Buy me a cup of coffee :coffee:! [![Donate](img/Donate-PayPal-green.svg)](https://paypal.me/jakobzhao) :smiley:
+Buy me a cup of coffee :coffee: [![Donate](img/Donate-PayPal-green.svg)](https://paypal.me/jakobzhao)
 
 ## Features
 
@@ -24,7 +24,7 @@ A story map consists of several scenes. Each scene has two basic components, in 
 
 7\. [Spinned loader,progress line, animated scroll-down arrow and more..](hhttps://jakobzhao.github.io/storymap/examples/2.3/video.html)
 
-8\. :star:[3D thematic map](https://cosgrovc.github.io/GEOG4572-PE1v2/index.html);
+8\. [3D thematic map](https://cosgrovc.github.io/GEOG4572-PE1v2/index.html);
 
 9\. [Bivariate color pallete generator](http://geoviz.ceoas.oregonstate.edu/storymap/color.html)
 
