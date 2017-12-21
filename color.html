@@ -114,7 +114,8 @@
     var method = ["multiply", "darken"];
     var mode = ["lab", "hsl", "lch"]; //"hcl"
 
-    function updatePallete(mode,method) {
+    function updatePallete(mode, method) {
+
         $("table#" + mode + "-" + method).empty();
 
         ch_orig = $("#ch input").val();

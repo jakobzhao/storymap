@@ -293,11 +293,13 @@
         credits: "",
         loader: true,
         scalebar: false,
+        flyo: true,
         navwidget: true,
         
         createMap: function () {
             // create a map in the "map" div, set the view to a given place and zoom
-            var map = L.map($(".storymap-map")[0], {zoomControl: false, scrollWheelZoom: false}).setView([44, -120], 7);
+            var map = L.map($(".storymap-map")[0], {zoomControl: false, scrollWheelZoom: false,fadeAnimation: true,
+                zoomAnimation: true}).setView([44, -120], 7);
 
             //add an miniglobe
             new L.Control.GlobeMiniMap({

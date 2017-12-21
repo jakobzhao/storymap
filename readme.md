@@ -4,6 +4,8 @@
 
 A storymap is organically integrated by several scenes. Each scene consists of a web map and a script. You can manipulate the map by zooming, panning, and even adding more thematic layers. This library embodies the concept responsive web design, meaning the storymaps can be shown on either Desktop or mobile devices.
 
+Buy me a cup of coffee :coffee:, :smiley:! [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](paypal.me/jakobzhao)
+
 ## Features
 
 A story map consists of several scenes. Each scene has two basic components, in terms of the content object and the map object. The content object is usually made up by texts, graphics, and audios and videos. Here are some key features of this library.
