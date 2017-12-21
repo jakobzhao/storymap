@@ -2,6 +2,10 @@
 
 (all changes without author notice are by [@jakbzhao, Bo Zhao](https://github.com/jakobzhao))
 
+## 2.32 (12/21/2017)
+
+* add a paypal donation badge.
+
 ## 2.32 (11/28/2017)
 
 * Change the option name 'breakpointPos to triggerPos'
