@@ -4,7 +4,7 @@
 
 A storymap is organically integrated by several scenes. Each scene consists of a web map and a script. You can manipulate the map by zooming, panning, and even adding more thematic layers. This library embodies the concept responsive web design, meaning the storymaps can be shown on either Desktop or mobile devices.
 
-Buy me a cup of coffee :coffee:, :smiley:! [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](paypal.me/jakobzhao)
+Buy me a cup of coffee :coffee:, :smiley:! [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/jakobzhao)
 
 ## Features
 
