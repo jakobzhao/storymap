@@ -13,19 +13,19 @@ A storymap is organically integrated by several scenes. Each scene consists of a
 
 A story map consists of several scenes. Each scene has two basic components, in terms of the content object and the map object. The content object is usually made up by texts, graphics, and audios and videos. Here are some key features of this library.
 
-1\. [Scene with fullscreen image or video](https://jakobzhao.github.io/storymap/examples/2.3/video.html)
+1\. [Scene with fullscreen image or video](https://jakobzhao.github.io/storymap/examples/2.4/video.html)
 
-2\. [MiniGlobe](https://jakobzhao.github.io/storymap/examples/2.3/video.html)
+2\. [MiniGlobe](https://jakobzhao.github.io/storymap/examples/2.4/video.html)
 
-3\. [Nav Bar](https://jakobzhao.github.io/storymap/examples/2.3/navbar.html)
+3\. [Nav Bar](https://jakobzhao.github.io/storymap/examples/2.4/navbar.html)
 
-4\. [Map Symbolization](https://jakobzhao.github.io/storymap/examples/2.3/styles.html)
+4\. [Map Symbolization](https://jakobzhao.github.io/storymap/examples/2.4/styles.html)
 
-5\. [Tile Layers](https://jakobzhao.github.io/storymap/examples/2.3/tiles.html)
+5\. [Tile Layers](https://jakobzhao.github.io/storymap/examples/2.4/tiles.html)
 
 6\. [Data Interation](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/dataInteraction/index.html)
 
-7\. [Spinned loader,progress line, animated scroll-down arrow and more..](hhttps://jakobzhao.github.io/storymap/examples/2.3/video.html)
+7\. [Spinned loader,progress line, animated scroll-down arrow and more..](hhttps://jakobzhao.github.io/storymap/examples/2.4/video.html)
 
 8\. [3D thematic map](https://cosgrovc.github.io/GEOG4572-PE1v2/index.html);
 
@@ -33,22 +33,36 @@ A story map consists of several scenes. Each scene has two basic components, in 
 
 ## Templates
 
-1\. [Basic Template](https://jakobzhao.github.io/storymap/examples/2.3/helloworld.html);
-2\. [Script panel on the right](https://jakobzhao.github.io/storymap/examples/2.3/right.html);
-3\. [Split the screen in halves](https://jakobzhao.github.io/storymap/examples/2.3/split.html);
-4\. [Atlas Front Page](https://jakobzhao.github.io/storymap/examples/2.3/atlas.html)
-5\. [Fading out the scripts not being viewed](https://jakobzhao.github.io/storymap/examples/2.3/fadeout.html)
-6\. [arrow lines](https://jakobzhao.github.io/storymap/examples/2.3/swoopy.html)
+1\. [Basic Template](https://jakobzhao.github.io/storymap/examples/2.4/helloworld.html);
+2\. [Script panel on the right](https://jakobzhao.github.io/storymap/examples/2.4/right.html);
+3\. [Split the screen in halves](https://jakobzhao.github.io/storymap/examples/2.4/split.html);
+4\. [Atlas Front Page](https://jakobzhao.github.io/storymap/examples/2.4/atlas.html)
+5\. [Fading out the scripts not being viewed](https://jakobzhao.github.io/storymap/examples/2.4/fadeout.html)
+6\. [arrow lines](https://jakobzhao.github.io/storymap/examples/2.4/swoopy.html)
 
 ## Prerequisite
 
 **Required**
 
-1\. [jQuery](https://jquery.com/); 2\. [Bootstrap 3](http://getbootstrap.com/); 3\. [Leaflet](http://leafletjs.com/), (3d Storymap uses [Cesium](http://cesiumjs.org/) instead of leaflet).
+1\. [jQuery](https://jquery.com/);
+
+2\. [Bootstrap 4](http://getbootstrap.com/);
+
+3\. [Leaflet](http://leafletjs.com/), (3d Storymap uses [Cesium](http://cesiumjs.org/) instead of leaflet).
+
+4\. [Google Material Icon](https://material.io/icons/)
 
 **Recommended**
 
-1\. Font Awesome; 2\. Animate; 3\. Google Font; 4\. Chroma.js; 5\. leaflet.ajax.min.js.
+1\. Font Awesome;
+
+2\. Animate;
+
+3\. Google Font;
+
+4\. Chroma.js;
+
+5\. leaflet.ajax.min.js.
 
 ## Demos
 
@@ -130,33 +144,39 @@ Here, we will introduce how to make the [hello world](http://geoviz.ceoas.oregon
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--add required stylesheets-->
-    <!--make sure you add bootstrap 3.3.7 rather than 4.0.0-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <!--leaflet css-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.css">
-    <!--animation-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <!--Google Font-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!--add favicon for the web page-->
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+
+    <!--Font-->
     <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../../dist/storymap.2.3.css">
+
+    <link rel="stylesheet" type="text/css" href="../../dist/storymap.2.4.css">
 
     <!--add required libraries-->
-    <!--leaflet-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.js"></script>
-    <!--jquery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
+    <!--jquery and Popper-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
     <!--boostrap-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <!--leaflet.ajax for asynchronously adding geojson data-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+
     <!--story map plugin-->
-    <script src="../../dist/storymap.2.3.js"></script>
+    <script src="../../dist/storymap.2.4.js"></script>
 </head>
 ```
 
-To use this storymap library, two files `storymap.2.3.css` and `storymap.2.3.js` are requried to include. Also, this library can be included by download instead of include the source at this repository.
+To use this storymap library, two files `storymap.2.4.css` and `storymap.2.4.js` are requried to include. Also, this library can be included by download instead of include the source at this repository.
 
-Check [`storymap.2.3.css`](https://raw.githubusercontent.com/jakobzhao/storymap/master/dist/storymap.2.3.css) and [`storymap.2.3.js`](https://raw.githubusercontent.com/jakobzhao/storymap/master/dist/storymap.2.3.js) to download.
+Check [`storymap.2.4.css`](https://raw.githubusercontent.com/jakobzhao/storymap/master/dist/storymap.2.4.css) and [`storymap.2.4.js`](https://raw.githubusercontent.com/jakobzhao/storymap/master/dist/storymap.2.4.js) to download.
 
 3\. Next, in the `body` element, please create a `div` to contain an `storymap` instance.
 
@@ -198,11 +218,11 @@ A storymap consists of two key components, namely a map and a story, please put 
 6\. For example, if the `data-scene` parameter is `scene1`, the name of the corresponding map object should be scene1` as well. In the layer array object, you will need to include the layer names. For example, layer1, layer2. These layers need to be defined before the scenes object. The `scenes` object can be defined in the script as:
 
 ```js
-var scenes = {
-    scene1: {lat: 44.0563432, lng: -123.5099875, zoom: 7, layers: ['layer2'], name: "scene 1"},
-    scene2: {lat: 44.5701158, lng: -123.2949388, zoom: 10, layers: ['layer2'], name: "scene 2"},
-    scene3: {lat: 44.5701158, lng: -123.2949388, zoom: 12, layers: ['layer1', 'layer2'], name: "scene 3"}
-};
+    var scenes = {
+        scene1: {lat: 44, lng: -123.5, zoom: 7, layers: [layers.layer2], name: "scene 1"},
+        scene2: {lat: 44.5701158, lng: -123.2949388, zoom: 10, layers: [layers.layer2], name: "scene 2"},
+        scene3: {lat: 44.5701158, lng: -123.2949388, zoom: 12, layers: [layers.layer1, layers.layer2], name: "scene 3"}
+    };
 ```
 
 Here is the `layers` array:
@@ -235,6 +255,7 @@ scene = {
     zoom: `integer`,      // the zooming levelr of the map scene.
     layers: `array`,      // the array of layers to add on.
     name: `string`        // the name of the scence This name will be used in the navwidget and/or navbar if any
+    script: `function`    // the function to execute at the associated scene.
 }
 ```
 
@@ -250,12 +271,11 @@ layer = {
 ```js
 $('#storymap').storymap({
     scenes: scenes,
-    layers: layers,
     baselayer: layers.layer3,
     legend: true,
     loader: true,
     flyto: false,
-    credits: "build with<i class='glyphicon glyphicon-heart' style='color: red'></i> from Bo Zhao",
+    credits:  "Build with <i class='material-icons' style='color: red; font-size: 10px;'>favorite</i> from John Doe",
     scalebar: true,
     scrolldown: true,
     progressline: true,
@@ -276,7 +296,6 @@ Here is the data structure of storymap object.
 $(element).storymap({
     triggerpos: `a string of percentage`, // A percentage string'33.333%',
     scenes: `an array of scene objects`,
-    layers: `an array of layer objects`,
     baselayer: `a layer`,
     legend: `Boolean value`,
     loader: `Boolean value`,
@@ -320,9 +339,9 @@ Till now, in the `script` of the `body` element, you have the following code sni
     };
 
     var scenes = {
-        scene1: {lat: 44.0563432, lng: -123.5099875, zoom: 7, layers: ['layer2'], name: "scene 1"},
-        scene2: {lat: 44.5701158, lng: -123.2949388, zoom: 10, layers: ['layer2'], name: "scene 2"},
-        scene3: {lat: 44.5701158, lng: -123.2949388, zoom: 12, layers: ['layer1', 'layer2'], name: "scene 3"}
+        scene1: {lat: 44, lng: -123.5, zoom: 7, layers: [layers.layer2], name: "scene 1"},
+        scene2: {lat: 44.5701158, lng: -123.2949388, zoom: 10, layers: [layers.layer2], name: "scene 2"},
+        scene3: {lat: 44.5701158, lng: -123.2949388, zoom: 12, layers: [layers.layer1, layers.layer2], name: "scene 3"}
     };
 
     $('#storymap').storymap({
@@ -332,7 +351,7 @@ Till now, in the `script` of the `body` element, you have the following code sni
         legend: true,
         loader: true,
         flyto: false,
-        credits: "build with<i class='glyphicon glyphicon-heart' style='color: red'></i> from Bo Zhao",
+        credits: credits:  "Build with <i class='material-icons' style='color: red; font-size: 10px;'>favorite</i> from Bo Zhao",
         scalebar: true,
         scrolldown: false,
         progressline: true,
@@ -346,7 +365,7 @@ Till now, in the `script` of the `body` element, you have the following code sni
 </script>
 ```
 
-Okay, now we have walk through how to make a simple storymap. See the full source code at [here](https://github.com/jakobzhao/storymap/blob/master/examples/2.3/helloworld.html), and look at this `hello world` application by clicking [here](http://geoviz.ceoas.oregonstate.edu/storymap/examples/2.3/helloworld.html).
+Okay, now we have walk through how to make a simple storymap. See the full source code at [here](https://github.com/jakobzhao/storymap/blob/master/examples/2.4/helloworld.html), and look at this `hello world` application by clicking [here](http://geoviz.ceoas.oregonstate.edu/storymap/examples/2.4/helloworld.html).
 
 
 ## Team
