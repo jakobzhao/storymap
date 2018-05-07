@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Symbolization</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--add required stylesheets-->
+    <!--add required stylesheets-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <!--leaflet css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!--add favicon for the web page-->
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+
+    <!--Font-->
+    <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../../dist/storymap.2.4.css">
+
+
+    <style>
+        .feature-label {
+            font-family: 'Open Sans', sans-serif;
+            color: black;
+            font-size: 12px;
+            font-weight: bold;
+            text-shadow: 0 0 3px #FFFFFF;
+            background-color: rgba(0, 0, 0, 0);
+            border: none;
+            box-shadow: none;
+        }
+
+        .feature-tooltip {
+            font-family: 'Open Sans', sans-serif;
+            color: black;
+            font-size: 14px;
+            font-weight: lighter;
+        }
+
+        .glyphicon-one-fine-smaller-dot:before {
+            content: "\25cf";
+            font-size: 1em;
+        }
+
+        .glow-effect {
+            color: rgba(0, 255, 0, .6);
+            text-shadow: 0 0 10px rgb(0, 255, 0);
+        }
+    </style>
+
+    <!--add required libraries-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
+    <!--jquery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
+    <!--boostrap-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <!--leaflet.ajax for asynchronously adding geojson data-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+
+    <!--mini globle map-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
+    <script src="../../js/globeminimap.js"></script>
+
+    <script src="https://cdn.bootcss.com/chroma-js/1.3.3/chroma.min.js"></script>
+    <script src="../../js/bouncemarker.js"></script>
+    <!--story map plugin-->
+    <script src="../../dist/storymap.2.4.js"></script>
+
+</head>
+<body>
+<div id="storymap" class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 storymap-story">
+            <section data-scene="scene1">
+                <h2>Default Style</h2>
+            </section>
+            <section data-scene="scene2">
+                <h2>Scene 2</h2>
+            </section>
+            <section data-scene="scene4">
+                <h2>Scene 4</h2>
+                <p><a href="https://github.com/gka/chroma.js/wiki/Predefined-Colors" target="_blank">Predefined
+                    Colors</a></p>
+            </section>
+            <section data-scene="scene5">
+                <h2>Scene 5</h2>
+            </section>
+            <section data-scene="scene6">
+                <h2>Scene 6</h2>
+                <p>Inspired by the post on <a href="https://adventuresinmapping.com/2016/10/17/firefly-cartography/"
+                                              target="_blank">Firefly Cartography</a>.</p>
+            </section>
+        </div>
+        <div class="col-sm-6 col-md-8 storymap-map"></div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    //////////////////////////////////////////////////////////////////////////
+    // Scene 1: Plain
+    var counties_legend = '<i style="background: black; opacity: 0.5"></i><p><b>Counties</b></p>';
+    var counties = L.geoJson.ajax('../../assets/counties.geojson', {
+        color: 'black',
+        weight: 2,
+        opacity: 0.3
+    });
+
+    //////////////////////////////////////////////////////////////////////////
+    // Scene 2: Choropleth
+    // Set function for color ramp
+    function setColor(density) {
+        //Tenary operation: condition ? valueIfTrue : valueIfFalse
+        // condition ? value1 : value2
+        return density > 18 ? '#b30000' :
+            density > 13 ? '#e34a33' :
+                density > 10 ? '#fc8d59' :
+                    density > 5 ? '#fdcc8a' :
+                        '#fef0d9';
+    }
+
+    // Set style function that sets fill color property equal to cell tower density
+    function style(feature) {
+        return {
+            fillColor: setColor(feature.properties.CT_CNT),
+            fillOpacity: 0.5,
+            weight: 2,
+            opacity: 0.8,
+            color: '#ffffff',
+            dashArray: '4'
+        };
+    }
+
+    var counties_choropleth = L.geoJson.ajax('../../assets/counties.geojson',
+        {
+            style: style,
+            onEachFeature: function (feature, layer) {
+                layer.bindTooltip(feature.properties.NAME, {
+                    className: 'feature-label',
+                    permanent: false,
+                    direction: 'center'
+                });
+            }
+        });
+
+
+    var counties_choropleth_legend = '<p><b># of Towers</b></p>' +
+        '<i style="background: #fef0d9; opacity: 0.5"></i><p><b>1 - 4</b></p>' +
+        '<i style="background: #fdcc8a; opacity: 0.5"></i><p><b>5 - 9</b></p>' +
+        '<i style="background: #fc8d59; opacity: 0.5"></i><p><b>10 - 12</b></p>' +
+        '<i style="background: #e34a33; opacity: 0.5"></i><p><b>13 - 17</b></p>' +
+        '<i style="background: #b30000; opacity: 0.5"></i><p><b>18+</b></p>';
+
+    //////////////////////////////////////////////////////////////////////////
+    // Scene 3: Marker
+
+    $('html > head').append($("<style> .marker-icon { color: red; font-size: 15px; text-shadow: 0 0 3px #ffffff;} </style>"));
+    // $('html > head').append($("<style> .marker-icon { position: relative; color: #0000ff; font-size: 15px; text-shadow:1px 1px 2px #ffffff, 0 0 25px rgba(0,0,255,0.75), 0 0 5px rgba(0,0,139,0.78);} </style>")); // glow effect: https://adventuresinmapping.com/2016/10/17/firefly-cartography/
+
+    var towers = L.geoJson.ajax('../../assets/cell_towers.geojson', {
+        pointToLayer: function (feature, latlng) {
+
+            delay = Math.floor((126 + latlng.lng) / 10 * 2000);
+            //delay =Math.floor(Math.random() * 400);
+
+            return L.marker(latlng, {
+                bounceOnAdd: true,
+                bounceOnAddOptions: {duration: 100, height: window.innerHeight, delay: delay},
+                icon: L.divIcon({className: 'glyphicon glyphicon-signal marker-icon'})
+            });
+        },
+        onEachFeature: function (feature, layer) {
+            layer.bindTooltip(feature.properties.Name, {sticky: true, className: "feature-tooltip"});
+        }
+    });
+
+
+    var tower_legend = '<i class="glyphicon glyphicon-signal marker-icon"></i><p><b>Tower</b></p>';
+
+    //////////////////////////////////////////////////////////////////////////
+    // Scene 4: Marker categorized by an attribute
+
+
+    //////////////////////////////////////////////////////////////////////////
+    // Scene 5: circleMarker
+
+    var towers_circle = L.geoJson.ajax('../../assets/cell_towers.geojson', {
+        style: function (feature) {
+            return {
+                fillColor: chroma.random(),
+                fillOpacity: 0.4,
+                stroke: true,
+                weight: 1,
+                opacity: 0.8,
+                color: '#ffffff'
+            };
+        },
+        pointToLayer: function (feature, latlng) {
+            //return L.circleMarker(latlng);
+            return L.circle(latlng, 1000 * Math.pow(Math.floor((Math.random() * 3) + 1), 2));
+        },
+        onEachFeature: function (feature, layer) {
+            layer.bindTooltip(feature.properties.Name, {sticky: true, className: "feature-tooltip"});
+        }
+    });
+
+    var towers_circle_legend = '<i class=""><svg height="16" width="16"> <circle cx="8" cy="8" r="6" stroke="white" stroke-width="1" fill="red" fillOpacity="0.4" /> </svg></i><p><b>Tower</b></p>';
+
+    //////////////////////////////////////////////////////////////////////////
+    // Scene 6: circleMarker in glow effects
+
+    var towers_circle2 = L.geoJson.ajax('../../assets/cell_towers.geojson', {
+        pointToLayer: function (feature, latlng) {
+            //return L.circle(latlng, 1000 * Math.pow(Math.floor((Math.random() * 3) + 1), 2));
+            return L.marker(latlng, {icon: L.divIcon({className: 'glyphicon glyphicon-one-fine-smaller-dot glow-effect'})});
+        },
+        onEachFeature: function (feature, layer) {
+            layer.bindTooltip(feature.properties.Name, {sticky: true, className: "feature-tooltip"});
+        }
+    });
+
+    var towers_circle2_legend = '<i class=""><svg height="16" width="16"> <circle cx="8" cy="8" r="6" stroke="white" stroke-width="0" fill="#00ff00" fillOpacity="0.4" /> </svg></i><p><b>Tower</b></p>';
+
+    var darkLayer = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png');
+
+    //////////////////////////////////////////////////////////////////////////
+
+    var layers = {
+        counties: {layer: counties, legend: counties_legend},
+        counties_choropleth: {layer: counties_choropleth, legend: counties_choropleth_legend},
+        towers: {layer: towers, legend: tower_legend},
+        towers_circle: {layer: towers_circle, legend: towers_circle_legend},
+        towers_circle2: {layer: towers_circle2, legend: towers_circle2_legend},
+        darkLayer: {layer: darkLayer}
+    };
+
+
+    var scenes = {
+        scene1: {lat: 44, lng: -123.5, zoom: 7, name: 'Plain', layers: [layers.counties]},
+        scene2: {lat: 44, lng: -123.5, zoom: 7, name: 'Choropleth', layers: [layers.counties_choropleth]},
+        scene3: {lat: 44, lng: -123.5, zoom: 7, name: 'towers', layers: [layers.towers]},
+        scene5: {lat: 44, lng: -123.5, zoom: 7, name: 'tower circles', layers: [layers.towers_circle]},
+        scene6: {lat: 44, lng: -123.5, zoom: 7, name: 'tower circles', layers: [layers.towers_circle2, layers.darkLayer]}
+    };
+
+    $('#storymap').storymap({
+        scenes: scenes,
+        legend: true, // if you do not want a legend feature, you can simply not define the createLegend function.
+        scalebar: false,
+        loader: false,
+        navwidget: true,
+        createMap: function () {
+            // create a map in the "map" div, set the view to a given place and zoom
+            var map = L.map($(".storymap-map")[0], {zoomControl: false, scrollWheelZoom: false});
+
+            // add an base map, which can be either OSM, mapbox, tilelayer, wmslayer or those designed by yourself.
+            L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png').addTo(map);
+
+            return map;
+        }
+    });
+</script>
+</body>
+</html>
