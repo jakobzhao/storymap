@@ -2,6 +2,13 @@
 
 (all changes without author notice are by [@jakbzhao, Bo Zhao](https://github.com/jakobzhao))
 
+## 2.4 (05/05/2017)
+
+* add script function for each scene.
+* update to Bootstrap 4
+* using Material icon instead of glyphicon.
+
+
 ## 2.32 (12/21/2017)
 
 * add a paypal donation badge.
