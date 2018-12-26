@@ -4,7 +4,7 @@
 
 (function ($) {
 
-    $.fn.autoplay = function (options){
+    $.fn.autoplay = function (options) {
         var defaults = {
             selector: 'section',
             stepperSelector: '.storymap-scroll-down'
@@ -15,12 +15,12 @@
 
         var i = 0;
         var sceneNum = $(settings.selector).length - 1;
-        setInterval(function(){
-            if ( i < sceneNum){
+        setInterval(function () {
+            if (i < sceneNum) {
                 if ($('.storymap-navbar').length !== 0) {
-                    window.scrollBy(0, $($(settings.selector)[i+1]).offset().top - $(window).scrollTop() - $('.storymap-navbar').height() - 30);
+                    window.scrollBy(0, $($(settings.selector)[i + 1]).offset().top - $(window).scrollTop() - $('.storymap-navbar').height() - 30);
                 } else {
-                    window.scrollBy(0, $($(settings.selector)[i+1]).offset().top  - $(window).scrollTop() - 10);
+                    window.scrollBy(0, $($(settings.selector)[i + 1]).offset().top - $(window).scrollTop() - 10);
                 }
                 i += 1;
             }
@@ -42,7 +42,7 @@
             progressline: true,
             mapinteraction: false,
             createMap: function () {
-                var map = L.map($('.storymap-map')[0], {zoomControl: false}).setView([44, -120], 7);
+                var map = L.map($('.storymap-map')[0], { zoomControl: false }).setView([44, -120], 7);
                 // L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}@2x.png').addTo(map);
                 return map;
             }
@@ -51,7 +51,7 @@
 
         var settings = $.extend(defaults, options);
 
-        if (typeof(L) === 'undefined') {
+        if (typeof (L) === 'undefined') {
             throw new Error('Storymap requires Leaflet.');
         }
 
@@ -221,13 +221,13 @@
 
 
 
-               //$(".navbar-header").after("<div class='collapse navbar-collapse nav navbar-nav navbar-right storymap-navbar'>");
+                //$(".navbar-header").after("<div class='collapse navbar-collapse nav navbar-nav navbar-right storymap-navbar'>");
 
 
                 $.each(sections, function (key, element) {
                     var section = $(element);
                     // if no name attribute for a specific scene, the name on the navigation bar will be the object name.
-                    if (typeof(scenes[section.data('scene')].name) === "undefined") {
+                    if (typeof (scenes[section.data('scene')].name) === "undefined") {
                         sceneName = section.data('scene');
                     } else {
                         sceneName = scenes[section.data('scene')].name.replace(" ", "&nbsp;");
@@ -357,7 +357,7 @@
 
             function executeScript(key) {
                 var scene = scenes[key];
-                var section = $('section[data-scene="' + key +'"]')
+                var section = $('section[data-scene="' + key + '"]')
                 scene.script(key, map, section);
             }
 
@@ -414,7 +414,7 @@
 
                 showMap($(this).data('scene'));
 
-                if (typeof(scenes[$(this).data('scene')].script) !== 'undefined') {
+                if (typeof (scenes[$(this).data('scene')].script) !== 'undefined') {
                     executeScript($(this).data('scene'));
                 }
             });
@@ -436,7 +436,8 @@
 
             $('.storymap-scroll-down').click(function () {
                 var viewing = $(".viewing");
-                if (viewing.data("scene") !== $("section:last").data("scene")) {
+                var lastScene = $("section[data-scene]:last").data('scene');
+                if (viewing.data("scene") !== lastScene) {
 
                     if (nav.length !== 0) {
                         window.scrollBy(0, viewing.offset().top + viewing.height() - $(window).scrollTop() - $('.storymap-navbar').height() - 10);
@@ -465,7 +466,7 @@
                 $.each(sections, function (key, element) {
                     var section = $(element);
                     // if no name attribute for a specific scene, the name on the navigation bar will be the object name.
-                    if (typeof(scenes[section.data('scene')].name) === "undefined") {
+                    if (typeof (scenes[section.data('scene')].name) === "undefined") {
                         sceneName = section.data('scene');
                     } else {
                         sceneName = scenes[section.data('scene')].name.replace(" ", "&nbsp;");
@@ -507,5 +508,3 @@
     }
 
 }(jQuery));
-
-
