@@ -358,7 +358,6 @@
 
             $('.storymap-scroll-down').click(function () {
                 var viewing = $(".viewing");
-
                 if (viewing.data("scene") !== $("section[data-scene]:last").data('scene')) {
                     if (nav.length !== 0) {
                         window.scrollBy(0, viewing.offset().top + viewing.height() - $(window).scrollTop() - $('.storymap-navbar').height() - 10);
