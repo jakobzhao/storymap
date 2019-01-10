@@ -358,11 +358,9 @@
 
             $('.storymap-scroll-down').click(function () {
                 var viewing = $(".viewing");
-<<<<<<< HEAD
+
                 if (viewing.data("scene") !== $("section[data-scene]:last").data('scene')) {
-=======
-                if (viewing.data("scene") !== $("section[data-scene]:last").data('scene') {
->>>>>>> 60202dc8bb3c0ea01ccd66055093ce43ac06b0b2
+
 
                     if (nav.length !== 0) {
                         window.scrollBy(0, viewing.offset().top + viewing.height() - $(window).scrollTop() - $('.storymap-navbar').height() - 10);
