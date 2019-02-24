@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Online Atlas Front Page Template</title>
-    <!--add required stylesheet-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    <!--fonts-->
+    <meta charset="UTF-8">
+    <title>Atlas template page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Lobster|Roboto" rel="stylesheet"> -->
+    <!--facebook and info icons-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
     <style>
 
         body {
             height: 100%;
             padding: 20px;
             margin: 20px;
-            font-family: Cairo, sans-serif;
+            font-family: Lobster, sans-serif;
         }
 
         .map {
@@ -52,39 +53,66 @@
             left: 50%;
             transform: translate(-50%, -50%);
             -ms-transform: translate(-50%, -50%);
+            font-family: Roboto, sans-serif;
+        }
+
+        .social {
+            position:fixed;
+            cursor: pointer;
+            font-size:24px;
+            color:lightgray;
+            top: 4%;
+            left:5px;
+        }
+        .social:hover {
+            color: darkblue;
+            text-decoration: none
         }
     </style>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 
     <!--add required javascript-->
-    <!-- Bootstrap core JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js"></script>
 </head>
-
 <body>
-
 <!-- Page Content -->
 <div class="container">
-    <!-- Page Header -->
-    <!--justify-content-center to center columns (col-*) inside row-->
-    <div class="row justify-content-center align-items-center">
+    <!-- <div class="row d-flex justify-content-center"> -->
+    <div class="row justify-content-center">
         <a href="#" target="_blank"><img src="http://via.placeholder.com/180x100"></a>
     </div>
 
     <div class="row text-center">
-        <div class="col-12">
+        <div class="col-lg-12">
             <h2>Online Atlas Front Page</h2>
             <hr>
-            <h3>Chapters</h3>
+            <h3 data-toggle="modal" data-target="#info-modal">Chapters</h3>
         </div>
     </div>
 
     <hr>
-    <!--mx-auto for centering inside flex elements-->
-    <div class="row mx-auto text-center">
 
+
+    <div class="row text-center">
+
+        <div class="col-md-4 col-lg-4 map">
+        <img src="http://via.placeholder.com/300x300" class="image">
+        <div class="overlay">
+            <div class="text"><h3><a href="/">Hello World</a></h3>
+                <small>A brief intro</small>
+            </div>
+        </div>
+    </div>
+        <div class="col-md-4 col-lg-4 map">
+            <img src="http://via.placeholder.com/300x300" class="image">
+            <div class="overlay">
+                <div class="text"><h3><a href="/">Hello World</a></h3>
+                    <small>A brief intro</small>
+                </div>
+            </div>
+        </div>
         <div class="col-md-4 col-lg-4 map">
             <img src="http://via.placeholder.com/300x300" class="image">
             <div class="overlay">
@@ -94,27 +122,12 @@
             </div>
         </div>
 
-        <div class="col-md-4 col-lg-4 map">
-            <img src="http://via.placeholder.com/300x300" class="image">
-            <div class="overlay">
-                <div class="text"><h3><a href="/">Hello World</a></h3>
-                    <small>A brief intro</small>
-                </div>
-            </div>
-        </div>
 
-        <div class="col-md-4 col-lg-4 map">
-            <img src="http://via.placeholder.com/300x300" class="image">
-            <div class="overlay">
-                <div class="text"><h3><a href="/">Hello World</a></h3>
-                    <small>A brief intro</small>
-                </div>
-            </div>
-        </div>
+
 
     </div>
 
-    <div class="row mx-auto text-center">
+    <div class="row text-center">
 
         <div class="col-md-4 col-lg-4 map">
             <img src="http://via.placeholder.com/300x300" class="image">
@@ -141,53 +154,74 @@
             </div>
         </div>
 
-    </div>
-    <div class="row mx-auto text-center">
 
-        <div class="col-md-4 col-lg-4 map">
-            <img src="http://via.placeholder.com/300x300" class="image">
-            <div class="overlay">
-                <div class="text"><h3><a href="/">Hello World</a></h3>
-                    <small>A brief intro</small>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-lg-4 map">
-            <img src="http://via.placeholder.com/300x300" class="image">
-            <div class="overlay">
-                <div class="text"><h3><a href="/">Hello World</a></h3>
-                    <small>A brief intro</small>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-lg-4 map">
-            <img src="http://via.placeholder.com/300x300" class="image">
-            <div class="overlay">
-                <div class="text"><h3><a href="/">Hello World</a></h3>
-                    <small>A brief intro</small>
-                </div>
-            </div>
-        </div>
+
 
     </div>
 
+    <div class="row text-center">
+
+        <div class="col-md-4 col-lg-4 map">
+            <img src="http://via.placeholder.com/300x300" class="image">
+            <div class="overlay">
+                <div class="text"><h3><a href="/">Hello World</a></h3>
+                    <small>A brief intro</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-4 map">
+            <img src="http://via.placeholder.com/300x300" class="image">
+            <div class="overlay">
+                <div class="text"><h3><a href="/">Hello World</a></h3>
+                    <small>A brief intro</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-4 map">
+            <img src="http://via.placeholder.com/300x300" class="image">
+            <div class="overlay">
+                <div class="text"><h3><a href="/">Hello World</a></h3>
+                    <small>A brief intro</small>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
     <hr>
 
     <footer class="container">
-
-        <div class="row justify-content-center align-items-center">
-            <p> Bo Zhao, Oregon State University, 2017 </p>
+        <div class="row  justify-content-center">
+            <p> Bo Zhao, Oregon State University, 2018 </p>
         </div>
 
-        <div class="row justify-content-center align-items-center">
+        <div class="row  justify-content-center">
             <a href="#" target="_blank"><img src="http://via.placeholder.com/120x80"></a>
             <a href="#" target="_blank"><img src="http://via.placeholder.com/120x80"></a>
-            <a href="#" target="_blank"><img src="http://via.placeholder.com/120x80"></a>
+            <a href="#" target="_self"><img src="http://via.placeholder.com/120x80"></a>
+            <a href="https://twitter.com/home?status=love"><img src="http://via.placeholder.com/120x80"Share on Twitter> </a>
         </div>
     </footer>
 
 </div>
 
-</body>
+<div class="modal fade" id="info-modal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">About</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>place holder, place holder, place holder, place holder, place holder, place holder, place holder, place holder, place holder, place holder, place holder, place holder, place holder, place holder, place holder, place holder, place holder, place holder, place holder, place holder, place holder, place holder, place holder, place holder, place holder, place holder</p>
+            </div>
+        </div>
+    </div>
+</div>
 
+<!--facebook icon-->
+<a class="fab fa-facebook-square social" href="https://www.facebook.com/sharer/sharer.php?u=jakobzhao.github.io/geog371/lectures/lec16/atlas.html" target="_blank"></a>
+
+</body>
 </html>
