@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>TileLayers</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--add required stylesheets-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <!--leaflet css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!--add favicon for the web page-->
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+
+    <!--Icons-->
+    <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../../dist/storymap.2.4.css">
+    <!--add required libraries-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
+    <!--jquery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
+    <!--boostrap-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <!--leaflet.ajax for asynchronously adding geojson data-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+
+    <!--story map plugin-->
+    <script src="../../dist/storymap.2.4.js"></script>
+
+</head>
+<body>
+
+<div id="storymap" class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 storymap-story">
+            <section data-scene="scene1"><h2>ESRI Satellite</h2>
+                <p><a href="https://leaflet-extras.github.io/leaflet-providers/preview/" target="_blank">leaflet
+                    tilelayer providers</a></p></section>
+            <section data-scene="scene2"><h2>GEE Forest 2010</h2></section>
+            <section data-scene="scene3"><h2>Mapbox Satellite</h2></section>
+            <section data-scene="scene4"><h2>Mapbox Light</h2></section>
+            <section data-scene="scene5"><h2>Mapbox Dark</h2></section>
+            <section data-scene="scene6"><h2>Mapbox Outdoors</h2></section>
+            <section data-scene="scene7"><h2>Mapbox Streets</h2></section>
+            <section data-scene="scene8"><h2>NightView</h2></section>
+            <section data-scene="scene9"><h2>OpenStreetMap</h2></section>
+        </div>
+        <div class="col-sm-6 col-md-8 storymap-map"></div>
+    </div>
+</div>
+<script type="text/javascript">
+
+
+    var layers = {
+        ESRI: {layer: L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}')},
+        GEE: {layer: L.tileLayer('http://earthengine.google.org/static/hansen_2013/tree_alpha/{z}/{x}/{y}.png')},
+        Mapbox_Satellite: {
+            layer: L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
+                id: 'mapbox.satellite'
+            })
+        },
+        Mapbox_Light: {
+            layer: L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
+                id: 'mapbox.light', detectRetina: true
+            })
+        },
+        Mapbox_Dark: {
+            layer: L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
+                id: 'mapbox.dark', detectRetina: true
+            })
+        },
+        Mapbox_Outdoors: {
+            layer: L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
+                id: 'mapbox.outdoors', detectRetina: true
+            })
+        },
+        Mapbox_Streets: {
+            layer: L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
+                id: 'mapbox.streets', detectRetina: true
+            })
+        },
+        NightView: {
+            layer: L.tileLayer('http://map1.vis.earthdata.nasa.gov/wmts-webmerc/VIIRS_CityLights_2012/default/{time}/{tilematrixset}{maxZoom}/{z}/{y}/{x}.{format}', {
+                minZoom: 1,
+                maxZoom: 8,
+                format: 'jpg',
+                time: '',
+                tilematrixset: 'GoogleMapsCompatible_Level'
+            })
+        },
+        OpenStreetMap: {layer: L.tileLayer('http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png')}
+    };
+
+    var scenes = {
+        scene1: {lat: 44, lng: -123.5, zoom: 7, layers: [layers.ESRI], name: "ESRI"},
+        scene2: {lat: 44, lng: -123.5, zoom: 7, layers: [layers.GEE], name: "GEE Forest"},
+        scene3: {lat: 44, lng: -123.5, zoom: 7, layers: [layers.Mapbox_Satellite], name: "Mapbox Satellite"},
+        scene4: {lat: 44, lng: -123.5, zoom: 7, layers: [layers.Mapbox_Light], name: "Mapbox Light"},
+        scene5: {lat: 44, lng: -123.5, zoom: 7, layers: [layers.Mapbox_Dark], name: "Mapbox Dark"},
+        scene6: {lat: 44, lng: -123.5, zoom: 7, layers: [layers.Mapbox_Outdoors], name: "Mapbox Outdoors"},
+        scene7: {lat: 44, lng: -123.5, zoom: 7, layers: [layers.Mapbox_Streets], name: "Mapbox Streets"},
+        scene8: {lat: 44, lng: -123.5, zoom: 7, layers: [layers.NightView], name: "NightView"},
+        scene9: {lat: 44, lng: -123.5, zoom: 7, layers: [layers.OpenStreetMap], name: "OpenStreetMap"}
+    };
+
+
+    $('#storymap').storymap({
+        scenes: scenes,
+        baselayer: layers.layer3,
+        navbar: false,
+        legend: false,
+        loader: true,
+        flyto: false,
+        scalebar: true,
+        scrolldown: true,
+        progressline: true,
+        navwidget: true,
+        createMap: function () {
+            var map = L.map($(".storymap-map")[0], {zoomControl: false}).setView([44, -120], 7);
+            return map;
+        }
+    });
+</script>
+</body>
+</html>

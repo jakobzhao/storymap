@@ -1,42 +1,40 @@
-<img src="img/logo.png" height="15%" width="15%" align="left"/> ***[Storymap.js](https://github.com/jakobzhao/storymap)*** is a javascript library for storytelling with web maps. This library aims to enable individuals to effectively create story map applications over the Internet. Three major tasks would be dealt with, including web interface design, map design and storytelling structure. To develop these functions, this library is written in a combination of several web programming languages, like HTML, Cascading Style Sheets (CSS) and Javascript, and builds upon several prerequisite libraries and web services. To make the story map library robust and lightweight, we select as fewer prerequisite libraries as possible, and prioritize the use of open source or free libraries. This library is currently maintained by [Cartography and Geovisualization Group](http://geoviz.ceoas.oregonstate.edu) at Oregon State University, and has been used in multiple geovisualization related courses (e.g., GEOG 371: Web Mapping, GEOG 472/572: Geovisual Analytics) and projects. In addition, a lot of universities began to choose storymap.js instead of ESRI storymap platform, for example, 
-such as [GEOG 678: Advanced Desktop Programming for GIS Customization offered by Eastern Michigan University](https://people.emich.edu/dbennion1/geog678/assignments/assignment8/).
+<img src="img/logo.png" height="15%" width="15%" align="left"/> ***[Storymap.js](https://github.com/jakobzhao/storymap)*** is a javascript library for storytelling with web maps. This library aims to enable individuals, especially those who have little web programming background, to effectively create story map applications over the Internet. Three major tasks would be dealt with, including web interface design, map design and storytelling structure. To develop these functions, this library is written in a combination of several web programming languages, like HTML, Cascading Style Sheets (CSS) and Javascript, and builds upon several prerequisite libraries and web services. To make the story map library robust and lightweight, we select as fewer prerequisite libraries as possible, and prioritize the use of open source or free libraries. This library is currently maintained by [Cartography and Geovisualization Group](http://geoviz.ceoas.oregonstate.edu) at Oregon State University, and has been used in multiple geovisualization related courses (e.g., GEOG 371: Web Mapping, GEOG 571: Advanced Web Mapping, GEOG 472/572: Geovisual Analytics) and projects. In addition, a lot of universities began to choose storymap.js instead of ESRI storymap platform.
 
 A storymap is organically integrated by several scenes. Each scene consists of a web map and a script. You can manipulate the map by zooming, panning, and even adding more thematic layers. This library embodies the concept responsive web design, meaning the storymaps can be shown on either Desktop or mobile devices.
 
-<p>Buy me a cup of coffee :coffee: :grinning: <a href="https://paypal.me/jakobzhao"><img src="img/Donate-PayPal-green.svg" align="center" /></a> </p>
-
+<p>To support open source, buy us a cup of coffee :coffee: :grinning: <a href="https://paypal.me/jakobzhao"><img src="img/Donate-PayPal-green.svg" align="center" /></a> </p>
 
 
 ## Features
 
 A story map consists of several scenes. Each scene has two basic components, in terms of the content object and the map object. The content object is usually made up by texts, graphics, and audios and videos. Here are some key features of this library.
 
-1\. [Scene with fullscreen image or video](https://jakobzhao.github.io/storymap/examples/2.4/video.html)
+1\. [Scene with fullscreen image or video](https://jakobzhao.github.io/storymap/examples/2.5/video.html)
 
-2\. [MiniGlobe](https://jakobzhao.github.io/storymap/examples/2.4/video.html)
+2\. [MiniGlobe](https://jakobzhao.github.io/storymap/examples/2.5/video.html)
 
-3\. [Nav Bar](https://jakobzhao.github.io/storymap/examples/2.4/navbar.html)
+3\. [Nav Bar](https://jakobzhao.github.io/storymap/examples/2.5/navbar.html)
 
-4\. [Map Symbolization](https://jakobzhao.github.io/storymap/examples/2.4/styles.html)
+4\. [Map Symbolization](https://jakobzhao.github.io/storymap/examples/2.5/styles.html)
 
-5\. [Tile Layers](https://jakobzhao.github.io/storymap/examples/2.4/tiles.html)
+5\. [Tile Layers](https://jakobzhao.github.io/storymap/examples/2.5/tiles.html)
 
 6\. [Data Interation](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/dataInteraction/index.html)
 
-7\. [Spinned loader,progress line, animated scroll-down arrow and more..](hhttps://jakobzhao.github.io/storymap/examples/2.4/video.html)
+7\. [Spinned loader,progress line, animated scroll-down arrow and more..](hhttps://jakobzhao.github.io/storymap/examples/2.5/video.html)
 
 8\. [3D thematic map](https://cosgrovc.github.io/GEOG4572-PE1v2/index.html);
 
-9\. [Bivariate color pallete generator](http://geoviz.ceoas.oregonstate.edu/storymap/color.html)
+9\. [Bivariate color pallete generator](http://geoviz.ceoas.oregonstate.edu/storymap/assets/color.html)
 
 ## Templates
 
-1\. [Basic Template](https://jakobzhao.github.io/storymap/examples/2.4/helloworld.html);
-2\. [Script panel on the right](https://jakobzhao.github.io/storymap/examples/2.4/right.html);
-3\. [Split the screen in halves](https://jakobzhao.github.io/storymap/examples/2.4/split.html);
-4\. [Atlas Front Page](https://jakobzhao.github.io/storymap/examples/2.4/atlas.html)
-5\. [Fading out the scripts not being viewed](https://jakobzhao.github.io/storymap/examples/2.4/fadeout.html)
-6\. [arrow lines](https://jakobzhao.github.io/storymap/examples/2.4/swoopy.html)
+1\. [Basic Template](https://jakobzhao.github.io/storymap/examples/2.5/helloworld.html);
+2\. [Script panel on the right](https://jakobzhao.github.io/storymap/examples/2.5/right.html);
+3\. [Split the screen in halves](https://jakobzhao.github.io/storymap/examples/2.5/split.html);
+4\. [Atlas Front Page](https://jakobzhao.github.io/storymap/examples/2.5/atlas.html)
+5\. [Fading out the scripts not being viewed](https://jakobzhao.github.io/storymap/examples/2.5/fadeout.html)
+6\. [arrow lines](https://jakobzhao.github.io/storymap/examples/2.5/swoopy.html)
 
 ## Prerequisite
 
@@ -72,16 +70,12 @@ A story map consists of several scenes. Each scene has two basic components, in 
 
 ![](img/swsr.png)
 
-3\. [Alaskan MoutainSheep and 21st Century Snow](https://cosgrovc.github.io/GEOG4572-PE1v2/index.html) -- made by *Chris Cosgrove*
-
-![](img/dan.png)
-
-4\. [Sites in Oregon](https://cdn.rawgit.com/johnsoRiB/storymap_test/1800a77b/PE5/storymap-master/SightsInOregon.html) -- made by *Riley Johnson*
+3\. [Sites in Oregon](https://cdn.rawgit.com/johnsoRiB/storymap_test/1800a77b/PE5/storymap-master/SightsInOregon.html) -- made by *Riley Johnson*
 
 ![](img/sites.png)
 
 
-5\. [Stomping Grounds](http://geoviz.ceoas.oregonstate.edu/mathewsn-storymap/) -- made by *Nicolas Mathews*
+4\. [Stomping Grounds](http://geoviz.ceoas.oregonstate.edu/mathewsn-storymap/) -- made by *Nicolas Mathews*
 
 ![](img/stomping.png)
 
@@ -142,9 +136,9 @@ Here, we will introduce how to make the [hello world](http://geoviz.ceoas.oregon
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--add required stylesheets-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!--leaflet css-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
@@ -154,27 +148,27 @@ Here, we will introduce how to make the [hello world](http://geoviz.ceoas.oregon
     <!--Font-->
     <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="../../dist/storymap.2.4.css">
+    <link rel="stylesheet" type="text/css" href="../../dist/storymap.2.5.css">
 
     <!--add required libraries-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.js"></script>
     <!--jquery and Popper-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 
     <!--boostrap-->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!--leaflet.ajax for asynchronously adding geojson data-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
 
     <!--story map plugin-->
-    <script src="../../dist/storymap.2.4.js"></script>
+    <script src="../../dist/storymap.2.5.js"></script>
 </head>
 ```
 
-To use this storymap library, two files `storymap.2.4.css` and `storymap.2.4.js` are requried to include. Also, this library can be included by download instead of include the source at this repository.
+To use this storymap library, two files `storymap.2.5.css` and `storymap.2.5.js` are requried to include. Also, this library can be included by download instead of include the source at this repository.
 
-Check [`storymap.2.4.css`](https://raw.githubusercontent.com/jakobzhao/storymap/master/dist/storymap.2.4.css) and [`storymap.2.4.js`](https://raw.githubusercontent.com/jakobzhao/storymap/master/dist/storymap.2.4.js) to download.
+Check [`storymap.2.5.css`](https://raw.githubusercontent.com/jakobzhao/storymap/master/dist/storymap.2.5.css) and [`storymap.2.5.js`](https://raw.githubusercontent.com/jakobzhao/storymap/master/dist/storymap.2.5.js) to download.
 
 3\. Next, in the `body` element, please create a `div` to contain an `storymap` instance.
 
@@ -363,7 +357,7 @@ Till now, in the `script` of the `body` element, you have the following code sni
 </script>
 ```
 
-Okay, now we have walk through how to make a simple storymap. See the full source code at [here](https://github.com/jakobzhao/storymap/blob/master/examples/2.4/helloworld.html), and look at this `hello world` application by clicking [here](http://geoviz.ceoas.oregonstate.edu/storymap/examples/2.4/helloworld.html).
+Okay, now we have walk through how to make a simple storymap. See the full source code at [here](https://github.com/jakobzhao/storymap/blob/master/examples/2.5/helloworld.html), and look at this `hello world` application by clicking [here](http://geoviz.ceoas.oregonstate.edu/storymap/examples/2.5/helloworld.html).
 
 
 ## Team
