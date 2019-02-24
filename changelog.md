@@ -2,7 +2,11 @@
 
 (all changes without author notice are by [@jakbzhao, Bo Zhao](https://github.com/jakobzhao))
 
-## 2.4 (05/05/2017)
+## 2.5 (02/24/2019)
+
+* update the version of the prerequisite javascript libraries.
+
+## 2.4 (05/05/2018)
 
 * add script function for each scene.
 * update to Bootstrap 4
