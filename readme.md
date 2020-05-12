@@ -19,13 +19,13 @@ A story map consists of several scenes. Each scene has two basic components, in 
 
 5\. [Tile Layers](https://jakobzhao.github.io/storymap/examples/2.5/tiles.html)
 
-6\. [Data Interation](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/dataInteraction/index.html)
+<!-- 6\. [Data Interation](http://cdn.rawgit.com/jakobzhao/storymap/master/examples/dataInteraction/index.html) -->
 
 7\. [Spinned loader,progress line, animated scroll-down arrow and more..](hhttps://jakobzhao.github.io/storymap/examples/2.5/video.html)
 
 8\. [3D thematic map](https://cosgrovc.github.io/GEOG4572-PE1v2/index.html);
 
-9\. [Bivariate color pallete generator](http://geoviz.ceoas.oregonstate.edu/storymap/assets/color.html)
+9\. [Bivariate color pallete generator](http://jakobzhao.github.io/storymap/assets/color.html)
 
 ## Templates
 
