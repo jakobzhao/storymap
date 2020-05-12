@@ -75,9 +75,9 @@ A story map consists of several scenes. Each scene has two basic components, in 
 ![](img/sites.png)
 
 
-4\. [Stomping Grounds](http://geoviz.ceoas.oregonstate.edu/mathewsn-storymap/) -- made by *Nicolas Mathews*
+<!-- 4\. [Stomping Grounds](http://geoviz.ceoas.oregonstate.edu/mathewsn-storymap/) -- made by *Nicolas Mathews*
 
-![](img/stomping.png)
+![](img/stomping.png) -->
 
 ## Tutorial
 
