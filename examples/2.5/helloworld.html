@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Hello World</title>
+    <title>Pantanal is burning</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--add required stylesheets-->
@@ -34,6 +34,8 @@
     <script src="../../dist/storymap.2.5.js"></script>
 </head>
 <body>
+<h1> Teste dsa</h1>
+
 <div id="storymap" class="container-fluid">
     <div class="row">
         <div class="col-sm-6 col-md-8 storymap-map"></div>
@@ -56,14 +58,13 @@
     var layers = {
         layer1: {
             layer: L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'),
-            legend: '<i style="background: black; opacity: 0.5"></i><p><b>legend 1</b></p>'
         },
         layer2: {
-            layer: L.geoJson.ajax('../../assets/counties.geojson', {
+            layer: L.geoJson.ajax('../../assets/lm_bioma_250.json', {
                 color: 'orange',
                 weight: 5
             }),
-            legend: '<i style="background: orange; opacity: 0.5"></i><p><b>legend 2</b></p>'
+            legend: '<i style="background: orange; opacity: 0.5"></i><p><b>Pantanal biome</b></p>'
         },
         layer3: {
             layer: L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png')
@@ -71,10 +72,10 @@
     };
 
     var scenes = {
-        scene1: {lat: 44, lng: -123.5, zoom: 7, layers: [layers.layer2], name: "scene 1"},
-        scene2: {lat: 44.5701158, lng: -123.2949388, zoom: 10, layers: [layers.layer2], name: "scene 2"},
-        scene3: {lat: 44.5701158, lng: -123.2949388, zoom: 12, layers: [layers.layer1, layers.layer2], name: "scene 3"}
-    };
+    scene1: {lat: -14.2350, lng: -51.9253, zoom: 5, layers: [layers.layer1], name: "scene 1"},
+    scene2: {lat: -18.8800, lng: -56.0900, zoom: 6, layers: [layers.layer1, layers.layer2], name: "scene 2"},
+    scene3: {lat: -18.8800, lng: -56.0900, zoom: 9, layers: [layers.layer1, layers.layer2], name: "scene 2"} 
+};
 
     $('#storymap').storymap({
         scenes: scenes,
